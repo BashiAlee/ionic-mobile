@@ -1,0 +1,43 @@
+<!--
+  Generated template for the AboutMePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>About Me</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="about-me-profile">
+        <div class="top-content makeCenter pt15">
+            <div class="image">
+              <img src="../../../assets/imgs/app-logo.svg" alt="app-logo">
+            </div>
+            <div class="tagline">
+             <p> About Me</p>
+            </div>
+  
+          </div>
+          <div class="About-me-form" [formGroup]="aboutMeForm">
+          <ion-list>
+
+              <ion-item>
+                  <label for="cname" class="makeBlock mt15 custom-label">About Me</label>
+                  <textarea  placeholder="About Me" class="mt10 custom-input" padding formControlName="AboutMe"></textarea>
+                </ion-item>
+                </ion-list>
+                <div padding>
+                    <button ion-button color="primary" class="cliiimb-btn-primary" [disabled]="aboutMeForm.invalid" block   (click)="updateAboutMe()">Save Changes & Continue</button>
+                  </div>
+        </div>
+    </div>
+</ion-content>

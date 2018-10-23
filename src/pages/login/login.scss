@@ -1,0 +1,37 @@
+page-login {
+
+    ion-label {
+        margin: 0 !important;
+    }
+
+    .login-form {
+        div.item-inner{
+            border-bottom: none !important;
+            // .input {
+            //     border: 1px solid $light-grey;
+            //     border-radius: 7px;
+            // }
+        }
+        ion-item.item-input:last-child {
+            border-bottom: none !important;
+        }
+        .item-md {
+            padding-left: 7px !important;
+        }
+    }
+
+    .login-details {
+        .scroll-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .inner-details {
+                border: 1px solid $border-color;
+                border-radius: 7px;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,75 @@
+<!--
+  Generated template for the CreateContributionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="../../assets/imgs/app-logo.svg" alt=""></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3 class="makeCenter">Create Your Contribution</h3>
+   <!-- Segment buttons with text -->
+   <ion-segment  color="primary" [(ngModel)]="contribution_action">
+    <ion-segment-button value="content">
+      Create Content
+    </ion-segment-button>
+    <ion-segment-button value="cover-image">
+      Cover Image
+    </ion-segment-button>
+
+    <ion-segment-button value="submit">
+      Submit
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="contribution_action">
+  
+    <div *ngSwitchCase="'content'">
+      <ion-list>
+      
+        <ion-item>
+            <label for="cname" class="makeBlock mt15 custom-label">Contribution Title</label>
+          <input type="text" value="" placeholder="Title" class="mt30 mb20" class="custom-input" padding/>
+          <!-- <div *ngIf="form.Email.invalid && (form.Email.dirty || form.Email.touched)" class="invalid-feedback">
+              <div *ngIf="form.Email.errors.required">Email is required</div>
+              <div *ngIf="form.Email.errors.email">Email must be a valid email address</div>
+          </div> -->
+        </ion-item>
+    
+      </ion-list>
+
+      <ion-list>
+          <ion-grid>
+              <ion-row>
+                <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                  abc
+                </ion-col>
+                <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                    abc
+                  </ion-col>
+                  <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                      abc
+                    </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                    abc
+                  </ion-col>
+                  <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                      abc
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

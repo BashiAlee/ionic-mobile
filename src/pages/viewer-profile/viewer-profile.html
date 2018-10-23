@@ -1,0 +1,106 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-navbar>
+      <ion-title>user-profile</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <!-- <div class="top-content makeCenter pt15">
+          <div class="image profile-viewer">
+            <img src="../../../assets/imgs/app-logo.svg" alt="app-logo">
+          </div>
+          <div class="tagline">
+           <p> Edit/Complete your profile</p>
+          </div>
+  
+        </div> -->
+        <div class="user-page">
+            <ion-list>
+  
+                <ion-item class="mt30">
+                  <div class="user-info makeCenter">
+                    <div class="profile-chooser">
+                        <img *ngIf="!profileImage" src="../../assets/imgs/avatar.png" alt="" class="profileImage">
+                        <img *ngIf="profileImage" [src]="domSanitizer.bypassSecurityTrustUrl('')" alt="" class="profileImage">
+                    </div>
+                    <div class="user-description">
+                        <p class="username">Test</p>
+                        <p class="bio"> Edit/Complete your profile</p>
+                    </div>
+  
+                    <ion-grid>
+                        <ion-row>
+                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                              <div class="circle blue-circle">
+                                       <p>0</p>
+                              <h6>abc</h6>
+                              </div>
+                          </ion-col>
+                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                              <div class="circle yellow-circle">
+                                       <p>0</p>
+                              <h6>abc</h6>
+                              </div>
+                            </ion-col>
+          
+                        </ion-row>
+                      </ion-grid>
+  
+                      <button class="primary-blue-button">Follow Contributor</button>
+                  </div>
+                  </ion-item>
+  
+                  <div class="contributions-list">
+                    <h2 class="primary-heading mt15 ">Contributions</h2>
+  
+                    <ion-card>
+  
+                        <ion-item>
+                          <ion-avatar item-start>
+                            <img src="../../assets/imgs/avatar.png">
+                          </ion-avatar>
+                          <h2>Marty McFly</h2>
+                          <p>November 5, 1955</p>
+                        </ion-item>
+                      
+                        <img src="../../assets/imgs/avatar.png">
+                      
+                        <ion-card-content>
+                          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+                        </ion-card-content>
+                      
+                        <ion-row>
+                            <ion-col>
+                              <button ion-button icon-start clear small>
+                                  <ion-icon name="heart"></ion-icon>  
+                                <div>12 Likes</div>
+                              </button>
+                            </ion-col>
+                            <ion-col>
+                              <button ion-button icon-start clear small>
+                                <ion-icon name="text"></ion-icon>
+                                <div>4 Comments</div>
+                              </button>
+                            </ion-col>
+                          </ion-row>
+                      
+                      </ion-card>
+  
+                  </div>
+          
+              </ion-list>
+        </div>
+  
+  </ion-content>
+  

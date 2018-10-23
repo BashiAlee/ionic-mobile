@@ -8,6 +8,10 @@
       "dom",
       "es2015"
     ],
+    "baseUrl": "./src",
+    "paths": {
+      "@env": [ "env/env" ]
+    },
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,

@@ -1,0 +1,55 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding class="login-details">
+  <div class="inner-details">
+      <div class="top-content makeCenter pt15">
+          <div class="image">
+            <img src="../../assets/imgs/app-logo.svg" alt="app-logo">
+          </div>
+          <div class="tagline">
+           <p> Login with Cliiimb</p>
+          </div>
+
+        </div>
+      <div class="login-form" [formGroup]="loginForm">
+        <ion-list>
+      
+          <ion-item>
+            <input type="text" value="" placeholder="Username" class="mt30 mb20" class="custom-input" padding formControlName="Email"/>
+            <div *ngIf="form.Email.invalid && (form.Email.dirty || form.Email.touched)" class="invalid-feedback">
+                <div *ngIf="form.Email.errors.required">Email is required</div>
+                <div *ngIf="form.Email.errors.email">Email must be a valid email address</div>
+            </div>
+          </ion-item>
+      
+          <ion-item>
+            <input type="password" value="" placeholder="Password" class="custom-input" padding formControlName="Password"/>
+            <div *ngIf="form.Password.invalid && (form.Password.dirty || form.Password.touched)" class="invalid-feedback">
+                <div *ngIf="form.Password.errors.required">Password is required</div>
+            </div>
+          </ion-item>
+      
+        </ion-list>
+      
+        <div padding>
+          <button ion-button color="primary" class="cliiimb-btn-primary" block (click)="login()">Sign In</button>
+        </div>
+      </div>
+    </div>
+    <div class="makeRed">
+        <p>Don't have an account? <a (click)="openSignupPage()">Sign up</a> </p>
+      </div> 
+</ion-content>

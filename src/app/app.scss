@@ -1,5 +1,32 @@
 // http://ionicframework.com/docs/theming/
+@import './theme/variables.scss';
+@font-face {
+    font-family: 'Brandon_reg';
+    src: url(../assets/fonts/Brandon_reg.otf);
+}
 
+@font-face {
+    font-family: 'Brandon_med';
+    src: url(../assets/fonts/Brandon_med.otf);
+}
+@font-face {
+    font-family: 'Brandon_blk';
+    src: url(../assets/fonts/Brandon_blk.otf);
+}
+
+@font-face {
+    font-family: 'Brandon_med_it';
+    src: url(../assets/fonts/Brandon_med_it.otf);
+}
+
+@font-face {
+    font-family: 'Brandon_bld';
+    src: url(../assets/fonts/Brandon_bld.otf);
+}
+@font-face {
+    font-family: 'AbrilFatface-Regular';
+    src: url(../assets/fonts/AbrilFatface-Regular.ttf);
+}
 
 // App Global Sass
 // --------------------------------------------------
@@ -14,3 +41,303 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-list.sideMenu {
+    .item-inner {
+        border: none !important;
+     .input-wrapper {
+         text-transform:uppercase;
+     }
+    }
+
+    .makeRed {
+        color: $primary-color;
+    }
+}
+.sideMenu-header {
+    color: $primary-color;
+    div.toolbar-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .toolbar-title {
+            color: $primary-color;
+        }
+    }
+    .close-icon {
+        
+        margin-right: 15px;
+    }
+
+    .toolbar-background {
+        background: transparent;
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        bottom: 0;
+        border-bottom: 1px solid #f00;
+    }
+
+}
+
+ion-header {
+    &:after {
+        display: none;
+    }
+}
+
+.makeCenter {
+text-align: center;
+}
+
+.pt15 {
+    padding-top: 15px;
+}
+.mt15 {
+    margin-top: 15px !important;
+}
+.mt30 {
+    margin-top: 30px;
+}
+ .mb20{
+    margin-bottom: 20px;
+ }
+
+ .mt10 {
+    margin-top: 10px !important;
+ }
+
+ .separator {
+    border: 1px solid $light-grey;
+    width: 130px;
+    margin: 0 auto;
+ }
+.cliiimb-btn-primary {
+    background: $primary-color;
+    text-transform: uppercase;
+    border-radius: 7px;
+}
+
+.custom-input {
+    border: 1px solid $light-grey;
+    border-radius: 7px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.custom-label {
+    font-size: 15px;
+}
+
+.makeRed {
+    font-family: 'Brandon_med';
+    color: $primary-color;
+    a {
+        color: $primary-color;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+}
+
+.makeBlock {
+    display: block;
+}
+
+.top-content {
+    .image {
+        img {
+            width: 50%;
+        }
+    }
+
+    .tagline {
+        position: relative;
+        p {
+            color: $grey-color;
+            font-family: 'Brandon_med';
+            font-size: 17px;
+            margin: 0;
+        
+        }
+        &:after {
+            content: "";
+            border-bottom: 1px solid $light-grey;
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+            width: 130px;
+            z-index: 999999;
+            margin: 0 auto;
+            margin-top: 9px;
+        }
+    }
+}
+
+.toolbar-background-md {
+    background: $white;
+
+}
+.title-md {
+    text-align: center;
+}
+div.toolbar-title {
+    img {
+        width: 140px !important;
+    }
+}
+
+.bar-button-default-md {
+    color: $primary-blue;
+}
+.makeCenter {
+    text-align: center;
+}
+
+.profile-chooser {
+    border: 1px solid $light-grey;;
+    /* margin-top: 41px; */
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    ion-icon {
+        color: $primary-color;
+    }
+
+    .profileImage {
+        border-radius: 50%;
+    }
+}
+
+.user-info{
+    .user-description {
+        p {
+           
+            font-family: 'Brandon_med';
+            font-size: 17px;
+            margin: 0;
+        }
+
+        .bio {
+            color: $grey-color;
+        }
+
+        .username {
+            color: $black;
+        }
+    }
+
+    &:after {
+        content: "";
+        border-bottom: 1px solid $light-grey;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        top: 0;
+        right: 0;
+        width: 100%;
+        z-index: 999999;
+        margin: 0 auto;
+        margin-top: 9px;
+    }
+}
+
+.circle {
+    text-align: center;
+    p {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        margin: 0 auto;
+    }
+
+    h6 {
+        white-space: normal;
+    }
+}
+
+.purple-circle{
+    p {
+        background: $purple;
+    }
+}
+.yellow-circle{
+    p {
+        background: $yellow;
+    }
+}
+.blue-circle{
+    p {
+        background: $primary-blue;
+    }
+}
+.red-circle{
+    p {
+        background: $primary-color;
+    }
+}
+
+.primary-blue-button{
+    padding: 14px;
+    background: $primary-blue;
+    color: $white;
+    font-family: 'Brandon_med';
+}
+
+.primary-heading{
+    font-family: 'AbrilFatface-Regular';
+    color: $heading;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.action-icons {
+    ion-label {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        ion-icon {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            margin: 3px;
+            &:before {
+                font-size: 16px;
+            }
+        }
+
+        .volume-icon {
+            background: #516CEF;
+        }
+
+        .play-icon {
+            background: $primary-color;
+        }
+
+        .menu-icon {
+            background: $black;
+        }
+    }
+
+}

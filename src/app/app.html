@@ -1,13 +1,15 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="sideMenu-header">
       <ion-title>Menu</ion-title>
+      <!-- <ion-icon ios="ios-close" md="md-close" class="close-icon" menuClose></ion-icon> -->
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+    <ion-list  class="sideMenu">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [class.makeRed]="p.title =='Logout'"
+      (click)="p.title =='Logout' ? logout() : false">
         {{p.title}}
       </button>
     </ion-list>

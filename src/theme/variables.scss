@@ -3,9 +3,19 @@
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
+// @import "font-awesome";
 $font-path: "../assets/fonts";
-
-
+$primary-color : #ED1B24;
+$grey-color: #585656;
+$border-color: #999;
+$text-input-md-highlight-color: transparent;
+$light-grey: #D3D3D3;
+$white: #fff;
+$primary-blue: #197CC6;
+$black: #000;
+$purple: #840EBC;
+$yellow: #F4BD5E;
+$heading: #CACACA;
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
@@ -34,7 +44,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #ED1B24,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,

@@ -1,0 +1,43 @@
+page-edit-user {
+    .top-content {
+        .image {
+            img {
+                width: 50%;
+            }
+        }
+
+        .tagline {
+            position: relative;
+            p {
+                color: $grey-color;
+                font-family: 'Brandon_med';
+                font-size: 17px;
+                margin: 0;
+            
+            }
+            &:after {
+                content: "";
+                border-bottom: 1px solid $light-grey;
+                position: absolute;
+ 
+                left: 0;
+    
+                right: 0;
+                width: 170px;
+                z-index: 999999;
+                margin: 0 auto;
+                margin-top: 9px;
+            }
+        }
+    }
+    div.item-inner{
+        border-bottom: none !important;
+    }
+
+    ion-label{
+        margin: 0 !important;
+    }
+
+
+
+}
