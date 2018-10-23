@@ -9,5 +9,10 @@ import { CreateContributionPage } from './create-contribution';
   imports: [
     IonicPageModule.forChild(CreateContributionPage),
   ],
+
+  exports: [
+    CreateContributionPage
+  ]
+  
 })
 export class CreateContributionPageModule {}

@@ -8,6 +8,9 @@ import { EditUserPage } from './edit-user';
   ],
   imports: [
     IonicPageModule.forChild(EditUserPage),
+  ],
+  exports: [
+    EditUserPage
   ]
 })
 export class EditUserPageModule {}
