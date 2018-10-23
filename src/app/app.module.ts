@@ -21,6 +21,9 @@ import { AboutMePage } from '../pages/user/about-me/about-me';
 import { CreateContributionPage } from '../pages/create-contribution/create-contribution';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
+import { MyContributionPage } from '../pages/my-contribution/my-contribution';
+import { ContributionsProvider } from '../providers/contributions/contributions';
+import { PopoverContributionComponent } from '../components/popover-contribution/popover-contribution';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
     AboutMePage,
     CreateContributionPage,
     UserProfilePage,
-    ViewerProfilePage
+    ViewerProfilePage,
+    MyContributionPage,
+    PopoverContributionComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,9 @@ import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
     AboutMePage,
     CreateContributionPage,
     UserProfilePage,
-    ViewerProfilePage
+    ViewerProfilePage,
+    MyContributionPage,
+    PopoverContributionComponent
   ],
   providers: [
     StatusBar,
@@ -62,7 +69,8 @@ import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthenticationProvider,
-    UserProvider
+    UserProvider,
+    ContributionsProvider
   ]
 })
 export class AppModule {}

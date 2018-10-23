@@ -9,5 +9,8 @@ import { ViewerProfilePage } from './viewer-profile';
   imports: [
     IonicPageModule.forChild(ViewerProfilePage),
   ],
+  exports: [
+    ViewerProfilePage
+  ]
 })
 export class ViewerProfilePageModule {}

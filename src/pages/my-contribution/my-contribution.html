@@ -1,0 +1,64 @@
+<!--
+  Generated template for the MyContributionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="../../assets/imgs/app-logo.svg" alt=""></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="contributions-list">
+    <h2 class="primary-heading mt15 ">My Contributions</h2>
+
+    <ion-card>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/avatar.png">
+          </ion-avatar>
+          <h2>Marty McFly</h2>
+          <p>November 5, 1955</p>
+        </ion-item>
+        <ion-item class="action-icons"> 
+          <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+          <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+          <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+
+        </ion-item>
+      
+        <img src="../../assets/imgs/avatar.png">
+      
+        <ion-card-content>
+          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col> <a ion-button icon-start clear small>View Detail</a> </ion-col>
+        </ion-row>
+        <ion-row>
+           
+            <ion-col>
+              <button ion-button icon-start clear small>
+                  <ion-icon name="heart"></ion-icon>  
+                <div>12 Likes</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon name="text"></ion-icon>
+                <div>4 Comments</div>
+              </button>
+            </ion-col>
+          </ion-row>
+      
+      </ion-card>
+
+  </div>
+</ion-content>

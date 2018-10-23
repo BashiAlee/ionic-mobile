@@ -11,6 +11,7 @@ import { EditUserPage } from '../pages/user/edit-user/edit-user';
 import { CreateContributionPage } from '../pages/create-contribution/create-contribution';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
+import { MyContributionPage } from '../pages/my-contribution/my-contribution';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'My Contribution', component: LoginPage },
+      { title: 'My Contribution', component: MyContributionPage },
       { title: 'My Events', component: ListPage },
       { title: 'My Mentors', component: HomePage },
       { title: 'My Feed', component: ListPage },
