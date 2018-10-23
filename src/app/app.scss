@@ -127,7 +127,6 @@ text-align: center;
     border: 1px solid $light-grey;
     border-radius: 7px;
     width: 100%;
-    margin-top: 20px;
 }
 
 .custom-label {
@@ -340,4 +339,18 @@ div.toolbar-title {
         }
     }
 
+}
+.tooltip_vector{
+    width: 30px;
+    height: 30px;
+    margin: 10px 0px;
+    float: right;
+}
+.p-1{
+    color: grey;
+    text-align: center;
+    font-size: 12px;
+}
+.custom-select{
+    border: 1px solid grey;
 }

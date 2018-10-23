@@ -18,7 +18,7 @@ import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ViewerProfilePage;
+  rootPage: any = CreateContributionPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -31,7 +31,7 @@ export class MyApp {
       { title: 'My Events', component: ListPage },
       { title: 'My Mentors', component: HomePage },
       { title: 'My Feed', component: ListPage },
-      { title: 'Create Contribution', component: HomePage },
+      { title: 'Create Contribution', component: CreateContributionPage },
       { title: 'Create an Event', component: ListPage },
       { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ListPage },

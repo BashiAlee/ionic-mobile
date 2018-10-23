@@ -33,18 +33,63 @@
   <div [ngSwitch]="contribution_action">
   
     <div *ngSwitchCase="'content'">
-      <ion-list>
-      
-        <ion-item>
-            <label for="cname" class="makeBlock mt15 custom-label">Contribution Title</label>
-          <input type="text" value="" placeholder="Title" class="mt30 mb20" class="custom-input" padding/>
+  
+           
           <!-- <div *ngIf="form.Email.invalid && (form.Email.dirty || form.Email.touched)" class="invalid-feedback">
               <div *ngIf="form.Email.errors.required">Email is required</div>
               <div *ngIf="form.Email.errors.email">Email must be a valid email address</div>
           </div> -->
-        </ion-item>
-    
-      </ion-list>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Contribution Title</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <div class="tooltip_vector">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding/>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Category</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <div class="tooltip_vector">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                  <ion-list>
+                      <ion-item  class="custom-select">
+                        <ion-label>Click here to select</ion-label>
+                        <ion-select>
+                          <ion-option value="nes">NES</ion-option>
+                          <ion-option value="n64">Nintendo64</ion-option>
+                          <ion-option value="ps">PlayStation</ion-option>
+                          <ion-option value="genesis">Sega Genesis</ion-option>
+                          <ion-option value="saturn">Sega Saturn</ion-option>
+                          <ion-option value="snes">SNES</ion-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-list>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <div class="p-1">
+                  <p>Use the tool bucket below to add content,<br/>images and media to your Contribution Spotlight</p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
       <ion-list>
           <ion-grid>
