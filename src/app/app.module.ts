@@ -32,6 +32,7 @@ import { UserPopoverComponent } from '../components/user-popover/user-popover';
 import { MessagePopoverComponent } from '../components/message-popover/message-popover';
 import { NotificationPopoverComponent } from '../components/notification-popover/notification-popover';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
+import { HeaderComponent } from '../components/header/header';
 
 
 
@@ -54,7 +55,8 @@ import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
     ContributionDetailsPage,
     UserPopoverComponent,
     MessagePopoverComponent,
-    NotificationPopoverComponent
+    NotificationPopoverComponent,
+    HeaderComponent,
 
   ],
   imports: [
@@ -84,7 +86,8 @@ import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 
     UserPopoverComponent,
     MessagePopoverComponent,
-    NotificationPopoverComponent
+    NotificationPopoverComponent,
+    HeaderComponent,
   ],
   providers: [
     StatusBar,

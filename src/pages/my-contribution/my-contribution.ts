@@ -5,6 +5,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { PopoverController } from 'ionic-angular';
 import { PopoverContributionComponent } from '../../components/popover-contribution/popover-contribution';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the MyContributionPage page.
@@ -19,10 +20,12 @@ import { ContributionDetailsPage } from '../../pages/contribution-details/contri
   templateUrl: 'my-contribution.html',
 })
 export class MyContributionPage {
-  contributionsList: any;
+  contributionsList: any = [];
+  loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public contributionService: ContributionsProvider,
     public authService: AuthenticationProvider,
+    public userService: UserProvider,
     public popoverCtrl: PopoverController) {
 
       var email = this.authService.getCurrentUser().Email;
@@ -39,17 +42,25 @@ export class MyContributionPage {
     popover.present();
   }
   getContributionByEmail(email) {
+    this.loading = true;
     this.contributionService.getUserConstributionsbyEmail(email)
     .subscribe(
       data => {
         if(data.status) {
           data.data.forEach(value => {
-
-            if(value.AdminStatus &&  value.ContributionStatus == "Publish") {
-
+            this.getProfileByID(value.UserID, value)
+            if(value.AdminStatus) {
+              this.contributionsList.push(value);
+              this.loading = false;
+            } else {
+              this.contributionsList = [];
+              this.loading = false;
             }
             
           });
+        } else {
+          this.contributionsList = [];
+          this.loading = false;
         }
       }
     )
@@ -57,6 +68,18 @@ export class MyContributionPage {
 
   openDetails() {
     this.navCtrl.setRoot(ContributionDetailsPage)
+  }
+
+  getProfileByID(id,value) {
+
+    this.userService.viewProfileById(id)
+      .subscribe(res => {
+        if(res.status) {
+           value.bio = res.data.Bio
+        }
+        
+  
+      });
   }
 
 }

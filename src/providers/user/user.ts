@@ -53,4 +53,13 @@ export class UserProvider {
   ));
   }
 
+  viewProfileById(data) {
+    var user =  { _id : data }
+    return this.http.post(this.apiURL + 'viewprofilebyid', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
 }
