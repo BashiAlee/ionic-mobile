@@ -10,6 +10,7 @@ $grey-color: #585656;
 $border-color: #999;
 $text-input-md-highlight-color: transparent;
 $light-grey: #D3D3D3;
+$medium-gray:#999;
 $white: #fff;
 $primary-blue: #197CC6;
 $black: #000;
@@ -20,6 +21,10 @@ $heading: #CACACA;
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
+$p1: 10px;
+$p2: 12px;
+$p3: 14px;
+$p4: 16px;
 
 
 @import "ionic.globals";
@@ -48,7 +53,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  black: #000
 );
 
 

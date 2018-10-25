@@ -127,11 +127,16 @@ text-align: center;
     border: 1px solid $light-grey;
     border-radius: 7px;
     width: 100%;
-    margin-top: 20px;
 }
-
+.custom-input1 {
+    border: 1px solid $light-grey;
+    border-radius: 7px;
+    padding: 12px;
+    width: 100%;
+}
 .custom-label {
     font-size: 15px;
+    font-weight: 700;
 }
 
 .makeRed {
@@ -345,3 +350,62 @@ div.toolbar-title {
 .invalid-feedback {
     color: #f00;
 }
+
+.tooltip_vector{
+    width: 30px;
+    height: 30px;
+    margin: 0px auto;
+}
+.f-right{
+    float: right;
+}
+.f-left{
+    float: left;
+}
+
+.icon-bg{
+    background: #F9FAFC;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 25px;
+    color: #ED1B24;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.tool-buckt{
+    text-align: center;
+    p{
+        color: $black;
+        font-size: $p2;
+    }
+}
+
+.custom-nav{
+    display:flex;
+    border-bottom:1px solid $light-grey;
+    .nav-content{
+        i{
+            color: $medium-gray;
+            padding: 0px 10px 0px 0px;
+        }
+    }
+    .nav-dp{
+        display:flex;
+        .nav-arrow{
+            font-size: $p2;
+            margin-top: 5px;
+            min-width: 15px;
+            color: #000;
+        }
+        img{
+            border-radius: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    }
+}
+
+

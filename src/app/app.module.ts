@@ -22,13 +22,23 @@ import { CreateContributionPage } from '../pages/create-contribution/create-cont
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
+import { MentorPage } from '../pages/mentor/mentor';
 import { ContributionsProvider } from '../providers/contributions/contributions';
 import { PopoverContributionComponent } from '../components/popover-contribution/popover-contribution';
+
 import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
+
+import { UserPopoverComponent } from '../components/user-popover/user-popover';
+import { MessagePopoverComponent } from '../components/message-popover/message-popover';
+import { NotificationPopoverComponent } from '../components/notification-popover/notification-popover';
+import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
+
+
 
 
 @NgModule({
   declarations: [
+    ApplicantFormPage,
     MyApp,
     HomePage,
     ListPage,
@@ -41,7 +51,11 @@ import { ContributionDetailsPage } from '../pages/contribution-details/contribut
     ViewerProfilePage,
     MyContributionPage,
     PopoverContributionComponent,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+    UserPopoverComponent,
+    MessagePopoverComponent,
+    NotificationPopoverComponent
+
   ],
   imports: [
     BrowserModule,
@@ -52,6 +66,7 @@ import { ContributionDetailsPage } from '../pages/contribution-details/contribut
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    ApplicantFormPage,
     MyApp,
     HomePage,
     ListPage,
@@ -63,8 +78,13 @@ import { ContributionDetailsPage } from '../pages/contribution-details/contribut
     UserProfilePage,
     ViewerProfilePage,
     MyContributionPage,
+
     PopoverContributionComponent,
-    ContributionDetailsPage
+    ContributionDetailsPage,
+
+    UserPopoverComponent,
+    MessagePopoverComponent,
+    NotificationPopoverComponent
   ],
   providers: [
     StatusBar,

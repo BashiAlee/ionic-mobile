@@ -1,0 +1,17 @@
+.mentor-card {
+    .title{
+        display: flex;
+        p{
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    }
+    .card-content{
+        display: flex;
+        .primary-p1{
+            color:red;
+            font-size: 15px;
+        }
+    }
+}
