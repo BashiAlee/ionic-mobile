@@ -17,17 +17,16 @@ import { NotificationPopoverComponent } from '../../components/notification-popo
   templateUrl: 'create-contribution.html',
 })
 
-<<<<<<< HEAD
+
 export class CreateContributionPage {
   contribution_action: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-=======
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public popoverCtrl: PopoverController) { }
->>>>>>> d6e8d995f6e32b5a13edbe8d7985efe8c12e7af5
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateContributionPage');
