@@ -22,12 +22,19 @@ import { CreateContributionPage } from '../pages/create-contribution/create-cont
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
+import { MentorPage } from '../pages/mentor/mentor';
 import { ContributionsProvider } from '../providers/contributions/contributions';
 import { PopoverContributionComponent } from '../components/popover-contribution/popover-contribution';
+import { UserPopoverComponent } from '../components/user-popover/user-popover';
+import { MessagePopoverComponent } from '../components/message-popover/message-popover';
+import { NotificationPopoverComponent } from '../components/notification-popover/notification-popover';
+import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
+
 
 
 @NgModule({
   declarations: [
+    ApplicantFormPage,
     MyApp,
     HomePage,
     ListPage,
@@ -39,7 +46,11 @@ import { PopoverContributionComponent } from '../components/popover-contribution
     UserProfilePage,
     ViewerProfilePage,
     MyContributionPage,
-    PopoverContributionComponent
+    // MentorPage,
+    PopoverContributionComponent,
+    UserPopoverComponent,
+    MessagePopoverComponent,
+    NotificationPopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +61,7 @@ import { PopoverContributionComponent } from '../components/popover-contribution
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    ApplicantFormPage,
     MyApp,
     HomePage,
     ListPage,
@@ -61,7 +73,11 @@ import { PopoverContributionComponent } from '../components/popover-contribution
     UserProfilePage,
     ViewerProfilePage,
     MyContributionPage,
-    PopoverContributionComponent
+    // MentorPage,
+    PopoverContributionComponent,
+    UserPopoverComponent,
+    MessagePopoverComponent,
+    NotificationPopoverComponent
   ],
   providers: [
     StatusBar,

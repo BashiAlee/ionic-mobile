@@ -4,12 +4,32 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="custom-nav">
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title><img src="../../assets/imgs/app-logo.svg" alt=""></ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-buttons start="" >
+        <div class="nav-content">
+          <button ion-button="" class="disable-hover"  (click)="messagePopover($event)">
+            <ion-icon><i class="fas fa-envelope-open"></i></ion-icon>
+            <div class="button-effect"></div>
+          </button>
+          <button ion-button="" class="disable-hover" (click)="notificationPopover($event)">
+            <ion-icon><i class="fas fa-bell"></i></ion-icon>
+            <div class="button-effect"></div>
+          </button>
+        </div>
+      </ion-buttons>
+      
+      <ion-buttons end="" class="bar-buttons bar-buttons-ios">
+        <div class="nav-dp">
+          <button ion-button icon-only (click)="userPopover($event)">
+            <img class="tooltip_vector" src="../../assets/imgs/tooltip_vector.png" alt="">
+            <ion-icon class="nav-arrow" name="ios-arrow-down"></ion-icon>
+          </button>
+        </div>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -45,7 +65,7 @@
                 <label for="cname" class="makeBlock mt15 custom-label">Contribution Title</label>
               </ion-col>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                <div class="tooltip_vector">
+                <div class="tooltip_vector f-right">
                     <img alt="" src="../../assets/imgs/tooltip_vector.png">
                 </div>
               </ion-col>
@@ -53,22 +73,24 @@
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                 <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding/>
-                </ion-col>
+              </ion-col>
             </ion-row>
+            
             <ion-row>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <label for="cname" class="makeBlock mt15 custom-label">Category</label>
               </ion-col>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                <div class="tooltip_vector">
+                <div class="tooltip_vector f-right">
                     <img alt="" src="../../assets/imgs/tooltip_vector.png">
                 </div>
               </ion-col>
             </ion-row>
+
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                   <ion-list>
-                      <ion-item  class="custom-select">
+                      <ion-item  class="custom-input">
                         <ion-label>Click here to select</ion-label>
                         <ion-select>
                           <ion-option value="nes">NES</ion-option>
@@ -82,9 +104,10 @@
                     </ion-list>
               </ion-col>
             </ion-row>
+
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <div class="p-1">
+                <div class="makeCenter">
                   <p>Use the tool bucket below to add content,<br/>images and media to your Contribution Spotlight</p>
                 </div>
               </ion-col>
@@ -94,23 +117,63 @@
       <ion-list>
           <ion-grid>
               <ion-row>
-                <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                  abc
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-text-width icon-bg"></i>
+                        <p>Text</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
                 </ion-col>
-                <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                    abc
-                  </ion-col>
-                  <ion-col col-4 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                      abc
-                    </ion-col>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-code icon-bg"></i>
+                        <p>Embed Video</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
+                </ion-col>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-volume-up icon-bg"></i>
+                        <p>Audio</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
+                </ion-col>
               </ion-row>
               <ion-row>
-                  <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                    abc
+                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-2>
+                    <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-th icon-bg"></i>
+                        <p>Image Gellary</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                    </div>
                   </ion-col>
-                  <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                      abc
-                    </ion-col>
+                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                    <div class="tool-buckt">
+                        <a href="#">
+                          <i class="fas fa-link icon-bg"></i>
+                          <p>Add Link</p>
+                        </a>
+                        <div class="tooltip_vector">
+                            <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                        </div>
+                    </div>
+                  </ion-col>
                 </ion-row>
             </ion-grid>
       </ion-list>

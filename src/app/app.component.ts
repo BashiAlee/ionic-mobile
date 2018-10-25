@@ -12,6 +12,8 @@ import { CreateContributionPage } from '../pages/create-contribution/create-cont
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
+import { MentorPage } from '../pages/mentor/mentor';
+import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +21,7 @@ import { MyContributionPage } from '../pages/my-contribution/my-contribution';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreateContributionPage;
+  rootPage: any = ApplicantFormPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -36,10 +38,12 @@ export class MyApp {
       { title: 'Create an Event', component: ListPage },
       { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ListPage },
+      { title: 'Mentor', component: MentorPage },
       { title: 'Feed', component: HomePage },
       { title: 'Parent Activity log', component: ListPage },
       { title: 'Parent Profile', component: ListPage },
       { title: 'Edit / Profile Settings', component: ListPage },
+      { title: 'application form', component: ApplicantFormPage },
       { title: 'Logout', component: ListPage }
 
     ];
