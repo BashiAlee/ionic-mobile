@@ -17,6 +17,7 @@ import { ContributionDetailsPage } from '../pages/contribution-details/contribut
 
 import { MentorPage } from '../pages/mentor/mentor';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
+import { MyEventsPage } from '../pages/my-events/my-events';
 
 
 @Component({
@@ -36,19 +37,19 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'My Contribution', component: MyContributionPage },
-      { title: 'My Events', component: ListPage },
-      { title: 'My Mentors', component: HomePage },
-      { title: 'My Feed', component: ListPage },
+      { title: 'My Events', component: MyEventsPage },
+      { title: 'My Mentors', component: MentorPage },
+      // { title: 'My Feed', component: ListPage },
       { title: 'Create Contribution', component: CreateContributionPage },
-      { title: 'Create an Event', component: ListPage },
-      { title: 'Events', component: HomePage },
-      { title: 'Become a mentor', component: ListPage },
+      // { title: 'Create an Event', component: ListPage },
+      // { title: 'Events', component: HomePage },
+      { title: 'Become a mentor', component: ApplicantFormPage },
       { title: 'Mentor', component: MentorPage },
-      { title: 'Feed', component: HomePage },
-      { title: 'Parent Activity log', component: ListPage },
-      { title: 'Parent Profile', component: ListPage },
-      { title: 'Edit / Profile Settings', component: ListPage },
-      { title: 'application form', component: ApplicantFormPage },
+      // { title: 'Feed', component: HomePage },
+      // { title: 'Parent Activity log', component: ListPage },
+      // { title: 'Parent Profile', component: ListPage },
+      // { title: 'Edit / Profile Settings', component: ListPage },
+      // { title: 'application form', component: ApplicantFormPage },
       { title: 'Logout', component: ListPage }
 
     ];

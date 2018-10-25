@@ -418,3 +418,15 @@ ion-spinner * {
     stroke: #444;
     fill: $primary-color;
   }
+
+  .scroll-content {
+    margin-top: 50px;
+  }
+
+  .fixed-content {
+    margin-top: 50px;
+  }
+  .popover-md .popover-content {
+    width: 83% !important;
+    margin-top: 45px !important;
+}

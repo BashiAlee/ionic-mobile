@@ -33,6 +33,8 @@ import { MessagePopoverComponent } from '../components/message-popover/message-p
 import { NotificationPopoverComponent } from '../components/notification-popover/notification-popover';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 import { HeaderComponent } from '../components/header/header';
+import { MyEventsPage } from '../pages/my-events/my-events';
+import { EventsProvider } from '../providers/events/events';
 
 
 
@@ -57,6 +59,8 @@ import { HeaderComponent } from '../components/header/header';
     MessagePopoverComponent,
     NotificationPopoverComponent,
     HeaderComponent,
+    MyEventsPage,
+    MentorPage
 
   ],
   imports: [
@@ -88,6 +92,8 @@ import { HeaderComponent } from '../components/header/header';
     MessagePopoverComponent,
     NotificationPopoverComponent,
     HeaderComponent,
+    MyEventsPage,
+    MentorPage
   ],
   providers: [
     StatusBar,
@@ -96,7 +102,8 @@ import { HeaderComponent } from '../components/header/header';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthenticationProvider,
     UserProvider,
-    ContributionsProvider
+    ContributionsProvider,
+    EventsProvider
   ]
 })
 export class AppModule {}
