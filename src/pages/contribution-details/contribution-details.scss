@@ -1,12 +1,13 @@
 page-contribution-details {
     .custom-slides{
+    margin-top: 30px;
         .slider-content{
             h2{
-                font-size: 15px;
+                font-size: 17px;
                 font-weight: bold;
             }
             p{
-                font-size: 10px;
+                font-size: 13px;
                 a{
                     color: #516CF1;
                 }
@@ -17,8 +18,8 @@ page-contribution-details {
             color: #fff !important;
             background: #516CF1;
             border: 1px solid #516CF1;
-            font-size: 11px !important;
-            padding: 5px;
+            font-size: 13px !important;
+            padding: 5px 10px;
             border-radius: 4px;
         }
     }

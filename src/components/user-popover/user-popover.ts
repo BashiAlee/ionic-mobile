@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavController } from 'ionic-angular';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { LoginPage } from '../../pages/login/login';
 
 
 @Component({
@@ -7,10 +9,23 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'user-popover.html',
 })
 export class UserPopoverComponent {
-  constructor(public viewCtrl: ViewController) {}
+  user: any;
+  constructor(
+    public viewCtrl: ViewController,
+    public authService: AuthenticationProvider,
+    public navCtrl: NavController
+  ) {
+    this.user = this.authService.getCurrentUser();
+    // this.getContributionByEmail(data);
+ console.log(this.user)
+  }
 
   close() {
     this.viewCtrl.dismiss();
+  }
+  logout() {
+    localStorage.clear();
+    this.navCtrl.setRoot(LoginPage)
   }
 
 }

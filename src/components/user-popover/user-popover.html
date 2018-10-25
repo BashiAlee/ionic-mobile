@@ -1,8 +1,12 @@
 <ion-list class="list-items">
-  <button ion-item (click)="close()">Complete / Edit Profile</button>
+  <ion-item>{{user.FullName}}</ion-item>
+  <!-- <button ion-item (click)="close()">Complete / Edit Profile</button>
   <button ion-item (click)="close()">Parent Activity Log</button>
   <button ion-item (click)="close()">My Preferencs</button>
   <button ion-item (click)="close()">My Mentors</button>
-  <button ion-item (click)="close()">My Feeds</button>
-  <button ion-item (click)="close()">Logout</button>
+  <button ion-item (click)="close()">My Feeds</button> -->
+  <button ion-item (click)="logout()">Logout</button>
+  <!-- <button  ion-item (click)="logout() : false">
+        Logout
+      </button> -->
 </ion-list>
