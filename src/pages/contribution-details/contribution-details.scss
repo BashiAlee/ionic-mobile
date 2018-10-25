@@ -1,3 +1,26 @@
 page-contribution-details {
+    .custom-slides{
+        .slider-content{
+            h2{
+                font-size: 15px;
+                font-weight: bold;
+            }
+            p{
+                font-size: 10px;
+                a{
+                    color: #516CF1;
+                }
+            }
+            
+        }
+        .follow-btn{
+            color: #fff !important;
+            background: #516CF1;
+            border: 1px solid #516CF1;
+            font-size: 11px !important;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    }
 
 }

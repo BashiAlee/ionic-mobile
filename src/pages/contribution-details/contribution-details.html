@@ -16,11 +16,55 @@
 <ion-content padding>
 
   <div class="contribution-detail">
+    <ion-grid>
+      <ion-row>
+          <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+            <div class="custom-slides">
+                <ion-slides pager>
+                  <ion-slide>
+                    <ion-list no-lines>
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="../../assets/imgs/avatar.png">
+                        </ion-avatar>
+                        <div center class="slider-content">
+                          <h2>John Doe</h2>
+                          <p><a href="#">Cliiimb</a>(judicial system)</p>
+                        </div>
+                        <button item-end class="follow-btn">Follow Contributor</button>
+                      </ion-item>
+                      <ion-item class="action-icons"> 
+                          <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+                          <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+                          <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                  </ion-slide>
+                  
+
+                    <ion-slide>
+                        <iframe style="width: 100%" class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/FKEaJE9lSXk"></iframe>
+                    </ion-slide>
+                  
+                    <ion-slide>
+                        <h4 class="makeCenter">Audio</h4>
+                        <audio controls style="width: 100%">
+                            <source src="horse.ogg" type="audio/ogg">
+                            <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                          </audio>
+                    </ion-slide>
+                  
+                  </ion-slides>
+            </div>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+      
+
+
     <!-- <ion-list> -->
-    <ion-slides pager>
-
-
-
+    <!-- <ion-slides pager>
       <ion-slide>
         <ion-grid>
           <ion-row>
@@ -46,7 +90,7 @@
           <ion-row>
             <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
               <h4>Test</h4>
-              <p>abc</p>
+              <p>abc</p> -->
               <!-- <p>s,mdfkfkjwfkljfjslkdjflskdjfkjsdlfkjsdkljfslkjdfskljdflkjsdfkjsdfkjsdlkfjskldfsdf
                 sdf
                 sdf
@@ -56,7 +100,7 @@
                 sdsdsdd
               </p> -->
 
-            </ion-col>
+            <!-- </ion-col>
           </ion-row>
         </ion-grid>
       </ion-slide>
@@ -83,7 +127,7 @@
                     </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-slide>
+          </ion-slide> -->
           <!-- <ion-slide>
               <ion-grid>
                 <ion-row>
@@ -107,7 +151,7 @@
             </ion-slide> -->
 
 
-    </ion-slides>
+    <!-- </ion-slides> -->
     <!-- </ion-list> -->
   </div>
 

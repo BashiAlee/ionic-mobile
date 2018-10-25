@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
-
+// import { AlertController } from 'ionic-angular';
+import { LoadingController ,ToastController,AlertController } from 'ionic-angular';
+// import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the SignupPage page.
  *
@@ -20,8 +22,11 @@ export class SignupPage {
   signupForm: FormGroup;
   constructor(public navCtrl: NavController,
     public authService: AuthenticationProvider,
-     public navParams: NavParams,
-     public formBuilder: FormBuilder
+    public navParams: NavParams,
+    public formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    private toastCtrl: ToastController
     ) {
     this.signupForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -39,14 +44,46 @@ export class SignupPage {
     this.navCtrl.push(LoginPage);
   }
 
-  saveProfile() {
-    console.log("FFF", this.signupForm.valid)
-    // this.authService.signup(this.signupForm.value)
-    // .subscribe( data=> {
-    //   console.log("DDD")
-    // });
+  signup() {
+    delete this.signupForm.value.confirmpassword;
+    let loader =  this.loadingCtrl.create({
+      content: 'Please wait...',
+    });
+    loader.present();
+    this.authService.signup(this.signupForm.value)
+    .subscribe( data=> {
+      if(data.status) {
+        loader.dismiss();
+        this.presentToast(data.message)
+        this.navCtrl.setRoot(LoginPage)
+      } else if(!data.status){
+        loader.dismiss();
+        this.showErrorAlert(data.message)
+      }
+    });
+  }
+  showErrorAlert(message) {
+    const alert = this.alertCtrl.create({
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
+  // toast for user successful creation
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message: message+" Please verify your email to login",
+      duration: 5000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
 
 
 }
