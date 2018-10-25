@@ -13,8 +13,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-create-contribution',
   templateUrl: 'create-contribution.html',
 })
-export class CreateContributionPage {
 
+export class CreateContributionPage {
+  contribution_action: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

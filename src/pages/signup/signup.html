@@ -24,25 +24,39 @@
             </div>
   
           </div>
-        <div class="signup-form">
+        <div class="signup-form" [formGroup]="signupForm">
           <ion-list>
         
             <ion-item>
-              <input type="text" value="" placeholder="Email" class="mt30 mb20" class="custom-input" padding/>
+              <input type="text" value="" placeholder="Email" class="mt30 mb20" class="custom-input" padding formControlName="email"/>
+              <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)" class="invalid-feedback">
+                  <div *ngIf="form.email.errors.required">Email is required</div>
+                  <div *ngIf="form.email.errors.email">Email must be a valid email address</div>
+              </div>
             </ion-item>
         
             <ion-item>
-              <input type="password" value="" placeholder="Password" class="custom-input" padding/>
+              <input type="password" value="" placeholder="Password" class="custom-input" padding formControlName="password"/>
+              <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" class="invalid-feedback">
+                  <div *ngIf="form.password.errors.required">Password is required</div>
+                  <div *ngIf="form.password.errors.minlength">Password Should be of minimum 8 characters</div>
+              </div>
             </ion-item>
 
             <ion-item>
-                <input type="password" value="" placeholder="Re-enter Password" class="custom-input" padding/>
+                <input type="password" value="" placeholder="Re-enter Password" class="custom-input" padding formControlName="confirmpassword"/>
+                <div *ngIf="form.confirmpassword.invalid && (form.confirmpassword.dirty || form.confirmpassword.touched)" class="invalid-feedback">
+                    <div *ngIf="form.confirmpassword.errors.required">Password is required</div>
+                    <div *ngIf="form.password.value!=form.confirmpassword.value" class="invalid-feedback">
+                      Password doesn't match
+                     </div>
+                </div>
               </ion-item>
         
           </ion-list>
         
           <div padding>
-            <button ion-button color="primary" class="cliiimb-btn-primary" block>Sign up</button>
+            <button ion-button color="primary" class="cliiimb-btn-primary" block (click)="saveProfile()">Sign up</button>
           </div>
         </div>
       </div>

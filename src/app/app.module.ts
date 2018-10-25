@@ -24,6 +24,7 @@ import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
 import { ContributionsProvider } from '../providers/contributions/contributions';
 import { PopoverContributionComponent } from '../components/popover-contribution/popover-contribution';
+import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PopoverContributionComponent } from '../components/popover-contribution
     UserProfilePage,
     ViewerProfilePage,
     MyContributionPage,
-    PopoverContributionComponent
+    PopoverContributionComponent,
+    ContributionDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { PopoverContributionComponent } from '../components/popover-contribution
     UserProfilePage,
     ViewerProfilePage,
     MyContributionPage,
-    PopoverContributionComponent
+    PopoverContributionComponent,
+    ContributionDetailsPage
   ],
   providers: [
     StatusBar,

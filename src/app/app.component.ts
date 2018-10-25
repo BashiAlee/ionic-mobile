@@ -12,6 +12,7 @@ import { CreateContributionPage } from '../pages/create-contribution/create-cont
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
+import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ import { MyContributionPage } from '../pages/my-contribution/my-contribution';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = SignupPage;
 
   pages: Array<{title: string, component: any}>;
 

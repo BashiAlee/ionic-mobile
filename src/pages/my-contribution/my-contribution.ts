@@ -4,6 +4,7 @@ import { ContributionsProvider } from '../../providers/contributions/contributio
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { PopoverController } from 'ionic-angular';
 import { PopoverContributionComponent } from '../../components/popover-contribution/popover-contribution';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 
 /**
  * Generated class for the MyContributionPage page.
@@ -52,6 +53,10 @@ export class MyContributionPage {
         }
       }
     )
+  }
+
+  openDetails() {
+    this.navCtrl.setRoot(ContributionDetailsPage)
   }
 
 }

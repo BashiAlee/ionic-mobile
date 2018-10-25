@@ -38,6 +38,15 @@ export class AuthenticationProvider {
       }));
   }
 
+  signup(data) {
+    var data = data;
+    return this.http.post(this.apiURL + 'registration', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
   isLoggedIn() {
     return localStorage.getItem('isLoggedIn');
   }
