@@ -118,6 +118,7 @@ text-align: center;
     margin: 0 auto;
  }
 .cliiimb-btn-primary {
+    height: 50px;
     background: $primary-color;
     text-transform: uppercase;
     border-radius: 7px;
@@ -349,6 +350,7 @@ div.toolbar-title {
 
 .invalid-feedback {
     color: #f00;
+    display: block;
 }
 
 .tooltip_vector{

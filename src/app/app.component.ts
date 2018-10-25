@@ -25,7 +25,7 @@ import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreateContributionPage;
+  rootPage: any = SignupPage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -30,7 +30,8 @@ export class SignupPage {
     })
   }
   
-  get form() {return this.signupForm.controls}
+  get form() {
+    return this.signupForm.controls}
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
@@ -39,10 +40,11 @@ export class SignupPage {
   }
 
   saveProfile() {
-    this.authService.signup(this.signupForm.value)
-    .subscribe( data=> {
-      console.log("DDD")
-    });
+    console.log("FFF", this.signupForm.valid)
+    // this.authService.signup(this.signupForm.value)
+    // .subscribe( data=> {
+    //   console.log("DDD")
+    // });
   }
 
 
