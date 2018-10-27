@@ -7,97 +7,98 @@
 <header></header>
 <ion-content padding>
   <div class="edit-profile">
-      <div class="top-content makeCenter pt15">
-          <div class="image">
-            <img src="../../../assets/imgs/app-logo.svg" alt="app-logo">
+    <div class="top-content makeCenter pt15">
+      <div class="image">
+        <img src="../../../assets/imgs/app-logo.svg" alt="app-logo">
+      </div>
+      <div class="tagline">
+        <p> Edit/Complete your profile</p>
+      </div>
+
+    </div>
+    <div class="profile-form" [formGroup]="editProfileForm">
+      <ion-list>
+
+        <ion-item class="mt30">
+          <div class="profile-chooser" (click)="openActionSheet()">
+            <ion-icon *ngIf="!profileImage" ios="ios-camera" md="md-camera"></ion-icon>
+            <img *ngIf="profileImage" [src]="domSanitizer.bypassSecurityTrustUrl(profileImage)" alt="" class="profileImage">
+
+            <!-- <button>open</button> -->
           </div>
-          <div class="tagline">
-           <p> Edit/Complete your profile</p>
-          </div>
+        </ion-item>
 
-        </div>
-        <div class="profile-form" [formGroup]="editProfileForm">
-            <ion-list>
+        <ion-item>
+          <label for="cname" class="makeBlock mt15 custom-label">Company Name</label>
+          <input type="text" value="" placeholder="Company Name" class="mt10 custom-input" padding formControlName="companyName" />
+        </ion-item>
 
-                <ion-item class="mt30">
-                    <div class="profile-chooser" (click)="openActionSheet()">
-                        <ion-icon *ngIf="!profileImage" ios="ios-camera" md="md-camera"></ion-icon>
-                        <img *ngIf="profileImage" [src]="domSanitizer.bypassSecurityTrustUrl(profileImage)" alt="" class="profileImage">
+        <ion-item>
+          <label for="fname" class="makeBlock mt15 custom-label">Full Name</label>
+          <input type="text" value="" placeholder="Full Name" class="mt10 custom-input" padding formControlName="fullName" />
+        </ion-item>
 
-                      <!-- <button>open</button> -->
-                    </div>
-                  </ion-item>
-          
-              <ion-item>
-                <label for="cname" class="makeBlock mt15 custom-label">Company Name</label>
-                <input type="text" value="" placeholder="Company Name" class="mt10 custom-input" padding formControlName="companyName"/>
-              </ion-item>
-
-              <ion-item>
-                  <label for="fname" class="makeBlock mt15 custom-label">Full Name</label>
-                  <input type="text" value="" placeholder="Full Name" class="mt10 custom-input" padding formControlName="fullName"/>
-                </ion-item>
-
-                <ion-item>
-                    <label for="address" class="makeBlock mt15 custom-label">Address</label>
-                    <input type="text" value="" placeholder="Address" class="mt10 custom-input" formControlName="address" padding/>
-                  </ion-item>
+        <ion-item>
+          <label for="address" class="makeBlock mt15 custom-label">Address</label>
+          <input type="text" value="" placeholder="Address" class="mt10 custom-input" formControlName="address" padding />
+        </ion-item>
 
 
-                <ion-item>
-                    <label for="city" class="makeBlock mt15 custom-label">City</label>
-                    <input type="text" value="" placeholder="City" class="mt10 custom-input" formControlName="city" padding/>
-                  </ion-item>
+        <ion-item>
+          <label for="city" class="makeBlock mt15 custom-label">City</label>
+          <input type="text" value="" placeholder="City" class="mt10 custom-input" formControlName="city" padding />
+        </ion-item>
 
-                  <ion-item>
-                      <label for="Zipcode" class="makeBlock mt15 custom-label">Zipcode</label>
-                      <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="zipcode" padding/>
-                    </ion-item>
+        <ion-item>
+          <label for="Zipcode" class="makeBlock mt15 custom-label">Zipcode</label>
+          <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="zipcode"
+            padding />
+        </ion-item>
 
-                    <ion-item>
-                        <label for="title" class="makeBlock mt15 custom-label">Professional Title</label>
-                        <input type="text" value="" placeholder="Professional Title" class="mt10 custom-input" formControlName="bio" padding/>
-                      </ion-item>
-                      <ion-list radio-group  class="mt15" [(ngModel)]="ageFilter" [ngModelOptions]="{standalone: true}">
-                          <!-- <label for="title" class="makeBlock mt15 custom-label">Type</label> -->
-                        <ion-item>
-                          <ion-label>Under 18</ion-label>
-                          <ion-radio value="under18" name="ageUser" (change)="checkType()" [disabled]="just18Plus"></ion-radio>
-                        </ion-item>
-                        <ion-item>
-                          <ion-label>18+</ion-label>
-                          <ion-radio value="18+" name="ageUser" (change)="checkType()"></ion-radio>
-                        </ion-item>
-                      </ion-list>
+        <ion-item>
+          <label for="title" class="makeBlock mt15 custom-label">Professional Title</label>
+          <input type="text" value="" placeholder="Professional Title" class="mt10 custom-input" formControlName="bio"
+            padding />
+        </ion-item>
+        <ion-list radio-group class="mt15" [(ngModel)]="ageFilter" [ngModelOptions]="{standalone: true}">
+          <!-- <label for="title" class="makeBlock mt15 custom-label">Type</label> -->
+          <ion-item>
+            <ion-label>Under 18</ion-label>
+            <ion-radio value="under18" name="ageUser" (change)="checkType()" [disabled]="just18Plus"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>18+</ion-label>
+            <ion-radio value="18+" name="ageUser" (change)="checkType()"></ion-radio>
+          </ion-item>
+        </ion-list>
 
-                      <ion-item  *ngIf="ageFilter=='under18'">
-                          <label for="Age" class="makeBlock mt15 custom-label">Age</label>
-                          <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="age" padding/>
-                        </ion-item>
+        <ion-item *ngIf="ageFilter=='18+'">
+          <label for="Age" class="makeBlock mt15 custom-label">Age</label>
+          <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="age" padding />
+        </ion-item>
 
-                        <ion-item  *ngIf="ageFilter=='18+'">
-                            <label for="Age" class="makeBlock mt15 custom-label">Age</label>
-                            <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="age" padding/>
-                          </ion-item>
+        <ion-item *ngIf="ageFilter=='under18'">
+          <label for="Age" class="makeBlock mt15 custom-label">Age</label>
+          <input type="number" value="" placeholder="Zipcode" class="mt10 custom-input" formControlName="age" padding />
+        </ion-item>
 
-                          <ion-item  *ngIf="ageFilter=='18+'">
-                              <label for="Zipcode" class="makeBlock mt15 custom-label">Parent/Guardian Email</label>
-                              <input type="text" class="mt10 custom-input" id="parentEmail" placeholder="Enter Your Parent/Gaurdian Email" name="parentEmail"formControlName="parentEmail" padding/>
-                            </ion-item>
+        <ion-item *ngIf="ageFilter=='under18'">
+          <label for="Zipcode" class="makeBlock mt15 custom-label">Parent/Guardian Email</label>
+          <input type="text" class="mt10 custom-input" id="parentEmail" placeholder="Enter Your Parent/Gaurdian Email"
+            name="parentEmail" formControlName="parentEmail" padding />
+        </ion-item>
 
-                            <ion-item  *ngIf="ageFilter=='18+'">
-                                <label for="Zipcode" class="makeBlock mt15 custom-label">Parent/Guardian Phone</label>
-                                <input type="number" class="mt10 custom-input" id="parentPhoneNumber" placeholder="Enter your Parent/Gaurdian Phone #" name="parentPhoneNumber"formControlName="parentPhone" padding/>
-                              </ion-item>
-              
-            
-           
-            
-            </ion-list>            
-              <div padding>
-                <button ion-button color="primary" class="cliiimb-btn-primary" [disabled]="editProfileForm.invalid" block (click)="updateProfileInfo()">Save Changes & Continue</button>
-              </div>
+        <ion-item *ngIf="ageFilter=='under18'">
+          <label for="Zipcode" class="makeBlock mt15 custom-label">Parent/Guardian Phone</label>
+          <input type="number" class="mt10 custom-input" id="parentPhoneNumber" placeholder="Enter your Parent/Gaurdian Phone #"
+            name="parentPhoneNumber" formControlName="parentPhone" padding />
+        </ion-item>
         
-          </div>
+      </ion-list>
+      <div padding>
+        <button ion-button color="primary" class="cliiimb-btn-primary" [disabled]="editProfileForm.invalid" block
+          (click)="updateProfileInfo()">Save Changes & Continue</button>
+      </div>
+    </div>
   </div>
 </ion-content>

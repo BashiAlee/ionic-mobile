@@ -430,3 +430,7 @@ ion-spinner * {
     width: 83% !important;
     margin-top: 45px !important;
 }
+
+button:focus {
+    outline: 0 !important;
+}
