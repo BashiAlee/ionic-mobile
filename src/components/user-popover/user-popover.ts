@@ -16,8 +16,7 @@ export class UserPopoverComponent {
     public navCtrl: NavController
   ) {
     this.user = this.authService.getCurrentUser();
-    // this.getContributionByEmail(data);
- console.log(this.user)
+    console.log(this.user)
   }
 
   close() {

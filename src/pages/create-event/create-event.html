@@ -1,0 +1,153 @@
+
+<header></header>
+
+
+<ion-content padding>
+  <h3 class="makeCenter">Create Event</h3>
+   <!-- Segment buttons with text -->
+   <ion-segment  color="primary" [(ngModel)]="contribution_action">
+    <ion-segment-button value="content">
+      Create Content
+    </ion-segment-button>
+    <ion-segment-button value="cover-image">
+      Cover Image
+    </ion-segment-button>
+
+    <ion-segment-button value="submit">
+      Submit
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="contribution_action">
+  
+    <div *ngSwitchCase="'content'">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Contribution Title</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <div class="tooltip_vector f-right">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding/>
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+                <label for="cname" class="makeBlock mt15 custom-label">Enter location of your event</label>
+
+                <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                  <input type="text" value="" placeholder="Islamabad" class="mt30 mb20" class="custom-input" padding/>
+                </ion-col>
+              </ion-row>
+
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Category</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <div class="tooltip_vector f-right">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                  <ion-list>
+                      <ion-item  class="custom-input">
+                        <ion-label>Click here to select</ion-label>
+                        <ion-select>
+                          <ion-option value="nes">NES</ion-option>
+                          <ion-option value="n64">Nintendo64</ion-option>
+                          <ion-option value="ps">PlayStation</ion-option>
+                          <ion-option value="genesis">Sega Genesis</ion-option>
+                          <ion-option value="saturn">Sega Saturn</ion-option>
+                          <ion-option value="snes">SNES</ion-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-list>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <div class="makeCenter">
+                  <p>Use the tool bucket below to add content,<br/>images and media to your Contribution Spotlight</p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+      <ion-list>
+          <ion-grid>
+              <ion-row>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-text-width icon-bg"></i>
+                        <p>Text</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
+                </ion-col>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-code icon-bg"></i>
+                        <p>Embed Video</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
+                </ion-col>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-volume-up icon-bg"></i>
+                        <p>Audio</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-2>
+                    <div class="tool-buckt">
+                      <a href="#">
+                        <i class="fas fa-th icon-bg"></i>
+                        <p>Image Gellary</p>
+                      </a>
+                      <div class="tooltip_vector">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                    <div class="tool-buckt">
+                        <a href="#">
+                          <i class="fas fa-link icon-bg"></i>
+                          <p>Add Link</p>
+                        </a>
+                        <div class="tooltip_vector">
+                            <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                        </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>
