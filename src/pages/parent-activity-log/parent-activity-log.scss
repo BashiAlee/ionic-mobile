@@ -1,0 +1,38 @@
+page-parent-activity-log {
+    .parent-activity{
+        margin-top: 20px;
+        .img-content{
+            h2{
+                margin: 10px 0 0 0;
+            }
+        }
+        .actvity-circle{
+            margin-top: 15px;
+            p{
+                background: $primary-blue;
+                color: #fff;
+                padding-top: 15px;
+                border-radius: 30px;
+                width: 45px;
+                height: 45px;
+                margin: auto;
+            }
+            h3{
+                font-size:15px;
+            }
+        }
+        .btn-group{
+            margin: -15px 0px 0px 0px;
+            .approve-btn{
+                width: 100%;
+            }
+            .view-btn{
+                width: 100%;
+                background:  $primary-blue;
+            }
+            .reject-btn{
+                width: 100%;
+            }
+        }
+    }
+}

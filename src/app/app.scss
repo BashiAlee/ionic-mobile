@@ -1,5 +1,6 @@
 // http://ionicframework.com/docs/theming/
 @import './theme/variables.scss';
+
 @font-face {
     font-family: 'Brandon_reg';
     src: url(../assets/fonts/Brandon_reg.otf);
@@ -65,7 +66,6 @@ ion-list.sideMenu {
         }
     }
     .close-icon {
-        
         margin-right: 15px;
     }
 
@@ -103,6 +103,9 @@ text-align: center;
 }
 .mt30 {
     margin-top: 30px;
+}
+.mt50 {
+    margin-top: 80px;
 }
  .mb20{
     margin-bottom: 20px;
@@ -289,16 +292,21 @@ div.toolbar-title {
     }
 }
 .blue-circle{
+
     p {
         background: $primary-blue;
+
     }
 }
+
 .red-circle{
     p {
         background: $primary-color;
     }
 }
-
+.b-bot{
+    border-bottom: 1px solid #eee;
+}
 .primary-blue-button{
     padding: 14px;
     background: $primary-blue;
@@ -429,4 +437,12 @@ ion-spinner * {
   .popover-md .popover-content {
     width: 83% !important;
     margin-top: 45px !important;
+}
+.follow-btn{
+    color: #fff !important;
+    background: #516CF1;
+    border: 1px solid #516CF1;
+    font-size: 13px !important;
+    padding: 5px 10px;
+    border-radius: 4px;
 }

@@ -18,6 +18,9 @@ import { ContributionDetailsPage } from '../pages/contribution-details/contribut
 import { MentorPage } from '../pages/mentor/mentor';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 import { MyEventsPage } from '../pages/my-events/my-events';
+import { CreateEventPage } from '../pages/create-event/create-event';
+import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
+import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
 
 
 @Component({
@@ -27,7 +30,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = SignupPage;
-  rootPage: any = ContributionDetailsPage;
+  rootPage: any = MyFeedsPage;
 
   pages: Array<{title: string, component: any}>;
 

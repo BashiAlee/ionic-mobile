@@ -1,7 +1,6 @@
 page-contribution-details {
     .custom-slides{
-    margin-top: 30px;
-        .slider-content{
+        .slider-header{
             h2{
                 font-size: 17px;
                 font-weight: bold;
@@ -14,13 +13,25 @@ page-contribution-details {
             }
             
         }
-        .follow-btn{
-            color: #fff !important;
-            background: #516CF1;
-            border: 1px solid #516CF1;
-            font-size: 13px !important;
-            padding: 5px 10px;
-            border-radius: 4px;
+       
+        .slider-content{
+            margin: 0px 15px 30px 15px;
+            h3{
+                font-size: 18px;
+                text-align: left;
+            }
+            p{
+                color: #9196AB;
+                font-size: 15px;
+                font-family: 'Brandon_reg';
+                text-align: justify;
+                a{
+                    color: #337ab7;
+                }
+            }
+        }
+        .vid-height{
+            height: 200px;
         }
     }
 

@@ -34,10 +34,10 @@ import { NotificationPopoverComponent } from '../components/notification-popover
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 import { HeaderComponent } from '../components/header/header';
 import { MyEventsPage } from '../pages/my-events/my-events';
+import { CreateEventPage } from '../pages/create-event/create-event';
 import { EventsProvider } from '../providers/events/events';
-
-
-
+import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
+import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,10 @@ import { EventsProvider } from '../providers/events/events';
     NotificationPopoverComponent,
     HeaderComponent,
     MyEventsPage,
-    MentorPage
+    CreateEventPage,
+    MentorPage,
+    ParentActivityLogPage,
+    MyFeedsPage
 
   ],
   imports: [
@@ -93,7 +96,10 @@ import { EventsProvider } from '../providers/events/events';
     NotificationPopoverComponent,
     HeaderComponent,
     MyEventsPage,
-    MentorPage
+    CreateEventPage,
+    MentorPage,
+    ParentActivityLogPage,
+    MyFeedsPage
   ],
   providers: [
     StatusBar,
