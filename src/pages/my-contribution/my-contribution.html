@@ -39,7 +39,7 @@
       
         <ion-card-content>
           <h4>{{contribution.Title}}</h4>
-          <p [innerHTML]="contribution.ContributionText"></p>
+          <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
 
 
           <a ion-button clear small (click)="openDetails()" class="makeRed left-align">View Detail</a>
@@ -48,15 +48,19 @@
         <ion-row>
            
             <ion-col class="makeCenter">
-              <button ion-button icon-start clear small>
-                  <ion-icon name="heart"></ion-icon>  
+              <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
+                  <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
                 <div>{{contribution.Likes}} Likes</div>
+              </button>
+              <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
+                  <ion-icon name="heart"></ion-icon>  
+                <div>{{contribution.Likes}} Unlike</div>
               </button>
             </ion-col>
             <ion-col class="makeCenter">
                 <button ion-button icon-start clear small>
                     <ion-icon name="text"></ion-icon>
-                    <div>4 Comments</div>
+                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}Comments</div>
                   </button>
             </ion-col>
           </ion-row>

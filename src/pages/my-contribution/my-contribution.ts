@@ -18,16 +18,18 @@ import { UserProvider } from '../../providers/user/user';
 @Component({
   selector: 'page-my-contribution',
   templateUrl: 'my-contribution.html',
+  providers: [UserProvider, ContributionsProvider, AuthenticationProvider]
 })
 export class MyContributionPage {
   contributionsList: any = [];
   loading: any;
+  user: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public contributionService: ContributionsProvider,
     public authService: AuthenticationProvider,
     public userService: UserProvider,
     public popoverCtrl: PopoverController) {
-
+      this.user = this.authService.getCurrentUser();
       var email = this.authService.getCurrentUser().Email;
       this.getContributionByEmail(email);
 
@@ -49,19 +51,23 @@ export class MyContributionPage {
         if(data.status) {
           data.data.forEach(value => {
             this.getProfileByID(value.UserID, value)
-            if(value.AdminStatus) {
+            if(value.AdminStatus && value.ContributionStatus == "Publish") {
+             
+              this.getLikesAndComments(value._id,value);
               this.contributionsList.push(value);
-              this.loading = false;
-            } else {
-              this.contributionsList = [];
-              this.loading = false;
-            }
+            } 
+            // else {
+            //   this.contributionsList = [];
+            //   this.loading = false;
+            // }
             
           });
         } else {
           this.contributionsList = [];
           this.loading = false;
         }
+
+        console.log(this.contributionsList)
       }
     )
   }
@@ -80,6 +86,68 @@ export class MyContributionPage {
         
   
       });
+  }
+  getLikesAndComments(id,value) {
+    console.log("hereee")
+    this.contributionService.getLikesAndComments(id)
+    .subscribe(data => {
+        if(!data.status) {
+          value.social = {
+            Likes: [],
+            Comments: []
+          }
+        } else if(data.status) {
+          value.social = data.data;
+        }
+  
+        if(value.social.Likes && value.social.Likes.length) {
+          value.social.Likes.forEach(id => {
+            if(this.user._id === id.LikeUserID) {
+              value.isLiked = true;
+              return;
+            } else {
+              value.isLiked = false;
+            }
+          });
+        } else {
+          value.isLiked = false;
+        }
+    })
+    this.loading = false;
+  }
+
+  addLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.addLike(data)
+      .subscribe(res => {
+        if(res.status) {
+          value.isLiked = true;
+            value.Likes = res.data;
+        }
+  
+      })
+  }
+  unLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.unLike(data)
+      .subscribe(res => {
+        if(res.status) {  
+            value.isLiked = false;
+            value.Likes = res.data;
+        }
+      })
   }
 
 }

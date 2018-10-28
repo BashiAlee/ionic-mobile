@@ -38,6 +38,8 @@ import { CreateEventPage } from '../pages/create-event/create-event';
 import { EventsProvider } from '../providers/events/events';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
+import { ParentProvider } from '../providers/parent/parent';
+import { MessagesProvider } from '../providers/messages/messages';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
     AuthenticationProvider,
     UserProvider,
     ContributionsProvider,
-    EventsProvider
+    EventsProvider,
+    ParentProvider,
+    MessagesProvider
   ]
 })
 export class AppModule {}

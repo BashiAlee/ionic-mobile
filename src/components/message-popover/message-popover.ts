@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { MessagesProvider } from '../../providers/messages/messages';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 /**
  * Generated class for the MessagePopoverComponent component.
@@ -9,14 +11,44 @@ import { ViewController } from 'ionic-angular';
  */
 @Component({
   selector: 'message-popover',
-  templateUrl: 'message-popover.html'
+  templateUrl: 'message-popover.html',
+  providers: [MessagesProvider, AuthenticationProvider]
 })
 export class MessagePopoverComponent {
-
-  constructor(public viewCtrl: ViewController) {}
+  localData: any;
+  loading: any;
+  user: any;
+  userMessageNotication: any = [];
+  constructor(public viewCtrl: ViewController,
+  public messageService: MessagesProvider,
+  public authService: AuthenticationProvider
+  ) {
+    // this.localData = this.authService.getCurrentUser();
+    this.user = this.authService.getCurrentUser();
+    if(this.user._id) {
+      this.getAllMessages(this.user._id);
+    }
+  }
 
   close() {
     this.viewCtrl.dismiss();
+  }
+
+  getAllMessages(data) {
+    this.loading = true;
+    var id = {user1id: data}
+    this.messageService.getAllMessagesDetails(id)
+    .subscribe(
+      data => {
+        if(data.status) {
+          this.userMessageNotication = data.data;
+          this.loading = false;
+        } else if(!data.status){
+          this.loading = false;
+          this.userMessageNotication = null;
+        }
+      }
+    )
   }
 }
 

@@ -21,10 +21,13 @@ import { MyEventsPage } from '../pages/my-events/my-events';
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
+import { ParentProvider } from '../providers/parent/parent';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [AuthenticationProvider]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -37,7 +40,11 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    public parentService: ParentProvider,
+    public authService: AuthenticationProvider
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -45,14 +52,14 @@ export class MyApp {
       { title: 'My Contribution', component: MyContributionPage },
       { title: 'My Events', component: MyEventsPage },
       { title: 'My Mentors', component: MentorPage },
-      // { title: 'My Feed', component: ListPage },
+      { title: 'My Feed', component: MyFeedsPage },
       { title: 'Create Contribution', component: CreateContributionPage },
-      // { title: 'Create an Event', component: ListPage },
+      { title: 'Create an Event', component: CreateEventPage },
       // { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ApplicantFormPage },
       { title: 'Mentor', component: MentorPage },
       // { title: 'Feed', component: HomePage },
-      // { title: 'Parent Activity log', component: ListPage },
+      { title: 'Parent Activity log', component: ParentActivityLogPage },
       // { title: 'Parent Profile', component: ListPage },
       // { title: 'Edit / Profile Settings', component: ListPage },
       // { title: 'application form', component: ApplicantFormPage },
@@ -71,6 +78,21 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    if(this.authService.isLoggedIn()) {
+      var id = this.authService.getCurrentUser()._id;
+      this.getMentorStatus(id)
+  
+    }
+
+  }
+
+  getMentorStatus(id) {
+    this.parentService.getMentorFormStatus(id)
+    .subscribe((data)=>{
+      if(data) {
+        localStorage.setItem('mentorStatus',data.status);
+      }
+    })
   }
 
   openPage(page) {

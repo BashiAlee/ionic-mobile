@@ -74,4 +74,21 @@ export class UserProvider {
   ));
   }
 
+  getAllNotifications(data) {
+    return this.http.post(this.apiURL + 'getmentorhistory', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
+  getFollower(data) {
+    var user =  { userid : data }
+    return this.http.post(this.apiURL + 'getfollower', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
 }

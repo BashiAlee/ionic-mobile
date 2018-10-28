@@ -1,19 +1,19 @@
 <header></header>
-<ion-content padding>
+<ion-content padding  [formGroup]="mentor">
     <h2 class="primary-heading mt15 ">Become a Mentor</h2>
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">Enter full name</label>
-        <input type="text" value="" placeholder="John Doe" class="mt30 mb20" class="custom-input1"/>
+        <input type="text" class="form-control custom-input1 mt30 mb20" id="email" placeholder="Full Name" name="email" formControlName="username" readonly>
       </ion-col>
  
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">Chose Your Industry</label>
           <ion-item class="custom-input">
             <ion-label></ion-label>
-            <ion-select multiple="true">
-              <ion-option value="nes">NES</ion-option>
+            <ion-select formControlName="industry">
+              <ion-option *ngFor="let categories of categoriesName" [value]="categories.name">{{categories.name}}</ion-option>
             </ion-select>
           </ion-item>
       </ion-col>
@@ -22,57 +22,68 @@
         <label for="cname" class="makeBlock mt15 custom-label">Your skill level</label>
           <ion-item class="custom-input">
             <ion-label></ion-label>
-            <ion-select multiple="true">
-              <ion-option value="nes">NES</ion-option>
+            <ion-select  formControlName="skillevel">
+              <ion-option value="beginner">Beginner</ion-option>
+              <ion-option value="intermediate">Intermediate</ion-option>
+              <ion-option value="expert">Expert</ion-option>
             </ion-select>
           </ion-item>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">Industry Experience</label>
-        <input type="text" value="" placeholder=" # of Years" class="mt30 mb20" class="custom-input1"/>
+        <input type="number" placeholder=" # of Years" class="mt30 mb20" class="custom-input1" formControlName="experience"/>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">I am?</label>
-        <ion-input type="number" placeholder="" class="custom-input"></ion-input>
+        <ion-select  formControlName="workedfor">
+          <ion-option value="company">Working for a company</ion-option>
+          <ion-option value="freelance">A Freelancer</ion-option>
+          <ion-option value="self">Self Employed</ion-option>
+        </ion-select>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">What is the name of Company you worked for?</label>
-        <input type="text" value="" placeholder=" Company Name" class="mt30 mb20" class="custom-input1"/>
+        <input type="text" placeholder=" Company Name" class="mt30 mb20" class="custom-input1" formControlName="companyname"/>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">How many contributions can you commit to each month?</label>
-        <input type="text" value="" placeholder=" # of Contributors" class="mt30 mb20" class="custom-input1"/>
+        <input type="number" placeholder=" # of Contributors" class="mt30 mb20" class="custom-input1" formControlName="numberofcontribution"/>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">Type of Contribution</label>
           <ion-item class="custom-input">
             <ion-label></ion-label>
-            <ion-select multiple="true">
-              <ion-option value="nes">NES</ion-option>
+            <ion-select >
+              <ion-option value="Videos">Videos</ion-option>
+              <ion-option value="Blogs">Blogs</ion-option>
+              <ion-option value="Articles">Articles</ion-option>
+              <ion-option value="Mentorships">Mentorships</ion-option>
+              <ion-option value="Partnering">Partnering</ion-option>
+              <ion-option value="Donations">Donations</ion-option>
             </ion-select>
           </ion-item>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <ion-item>
-          <ion-textarea placeholder="Tell us about your motivation and why you want to give back?"></ion-textarea>
+          <ion-textarea  formControlName="motivationTxt"  placeholder="Tell us about your motivation and why you want to give back?"></ion-textarea>
         </ion-item>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <div class="mentor-checkbox">
-          <input type="checkbox" name="checkbox" id="checkbox-id" value="value">
+          <input type="checkbox" name="checkbox" id="checkbox-id"  value="true" [(ngModel)]="isReviewed" [ngModelOptions]="{standalone: true}">
           <label class="checkbox-txt" for="checkbox-id">The information I am submitting is accurate and truthful. I give Cliiimb the permission to cross check my information for accuracy prior to my approval of a super contributor and mentor</label>
         </div>
       </ion-col>
       
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-      <button ion-button full round>SUBMIT</button>
+      <button ion-button full round (click)="saveMentorForm()" [disabled]="mentor.invalid || !isReviewed">SUBMIT</button>
       </ion-col>
     </ion-row>
   </ion-grid>

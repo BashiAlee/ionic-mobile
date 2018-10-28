@@ -11,7 +11,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-viewer-profile',
-  templateUrl: 'viewer-profile.html',
+  templateUrl: './viewer-profile.html',
 })
 export class ViewerProfilePage {
 

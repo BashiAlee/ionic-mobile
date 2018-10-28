@@ -439,7 +439,6 @@ ion-spinner * {
     margin-top: 45px !important;
 }
 
-
 button:focus {
     outline: 0 !important;
 }
@@ -451,4 +450,13 @@ button:focus {
     padding: 5px 10px;
     border-radius: 4px;
 
+}
+
+.popover-md .popover-viewport {
+    max-height: 300px !important;
+    min-height: 100px !important;
+}
+.contribution-detail-content {
+    height: 87px;
+    overflow: hidden;
 }

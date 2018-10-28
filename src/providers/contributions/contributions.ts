@@ -35,4 +35,41 @@ export class ContributionsProvider {
   ));
   }
 
+  getAllCategoriesName() {
+    return this.http.get(this.apiURL + 'getallcategory')
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
+  becomeAMentor(data) {
+    return this.http.post(this.apiURL + 'becomementor',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+  getLikesAndComments(data) {
+    var commentslikes = {contributionid: data};
+    return this.http.post(this.apiURL + 'getlikesandcomments',commentslikes)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
+  addLike(data) {
+
+    return this.http.post(this.apiURL + 'addlikes',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
+  unLike(data) {
+
+    return this.http.post(this.apiURL + 'unlike',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
 }
