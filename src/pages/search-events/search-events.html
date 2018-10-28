@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <header></header>
-
+<ion-content padding>
 <ion-grid padding>
     <ion-row class="event-cover">
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
@@ -14,22 +14,91 @@
           <p>Filter the Events by Date, Location or Category</p>
         </div>
         <div class="container">
-            <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-              <p>Date</p>
-              <input type="date" value="" placeholder="John Doe" class="mt30 mb20" class="custom-input1"/>
-            </ion-col>
-
-            <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-              <p>Location</p>
-              <input type="date" value="" placeholder="John Doe" class="mt30 mb20" class="custom-input1"/>
-            </ion-col>
-
-            <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-              <p>Location</p>
-              <input type="date" value="" placeholder="John Doe" class="mt30 mb20" class="custom-input1"/>
-            </ion-col>
+          <ion-grid>
+            <ion-row>
+                <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                    <p>Date</p>
+                    <span class="event-icon"> <ion-icon name="ios-calendar"></ion-icon></span>
+                    <input type="date" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
+                  </ion-col>
+      
+                  <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                    <p>Location</p>
+                    <span class="event-icon"> <ion-icon name="ios-navigate"></ion-icon></span>
+                    <input type="text" value="" placeholder="Islamabad" class="mt30 mb20" class="custom-input1"/>
+                  </ion-col>
+      
+                  <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                    <p>Category</p>
+                    <ion-list>
+                        <ion-item class="custom-input">
+                          <ion-label class="red">Entertainment</ion-label>
+                          <ion-select>
+                            <ion-option value="nes">Abc</ion-option>
+                            <ion-option value="n64">xyz</ion-option>
+                            <ion-option value="ps">axsa</ion-option>
+                          </ion-select>
+                        </ion-item>
+                      </ion-list>
+                  </ion-col>
+                  
+                  
+                  <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <div class="btn-align">
+                      <button class="red-btn">
+                          <ion-icon class="search" name="ios-search"></ion-icon>Search
+                      </button>   
+                    </div>
+                  </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
+
+
+      <ion-row>
+        <div class="">
+            <h2 class="primary-heading mt15">Events</h2>
+            <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <ion-list >
+                    <ion-item no-lines>
+                      <ion-avatar item-start>
+                        <img src="../../assets/imgs/avatar.png">
+                      </ion-avatar>
+                      <div center class="slider-header">
+                        <h2>John Doe</h2>
+                        <p><a href="#">Cliiimb</a>(judicial system)</p>
+                      </div>
+                      <button item-end class="follow-btn">Follow</button>
+                    </ion-item>
+
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                            <div class="event-details">
+                                <p class="details-icon"> <ion-icon class="icon" name="ios-navigate"></ion-icon>some text here</p>
+                                <p class="details-icon"> <ion-icon class="icon" name="ios-calendar"></ion-icon>some text here</p>
+                            </div>
+                        </ion-col>
+                        <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                          <ion-item no-lines class="action-icons b-bot">
+                              <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+                              <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+                              <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+                            </ion-item>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-list>
+            </ion-col>
+          <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+            <ion-card class="feeds-card">
+              <img src="../../assets/imgs/avatar.png"/>
+            </ion-card>
+          </ion-col>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

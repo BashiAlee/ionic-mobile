@@ -463,7 +463,18 @@ button:focus {
 
 
 }
-
+.btn-align{
+    text-align: center;
+}
+.red-btn{
+    cursor: pointer;
+    background-color: #F3151E;
+    padding: 10px;
+    margin: 5px 0px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+}
 .popover-md .popover-viewport {
     max-height: 300px !important;
     min-height: 100px !important;
@@ -473,3 +484,4 @@ button:focus {
     overflow: hidden;
 
 }
+

@@ -38,9 +38,7 @@ export class MyApp {
 
   // rootPage: any = SignupPage;
 
-  rootPage: any = LoginPage;
-
-
+  rootPage: any = SearchEventsPage;
 
   pages: Array<{title: string, component: any}>;
 
