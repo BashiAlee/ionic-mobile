@@ -36,11 +36,9 @@ import { SearchEventsPage } from '../pages/search-events/search-events';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = SignupPage;
-
   rootPage: any = LoginPage;
 
-
+  // rootPage: any = SearchEventsPage;
 
   pages: Array<{title: string, component: any}>;
 

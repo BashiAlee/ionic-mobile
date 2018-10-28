@@ -2,20 +2,48 @@ page-search-events {
     .event-cover{
         background-image:url('../../assets/imgs/banner-event.jpg');
         background-size:cover;
-        height: auto;
+        overflow: auto;
         p{
             color: #fff;
+            font-family: 'Brandon_reg';
+            font-size: 18px;
         }
         .cover-cont{
             padding: 50px 5px 0px 5px;
             text-align: center;
             color: #fff;
-            p{
-                margin-top: 5px;
-                font-family: 'Brandon_reg';
-                font-size: 18px;
+        }
+        input{
+            height: 47px;
+            color: red;
+        }
+        .red{
+            color: red;
+        }
+        .event-icon{
+            position: absolute;
+            right: 10px;
+            padding: 10px 0px;  
+            font-size: 22px;
+            color: red;
+        }
+        .red-btn{
+            width: 50%;
+            border-radius: 50px;
+            .search{
+                padding: 5px;
             }
         }
     }
+    .event-details{
+        p{
+            color: #197CC6;
+        }
+        .icon{
+            font-size: 20px;
+            padding:0px 5px;
+        }
+    }
+    
 }
 
