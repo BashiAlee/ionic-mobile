@@ -91,4 +91,18 @@ export class UserProvider {
   ));
   }
 
+  getUserPreferences(data) {
+    return this.http.post(this.apiURL + 'getuserpreferences',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
+  getSuggestedPreferences(data) {
+    return this.http.post(this.apiURL + 'usersuggestionpreferences',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
 }
