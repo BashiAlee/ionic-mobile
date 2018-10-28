@@ -33,11 +33,12 @@
           <ion-col col-12 *ngIf="followersList && !followersList.length && !loader">
             <p>Not Found</p>
           </ion-col >
-          <ion-col col-12 *ngIf="followersList && !followersList.length && loader">
+          <ion-col col-12  *ngIf="followersList && !followersList.length && loader">
               <div class="loader makeCenter">
                   <ion-spinner name="bubbles"></ion-spinner>
               </div>
             </ion-col >
-      </ion-row>
-      </ion-grid>
-</ion-content>
+          </ion-row>
+        </ion-grid>
+        
+  </ion-content>
