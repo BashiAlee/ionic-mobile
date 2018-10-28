@@ -28,11 +28,8 @@ export class CreateContributionPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public popoverCtrl: PopoverController) { 
-
-  
-
-    }
-
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateContributionPage');
@@ -45,10 +42,15 @@ export class CreateContributionPage {
   }
 
   scroll(elementId) {
-    document.getElementById(elementId).style.setProperty("display", "block", "important")
+    var x=document.getElementById(elementId)
+    if(x.style.display === 'none'){
+      x.style.setProperty("display", "block", "important")
       let y = document.getElementById(elementId).offsetTop;
       this.content.scrollTo(0, y, 500);
-  
+    }else{
+      x.style.setProperty("display", "none", "important")
+
+    }
   }
   notificationPopover(myEvent) {
     let popover = this.popoverCtrl.create(NotificationPopoverComponent);

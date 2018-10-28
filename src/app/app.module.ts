@@ -38,8 +38,11 @@ import { CreateEventPage } from '../pages/create-event/create-event';
 import { EventsProvider } from '../providers/events/events';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
+
 import { ParentProvider } from '../providers/parent/parent';
 import { MessagesProvider } from '../providers/messages/messages';
+
+import { SearchEventsPage } from '../pages/search-events/search-events';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { MessagesProvider } from '../providers/messages/messages';
     CreateEventPage,
     MentorPage,
     ParentActivityLogPage,
-    MyFeedsPage
+    MyFeedsPage,
+    SearchEventsPage
 
   ],
   imports: [
@@ -101,7 +105,8 @@ import { MessagesProvider } from '../providers/messages/messages';
     CreateEventPage,
     MentorPage,
     ParentActivityLogPage,
-    MyFeedsPage
+    MyFeedsPage,
+    SearchEventsPage
   ],
   providers: [
     StatusBar,

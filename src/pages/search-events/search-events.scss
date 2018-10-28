@@ -1,0 +1,21 @@
+page-search-events {
+    .event-cover{
+        background-image:url('../../assets/imgs/banner-event.jpg');
+        background-size:cover;
+        height: auto;
+        p{
+            color: #fff;
+        }
+        .cover-cont{
+            padding: 50px 5px 0px 5px;
+            text-align: center;
+            color: #fff;
+            p{
+                margin-top: 5px;
+                font-family: 'Brandon_reg';
+                font-size: 18px;
+            }
+        }
+    }
+}
+

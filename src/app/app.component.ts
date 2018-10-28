@@ -21,8 +21,12 @@ import { MyEventsPage } from '../pages/my-events/my-events';
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
+
 import { ParentProvider } from '../providers/parent/parent';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
+
+import { SearchEventsPage } from '../pages/search-events/search-events';
+
 
 
 @Component({

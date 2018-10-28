@@ -1,6 +1,20 @@
 page-create-contribution {
-
-    .hide {
-        display: none;
+    .foldings{
+        width: 100%;
+        hr{
+            border-top: 1px solid #197CC6
+        }
+        .uaudio-btn{
+            cursor: pointer;
+            background-color: #F3151E;
+            padding: 10px;
+            margin: 5px 0px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 4px;
+            .v-icon{
+                margin: 0px 10px  0px 0px;
+            }
+        }
     }
 }
