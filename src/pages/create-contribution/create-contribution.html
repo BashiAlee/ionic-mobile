@@ -148,56 +148,51 @@
 
       </ion-list>
 
+      
       <ion-list>
-        <ion-item id="fold-1" class="hide">
-          <div >
-            <h3 class="text-center fmed">Add Text to your contribution. Require a minimum of 10 Words*</h3> 
-            <div class="form-group">
-               <p class="text-right"><span id="count_message_2"></span></p>
-               <p class="text-right red flight">You can add a maximum 1500 Words per fold</p>
-            </div>
-         </div>
-        </ion-item>
+                <div class="foldings makeCenter">
+                  <div id="fold-1" style="display: none">
+                      <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
+                      <hr>                            
+                      <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
+                  </div>
 
-        <ion-item id="fold-2" class="hide">
-          <div>
-            <h3 class="text-center fmed">Add Text to your contribution. Require a minimum of 10 Words*</h3> 
-            <div class="form-group">
-               <p class="text-right"><span id="count_message_2"></span></p>
-               <p class="text-right red flight">You can add a maximum 1500 Words per fold</p>
-            </div>
-         </div>
-        </ion-item>
+                  <div id="fold-2" style="display: none">
+                      <hr>                            
+                      <h3 class="">Add Video(Optional)</h3> 
+                      <p class="makeBlock mt15">Paste link of the Video Here</p>
+                      <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1"/>
+                  </div>
 
-        <ion-item id="fold-3" class="hide">
-          <div >
-            <h3 class="text-center fmed">Add Text to your contribution. Require a minimum of 10 Words*</h3> 
-            <div class="form-group">
-               <p class="text-right"><span id="count_message_2"></span></p>
-               <p class="text-right red flight">You can add a maximum 1500 Words per fold</p>
-            </div>
-         </div>
-        </ion-item>
+                  <div id="fold-3" style="display: none">
+                    <hr>    
+                    <h3 class="">Add Audio(Optional)</h3>
+                    <button class="uaudio-btn">
+                        <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Upload Audio
+                    </button>     
+                    <p class="makeBlock mt15">Max File size is 20MB</p>
+                  </div>    
 
-        <ion-item id="fold-4" class="hide">
-          <div >
-            <h3 class="text-center fmed">Add Text to your contribution. Require a minimum of 10 Words*</h3> 
-            <div class="form-group">
-               <p class="text-right"><span id="count_message_2"></span></p>
-               <p class="text-right red flight">You can add a maximum 1500 Words per fold</p>
-            </div>
-         </div>
-        </ion-item>
+                  <div id="fold-4" style="display: none">
+                    <hr>    
+                    <h3 class="">Add Images(Optional)</h3>
+                    <button class="uaudio-btn">
+                        <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Choose File
+                    </button>     
+                  </div>
 
-        <ion-item id="fold-5" class="hide">
-          <div >
-            <h3 class="text-center fmed">Add Text to your contribution. Require a minimum of 10 Words*</h3> 
-            <div class="form-group">
-               <p class="text-right"><span id="count_message_2"></span></p>
-               <p class="text-right red flight">You can add a maximum 1500 Words per fold</p>
-            </div>
-         </div>
-        </ion-item>
+                  <div id="fold-5" style="display: none">
+                      <hr>    
+                      <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
+                      <p class="makeBlock mt15">Title</p>
+                      <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1"/>
+                      <p class="makeBlock mt15">Paste link Here</p>
+                      <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1"/>
+                      <button class="uaudio-btn">
+                          Create More Links
+                      </button>     
+                  </div>
+                </div>
       </ion-list>
     </div>
 

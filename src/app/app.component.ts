@@ -21,6 +21,7 @@ import { MyEventsPage } from '../pages/my-events/my-events';
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
+import { SearchEventsPage } from '../pages/search-events/search-events';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class MyApp {
 
   // rootPage: any = SignupPage;
 
-  rootPage: any = LoginPage;
+  rootPage: any = SearchEventsPage;
 
 
 
