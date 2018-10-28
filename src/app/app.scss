@@ -446,6 +446,11 @@ ion-spinner * {
     width: 83% !important;
     margin-top: 45px !important;
 }
+
+
+button:focus {
+    outline: 0 !important;
+}
 .follow-btn{
     color: #fff !important;
     background: #516CF1;
@@ -453,4 +458,5 @@ ion-spinner * {
     font-size: 13px !important;
     padding: 5px 10px;
     border-radius: 4px;
+
 }

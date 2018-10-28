@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   environment
@@ -23,15 +23,27 @@ export class UserProvider {
   }
 
   uploadCroppedImage(file,fileName) {
-   
+    console.log("DDD----------   =====  ", file, fileName)
     let formData = new FormData();
-    let headers = new Headers();
+    let headers = new HttpHeaders();
     headers.append('Content-Type','multipart/form-data');
+    headers.append( 'Access-Control-Allow-Origin' , '*')
     formData.append('file',file,fileName);
-    return this.http.post(this.staticURL,formData)
-    .pipe(map((response: any) => {
+
+    console.log("DDD", file) 
+    console.log("DDDname ", fileName) 
+    return this.http.post(this.staticURL,formData,  {
+      headers: headers
+    }) .pipe(map((response: any) => {
 
      return response;
+  }));
+  }
+  uploadImage(formData) {
+    return this.http.post(this.staticURL,formData)
+    .pipe(map((response: any) => {
+    console.log("DDDD", response)
+     return response
   }));
   }
 

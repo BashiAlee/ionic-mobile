@@ -30,7 +30,10 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = SignupPage;
-  rootPage: any = MyFeedsPage;
+
+  rootPage: any = LoginPage;
+
+
 
   pages: Array<{title: string, component: any}>;
 
