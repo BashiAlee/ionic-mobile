@@ -24,8 +24,8 @@ import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
 
 import { ParentProvider } from '../providers/parent/parent';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
-
 import { SearchEventsPage } from '../pages/search-events/search-events';
+import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 
 
 
@@ -36,9 +36,9 @@ import { SearchEventsPage } from '../pages/search-events/search-events';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  // rootPage: any = LoginPage;
 
-  // rootPage: any = SearchEventsPage;
+  rootPage: any = ParentProfilePage;
 
   pages: Array<{title: string, component: any}>;
 

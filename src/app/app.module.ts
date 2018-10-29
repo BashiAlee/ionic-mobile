@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,8 +42,8 @@ import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
 
 import { ParentProvider } from '../providers/parent/parent';
 import { MessagesProvider } from '../providers/messages/messages';
-
 import { SearchEventsPage } from '../pages/search-events/search-events';
+import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { SearchEventsPage } from '../pages/search-events/search-events';
     MentorPage,
     ParentActivityLogPage,
     MyFeedsPage,
-    SearchEventsPage
+    SearchEventsPage,
+    ParentProfilePage
 
   ],
   imports: [
@@ -77,7 +79,8 @@ import { SearchEventsPage } from '../pages/search-events/search-events';
     IonicModule.forRoot(MyApp),
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    [BsDropdownModule.forRoot()]
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -106,7 +109,8 @@ import { SearchEventsPage } from '../pages/search-events/search-events';
     MentorPage,
     ParentActivityLogPage,
     MyFeedsPage,
-    SearchEventsPage
+    SearchEventsPage,
+    ParentProfilePage
   ],
   providers: [
     StatusBar,

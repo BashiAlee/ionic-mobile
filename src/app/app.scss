@@ -309,7 +309,6 @@ div.toolbar-title {
 
     }
 }
-
 .red-circle{
     p {
         background: $primary-color;
@@ -465,10 +464,29 @@ button:focus {
 }
 .btn-align{
     text-align: center;
+    width: 100%;
 }
 .red-btn{
     cursor: pointer;
     background-color: #F3151E;
+    padding: 10px;
+    margin: 5px 0px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.blue-btn{
+    cursor: pointer;
+    background-color: #0E76BD;
+    padding: 10px;
+    margin: 5px 0px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.yellow-btn{
+    cursor: pointer;
+    background-color: #FBAB18;
     padding: 10px;
     margin: 5px 0px;
     color: #fff;
@@ -485,3 +503,12 @@ button:focus {
 
 }
 
+.blue-text {
+    color: #0E76BD;
+}
+.yellow-text {
+    color: #FBAB18;
+}
+.red-text {
+    color: #F3151E;
+}

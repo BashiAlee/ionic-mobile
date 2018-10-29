@@ -16,19 +16,19 @@
         <div class="container">
           <ion-grid>
             <ion-row>
-                <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Date</p>
                     <span class="event-icon"> <ion-icon name="ios-calendar"></ion-icon></span>
                     <input type="date" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
                   </ion-col>
       
-                  <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                  <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Location</p>
                     <span class="event-icon"> <ion-icon name="ios-navigate"></ion-icon></span>
                     <input type="text" value="" placeholder="Islamabad" class="mt30 mb20" class="custom-input1"/>
                   </ion-col>
       
-                  <ion-col col-12 col-sm-9 col-md-4 col-lg-4 col-xl-3>
+                  <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Category</p>
                     <ion-list>
                         <ion-item class="custom-input">
@@ -42,63 +42,90 @@
                       </ion-list>
                   </ion-col>
                   
-                  
-                  <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                    <div class="btn-align">
+                  <div class="btn-align">
+                  <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
                       <button class="red-btn">
                           <ion-icon class="search" name="ios-search"></ion-icon>Search
                       </button>   
-                    </div>
                   </ion-col>
+                </div>
+
             </ion-row>
           </ion-grid>
         </div>
       </ion-col>
     </ion-row>
+    </ion-grid>
 
-
-
-      <ion-row>
-        <div class="">
-            <h2 class="primary-heading mt15">Events</h2>
-            <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <ion-list >
-                    <ion-item no-lines>
-                      <ion-avatar item-start>
-                        <img src="../../assets/imgs/avatar.png">
-                      </ion-avatar>
-                      <div center class="slider-header">
-                        <h2>John Doe</h2>
-                        <p><a href="#">Cliiimb</a>(judicial system)</p>
-                      </div>
-                      <button item-end class="follow-btn">Follow</button>
-                    </ion-item>
-
-                    <ion-grid>
-                      <ion-row>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+    <ion-grid>
+        <h2 class="primary-heading mt15 ">Events</h2>
+        <ion-list>
+            <ion-item class="custom-input">
+              <ion-label>Chose Catigories</ion-label>
+              <ion-select>
+                <ion-option value="nes">NES</ion-option>
+                <ion-option value="n64">Nintendo64</ion-option>
+                <ion-option value="ps">PlayStation</ion-option>
+                <ion-option value="genesis">Sega Genesis</ion-option>
+                <ion-option value="saturn">Sega Saturn</ion-option>
+                <ion-option value="snes">SNES</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        <ion-row>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+              <ion-card>
+                  <ion-card-header>
+                    <ion-list>
+                      <ion-item no-lines>
+                        <ion-avatar item-start>
+                          <img src="../../assets/imgs/avatar.png">
+                        </ion-avatar>
+                        <div center class="slider-header">
+                          <h2>John Doe</h2>
+                          <p><a href="#">Cliiimb</a>(judicial system)</p>
+                        </div>
+                        <button item-end class="follow-btn">Follow</button>
+                      </ion-item>
+          
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                             <div class="event-details">
                                 <p class="details-icon"> <ion-icon class="icon" name="ios-navigate"></ion-icon>some text here</p>
                                 <p class="details-icon"> <ion-icon class="icon" name="ios-calendar"></ion-icon>some text here</p>
                             </div>
-                        </ion-col>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                          <ion-item no-lines class="action-icons b-bot">
+                          </ion-col>
+                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                            <ion-item no-lines class="action-icons b-bot">
                               <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
                               <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
                               <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
                             </ion-item>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                  </ion-list>
-            </ion-col>
-          <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-            <ion-card class="feeds-card">
-              <img src="../../assets/imgs/avatar.png"/>
-            </ion-card>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-list>
+                  </ion-card-header>
+                  <img src="../../assets/imgs/avatar.png"/>
+                  <ion-card-content>
+                      <ion-item>
+                      <span item-start>some text here </span>
+                      <span item-end><ion-icon name="ios-eye"></ion-icon>4 Views</span>
+                    </ion-item>
+                    <ion-item>
+                      <h4 class="">Cliiimb Executive Team Video Shoot</h4>
+                    </ion-item>
+                    <ion-item>
+                        <p>Cliiimb Video Shoot Overview<br>
+                          Shoot Date 09.28.2018<br>
+                          Shoot Location
+                    </ion-item>
+                    <a href="#">View Details</a>
+                  </ion-card-content>
+              </ion-card>
           </ion-col>
-        </div>
-      </ion-row>
-    </ion-grid>
+        </ion-row>
+      </ion-grid>
+
   </ion-content>
