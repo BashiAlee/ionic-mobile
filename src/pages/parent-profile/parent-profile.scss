@@ -10,5 +10,11 @@ page-parent-profile {
                 font-size: 15px;
             }
         }
+
+        .profile-image-parent {
+            img {
+                border-radius: 50%;
+            }
+        }
     }
 }

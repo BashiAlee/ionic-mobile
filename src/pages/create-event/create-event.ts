@@ -1,10 +1,11 @@
 import { Component,ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, PopoverController, ToastController } from 'ionic-angular';
 import { Content } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angular/forms';
+import { ContributionsProvider } from '../../providers/contributions/contributions';
 
 /**
  * Generated class for the CreateEventPage page.
@@ -17,7 +18,7 @@ import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angu
 @Component({
   selector: 'page-create-event',
   templateUrl: 'create-event.html',
-  providers: [Camera, AuthenticationProvider, UserProvider]
+  providers: [Camera, AuthenticationProvider, UserProvider, ContributionsProvider]
 })
 export class CreateEventPage {
   contribution_action: any;
@@ -35,6 +36,8 @@ export class CreateEventPage {
     public authService: AuthenticationProvider,
     public userService: UserProvider,
     public camera: Camera,
+    private toastCtrl: ToastController,
+    public contributionService: ContributionsProvider,
     public formBuilder: FormBuilder,
     public popoverCtrl: PopoverController) { 
       this.contribution_action  = 'content';
@@ -223,6 +226,16 @@ export class CreateEventPage {
       contributionstatus: "Publish" 
     });
     console.log("FFF", this.contributionForm.value)
+    this.contributionService.createContribution(this.contributionForm.value)
+    .subscribe( data => {
+      let toast = this.toastCtrl.create({
+        message: 'Event Created successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+    
+      toast.present();
+    })
   }
 
   removeImage(index) {
