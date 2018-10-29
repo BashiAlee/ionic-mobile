@@ -72,4 +72,12 @@ export class ContributionsProvider {
   }));
   }
 
+  createContribution(data) {
+    var data = data;
+    return this.http.post(this.apiURL + 'addcontribution',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
 }

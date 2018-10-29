@@ -62,7 +62,7 @@ export class MyApp {
       { title: 'Mentor', component: MentorPage },
       // { title: 'Feed', component: HomePage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
-      // { title: 'Parent Profile', component: ListPage },
+      { title: 'Parent Profile', component: ParentProfilePage },
       // { title: 'Edit / Profile Settings', component: ListPage },
       // { title: 'application form', component: ApplicantFormPage },
       { title: 'Logout', component: ListPage }

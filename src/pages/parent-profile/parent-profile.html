@@ -9,45 +9,48 @@
 
 <ion-content padding>
     <div class="parent-profile makeCenter">
-        <div class="">
-            <img style="width: 120px;height: 120px" src="../../../assets/imgs/user.png" alt="app-logo">
-            <h2>John Doe</h2>
-            <p> Accountant</p>
+        <div class="profile-image-parent">
+            <img style="width: 120px;height: 120px" *ngIf="user.ProfilePicture" [src]="user.ProfilePicture" alt="app-logo">
+            <img style="width: 120px;height: 120px" *ngIf="!user.ProfilePicture" src="../../assets/imgs/avatar.png" alt="app-logo">
+            <h2>{{user.FullName}}</h2>
+            <p> {{user.Bio}}</p>
           </div>
           <ion-grid>
             <ion-row>
-              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+              <!-- <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <div class="circle blue-circle">
                   <p>0</p>
                   <h3>ACTIVITIES</h3>
                 </div>
-              </ion-col>
+              </ion-col> -->
 
-              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                 <div class="circle yellow-circle">
-                  <p>0</p>
+                  <p *ngIf="kidsList.KidsProfile">{{kidsList.KidsProfile.length}}</p>
+                  <p *ngIf="!kidsList.KidsProfile">0</p>
                   <h3>KIDS <br/>ENROLLED</h3>
                 </div>
               </ion-col>
 
-              <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                   <h2 class="primary-heading mt15 ">Kids Enrolled</h2>
               </ion-col>
-              <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
+              <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let kids of kidsList.KidsProfile">
                   <ion-card class="mentor-card">
                     <ion-list class="b-bot">
-                        <ion-item class="action-icons">
+                        <!-- <ion-item class="action-icons">
                           <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
                           <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
                           <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-                        </ion-item>
+                        </ion-item> -->
                     </ion-list>
-                    <img style="margin-top:5px" src="../../../assets/imgs/user.png"/>
+                    <img *ngIf="kids.ProfilePicture"vstyle="margin-top:5px" [src]="kids.ProfilePicture"/>
+                    <img *ngIf="!kids.ProfilePicture"vstyle="margin-top:5px" src="../../assets/imgs/avatar.png"/>
                     <ion-card-content>
                         <ion-row>
                           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                             <div class="title">
-                              <p>FullName</p>
+                              <p>{{kids.FullName}}</p>
                             </div>
                           </ion-col>
                           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>

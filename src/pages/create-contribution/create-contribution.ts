@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { UserPopoverComponent } from '../../components/user-popover/user-popover';
 import { MessagePopoverComponent } from '../../components/message-popover/message-popover';
@@ -10,6 +10,7 @@ import { Content } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
+import { ContributionsProvider } from '../../providers/contributions/contributions';
 /**
  * Generated class for the CreateContributionPage page.
  *
@@ -21,7 +22,7 @@ import { UserProvider } from '../../providers/user/user';
 @Component({
   selector: 'page-create-contribution',
   templateUrl: 'create-contribution.html',
-  providers: [Camera, AuthenticationProvider, UserProvider]
+  providers: [Camera, AuthenticationProvider, UserProvider, ContributionsProvider]
 })
 
 
@@ -41,7 +42,9 @@ export class CreateContributionPage {
     public authService: AuthenticationProvider,
     public userService: UserProvider,
     public camera: Camera,
+    private toastCtrl: ToastController,
     public formBuilder: FormBuilder,
+    public contributionService: ContributionsProvider,
     public popoverCtrl: PopoverController) { 
       this.contribution_action  = 'content';
       this.user = this.authService.getCurrentUser();
@@ -58,8 +61,7 @@ export class CreateContributionPage {
         contributionstatus: new FormControl('', Validators.required),
         audiopath: new FormControl(),
         adminstatus: new FormControl(0),
-        images: this.formBuilder.array([
-        ]),
+        images: this.formBuilder.array([]),
   
         website: this.formBuilder.array([
           this.formBuilder.group({
@@ -68,8 +70,6 @@ export class CreateContributionPage {
           })
         ]),
         coverpage: new FormControl('', Validators.required),
-        // date: new FormControl(''),
-        // location: new FormControl(this.user.City),
         contributiontype: new FormControl('contribution'),
         tags: this.formBuilder.array([
 
@@ -245,7 +245,19 @@ export class CreateContributionPage {
     this.contributionForm.patchValue({
       contributionstatus: "Publish" 
     });
+
+    this.contributionService.createContribution(this.contributionForm.value)
+    .subscribe( data => {
+      let toast = this.toastCtrl.create({
+        message: 'Contribution Created successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
+    });
     console.log("FFF", this.contributionForm.value)
+
+    
   }
 
   removeImage(index) {

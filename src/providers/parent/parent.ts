@@ -43,4 +43,25 @@ export class ParentProvider {
         return response;
       }));
   }
+
+  changeParentStatus(userid, followid) {
+    let user = {
+      userid: userid,
+      followid: followid
+    }
+    return this.http.post(this.apiURL + 'updateparentstatus', user)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+  changeMessageStatus(userid, followid) {
+    let user = {
+      userid: userid,
+      followid: followid
+    }
+    return this.http.post(this.apiURL + 'updatemessagestatus', user)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
 }

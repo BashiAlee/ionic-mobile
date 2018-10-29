@@ -41,6 +41,7 @@ export class ParentActivityLogPage {
     console.log('ionViewDidLoad ParentActivityLogPage');
   }
   getKids() {
+    this.kidsList = [];
     // this.loading = true;
     this.parentService.GetParentsKids(this.user.Email)
     .subscribe(data => {
@@ -50,7 +51,7 @@ export class ParentActivityLogPage {
       } else if(data.status){
         this.kidsList = data.data[0];
       }
-      console.log("ddd", this.kidsList)
+
 
       this.kidsList.KidsProfile = [];
       if(this.kidsList.Kids) {
@@ -165,14 +166,15 @@ export class ParentActivityLogPage {
 
   changeParentStatus(userid,followid,value) {
     // value.loadingParent = true;
-    // this.parentProfile.changeParentStatus(userid,followid)
-    // .subscribe(data => {
-    //   if(data) {
-    //     value.loadingParent = false;
-    //     // this.ngOnInit();
-    //     // location.reload();
-    //   }
-    // });
+    this.parentService.changeParentStatus(userid,followid)
+    .subscribe(data => {
+      if(data.status) {
+        this.getKids()
+        value.loadingParent = false;
+        // this.ngOnInit();
+        // location.reload();
+      }
+    });
   }
   getMentorRequests(email) {
     
@@ -192,14 +194,15 @@ export class ParentActivityLogPage {
 
   changeMessageStatus(userid,followid,value) {
     // value.loading = true;
-    // this.parentProfile.changeMessageStatus(userid,followid)
-    // .subscribe(data => {
-    //   if(data) {
-    //     value.loading = true;
-    //     this.ngOnInit();
-    //     location.reload();
-    //   }
-    // });
+    this.parentService.changeMessageStatus(userid,followid)
+    .subscribe(data => {
+      if(data) {
+        this.getKids()
+        value.loading = true;
+        // this.ngOnInit();
+        // location.reload();
+      }
+    });
   }
 
   approveMentorRequest(id) {

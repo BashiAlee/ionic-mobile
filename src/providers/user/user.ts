@@ -88,6 +88,15 @@ export class UserProvider {
   ));
   }
 
+  viewprofileByEmail(data) {
+    var user =  { email : data }
+    return this.http.post(this.apiURL + 'viewprofile', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
   getAllNotifications(data) {
     return this.http.post(this.apiURL + 'getmentorhistory', data)
     .pipe(map((response: any) => {
