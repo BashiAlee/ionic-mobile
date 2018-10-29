@@ -1,3 +1,65 @@
-page-home {
 
+page-home {
+    .content-md{
+        background:#F7F7F7;
+    }
+    font-family: 'Brandon_reg';
+    .home-content{
+        h1{
+            font-size: 30px;
+        }
+        .p1{
+            margin-top: 30px;
+            font-size: 25px;
+        }
+        .blue-boldline,.yellow-boldline,.red-boldline{
+            width: 70px;
+            height: 8px;
+            display: inline-block;
+        }
+        .blue-boldline{
+            background: #0E76BD;
+        }
+        .yellow-boldline{
+            background: #FBAB18;
+        }
+        .red-boldline{
+            background: #ED1B24;
+        }
+        .cover-btn{
+            .blue-btn{
+                padding: 10px 25px;
+                font-size: 18px;
+            }
+            .red-btn{
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+        }
+        .whitebox{
+            padding: 5px 25px;
+            background: #FFFFFF;
+            border-radius: 6px;
+            p{
+                font-size: 16px;
+            }
+            .blue-text,.yellow-text,.red-text {
+                font-size: 20px;
+                margin-top: 5px;
+            }
+            .blue-boldline,.yellow-boldline,.red-boldline {
+                height: 2px;
+                margin-bottom: 10px;
+                width: 100px;
+            }
+            
+        }
+        .div-height{
+            min-height: 270px;
+        }
+    }
+    .signup-txt{
+        font-size: 18px;
+    }
+    
 }
