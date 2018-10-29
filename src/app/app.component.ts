@@ -36,9 +36,9 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = LoginPage;
+  rootPage: any = LoginPage;
 
-  rootPage: any = ParentProfilePage;
+  // rootPage: any = ParentProfilePage;
 
   pages: Array<{title: string, component: any}>;
 
