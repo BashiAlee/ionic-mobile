@@ -168,11 +168,7 @@
                   <div id="fold-3" style="display: none">
                     <hr>    
                     <h3 class="">Add Audio(Optional)</h3>
-<<<<<<< HEAD
                     <!-- <button class="red-btn">
-=======
-                    <button class="red-btn">
->>>>>>> 9983693c4225bcb4476e85df12d5522cacb6b380
                         <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Upload Audio
                     </button>      -->
                     <input type="file" (change)="uploadAudio($event)" accept="audio/mp3">
@@ -182,7 +178,6 @@
                   <div id="fold-4" style="display: none">
                     <hr>    
                     <h3 class="">Add Images(Optional)</h3>
-<<<<<<< HEAD
                     <div  *ngFor="let pics of imageStatus; let i = index">
                         <img [src]="pics.localImage" height="150px" />
                         <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
@@ -191,9 +186,6 @@
                     </div>
                     <input type="file" name="Choose Image" id="" accept="image/x-png,image/jpeg" (change)="uploadContributionImage($event)">
                     <!-- <button class="red-btn" accept="image/x-png,image/jpeg" (change)="uploadImage($event)">
-=======
-                    <button class="red-btn">
->>>>>>> 9983693c4225bcb4476e85df12d5522cacb6b380
                         <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Choose File
                     </button>      -->
                   </div>
@@ -202,7 +194,6 @@
                     <fieldset formArrayName="website">
                       <hr>    
                       <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
-<<<<<<< HEAD
                       <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
                           <p class="makeBlock mt15">Title</p>
                           <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
@@ -210,13 +201,6 @@
                           <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1" formControlName="websiteurl"/>
                       </div>
                       <button class="red-btn" (click)="addNewUrl()">
-=======
-                      <p class="makeBlock mt15">Title</p>
-                      <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1"/>
-                      <p class="makeBlock mt15">Paste link Here</p>
-                      <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1"/>
-                      <button class="red-btn">
->>>>>>> 9983693c4225bcb4476e85df12d5522cacb6b380
                           Create More Links
                       </button>   
                     </fieldset>  
