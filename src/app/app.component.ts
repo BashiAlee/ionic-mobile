@@ -91,8 +91,8 @@ export class MyApp {
   getMentorStatus(id) {
     this.parentService.getMentorFormStatus(id)
     .subscribe((data)=>{
-      if(data) {
-        localStorage.setItem('mentorStatus',data.status);
+      if(data.status) {
+        localStorage.setItem('mentorStatus',data.data.status);
       }
     })
   }

@@ -31,7 +31,6 @@ export class UserPopoverComponent {
   }
 
   openUserProfile() {
-    console.log("DDD", this.user._id)
     this.appCtrl.getRootNav().setRoot(UserProfilePage,{id: this.user._id})
     // this.viewCtrl.dismiss();
   }

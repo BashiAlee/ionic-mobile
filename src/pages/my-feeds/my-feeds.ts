@@ -25,6 +25,7 @@ export class MyFeedsPage {
   followersIds: any = [];
   userContributions: any = [];
   loaders: any = {};
+
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      public authService: AuthenticationProvider,
@@ -115,6 +116,9 @@ export class MyFeedsPage {
                 this.viewProfileByID(followers.Userfollowerid);
               }
             });
+          } else if(!data.status){
+            this.loaders.feedLoader = false;
+            return;
           }
           // this.loading = false;
 
@@ -133,18 +137,23 @@ export class MyFeedsPage {
     })
   }
   getContributionByEmail(email) {
+    var list = [];
     // this.loaders.feedLoader = true;
     this.contributionService.getUserConstributionsbyEmail(email)
     .subscribe(
       data => {
         if(data.status) {
+          console.log("data", data.data)
+          console.log("list", list)
           data.data.forEach((value,index) => {
-
-            if(value.AdminStatus && value.ContributionStatus == "Publish") {
-              this.getLikesAndComments(value._id,value);  
-            } else if(!value.AdminStatus || value.ContributionStatus != "Publish"){
-              data.data.splice(index,1);
-            } 
+            // console.log("inde", index)
+            if(value.AdminStatus === 1) {
+              this.getLikesAndComments(value._id,value);
+              list.push(value)
+            }
+            // else {
+            //   list.splice(index, 1);
+            // } 
           });
         } else {
           this.userContributions = [];
@@ -152,7 +161,9 @@ export class MyFeedsPage {
           return;
           // this.loading = false;
         }
-        this.userContributions.push(data.data)
+    
+        this.userContributions.push(list);
+        console.log("DD", this.userContributions)
         this.loaders.feedLoader = false;
       }
     )

@@ -1,11 +1,17 @@
+<!--
+  Generated template for the CreateContributionPage page.
 
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <header></header>
 
 
 <ion-content padding>
-  <h3 class="makeCenter">Create Event</h3>
+  <h3 class="makeCenter">Create Your Event</h3>
    <!-- Segment buttons with text -->
-   <ion-segment  color="primary" [(ngModel)]="contribution_action">
+   
+   <ion-segment  color="primary" [(ngModel)]="contribution_action" [ngModelOptions]="{standalone: true}">
     <ion-segment-button value="content">
       Create Content
     </ion-segment-button>
@@ -17,10 +23,11 @@
       Submit
     </ion-segment-button>
   </ion-segment>
-
+  <div [formGroup]="contributionForm">
   <div [ngSwitch]="contribution_action">
   
     <div *ngSwitchCase="'content'">
+  
           <ion-grid>
             <ion-row>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
@@ -34,18 +41,35 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding/>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
               </ion-col>
             </ion-row>
-            
+          <ion-row>
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Location</label>
+              </ion-col>
+
+            </ion-row>
             <ion-row>
-                <label for="cname" class="makeBlock mt15 custom-label">Enter location of your event</label>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding formControlName="location"/>
+              </ion-col>
+            </ion-row>
 
-                <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                  <input type="text" value="" placeholder="Islamabad" class="mt30 mb20" class="custom-input" padding/>
-                </ion-col>
-              </ion-row>
-
+            <ion-row>
+                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                    <label for="cname" class="makeBlock mt15 custom-label">Date</label>
+                  </ion-col>
+     
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <input type="date" class="mt30 mb20" class="custom-input" padding formControlName="date"/>
+                  </ion-col>
+                </ion-row>
+            
+            
+            
             <ion-row>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <label for="cname" class="makeBlock mt15 custom-label">Category</label>
@@ -88,7 +112,7 @@
           <ion-grid>
               <ion-row>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt">
+                  <div class="tool-buckt add-text-area" (click)="scroll('fold-1')">
                       <a href="#">
                         <i class="fas fa-text-width icon-bg"></i>
                         <p>Text</p>
@@ -99,7 +123,7 @@
                   </div>
                 </ion-col>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt">
+                  <div class="tool-buckt add-embedvideo" (click)="scroll('fold-2')">
                       <a href="#">
                         <i class="fas fa-code icon-bg"></i>
                         <p>Embed Video</p>
@@ -110,7 +134,7 @@
                   </div>
                 </ion-col>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt">
+                  <div class="tool-buckt add-audio" (click)="scroll('fold-3')">
                       <a href="#">
                         <i class="fas fa-volume-up icon-bg"></i>
                         <p>Audio</p>
@@ -123,18 +147,18 @@
               </ion-row>
               <ion-row>
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-2>
-                    <div class="tool-buckt">
+                    <div class="tool-buckt add-imagegallery" (click)="scroll('fold-4')">
                       <a href="#">
                         <i class="fas fa-th icon-bg"></i>
                         <p>Image Gellary</p>
                       </a>
-                      <div class="tooltip_vector">
+                      <div class="tooltip_vector add-link">
                           <img alt="" src="../../assets/imgs/tooltip_vector.png">
                       </div>
                     </div>
                   </ion-col>
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                    <div class="tool-buckt">
+                    <div class="tool-buckt add-link" (click)="scroll('fold-5')">
                         <a href="#">
                           <i class="fas fa-link icon-bg"></i>
                           <p>Add Link</p>
@@ -146,54 +170,93 @@
                   </ion-col>
                 </ion-row>
             </ion-grid>
+
+
       </ion-list>
 
+      
       <ion-list>
-          <div class="foldings makeCenter">
-            <div id="fold-1" style="display: none">
-                <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
-                <hr>                            
-                <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
-            </div>
+                <div class="foldings makeCenter">
+                  <div id="fold-1" style="display: none">
+                      <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
+                      <hr>                            
+                      <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1" formControlName="contributiontext" />
+                  </div>
 
-            <div id="fold-2" style="display: none">
-                <hr>                            
-                <h3 class="">Add Video(Optional)</h3> 
-                <p class="makeBlock mt15">Paste link of the Video Here</p>
-                <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1"/>
-            </div>
+                  <div id="fold-2" style="display: none">
+                      <hr>                            
+                      <h3 class="">Add Video(Optional)</h3> 
+                      <p class="makeBlock mt15">Paste link of the Video Here</p>
+                      <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1" formControlName="videos" />
+                  </div>
 
-            <div id="fold-3" style="display: none">
-              <hr>    
-              <h3 class="">Add Audio(Optional)</h3>
-              <button class="red-btn">
-                  <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Upload Audio
-              </button>     
-              <p class="makeBlock mt15">Max File size is 20MB</p>
-            </div>    
+                  <div id="fold-3" style="display: none">
+                    <hr>    
+                    <h3 class="">Add Audio(Optional)</h3>
+                    <!-- <button class="red-btn">
+                        <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Upload Audio
+                    </button>      -->
+                    <input type="file" (change)="uploadAudio($event)" accept="audio/mp3">
+                    <p class="makeBlock mt15">Max File size is 20MB</p>
+                  </div>    
 
-            <div id="fold-4" style="display: none">
-              <hr>    
-              <h3 class="">Add Images(Optional)</h3>
-              <button class="red-btn">
-                  <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Choose File
-              </button>     
-            </div>
+                  <div id="fold-4" style="display: none">
+                    <hr>    
+                    <h3 class="">Add Images(Optional)</h3>
+                    <div  *ngFor="let pics of imageStatus; let i = index">
+                        <img [src]="pics.localImage" height="150px" />
+                        <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
+                        <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
+                        <button (click)="removeImage(i)">Remove Image</button>
+                    </div>
+                    <input type="file" name="Choose Image" id="" accept="image/x-png,image/jpeg" (change)="uploadContributionImage($event)">
+                    <!-- <button class="red-btn" accept="image/x-png,image/jpeg" (change)="uploadImage($event)">
+                        <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Choose File
+                    </button>      -->
+                  </div>
 
-            <div id="fold-5" style="display: none">
-                <hr>    
-                <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
-                <p class="makeBlock mt15">Title</p>
-                <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1"/>
-                <p class="makeBlock mt15">Paste link Here</p>
-                <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1"/>
-                <button class="red-btn">
-                    Create More Links
-                </button>     
-            </div>
-          </div>
-</ion-list>
+                  <div id="fold-5" style="display: none">
+                    <fieldset formArrayName="website">
+                      <hr>    
+                      <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
+                      <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
+                          <p class="makeBlock mt15">Title</p>
+                          <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
+                          <p class="makeBlock mt15">Paste link Here</p>
+                          <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1" formControlName="websiteurl"/>
+                      </div>
+                      <button class="red-btn" (click)="addNewUrl()">
+                          Create More Links
+                      </button>   
+                    </fieldset>  
+                  </div>
+                </div>
+      </ion-list>
     </div>
 
+    <div *ngSwitchCase="'cover-image'">
+      <div class="cover-image makeCenter">
+        <img *ngIf="coverImage" [src]="coverImage" alt="">
+        <img *ngIf="!coverImage" src="../../assets/imgs/avatar.png" alt="">
+      </div>
+
+      <div class="makeCenter">
+          <button class="red-btn" (click)="openActionSheet()" >
+              Choose Image
+           </button>  
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'submit'">
+  
+        <div class="makeCenter">
+          <p>Congratulation your event spotlight is ready to submit</p>
+            <button class="red-btn" (click)="saveEvent()" >
+               Submit Contribution
+             </button>  
+        </div>
+      </div>
+
   </div>
+</div>
 </ion-content>

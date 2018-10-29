@@ -33,4 +33,14 @@ export class ParentProvider {
       return response;
     }));
   }
+
+  GetParentsKids(data) {
+    let user = {
+      parentemail: data
+    }
+    return this.http.post(this.apiURL + 'getparentkids', user)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
 }

@@ -19,14 +19,15 @@
           <h3>ACTIVITIES</h3>
         </div>
 
-        <div>
-            <ion-list>
+        <div *ngFor="let approves of approvalList; let i = index">
+            <ion-list *ngFor="let followerList of approves.Follower" >
                 <ion-item no-lines>
                   <ion-avatar item-start>
-                    <img src="../../../assets/imgs/user.png">
+                    <img *ngIf="approves.ProfilePicture" [src]="approves.ProfilePicture">
+                    <img *ngIf="!approves.ProfilePicture" src="../../assets/imgs/avatar.png">
                   </ion-avatar>
-                  <h2>Finn</h2>
-                  <h3>Don't Know What To Do!he som etext</h3>
+                  <h2>{{approves.FollowerName}}</h2>
+                  <h3>{{approves.FollowerName}} has requested to follow {{followerList.FollowerName}}</h3>
                 </ion-item>
                 
                 <ion-item class="btn-group">

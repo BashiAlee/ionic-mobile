@@ -47,6 +47,20 @@ export class UserProvider {
   }));
   }
 
+  uploadAudio(file) {
+    let formData = new FormData();
+    let headers = new Headers();
+    var target = file.target || file.srcElement
+    headers.append('Content-Type','multipart/form-data');
+    
+    formData.append('file',new Blob([target.files[0]]),target.files[0].name);
+    return this.http.post(this.staticURL,formData)
+    .pipe(map((response: any) => {
+  
+     return response;
+  }));
+  }
+
   updateProfile(data) {
     var data = data;
     return this.http.put(this.apiURL + 'updateprofile', data)
@@ -103,6 +117,14 @@ export class UserProvider {
     .pipe(map((response: any) => {
      return response;
   }));
+  }
+
+  getFollowerByEmail(data) {
+    return this.http.post(this.apiURL + 'getfollowerbyemail', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
   }
 
 }

@@ -10,7 +10,8 @@
 <ion-content padding>
   <h3 class="makeCenter">Create Your Contribution</h3>
    <!-- Segment buttons with text -->
-   <ion-segment  color="primary" [(ngModel)]="contribution_action">
+   
+   <ion-segment  color="primary" [(ngModel)]="contribution_action" [ngModelOptions]="{standalone: true}">
     <ion-segment-button value="content">
       Create Content
     </ion-segment-button>
@@ -22,7 +23,7 @@
       Submit
     </ion-segment-button>
   </ion-segment>
-
+  <div [formGroup]="contributionForm">
   <div [ngSwitch]="contribution_action">
   
     <div *ngSwitchCase="'content'">
@@ -40,7 +41,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding/>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
               </ion-col>
             </ion-row>
             
@@ -154,47 +155,83 @@
                   <div id="fold-1" style="display: none">
                       <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
                       <hr>                            
-                      <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
+                      <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1" formControlName="contributiontext" />
                   </div>
 
                   <div id="fold-2" style="display: none">
                       <hr>                            
                       <h3 class="">Add Video(Optional)</h3> 
                       <p class="makeBlock mt15">Paste link of the Video Here</p>
-                      <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1"/>
+                      <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1" formControlName="videos" />
                   </div>
 
                   <div id="fold-3" style="display: none">
                     <hr>    
                     <h3 class="">Add Audio(Optional)</h3>
-                    <button class="uaudio-btn">
+                    <!-- <button class="red-btn">
                         <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Upload Audio
-                    </button>     
+                    </button>      -->
+                    <input type="file" (change)="uploadAudio($event)" accept="audio/mp3">
                     <p class="makeBlock mt15">Max File size is 20MB</p>
                   </div>    
 
                   <div id="fold-4" style="display: none">
                     <hr>    
                     <h3 class="">Add Images(Optional)</h3>
-                    <button class="uaudio-btn">
+                    <div  *ngFor="let pics of imageStatus; let i = index">
+                        <img [src]="pics.localImage" height="150px" />
+                        <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
+                        <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
+                        <button (click)="removeImage(i)">Remove Image</button>
+                    </div>
+                    <input type="file" name="Choose Image" id="" accept="image/x-png,image/jpeg" (change)="uploadContributionImage($event)">
+                    <!-- <button class="red-btn" accept="image/x-png,image/jpeg" (change)="uploadImage($event)">
                         <ion-icon class="v-icon" name="ios-volume-up-outline"></ion-icon>Choose File
-                    </button>     
+                    </button>      -->
                   </div>
 
                   <div id="fold-5" style="display: none">
+                    <fieldset formArrayName="website">
                       <hr>    
                       <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
-                      <p class="makeBlock mt15">Title</p>
-                      <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1"/>
-                      <p class="makeBlock mt15">Paste link Here</p>
-                      <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1"/>
-                      <button class="uaudio-btn">
+                      <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
+                          <p class="makeBlock mt15">Title</p>
+                          <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
+                          <p class="makeBlock mt15">Paste link Here</p>
+                          <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1" formControlName="websiteurl"/>
+                      </div>
+                      <button class="red-btn" (click)="addNewUrl()">
                           Create More Links
-                      </button>     
+                      </button>   
+                    </fieldset>  
                   </div>
                 </div>
       </ion-list>
     </div>
 
+    <div *ngSwitchCase="'cover-image'">
+      <div class="cover-image makeCenter">
+        <img *ngIf="coverImage" [src]="coverImage" alt="">
+        <img *ngIf="!coverImage" src="../../assets/imgs/avatar.png" alt="">
+      </div>
+
+      <div class="makeCenter">
+          <button class="red-btn" (click)="openActionSheet()" >
+              Choose Image
+           </button>  
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'submit'">
+  
+        <div class="makeCenter">
+          <p>Congratulation your contribution spotlight is ready to submit</p>
+            <button class="red-btn" (click)="saveContribution()" >
+               Submit Contribution
+             </button>  
+        </div>
+      </div>
+
   </div>
+</div>
 </ion-content>

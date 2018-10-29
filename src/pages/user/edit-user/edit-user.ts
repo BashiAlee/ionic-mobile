@@ -12,8 +12,7 @@ import { AboutMePage } from '../about-me/about-me';
 // import { File } from '@ionic-native/file';
 // import { Base64 } from '@ionic-native/base64';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+
 declare var window: any
 
 
