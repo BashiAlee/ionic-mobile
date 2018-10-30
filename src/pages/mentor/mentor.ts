@@ -44,6 +44,8 @@ export class MentorPage {
             this.followersIds.Follower.forEach(followers => {
               if (followers.ParentStatus) {
                 this.viewProfileByID(followers.Userfollowerid);
+              } else {
+                this.loader = false;
               }
             });
           }

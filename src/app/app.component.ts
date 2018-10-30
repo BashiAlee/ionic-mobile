@@ -63,7 +63,7 @@ export class MyApp {
       // { title: 'Feed', component: HomePage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
-      // { title: 'Edit / Profile Settings', component: ListPage },
+      { title: 'Edit / Profile Settings', component: EditUserPage },
       // { title: 'application form', component: ApplicantFormPage },
       { title: 'Logout', component: ListPage }
 

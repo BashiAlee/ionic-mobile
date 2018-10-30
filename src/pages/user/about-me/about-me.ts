@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthenticationProvider } from '../../../providers/authentication/authentication';
 import { UserProvider } from '../../../providers/user/user';
 import { ToastController } from 'ionic-angular';
+import { UserProfilePage } from '../../user-profile/user-profile';
 /**
  * Generated class for the AboutMePage page.
  *
@@ -68,6 +69,8 @@ export class AboutMePage {
           });
         
           toast.present();
+
+          this.navCtrl.setRoot(UserProfilePage,{id: this.user._id} )
          
         } else if(!data.status){
           let toast = this.toastCtrl.create({
