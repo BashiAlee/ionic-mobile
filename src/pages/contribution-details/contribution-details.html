@@ -9,73 +9,107 @@
 <ion-content padding>
   <div class="contribution-detail">
     <ion-grid>
-      <ion-row>
+      <ion-row class="cont-back">
           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-            <div class="custom-slides">
-                <ion-slides pager>
-                  <ion-slide class="abc">
-                    <ion-list >
-                      <ion-item no-lines>
-                        <ion-avatar item-start>
-                          <img src="../../assets/imgs/avatar.png">
-                        </ion-avatar>
-                        <div center class="slider-header">
-                          <h2>John Doe</h2>
-                          <p><a href="#">Cliiimb</a>(judicial system)</p>
-                        </div>
-                        <button item-end class="follow-btn">Follow</button>
-                      </ion-item>
-                      <ion-item class="action-icons b-bot">
-                        <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                        <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                        <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-                      </ion-item>
-                    
-                    </ion-list>
-                    <div class="slider-content">
-                      <h3>DISCIPLINE TO GROW YOURSELF</h3>
-                      <p>DISCIPLINE! The 14th Ultimate 30-Minute Motivational Speech Compilation is here! </p>
-                      <p><a href="https://www.youtube.com/watch?v=sEmZIi_0Kj8">https://www.youtube.com/watch?v=sEmZIi_0Kj8</a></p>
+            <ion-card-header class="modal-header">
+                <h5 class="modal-title" id=""><span class="fa fa-circle red-circle"></span>&nbsp; SPOTLIGHT - MEDIA</h5>
+            </ion-card-header>
+          </ion-col>
+          <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+              <div>   
+                <ion-list>
+                  <ion-item no-lines>
+                    <ion-avatar item-start>
+                      <img src="../../assets/imgs/avatar.png">
+                    </ion-avatar>
+                    <div center class="slider-header">
+                      <h2>John Doe</h2>
+                      <p><a href="#">Cliiimb</a>(judicial system)</p>
                     </div>
-                  </ion-slide>
-                  
-                    <ion-slide>
-                      <ion-item class="mt30" no-lines>
-                        <iframe style="width: 100%" class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/FKEaJE9lSXk"></iframe>
-                      </ion-item>
-                    </ion-slide>
-                  
-                    <ion-slide>
-                      <ion-item class="mt50" no-lines>
-                          <h4 class="makeCenter">Audio</h4>
-                          <audio controls style="width: 100%">
-                              <source src="horse.ogg" type="audio/ogg">
-                              <source src="horse.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                            </audio>
-                      </ion-item>
-                    </ion-slide>
-                  </ion-slides>
-            </div>
-          </ion-col>
+                    <button item-end class="follow-btn">Follow</button>
+                  </ion-item>
+                  <ion-item class="action-icons b-bot">
+                    <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+                    <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+                    <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+                  </ion-item>
+                
+                </ion-list>
+                <div class="slider-content">
+                  <h3>DISCIPLINE TO GROW YOURSELF</h3>
+                  <p>DISCIPLINE! The 14th Ultimate 30-Minute Motivational Speech Compilation is here! </p>
+                  <p><a href="https://www.youtube.com/watch?v=sEmZIi_0Kj8">https://www.youtube.com/watch?v=sEmZIi_0Kj8</a></p>
+                </div>
+              </div>
 
-          <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-          <ion-slides pager>
-              <ion-slide>
-                  <img src="../../assets/imgs/avatar.png">
-                <h1>title 1</h1>
-              </ion-slide>
-              <ion-slide>
-                  <img src="../../assets/imgs/avatar.png">
-                <h1>title 2</h1>
-              </ion-slide>
-              <ion-slide>
-                  <img src="../../assets/imgs/avatar.png">
-                  <h1>title 3</h1>
-              </ion-slide>
-            </ion-slides>
-          </ion-col>
+              <div style="display: none">
+                <ion-item class="mt30" no-lines>
+                  <iframe style="width: 100%" class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/FKEaJE9lSXk"></iframe>
+                </ion-item>
+              </div>
 
+              <div style="display: none">
+                <ion-list>
+                  <ion-item class="mt50" no-lines>
+                    <h4 class="makeCenter">Audio</h4>
+                    <audio controls style="width: 100%">
+                        <source src="horse.ogg" type="audio/ogg">
+                        <source src="horse.mp3" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                      </audio>
+                  </ion-item>
+                </ion-list>
+              </div>
+
+              <div style="display: none">
+                  <ion-slides pager>
+                      <ion-slide>
+                          <img src="../../assets/imgs/avatar.png">
+                        <h1>title 1</h1>
+                      </ion-slide>
+                      <ion-slide>
+                          <img src="../../assets/imgs/avatar.png">
+                        <h1>title 2</h1>
+                      </ion-slide>
+                      <ion-slide>
+                          <img src="../../assets/imgs/avatar.png">
+                          <h1>title 3</h1>
+                      </ion-slide>
+                    </ion-slides>
+              </div>
+              <div></div>
+
+              <div class="cont-footer">
+                <ion-list>
+                  <ion-row>
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 center>
+                        <div class="folding">
+                          <a href="#" id="prev">
+                            <span><ion-icon name="arrow-round-back"></ion-icon></span>
+                          </a>&nbsp; Fold 1/3 &nbsp;
+                          <a href="#" id="next">
+                            <span><ion-icon name="arrow-round-forward"></ion-icon></span>
+                          </a>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button item-end clear class="text-align">
+                        <ion-icon name="thumbs-up"></ion-icon>
+                        <div>12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button item-start clear>
+                        <ion-icon name="text"></ion-icon>
+                        <div>4 Comments</div>
+                      </button>
+                    </ion-col>
+                    </ion-row>
+                </ion-list>
+              </div>
+            
+          </ion-col>
+         
       </ion-row>
     </ion-grid>
   </div>
