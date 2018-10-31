@@ -101,6 +101,9 @@ text-align: center;
 .mt15 {
     margin-top: 15px !important;
 }
+.mt12{
+    margin-top: 10px !important;
+}
 .mt30 {
     margin-top: 30px;
 }
@@ -370,7 +373,10 @@ div.toolbar-title {
     color: #f00;
     display: block;
 }
-
+.custon-anchor{
+    padding: 10px 20px;
+    font-size: 16px;
+}
 .tooltip_vector{
     width: 30px;
     height: 30px;

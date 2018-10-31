@@ -44,6 +44,9 @@ import { ParentProvider } from '../providers/parent/parent';
 import { MessagesProvider } from '../providers/messages/messages';
 import { SearchEventsPage } from '../pages/search-events/search-events';
 import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
+import { PreferencesPage } from '../pages/preferences/preferences';
+import { MessagePage } from '../pages/message/message';
+import { MessageListPage } from '../pages/message-list/message-list';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,10 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
     ParentActivityLogPage,
     MyFeedsPage,
     SearchEventsPage,
-    ParentProfilePage
+    ParentProfilePage,
+    PreferencesPage,
+    MessagePage,
+    MessageListPage
 
   ],
   imports: [
@@ -110,7 +116,10 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
     ParentActivityLogPage,
     MyFeedsPage,
     SearchEventsPage,
-    ParentProfilePage
+    ParentProfilePage,
+    PreferencesPage,
+    MessagePage,
+    MessageListPage
   ],
   providers: [
     StatusBar,

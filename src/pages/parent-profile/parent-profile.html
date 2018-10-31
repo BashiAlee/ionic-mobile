@@ -31,10 +31,20 @@
                   <h3>KIDS <br/>ENROLLED</h3>
                 </div>
               </ion-col>
-
+              
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                   <h2 class="primary-heading mt15 ">Kids Enrolled</h2>
               </ion-col>
+
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                  <div class="loader makeCenter" *ngIf="loading">
+                      <ion-spinner name="bubbles"></ion-spinner>
+                  </div>
+                  <div class="not-found makeCenter" *ngIf="kidsList && !kidsList.length && !loading">
+                      <p>Not Found</p>
+                    </div>
+              </ion-col>
+            
               <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let kids of kidsList.KidsProfile">
                   <ion-card class="mentor-card">
                     <ion-list class="b-bot">

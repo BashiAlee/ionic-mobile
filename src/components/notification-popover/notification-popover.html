@@ -2,10 +2,10 @@
   <div *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
       <ion-item *ngFor="let comments of notifications.ContributionComments">
         <ion-avatar item-start>
-          <img [src]="comments.CommentUserProfilePicture">
-        </ion-avatar>
-        <h2>{{comments.CommentUserName}}</h2>
-        <p>commented on Your Contribution</p>
+            <img [src]="comments.CommentUserProfilePicture">
+          </ion-avatar>
+          <h2>{{comments.CommentUserName}}</h2>
+          <p>commented on Your Contribution</p>
         </ion-item>
   </div>
   <div *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length">

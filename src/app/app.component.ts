@@ -26,7 +26,9 @@ import { ParentProvider } from '../providers/parent/parent';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 import { SearchEventsPage } from '../pages/search-events/search-events';
 import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
-
+import { PreferencesPage } from '../pages/preferences/preferences';
+import { MessagePage } from '../pages/message/message';
+import { MessageListPage } from '../pages/message-list/message-list';
 
 
 @Component({
@@ -38,7 +40,7 @@ export class MyApp {
 
   // rootPage: any = LoginPage;
 
-  rootPage: any = ContributionDetailsPage;
+  rootPage: any = MessageListPage;
 
   pages: Array<{title: string, component: any}>;
 
