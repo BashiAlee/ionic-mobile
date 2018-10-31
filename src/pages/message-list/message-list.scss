@@ -1,17 +1,11 @@
 page-message-list {
-        .title1{
-            margin-top:15px; 
-
-            h2{
-                font-size: 17px;
-            }
-        }
-    .back-icon{
+    .time{
         font-size: 12px;
+        color: $primary-color;
+        position: relative;
+        top: -10px;
     }
-    .ab{
-        font-size: 10px;
-        margin: 3px 5px 0px 5px;
+    .b-bot{
+        padding: 10px 0px;
     }
-    
 }

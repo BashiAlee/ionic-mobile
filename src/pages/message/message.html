@@ -1,18 +1,66 @@
 <!--
-  Generated template for the MessagePage page.
+  Generated template for the MessageListPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>message</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
+<header></header>
 
 <ion-content padding>
-
+  <ion-header>
+    <ion-navbar>
+        <ion-grid>
+            <ion-row class="b-bot">
+              <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                  <button ion-button color="red" class="back-icon" clear icon-start>
+                    <span class="ab"><ion-icon name='ios-arrow-back'></ion-icon></span>
+                    Back
+                  </button>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-md-1>
+                  <div icon-center class="title1">
+                    <h2>Abdul Basit</h2>
+                  </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-navbar>
+  </ion-header>
+  
+  <div class="msg-section">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+            <div class="left-msg">
+              <span>hi how are klasa alksaksm </span>
+                <p>wed | 14:00</p>
+            </div>
+            
+            <!-- <div class="right-msg">
+              <div class="text1">
+                  <span >i am fime.</span>
+              </div>
+              <div class="msg-detail1">
+                  <span>wed | 14:00</span>
+              </div>
+            </div> -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
+              <div class="typing">
+                  <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1"/>
+              </div>
+            </ion-col>
+            <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
+              <label class="circle green-circle">
+                <p>
+                    <ion-icon name="md-send"></ion-icon>
+                </p>
+              </label>     
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+ 
 </ion-content>
