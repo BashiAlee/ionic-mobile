@@ -35,6 +35,15 @@ export class ContributionsProvider {
   ));
   }
 
+  searchContributionByContributionId(data) {
+    var id = {_id : data};
+    return this.http.post(this.apiURL + 'searchcontributionbyid',id)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+
+  }
+
   getAllCategoriesName() {
     return this.http.get(this.apiURL + 'getallcategory')
     .pipe(map((response: any) => {
@@ -53,6 +62,16 @@ export class ContributionsProvider {
     return this.http.post(this.apiURL + 'getlikesandcomments',commentslikes)
     .pipe(map((response: any) => {
      return response;
+  }));
+  }
+
+  getAllCommentsAndLikes() {
+    return this.http.get(this.apiURL + 'getallfvrts')
+    .pipe(map((response: any) => {
+
+      return response;
+    
+    
   }));
   }
 

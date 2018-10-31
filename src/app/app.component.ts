@@ -38,9 +38,9 @@ import { MessageListPage } from '../pages/message-list/message-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = LoginPage;
+  rootPage: any = LoginPage;
 
-  rootPage: any = MessageListPage;
+  // rootPage: any = ContributionDetailsPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -65,7 +65,7 @@ export class MyApp {
       // { title: 'Feed', component: HomePage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
-      // { title: 'Edit / Profile Settings', component: ListPage },
+      { title: 'Edit / Profile Settings', component: EditUserPage },
       // { title: 'application form', component: ApplicantFormPage },
       { title: 'Logout', component: ListPage }
 
