@@ -72,8 +72,8 @@ export class MyContributionPage {
     )
   }
 
-  openDetails() {
-    this.navCtrl.setRoot(ContributionDetailsPage)
+  openDetails(id) {
+    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
   }
 
   getProfileByID(id,value) {
@@ -88,7 +88,6 @@ export class MyContributionPage {
       });
   }
   getLikesAndComments(id,value) {
-    console.log("hereee")
     this.contributionService.getLikesAndComments(id)
     .subscribe(data => {
         if(!data.status) {
@@ -115,6 +114,7 @@ export class MyContributionPage {
     })
     this.loading = false;
   }
+
 
   addLike(value,id) {
     var data = {
@@ -149,5 +149,6 @@ export class MyContributionPage {
         }
       })
   }
+
 
 }
