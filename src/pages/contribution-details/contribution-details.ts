@@ -179,7 +179,7 @@ export class ContributionDetailsPage {
           }
   
           if (this.contributionDetails.Website) {
-            if(this.contributionDetails.Website.length > 1) {
+            if(this.contributionDetails.Website[0].WebsiteTitle) {
               this.modalArray.push(".modal-links-view")
             }
           }

@@ -136,4 +136,29 @@ export class UserProvider {
   ));
   }
 
+  getUserFollowerCountById(data) {
+    var user = {userid: data};
+    return this.http.post(this.apiURL + 'getfollower', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+  getUserConstributionsbyEmail(data) {
+    var user ={useremail: data };
+    return this.http.post(this.apiURL + 'searchcontribution', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
+  getDueContributions(data) {
+    return this.http.post(this.apiURL + 'remainingcontributioncheck', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
 }
