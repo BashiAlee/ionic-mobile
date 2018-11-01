@@ -1,0 +1,76 @@
+<!--
+  Generated template for the PreferencesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header></header>
+
+<ion-content padding>
+  <div class="preferences">
+      <div class="b-bot">
+        <h2 class="primary-heading">preferences</h2>
+      </div>
+  
+      <h2 class="xlh18">Selected preferences</h2>
+      <div class="b-bot btn-align">
+        <label class="red-btn" full>
+            UX,UI Design
+            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+        </label>
+        <label class="red-btn">
+            UX,UI Design
+            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+        </label>
+        <label class="red-btn">
+            UX,UI Design
+            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+        </label>
+        <label class="red-btn">
+            UX,UI Design
+            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+        </label>
+        <label class="red-btn">
+            UX,UI Design
+            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+        </label>
+      </div>
+
+      <div class="pref-slect">
+        <div class="select1">
+            <h2 class="xlh18">Select Category</h2>
+            <h3 class="mh14 blue-text">Selected Category:Design</h3>
+              <ion-list>
+                <ion-item class="custom-input">
+                  <ion-label class="pref-labl">Select Category</ion-label>
+                  <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
+                  <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!">
+                    <ion-option value="bacon">Bacon</ion-option>
+                    <ion-option value="olives">Black Olives</ion-option>
+                    <ion-option value="xcheese">Extra Cheese</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+        </div>
+        <div class="select1">
+            <h2 class="xlh18">Sub Category</h2>
+            <ion-list>
+              <ion-item class="custom-input">
+                <ion-label class="pref-labl">Sub Category</ion-label>
+                <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
+                <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!">
+                  <ion-option value="bacon">Bacon</ion-option>
+                  <ion-option value="olives">Black Olives</ion-option>
+                  <ion-option value="xcheese">Extra Cheese</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+        </div>
+      </div>
+      <div class="sub-btn">
+          <button class="red-btn" (click)="saveEvent()" >
+          Save & Continue
+          </button>  
+      </div>
+  </div>
+</ion-content>

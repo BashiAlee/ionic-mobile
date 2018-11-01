@@ -18,6 +18,7 @@ import { ContributionsProvider } from '../../providers/contributions/contributio
   providers: [AuthenticationProvider, ParentProvider, UserProvider, ContributionsProvider]
 })
 export class ParentProfilePage {
+  loading: any;
   user: any;
   kidsList: any = [];
   constructor(public navCtrl: NavController, 
@@ -35,28 +36,25 @@ export class ParentProfilePage {
   }
 
   getKids() {
+    this.loading = true;
+
     // this.messages.kidsLoader = true;
     // this.messages.activitiesLoader = true;
     this.parentService.GetParentsKids(this.user.Email)
     .subscribe(data => {
       if(!data.status) {
-        // this.loading = false;
+        this.loading = false;
         this.kidsList = [];
       } else if(data.status){
+        this.loading = false;
         this.kidsList = data.data[0];
       }
 
       this.kidsList.KidsProfile = [];
-
-  
       if(this.kidsList.Kids) {
-
         if(this.kidsList.Kids.length) {
           this.kidsList.Kids.forEach(kids => {
               this.getProfileByID(kids.KidID)
-        
-
-
           });
         }
 
@@ -64,6 +62,7 @@ export class ParentProfilePage {
         // console.log(this.activityLog)
       }
       // this.messages.kidsLoader = false;
+      this.loading = false;
       
       
     })

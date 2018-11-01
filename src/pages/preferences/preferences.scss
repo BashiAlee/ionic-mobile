@@ -1,0 +1,52 @@
+page-preferences {
+    .preferences{
+        .primary-heading{
+            padding: 20px 0px;
+        }
+        .red-btn{
+            .ms{
+                margin: 0px 5px;
+            }
+        }
+        .btn-align{
+            padding-bottom:20px; 
+        }
+        .xlh18{
+            margin: 15px 3px;
+        }
+        .pref-slect{
+            margin: 20px 0px;
+            .select1{
+                margin: 40px 0px;
+                .mh14{
+                    margin: 12px 3px;
+                }
+                .custom-input{
+                    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                }
+                .arrow-left{
+                    color: #F3151E;
+                    position: absolute;
+                    right: 5px;
+                    font-size: 22px;
+                    top: 4px;
+                }
+                .select-icon{
+                    display: none;
+                }
+                .pref-labl{
+                    color: #F3151E;
+                }
+            }
+        }
+        .sub-btn{
+            margin: 50px 0px 20px 0px;
+            .red-btn{
+                width: 100%;
+                margin: auto;
+                font-size: 18px;
+                padding: 15px;
+            }
+        }
+    }
+}

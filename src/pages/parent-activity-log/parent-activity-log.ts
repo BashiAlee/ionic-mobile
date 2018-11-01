@@ -20,6 +20,7 @@ import { ContributionsProvider } from '../../providers/contributions/contributio
 })
 export class ParentActivityLogPage {
   user: any;
+  loading: any;
   kidsList: any = [];
   activityLog: any = [];
   approvalList: any = [];
@@ -42,16 +43,16 @@ export class ParentActivityLogPage {
   }
   getKids() {
     this.kidsList = [];
-    // this.loading = true;
+    this.loading = true;
     this.parentService.GetParentsKids(this.user.Email)
     .subscribe(data => {
       if(!data.status) {
-        // this.loading = false;
+        this.loading = false;
         this.kidsList = [];
       } else if(data.status){
+        this.loading = false;
         this.kidsList = data.data[0];
       }
-
 
       this.kidsList.KidsProfile = [];
       if(this.kidsList.Kids) {
@@ -60,8 +61,6 @@ export class ParentActivityLogPage {
           this.kidsList.Kids.forEach(kids => {
             this.searchByEmail(kids.KidID)
             this.getFollowerByEmail(kids.KidID);
-
-
           });
         }
 

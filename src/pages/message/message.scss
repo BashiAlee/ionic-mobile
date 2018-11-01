@@ -1,0 +1,58 @@
+page-message {
+    .title1{
+        margin-top:15px; 
+
+        h2{
+            font-size: 17px;
+        }
+    }
+    .back-icon{
+        font-size: 12px;
+    }
+    .ab{
+        font-size: 10px;
+        margin: 3px 5px 0px 5px;
+    }
+    .msg-section{
+        margin-top: 60px;
+        color: #fff;
+        font-size: 15px;
+        .left-msg{
+            span{
+                background: $primary-blue;
+                padding: 10px; 
+                border-radius:10px 10px 10px 0px;
+            }
+            p{
+                color: $medium-gray;
+                font-size: 10px;
+                margin-top: 10px;
+            }
+        }
+        // .right-msg{
+            
+        //     text-align: right;
+            
+        //     .text1{
+        //         span{
+        //             background: $primary-color;
+        //             border-radius: 10px 10px 0px 10px;
+        //             width: 100%;
+        //             margin: auto;
+        //         }
+        //     }
+        //     .msg-detail1{
+        //         color: $medium-gray;
+        //         font-size: 10px;
+        //         margin-top: 10px;
+               
+        //     }
+                
+        // }
+        .typing{
+            color: #000;
+        }
+        
+    }   
+
+}

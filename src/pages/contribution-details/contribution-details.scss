@@ -36,6 +36,22 @@ page-contribution-details {
         }
       
     }
+    .custom-textarea{
+        width: 100%;
+        display: block;
+        height: 80px;
+        padding: 5px;
+        font-size: 14px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .red-btn{
+        padding: 12px 34px;
+        margin-top: 10px;
+        border-radius: 30px;
+    }
     .text-align{
         float: right;
     }

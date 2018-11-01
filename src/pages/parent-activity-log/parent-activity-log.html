@@ -18,7 +18,9 @@
           <p>0</p>
           <h3>ACTIVITIES</h3>
         </div>
-
+        <div class="loader makeCenter" *ngIf="loading">
+            <ion-spinner name="bubbles"></ion-spinner>
+        </div>
         <div *ngFor="let approves of approvalList; let i = index">
             <ion-list *ngFor="let followerList of approves.Follower" >
                 <ion-item no-lines>
