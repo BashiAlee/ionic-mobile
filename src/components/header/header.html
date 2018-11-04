@@ -19,7 +19,8 @@
         <ion-buttons end="" class="bar-buttons bar-buttons-ios">
           <div class="nav-dp">
             <button ion-button icon-only (click)="userPopover($event)">
-              <img class="tooltip_vector" src="../../assets/imgs/avatar.png" alt="">
+              <img class="tooltip_vector" *ngIf="user.ProfilePicture" [src]="domSanitizer.bypassSecurityTrustUrl(user.ProfilePicture)" alt="">
+              <img class="tooltip_vector" *ngIf="!user.ProfilePicture" src="../../assets/imgs/avatar.png" alt="">
               <ion-icon class="nav-arrow" name="ios-arrow-down"></ion-icon>
             </button>
           </div>

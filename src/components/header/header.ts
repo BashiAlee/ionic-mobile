@@ -3,6 +3,8 @@ import { PopoverController } from 'ionic-angular';
 import { MessagePopoverComponent } from '../message-popover/message-popover';
 import { NotificationPopoverComponent } from '../notification-popover/notification-popover';
 import { UserPopoverComponent } from '../user-popover/user-popover';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -15,12 +17,15 @@ import { UserPopoverComponent } from '../user-popover/user-popover';
   templateUrl: 'header.html'
 })
 export class HeaderComponent {
-
-  text: string;
-
-  constructor( public popoverCtrl: PopoverController) {
-    console.log('Hello HeaderComponent Component');
-    this.text = 'Hello World';
+  user: any;
+  constructor( 
+    public popoverCtrl: PopoverController,
+    public authService: AuthenticationProvider,
+    public domSanitizer: DomSanitizer,
+  
+  ) {
+    this.user = this.authService.getCurrentUser();
+    console.log(this.user)
   }
 
   messagePopover(myEvent) {
