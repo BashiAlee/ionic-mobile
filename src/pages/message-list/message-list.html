@@ -8,33 +8,27 @@
 
 <ion-content padding>
     <h2 class="primary-heading mt15 ">Messages</h2>
-    <ion-grid>
-        <ion-row>
-          <ion-col col-12>
-              <ion-list no-lines>
-                <div class="b-bot">
-                    <ion-item >
-                      <ion-avatar item-start>
-                        <img src="../../assets/imgs/admin_profile.jpg">
-                      </ion-avatar>
-                      <h2>Woody</h2>
-                      <p>This town ain't big enough for the two of us!</p>
-                      <ion-note item-end class="time">3:43 pm | Nov 9</ion-note>
-                    </ion-item>
-                </div>
-                <div class="b-bot">
-                    <ion-item >
-                      <ion-avatar item-start>
-                        <img src="../../assets/imgs/admin_profile.jpg">
-                      </ion-avatar>
-                      <h2>Woody</h2>
-                      <p>This town ain't big enough for the two of us!</p>
-                      <ion-note item-end class="time">3:43 pm | Nov 9</ion-note>
-                    </ion-item>
-                </div>
-              </ion-list>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
- 
+    <div *ngIf="userMessageNotication && userMessageNotication.length">
+        <ion-list no-lines *ngFor="let messages of userMessageNotication; let i = index" [ngClass]="(messages.User1ID == user._id && messages.User1ChatStatus) || (messages.User2ID == user._id && messages.User2ChatStatus)? 'unread': 'read'" (click)="openMessage(messages)" >
+          <div class="b-bot">
+              <ion-item >
+                <ion-avatar item-start>
+                    <img *ngIf="user._id == messages.User1ID" [src]="messages.User2ProfilePicture" alt="User Avatar" class="img-circle">
+                    <img *ngIf="user._id == messages.User2ID" [src]="messages.User1ProfilePicture" alt="User Avatar" class="img-circle">
+                </ion-avatar>
+                <h2 *ngIf="user._id == messages.User1ID">{{messages.User2UserName}}</h2> 
+                <h2 *ngIf="user._id == messages.User2ID">{{messages.User1UserName}}</h2>
+            
+                <p>has message for you.</p>
+                <!-- <ion-note item-end class="time">3:43 pm | Nov 9</ion-note> -->
+              </ion-item>
+          </div>
+        </ion-list>
+    </div>
+    <ion-list *ngIf="!userMessageNotication">
+        <p>Not Found</p>
+      </ion-list>
+      <ion-list *ngIf="loading">
+          <p>Loading...</p>
+        </ion-list>
 </ion-content>

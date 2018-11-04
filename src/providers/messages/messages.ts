@@ -28,13 +28,24 @@ export class MessagesProvider {
   }
 
   getAllMessagesDetails(data) {
-
     return this.http.post(this.apiURL + 'getusermessagesdetail',data)
     .pipe(map((response: any) => {
      return response;
   }));
   }
 
- 
+  getUserMessages(data) {
+    return this.http.post(this.apiURL + 'getusermessages',data)
+    .pipe(map((response: any) => {
+     return response;
 
+  }));
+  }
+  sendUserMessages(data) {
+    return this.http.post(this.apiURL + 'getusermessages',data)
+    .pipe(map((response: any) => {
+     return response;
+
+  }));
+  }
 }

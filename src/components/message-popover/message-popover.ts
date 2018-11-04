@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController,App } from 'ionic-angular';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { MessageListPage } from '../../pages/message-list/message-list';
 
 /**
  * Generated class for the MessagePopoverComponent component.
@@ -19,9 +20,11 @@ export class MessagePopoverComponent {
   loading: any;
   user: any;
   userMessageNotication: any = [];
-  constructor(public viewCtrl: ViewController,
+  constructor(
+  public viewCtrl: ViewController,
   public messageService: MessagesProvider,
-  public authService: AuthenticationProvider
+  public authService: AuthenticationProvider,
+  public appCtrl: App
   ) {
     // this.localData = this.authService.getCurrentUser();
     this.user = this.authService.getCurrentUser();
@@ -33,7 +36,9 @@ export class MessagePopoverComponent {
   close() {
     this.viewCtrl.dismiss();
   }
-
+  viewAllMessages() {
+    this.appCtrl.getRootNav().setRoot(MessageListPage)
+  }
   getAllMessages(data) {
     this.loading = true;
     var id = {user1id: data}

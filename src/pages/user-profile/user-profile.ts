@@ -34,8 +34,6 @@ export class UserProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserProfilePage');
-
     this.viewProfileByID(this.id)
   }
 
