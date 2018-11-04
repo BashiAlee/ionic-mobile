@@ -9,29 +9,13 @@
 <ion-content padding>
   <div class="preferences">
       <div class="b-bot">
-        <h2 class="primary-heading">preferences</h2>
+        <h2 class="primary-heading">Preferences</h2>
       </div>
   
       <h2 class="xlh18">Selected preferences</h2>
-      <div class="b-bot btn-align">
-        <label class="red-btn" full>
-            UX,UI Design
-            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
-        </label>
-        <label class="red-btn">
-            UX,UI Design
-            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
-        </label>
-        <label class="red-btn">
-            UX,UI Design
-            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
-        </label>
-        <label class="red-btn">
-            UX,UI Design
-            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
-        </label>
-        <label class="red-btn">
-            UX,UI Design
+      <div class="b-bot btn-align" >
+        <label *ngFor="let pref of userPreferences; let i = index" class="red-btn" full>
+          {{pref}}
             <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
         </label>
       </div>
@@ -39,7 +23,7 @@
       <div class="pref-slect">
         <div class="select1">
             <h2 class="xlh18">Select Category</h2>
-            <h3 class="mh14 blue-text">Selected Category:{{mainCategory}}</h3>
+            <!-- <h3 class="mh14 blue-text">Selected Category:{{mainCategory.Category}}</h3> -->
               <ion-list>
                 <ion-item class="custom-input">
                   <ion-label class="pref-labl">Select Category</ion-label>
@@ -56,15 +40,16 @@
               <ion-item class="custom-input">
                 <ion-label class="pref-labl">Sub Category</ion-label>
                 <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
-                <ion-select [(ngModel)]="subCategory" (cancel)="onCancel()" (ionChange)="change1($event)" multiple="true" cancelText="Nah" okText="Okay!">
-                  <ion-option *ngFor="let sub of subCat; let i = index" [value]="subcat">{{sub.SubCategory}}</ion-option>
+                <ion-select [(ngModel)]="subCategory" (cancel)="onCancel()" (ionChange)="change1($event)" multiple="true">
+                  <ion-option *ngFor="let sub of subCat; let i = index"[value]="subcat">{{sub.SubCategory}}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list>
         </div>
       </div>
+     
       <div class="sub-btn">
-          <button class="red-btn" (click)="saveEvent()" >
+          <button class="red-btn" (click)="savePreferences()" >
           Save & Continue
           </button>  
       </div>

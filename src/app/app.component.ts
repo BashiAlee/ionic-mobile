@@ -38,7 +38,7 @@ import { MessageListPage } from '../pages/message-list/message-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PreferencesPage;
+  rootPage: any = LoginPage;
 
   // rootPage: any = HomePage;
 
@@ -66,9 +66,9 @@ export class MyApp {
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },
-      // { title: 'application form', component: ApplicantFormPage },
+      { title: 'Search Events', component: SearchEventsPage },
+      { title: 'preferences', component: PreferencesPage },
       { title: 'Logout', component: ListPage },
-      { title: 'preferences', component: PreferencesPage }
 
     ];
 
