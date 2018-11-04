@@ -38,9 +38,9 @@ import { MessageListPage } from '../pages/message-list/message-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: any = LoginPage;
+  rootPage: any = LoginPage;
 
-  rootPage: any = MessagePage;
+  // rootPage: any = MessagePage;
 
   pages: Array<{title: string, component: any}>;
 

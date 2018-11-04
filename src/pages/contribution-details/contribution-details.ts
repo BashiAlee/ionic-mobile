@@ -233,6 +233,13 @@ getLikesAndComments(id,value) {
       } else {
         value.isLiked = false;
       }
+      if(value.social.Comments.length) {
+        // console.log("heree",value.social.Comments )
+        value.social.Comments.forEach(value => {
+          this.viewProfileByID(value.CommentUserID, value)
+        });
+        
+      }
   })
   // this.loading = false;
 }
@@ -287,7 +294,7 @@ getAllCommentsAndLikes(id, value) {
       if(value.social.Comments.length) {
         // console.log("heree",value.social.Comments )
         value.social.Comments.forEach(value => {
-          // this.viewProfileByID(value.CommentUserID, value)
+          this.viewProfileByID(value.CommentUserID, value)
         });
         
       }
@@ -297,6 +304,21 @@ getAllCommentsAndLikes(id, value) {
     })
 
   // console.log(this.contributionList)
+}
+viewProfileByID(id, value) {
+  var user;
+  this.userService.viewProfileById(id)
+  .subscribe((data) => {
+    if(data.status) {
+      user = data.data
+
+      value.profilePicture = user.ProfilePicture;
+      value.name = user.FullName;
+      value.userType = user.UserType;
+      value.bio = user.Bio
+    }
+    // this.detailsLoader = false;
+  })
 }
 
 
