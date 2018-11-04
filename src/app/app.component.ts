@@ -67,7 +67,8 @@ export class MyApp {
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },
       // { title: 'application form', component: ApplicantFormPage },
-      { title: 'Logout', component: ListPage }
+      { title: 'Logout', component: ListPage },
+      { title: 'preferences', component: PreferencesPage }
 
     ];
 

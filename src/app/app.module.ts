@@ -47,6 +47,7 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
+import { PreferencesProvider } from '../providers/preferences/preferences';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { MessageListPage } from '../pages/message-list/message-list';
     ContributionsProvider,
     EventsProvider,
     ParentProvider,
-    MessagesProvider
+    MessagesProvider,
+    PreferencesProvider
   ]
 })
 export class AppModule {}
