@@ -15,7 +15,7 @@
       <h2 class="xlh18">Selected preferences</h2>
       <div class="b-bot btn-align" >
         <label *ngFor="let pref of userPreferences; let i = index" class="red-btn" full>
-          {{pref}}
+          {{pref.SubCategory}}
             <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
         </label>
       </div>
@@ -40,8 +40,8 @@
               <ion-item class="custom-input">
                 <ion-label class="pref-labl">Sub Category</ion-label>
                 <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
-                <ion-select [(ngModel)]="subCategory" (cancel)="onCancel()" (ionChange)="change1($event)" multiple="true">
-                  <ion-option *ngFor="let sub of subCat; let i = index"[value]="subcat">{{sub.SubCategory}}</ion-option>
+                <ion-select [(ngModel)]="subCat" (cancel)="onCancel()" (ionChange)="selectSubCategory(subCat)" multiple="true">
+                  <ion-option *ngFor="let sub of subCategory; let i = index"[value]="subcat">{{sub.SubCategory}}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list>

@@ -53,7 +53,7 @@ export class MessageListPage {
     )
   }
   openMessage(messages){
-    var data = {chatid: messages.ChatID,senderid: this.user._id }
+    var data = {chatid: messages.ChatID,senderid: this.user._id, all: messages }
     this.appCtrl.getRootNav().setRoot(MessagePage,{messageDetail: data})
   }
   ionViewDidLoad() {

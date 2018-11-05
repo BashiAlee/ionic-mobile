@@ -1,17 +1,3 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
 
 <ion-content padding class="login-details">
   <div class="inner-details">
@@ -47,11 +33,13 @@
         <div padding>
           <button ion-button color="primary" class="cliiimb-btn-primary" block (click)="login()">Sign In</button>
         </div>
+        <div class="link1">
+          <a (click)="forgot()">Forgot Password </a> 
+        </div>
       </div>
     </div>
     <div class="makeRed">
         <p>Don't have an account? <a (click)="openSignupPage()">Sign up</a> </p>
-        <p><a (click)="openModal({charNum: 0})">forget password </a> </p>
       </div> 
 </ion-content>
 

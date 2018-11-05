@@ -42,7 +42,7 @@ export class MessagesProvider {
   }));
   }
   sendUserMessages(data) {
-    return this.http.post(this.apiURL + 'getusermessages',data)
+    return this.http.post(this.apiURL + 'addusermessages',data)
     .pipe(map((response: any) => {
      return response;
 
