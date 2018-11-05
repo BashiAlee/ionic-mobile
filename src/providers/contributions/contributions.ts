@@ -27,73 +27,103 @@ export class ContributionsProvider {
   }
 
   getUserConstributionsbyEmail(data) {
-    var user ={useremail: data };
+    var user = {
+      useremail: data
+    };
     return this.http.post(this.apiURL + 'searchcontribution', user)
-    .pipe(map((response: any) => {
-      return response;
-    }
-  ));
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
 
   searchContributionByContributionId(data) {
-    var id = {_id : data};
-    return this.http.post(this.apiURL + 'searchcontributionbyid',id)
-    .pipe(map((response: any) => {
-     return response;
-  }));
+    var id = {
+      _id: data
+    };
+    return this.http.post(this.apiURL + 'searchcontributionbyid', id)
+      .pipe(map((response: any) => {
+        return response;
+      }));
 
   }
 
   getAllCategoriesName() {
     return this.http.get(this.apiURL + 'getallcategory')
-    .pipe(map((response: any) => {
-     return response;
-  }));
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
 
   becomeAMentor(data) {
-    return this.http.post(this.apiURL + 'becomementor',data)
-    .pipe(map((response: any) => {
-     return response;
-  }));
+    return this.http.post(this.apiURL + 'becomementor', data)
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
   getLikesAndComments(data) {
-    var commentslikes = {contributionid: data};
-    return this.http.post(this.apiURL + 'getlikesandcomments',commentslikes)
-    .pipe(map((response: any) => {
-     return response;
-  }));
+    var commentslikes = {
+      contributionid: data
+    };
+    return this.http.post(this.apiURL + 'getlikesandcomments', commentslikes)
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
 
   getAllCommentsAndLikes() {
     return this.http.get(this.apiURL + 'getallfvrts')
-    .pipe(map((response: any) => {
-
-      return response;
-    
-    
-  }));
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
 
   addLike(data) {
 
-    return this.http.post(this.apiURL + 'addlikes',data)
-    .pipe(map((response: any) => {
-     return response;
-  }));
+    return this.http.post(this.apiURL + 'addlikes', data)
+      .pipe(map((response: any) => {
+        return response;
+      }));
   }
 
   unLike(data) {
 
-    return this.http.post(this.apiURL + 'unlike',data)
+    return this.http.post(this.apiURL + 'unlike', data)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
+  createContribution(data) {
+    var data = data;
+    return this.http.post(this.apiURL + 'addcontribution', data)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
+  getAllContribution() {
+    return this.http.get(this.apiURL + 'showallcontribution')
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
+  searchContribution(data) {
+    return this.http.post(this.apiURL + 'searchingcontribution', data)
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
+  createComment(data) {
+    return this.http.post(this.apiURL + 'addcomments',data)
     .pipe(map((response: any) => {
      return response;
   }));
   }
 
-  createContribution(data) {
-    var data = data;
-    return this.http.post(this.apiURL + 'addcontribution',data)
+  deleteComment(data) {
+    return this.http.post(this.apiURL + 'deletecomments',data)
     .pipe(map((response: any) => {
      return response;
   }));

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { PopoverController } from 'ionic-angular';
+import { PopoverController, NavController } from 'ionic-angular';
 import { MessagePopoverComponent } from '../message-popover/message-popover';
 import { NotificationPopoverComponent } from '../notification-popover/notification-popover';
 import { UserPopoverComponent } from '../user-popover/user-popover';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { SearchContributionPage } from '../../pages/search-contribution/search-contribution';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -12,13 +14,21 @@ import { UserPopoverComponent } from '../user-popover/user-popover';
  */
 @Component({
   selector: 'header',
-  templateUrl: 'header.html'
+  templateUrl: 'header.html',
+  providers: [AuthenticationProvider]
 })
 export class HeaderComponent {
 
   text: string;
+  user: any;
+  query: any;
+  showSearch: any = false;
 
-  constructor( public popoverCtrl: PopoverController) {
+  constructor( public popoverCtrl: PopoverController,
+    public navCtrl: NavController,
+  public authService: AuthenticationProvider
+  ) {
+    this.user = this.authService.getCurrentUser();
     console.log('Hello HeaderComponent Component');
     this.text = 'Hello World';
   }
@@ -40,6 +50,19 @@ export class HeaderComponent {
     popover.present({
       ev: myEvent
     });
+  }
+
+  onInput(e) {
+    console.log("FFFF")
+  }
+
+  
+  onCancel(e) {
+    this.showSearch = false;
+  }
+
+  searchByKeyword(e) {
+    this.navCtrl.setRoot(SearchContributionPage, {query: this.query})
   }
 
 }

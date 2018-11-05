@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { EditUserPage } from '../user/edit-user/edit-user';
 import { AlertController } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController,ModalController, Platform } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -29,22 +29,31 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public auth: AuthenticationProvider,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController ) {
-      this.loginForm = this.formBuilder.group({
-        Email: [''],
-        Password: ['']
-      })
+    public loadingCtrl: LoadingController,
+    public modalCtrl: ModalController
+  ) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    this.loginForm = this.formBuilder.group({
+      Email: ['', [Validators.required,Validators.email]],
+      Password: ['', Validators.required]
+    })
 
   }
   get form() {return this.loginForm.controls}
   openSignupPage() {
     this.navCtrl.push(SignupPage);
   }
-
+  go() {
+    this.navCtrl.push(SignupPage);
+  }
+  // openModal(characterNum) {
+  //   let modal = this.modalCtrl.create(ModalContentPage, characterNum);
+  //   modal.present();
+  // }
   login() {
     let loader =  this.loadingCtrl.create({
       content: 'Please wait...',

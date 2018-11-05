@@ -61,8 +61,12 @@ ion-list.sideMenu {
         display: flex;
         justify-content: center;
         align-items: center;
-        .toolbar-title {
-            color: $primary-color;
+        // .toolbar-title {
+        //     color: $primary-color;
+        // }
+        img {
+            width: 100px;
+
         }
     }
     .close-icon {
@@ -250,6 +254,8 @@ div.toolbar-title {
 
     .profileImage {
         border-radius: 50%;
+        width: 80px;
+        height: 80px;
     }
 }
 

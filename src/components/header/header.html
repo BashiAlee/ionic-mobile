@@ -3,7 +3,18 @@
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-buttons start="" >
+        <ion-searchbar class="custom-search" 
+        [(ngModel)]="query"
+        *ngIf="showSearch"
+        [showCancelButton]="true"
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)"
+        (search)="searchByKeyword($event)"
+        >
+</ion-searchbar>
+<ion-icon ios="ios-search" md="md-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"></ion-icon>
+
+        <ion-buttons start="" *ngIf="!showSearch" >
           <div class="nav-content">
             <button ion-button="" class="disable-hover"  (click)="messagePopover($event)">
               <ion-icon><i class="fas fa-envelope-open"></i></ion-icon>
@@ -19,7 +30,8 @@
         <ion-buttons end="" class="bar-buttons bar-buttons-ios">
           <div class="nav-dp">
             <button ion-button icon-only (click)="userPopover($event)">
-              <img class="tooltip_vector" src="../../assets/imgs/avatar.png" alt="">
+              <img class="tooltip_vector" *ngIf="user && user.ProfilePicture" [src]="user.ProfilePicture" alt="">
+              <img class="tooltip_vector" *ngIf="!user.ProfilePicture" src="../../assets/imgs/avatar.png" alt="">
               <ion-icon class="nav-arrow" name="ios-arrow-down"></ion-icon>
             </button>
           </div>

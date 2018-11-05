@@ -68,8 +68,8 @@ export class MyEventsPage {
     )
   }
 
-  openDetails() {
-    this.navCtrl.setRoot(ContributionDetailsPage)
+  openDetails(id) {
+    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
   }
 
   getProfileByID(id,value) {

@@ -12,6 +12,7 @@ import { AboutMePage } from '../about-me/about-me';
 // import { File } from '@ionic-native/file';
 // import { Base64 } from '@ionic-native/base64';
 import { HttpClient } from '@angular/common/http';
+import { PreferencesPage } from '../../../pages/preferences/preferences';
 
 declare var window: any
 
@@ -337,7 +338,8 @@ export class EditUserPage {
         
           toast.present();
 
-          this.navCtrl.setRoot(AboutMePage)
+          // this.navCtrl.setRoot(AboutMePage)
+          this.navCtrl.setRoot(PreferencesPage)
          
         } else if(!data.status){
           let toast = this.toastCtrl.create({

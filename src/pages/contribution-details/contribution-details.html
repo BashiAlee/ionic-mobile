@@ -125,11 +125,11 @@
       </ion-row>
       <ion-row>
           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-              <ion-textarea class="custom-textarea" placeholder="type your comment here"></ion-textarea>
+              <ion-textarea class="custom-textarea" placeholder="type your comment here" [(ngModel)]="userComment"></ion-textarea>
           </ion-col>
           <div class="btn-align">
               <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
-                  <button class="red-btn">
+                  <button class="red-btn" (click)="createComment()">
                      POST COMMENT
                   </button>   
               </ion-col>
@@ -137,33 +137,19 @@
       </ion-row>
       
             <h2 class="primary-heading mt15 ">comments</h2>
-            <ion-list>
-                <ion-item-sliding #item>
+            <ion-list *ngIf="contributionDetails.social && contributionDetails.social.Comments.length">
+                <ion-item-sliding #item *ngFor="let comments of contributionDetails.social.Comments">
                   <ion-item>
                     <ion-avatar item-start>
                       <img src="../../assets/imgs/admin_profile.jpg">
                     </ion-avatar>
-                    <h2>Finn</h2>
-                    <h3>Don't Know What To Do!</h3>
-                    <p>I've had a pretty messed up day. If we just...</p>
+                    <h2>{{comments.name}}</h2>
+                    <p>{{comments.Comment}}</p>
                   </ion-item>
-                  <ion-item-options side="right">
-                    <button ion-button color="danger" (click)="unread(item)">Delete</button>
+                  <ion-item-options side="right"  *ngIf="comments.CommentUserID == user._id || user.UserType =='admin' || contributionDetails.UserID == user._id" >
+                    <button ion-button color="danger" (click)="deleteComment(comments.CommentID,contributionDetails.social.ContributionID)">Delete</button>
                   </ion-item-options>
                 </ion-item-sliding>
-                <ion-item-sliding #item>
-                    <ion-item>
-                      <ion-avatar item-start>
-                        <img src="../../assets/imgs/admin_profile.jpg">
-                      </ion-avatar>
-                      <h2>Finn</h2>
-                      <h3>Don't Know What To Do!</h3>
-                      <p>I've had a pretty messed up day. If we just...</p>
-                    </ion-item>
-                    <ion-item-options side="right">
-                      <button ion-button color="danger" (click)="unread(item)">Delete</button>
-                    </ion-item-options>
-                  </ion-item-sliding>
               </ion-list>
         
     </ion-grid>

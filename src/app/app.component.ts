@@ -66,9 +66,9 @@ export class MyApp {
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },
-      // { title: 'application form', component: ApplicantFormPage },
+      { title: 'Search Events', component: SearchEventsPage },
+      { title: 'preferences', component: PreferencesPage },
       { title: 'Logout', component: ListPage },
-      { title: 'preferences', component: PreferencesPage }
 
     ];
 
@@ -104,6 +104,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  openHomePage() {
+    this.nav.setRoot(HomePage)
   }
 
   logout() {

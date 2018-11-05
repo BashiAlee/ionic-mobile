@@ -28,17 +28,17 @@ export class SignupPage {
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController
     ) {
-    this.signupForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
-      confirmpassword: ['',[Validators.required,Validators.minLength(8), Validators.maxLength(100)]]
-    })
   }
   
   get form() {
     return this.signupForm.controls}
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
+    this.signupForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',[Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
+      confirmpassword: ['',[Validators.required,Validators.minLength(8), Validators.maxLength(100)]]
+    })
   }
   openLoginPage() {
     this.navCtrl.push(LoginPage);

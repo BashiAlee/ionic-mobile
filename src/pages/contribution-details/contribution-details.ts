@@ -48,6 +48,8 @@ export class ContributionDetailsPage {
       image: "assets/img/ica-slidebox-img-3.png",
     }
   ];
+  comment: any = {};
+  userComment: any;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -318,6 +320,50 @@ viewProfileByID(id, value) {
       value.bio = user.Bio
     }
     // this.detailsLoader = false;
+  })
+}
+createComment() {
+  // this.commentLoader = true;
+  this.comment.comments = [{
+    commentuserid: '',
+    comment: ''
+  }];
+
+  this.comment.contributionid = this.contributionDetails._id;
+  this.comment.comments[0].commentuserid = this.user._id;
+  this.comment.comments[0].comment = this.userComment;
+
+  
+    this.contributionService.createComment(this.comment)
+    .subscribe(data => {
+      
+      console.log("Comment",data)
+
+      this.userComment = '';
+
+      if (this.user) {
+        this.getLikesAndComments(this.contributionDetails._id, this.contributionDetails);
+      } else {
+        this.getAllCommentsAndLikes(this.contributionDetails._id, this.contributionDetails)
+      }
+    });
+}
+deleteComment(commentID, id) {
+  var data = {
+    contributionid: id,
+    comments: [{
+      commentid: commentID
+    }]
+  }
+
+  this.contributionService.deleteComment(data)
+  .subscribe( data => {
+    if(data) {
+      // toastr.success('Comment Deleted','Success')
+      this.getLikesAndComments(this.contributionDetails._id, this.contributionDetails);
+    } else {
+      // toastr.error('Error Deleting Comment','Error')
+    }
   })
 }
 

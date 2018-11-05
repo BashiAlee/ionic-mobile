@@ -48,6 +48,7 @@ import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
 import { PreferencesProvider } from '../providers/preferences/preferences';
+import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { PreferencesProvider } from '../providers/preferences/preferences';
     ParentProfilePage,
     PreferencesPage,
     MessagePage,
-    MessageListPage
+    MessageListPage,
+    SearchContributionPage
 
   ],
   imports: [
@@ -120,7 +122,8 @@ import { PreferencesProvider } from '../providers/preferences/preferences';
     ParentProfilePage,
     PreferencesPage,
     MessagePage,
-    MessageListPage
+    MessageListPage,
+    SearchContributionPage
   ],
   providers: [
     StatusBar,

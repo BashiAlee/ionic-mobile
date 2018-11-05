@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { CreateContributionPage } from '../../pages/create-contribution/create-contribution';
 
 /**
  * Generated class for the UserProfilePage page.
@@ -36,7 +37,9 @@ export class UserProfilePage {
   ionViewDidLoad() {
     this.viewProfileByID(this.id)
   }
-
+  goTo() {
+    this.navCtrl.push(CreateContributionPage);
+  }
   viewProfileByID(id) {
     this.loading = true;
     this.userService.viewProfileById(id)

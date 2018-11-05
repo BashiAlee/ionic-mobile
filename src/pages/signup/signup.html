@@ -24,7 +24,7 @@
             </div>
   
           </div>
-        <div class="signup-form" [formGroup]="signupForm">
+        <div class="signup-form" *ngIf="signupForm" [formGroup]="signupForm">
           <ion-list>
         
             <ion-item>

@@ -67,7 +67,6 @@ export class AboutMePage {
             duration: 3000,
             position: 'bottom'
           });
-        
           toast.present();
 
           this.navCtrl.setRoot(UserProfilePage,{id: this.user._id} )

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 
 /**
  * Generated class for the MyFeedsPage page.
@@ -170,5 +171,45 @@ export class MyFeedsPage {
       }
     )
   }
+
+  addLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.addLike(data)
+      .subscribe(res => {
+        if(res.status) {
+          value.isLiked = true;
+            value.Likes = res.data;
+        }
+  
+      })
+  }
+  unLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.unLike(data)
+      .subscribe(res => {
+        if(res.status) {  
+            value.isLiked = false;
+            value.Likes = res.data;
+        }
+      })
+  }
+
+  openDetails(id) {
+    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+  }
+
+  
 
 }

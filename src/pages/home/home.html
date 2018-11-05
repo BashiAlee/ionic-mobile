@@ -5,161 +5,163 @@
   Ionic pages and navigation.
 -->
 <header></header>
-    <ion-content padding>
-        <div class="home-content makeCenter">
-            <ion-grid>
-                <ion-row>
-                  <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-                    <h1>BE
-                      <span class="typer" id="main" data-words="COACHABLE, HUMBLE, RESILIENT, UNIQUE, VIBRANT, FOCUSED, VICTORIOUS, CREATIVE, PREPARED, AMBITIOUS, INNOVATIVE, COMMITTED, YOURSELF, ABLE, GREATNESS, AMAZING, LEADERS, THE CHANGE, STRONG, HEALTHY, HAPPY, POWERFUL, GENIUS, MOTIVATED, A GAMECHANGER, INSPIRED, THE LIGHT, THE FUTURE, REAL" data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
-                    </h1>
-                    <p>
-                      <span class="blue-boldline"></span>
-                      <span class="yellow-boldline"></span>
-                      <span class="red-boldline"></span>
-                    </p>
-                    <p class="p1">
-                        Impacting Young People to Be the Best Version of Themselves
-                    </p>
-                    <div class="cover-btn">
-                      <span>
-                        <button class="red-btn" >
-                            Sign Up
-                        </button>
-                      </span>
-                      <span>
-                        <button class="blue-btn">
-                          Events
-                        </button>
-                      </span>
-                    </div>
-                  </ion-col>
-
-                  <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-                      <div class="whitebox">
-                        <h3 class="blue-text">About Cliiimb</h3>
-                        <span class="blue-boldline"></span>
-                        <p>Cliiimb, is a movement based on our belief that a community’s future sustainability will emerge by leveraging the power of our collective efforts to develop, empower, support and guide our young people. </p>
-                        <div class="about-btn">
-                            <span>
-                              <button class="blue-btn" >
-                                  LEARN MORE
-                              </button>
-                            </span>
-                            <span>
-                              <button class="yellow-btn">
-                                WATCH FILM  
-                              </button>
-                            </span>
-                          </div>
-                      </div>
-                  </ion-col>
-
-                  <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-                      <div class="whitebox">
-                          <h3 class="yellow-text">Become a Contributer</h3>
-                          <span class="yellow-boldline"></span>
-                          <p>This document is designed to inform and manage the expectations of the people who submit contributions to Cliiimb.  There’s a lengthy, robust, and methodical process for how we handle contributor submissions, and that process is detailed below.  </p>
-                          <span>
-                            <button class="yellow-btn">
-                              REGISTER NOW
-                            </button>
-                          </span>
-                      </div>
-                  </ion-col>
-
-                  <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-                      <div class="whitebox div-height">
-                          <h3 class="red-text">How We Protect You</h3>
-                          <span class="red-boldline"></span>
-                          <p>Message to parents of how we will protect them - The flow of the system of how it will protect and manage younger members under the age of 18 </p>
-                      </div>
-                  </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-
-        <ion-list>
-            <ion-item>
-              <ion-label>Categories</ion-label>
-              <ion-select>
-                <ion-option value="all" selected="true">All</ion-option>
-                <ion-option value="technology">Technology</ion-option>
-                <ion-option value="inspirational">Inspirational Messages</ion-option>
-                <ion-option value="business">Business Services</ion-option>
-                <ion-option value="education">Education</ion-option>
-                <ion-option value="health">Health, Pharmaceuticals, And Biotech</ion-option>
-                <ion-option value="software">Software And Internet</ion-option>
-                <ion-option value="marketing">Marketing & Advertising</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-
-          <ion-grid>
-              <ion-row>
-                <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-                    <ion-card>
-                        <ion-card-header>
-                          <ion-list>
-                            <ion-item no-lines>
-                              <ion-avatar item-start>
-                                <img src="../../assets/imgs/avatar.png">
-                              </ion-avatar>
-                              <div center class="slider-header">
-                                <h2>John Doe</h2>
-                                <p><a href="#">Cliiimb</a>(judicial system)</p>
-                              </div>
-                            </ion-item>
-                            
-                            <ion-item no-lines class="action-icons b-bot">
-                              <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                              <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                              <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-                            </ion-item>
-                   
-                          </ion-list>
-                        </ion-card-header>
-                        <img src="../../assets/imgs/avatar.png"/>
-                        <ion-card-content>
-                            <ion-item>
-                            <span item-start>some text here </span>
-                            <span item-end><ion-icon name="ios-eye"></ion-icon>4 Views</span>
-                          </ion-item>
-                          <ion-item>
-                            <h4 class="">Cliiimb Executive Team Video Shoot</h4>
-                          </ion-item>
-                          <ion-item>
-                              <p>Cliiimb Video Shoot Overview<br>
-                                Shoot Date 09.28.2018<br>
-                                Shoot Location
-                          </ion-item>
-                          <a href="#">View Details</a>
-                        </ion-card-content>
-                        
-                        <ion-row>
-                          <ion-col class="makeCenter">
-                            <button ion-button icon-start clear small>
-                                <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                              <div></div>
-                            </button>
-                            <!-- <button ion-button icon-start clear small>
-                                <ion-icon name="heart"></ion-icon>  
-                              <div></div>
-                            </button> -->
-                          </ion-col>
-                          <ion-col class="makeCenter">
-                              <button ion-button icon-start clear small>
-                                  <ion-icon name="text"></ion-icon>
-                                  <div></div>
-                                </button>
-                          </ion-col>
-                        </ion-row>
-                    </ion-card>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          <div class="makeCenter signup-txt">
-            <a href="">Don't have and account? Sign Up Here</a>
+<ion-content padding>
+  <div class="home-content makeCenter">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+          <h1>BE
+            <span class="typer" id="main" data-words="COACHABLE, HUMBLE, RESILIENT, UNIQUE, VIBRANT, FOCUSED, VICTORIOUS, CREATIVE, PREPARED, AMBITIOUS, INNOVATIVE, COMMITTED, YOURSELF, ABLE, GREATNESS, AMAZING, LEADERS, THE CHANGE, STRONG, HEALTHY, HAPPY, POWERFUL, GENIUS, MOTIVATED, A GAMECHANGER, INSPIRED, THE LIGHT, THE FUTURE, REAL"
+              data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
+          </h1>
+          <p>
+            <span class="blue-boldline"></span>
+            <span class="yellow-boldline"></span>
+            <span class="red-boldline"></span>
+          </p>
+          <p class="p1">
+            Impacting Young People to Be the Best Version of Themselves
+          </p>
+          <div class="cover-btn">
+            <span>
+              <button class="red-btn">
+                Sign Up
+              </button>
+            </span>
+            <span>
+              <button class="blue-btn">
+                Events
+              </button>
+            </span>
           </div>
-  </ion-content>
+        </ion-col>
+
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+          <div class="whitebox">
+            <h3 class="blue-text">About Cliiimb</h3>
+            <span class="blue-boldline"></span>
+            <p>Cliiimb, is a movement based on our belief that a community’s future sustainability will emerge by
+              leveraging the power of our collective efforts to develop, empower, support and guide our young people.
+            </p>
+            <div class="about-btn">
+              <span>
+                <button class="blue-btn">
+                  LEARN MORE
+                </button>
+              </span>
+              <span>
+                <button class="yellow-btn">
+                  WATCH FILM
+                </button>
+              </span>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+          <div class="whitebox">
+            <h3 class="yellow-text">Become a Contributer</h3>
+            <span class="yellow-boldline"></span>
+            <p>This document is designed to inform and manage the expectations of the people who submit contributions
+              to Cliiimb. There’s a lengthy, robust, and methodical process for how we handle contributor submissions,
+              and that process is detailed below. </p>
+            <span>
+              <button class="yellow-btn">
+                REGISTER NOW
+              </button>
+            </span>
+          </div>
+        </ion-col>
+
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+          <div class="whitebox div-height">
+            <h3 class="red-text">How We Protect You</h3>
+            <span class="red-boldline"></span>
+            <p>Message to parents of how we will protect them - The flow of the system of how it will protect and
+              manage younger members under the age of 18 </p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-list class="loader makeCenter" *ngIf="loading">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </ion-list>
+  <ion-list class="loader makeCenter" *ngIf="!loading && !sortedContributions.length">
+    <p>No Contributions Exist</p>
+  </ion-list>
+  <ion-list *ngIf="!loading && sortedContributions.length">
+    <h2 class="primary-heading mt15 ">My Contributions</h2>
+    <ion-item>
+      <ion-label>Categories</ion-label>
+      <ion-select [(ngModel)]="maincategory" (ionChange)="sortContributions(maincategory)">
+        <ion-option *ngFor="let catName of categories" [value]="catName.name">{{catName.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedContributions">
+        <ion-card>
+
+          <ion-item>
+            <ion-avatar item-start>
+              <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
+              <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
+            </ion-avatar>
+            <h2>{{contribution.UserFullName}}</h2>
+            <p>{{contribution.bio}}</p>
+          </ion-item>
+          <!-- <ion-item class="action-icons"> 
+            <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+            <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+            <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
   
+          </ion-item> -->
+
+          <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
+          <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
+
+          <ion-card-content>
+
+
+            <ion-item>
+              <h4>{{contribution.Title}}</h4>
+              <span item-end>
+                <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
+              </span>
+            </ion-item>
+
+            <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
+            <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+
+          </ion-card-content>
+          <ion-row>
+
+            <ion-col class="makeCenter">
+              <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
+                <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                <div>{{contribution.Likes}} Likes</div>
+              </button>
+              <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
+                <ion-icon name="heart"></ion-icon>
+                <div>{{contribution.Likes}} Unlike</div>
+              </button>
+            </ion-col>
+            <ion-col class="makeCenter">
+              <button ion-button icon-start clear small>
+                <ion-icon name="text"></ion-icon>
+                <div *ngIf="contribution.social">{{contribution.social.Comments.length}}Comments</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="makeCenter signup-txt">
+    <a href="">Don't have and account? Sign Up Here</a>
+  </div>
+</ion-content>
