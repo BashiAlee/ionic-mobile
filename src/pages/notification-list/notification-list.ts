@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-import { App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
-import { NotificationListPage } from '../../pages/notification-list/notification-list';
-
+import { App } from 'ionic-angular';
 /**
- * Generated class for the NotificationPopoverComponent component.
+ * Generated class for the NotificationListPage page.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
+
+@IonicPage()
 @Component({
-  selector: 'notification-popover',
-  templateUrl: 'notification-popover.html'
+  selector: 'page-notification-list',
+  templateUrl: 'notification-list.html',
 })
-export class NotificationPopoverComponent {
+export class NotificationListPage {
 
   text: string;
   localData: any;
@@ -27,14 +28,12 @@ export class NotificationPopoverComponent {
     public appCtrl: App
 
   ) {
-  
     this.localData = this.authService.getCurrentUser();
     this.user = this.authService.getCurrentUser();
     this.getAllNotifications();
   }
-
-  viewAllNotifications(){
-    this.appCtrl.getRootNav().setRoot(NotificationListPage)
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NotificationListPage');
   }
   getAllNotifications() {
     this.loading = true;
@@ -65,5 +64,4 @@ export class NotificationPopoverComponent {
       }
     );
   }
-
 }

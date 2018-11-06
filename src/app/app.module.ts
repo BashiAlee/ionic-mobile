@@ -45,10 +45,11 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
+import { NotificationListPage } from '../pages/notification-list/notification-list';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { PreferencesProvider } from '../providers/preferences/preferences';
 import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
-import { AlertModule } from 'ngx-bootstrap';
+import { AlertModule,TooltipModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { AlertModule } from 'ngx-bootstrap';
     PreferencesPage,
     MessagePage,
     MessageListPage,
+    NotificationListPage,
     SearchContributionPage,
     ForgotPasswordPage
 
@@ -90,7 +92,7 @@ import { AlertModule } from 'ngx-bootstrap';
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    [AlertModule.forRoot()]
+    [AlertModule.forRoot(),TooltipModule.forRoot()]
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -124,6 +126,7 @@ import { AlertModule } from 'ngx-bootstrap';
     PreferencesPage,
     MessagePage,
     MessageListPage,
+    NotificationListPage,
     SearchContributionPage,
     ForgotPasswordPage
   ],

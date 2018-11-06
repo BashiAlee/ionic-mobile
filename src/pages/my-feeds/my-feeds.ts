@@ -62,12 +62,12 @@ export class MyFeedsPage {
   }
 
   getSuggestions(data) {
+    this.loaders.suggestionLoader = true;
     this.userService.getSuggestedPreferences(data)
     .subscribe(data => {
       if(data.status) {
         data.data.forEach(value => {
           if(value.AdminStatus) {
-           
             this.getLikesAndComments(value._id,value);
             this.suggestedContribution.push(value);
             this.loaders.suggestionLoader = false;
