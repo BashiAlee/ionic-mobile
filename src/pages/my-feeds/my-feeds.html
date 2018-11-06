@@ -53,10 +53,9 @@
                       <ion-card-content>
                         <h4>{{contribution.Title}}</h4>
                         <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-              
-              
-                        <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-                     
+                        <div class="red-text">
+                          <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+                        </div>
                     </ion-card-content>
                       <ion-row>
                          
@@ -77,7 +76,6 @@
                                 </button>
                           </ion-col>
                         </ion-row>
-                    
                     </ion-card>
               </ion-col>
 
@@ -116,10 +114,9 @@
             <ion-card-content>
               <h4>{{contribution.Title}}</h4>
               <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-    
-    
-              <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-           
+              <div class="red-text">
+                <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+              </div>
           </ion-card-content>
             <ion-row>
                

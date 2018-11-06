@@ -12,6 +12,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { PreferencesProvider } from '../../providers/preferences/preferences';
+import { MyContributionPage } from '../../pages/my-contribution/my-contribution';
 /**
  * Generated class for the CreateContributionPage page.
  *
@@ -101,6 +102,7 @@ export class CreateContributionPage {
   }
   category(categorydata){
    this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
+  
   }
   subCategory(subCategorydata){
     console.log(subCategorydata)
@@ -278,6 +280,8 @@ export class CreateContributionPage {
         position: 'bottom'
       });
       toast.present();
+      this.navCtrl.setRoot(MyContributionPage);
+
     });
     console.log("FFF", this.contributionForm.value)
 

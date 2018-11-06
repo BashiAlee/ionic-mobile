@@ -6,14 +6,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
+// import { SignupPage } from '../pages/signup/signup';
 import { EditUserPage } from '../pages/user/edit-user/edit-user';
 import { CreateContributionPage } from '../pages/create-contribution/create-contribution';
-import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
+// import { UserProfilePage } from '../pages/user-profile/user-profile';
+// import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
 
-import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
+// import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
 
 import { MentorPage } from '../pages/mentor/mentor';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
@@ -27,9 +27,9 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
 import { SearchEventsPage } from '../pages/search-events/search-events';
 import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
-import { MessagePage } from '../pages/message/message';
-import { MessageListPage } from '../pages/message-list/message-list';
-import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+// import { MessagePage } from '../pages/message/message';
+// import { MessageListPage } from '../pages/message-list/message-list';
+// import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 
 @Component({
@@ -39,8 +39,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreateContributionPage;
-
+  rootPage: any = LoginPage;
   // rootPage: any = MessagePage;
 
   pages: Array<{title: string, component: any}>;
