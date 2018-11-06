@@ -11,8 +11,13 @@
       <div class="b-bot">
         <h2 class="primary-heading">Preferences</h2>
       </div>
-  
       <h2 class="xlh18">Selected preferences</h2>
+      <div class="loader makeCenter" *ngIf="loader">
+          <ion-spinner name="bubbles"></ion-spinner>
+      </div>
+      <div class="not-found makeCenter" *ngIf="!userPreferences && !userPreferences.length && !loader">
+        <p>Not Found</p>
+      </div>
       <div class="b-bot btn-align" >
         <label *ngFor="let pref of userPreferences; let i = index" class="red-btn" full>
           {{pref.SubCategory}}

@@ -1,0 +1,150 @@
+
+<header></header>
+
+<ion-content padding>
+    <h2 class="primary-heading mt15 ">Notifications</h2>
+    <ion-list *ngIf="notifications">
+      <div *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
+          <ion-item *ngFor="let comments of notifications.ContributionComments">
+            <ion-avatar item-start>
+                <img [src]="comments.CommentUserProfilePicture">
+              </ion-avatar>
+              <h2>{{comments.CommentUserName}}</h2>
+              <p>commented on Your Contribution</p>
+            </ion-item>
+      </div>
+      <div *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length">
+        <ion-item *ngFor="let likes of notifications.ContributionLikes">
+          <ion-avatar item-start>
+            <img [src]="likes.LikeUserProfilePicture">
+          </ion-avatar>
+          <h2>{{likes.LikeUserName}}</h2>
+          <p>Liked Your Contribution</p>
+          </ion-item>
+    </div>
+    
+    
+    
+    <div *ngIf="notifications.Followers && notifications.Followers.length">
+      <ion-item *ngFor="let follower of notifications.Followers">
+        <ion-avatar item-start>
+          <img [src]="follower.UserFollowerProfilePicture">
+        </ion-avatar>
+        <h2>{{follower.UserFollowerName}}</h2>
+        <p>Started following you</p>
+        </ion-item>
+    </div>
+    <div *ngIf="notifications.MentorCreateContribution && notifications.MentorCreateContribution.length">
+      <ion-item *ngFor="let mentor of notifications.MentorCreateContribution">
+        <ion-avatar item-start>
+          <img [src]="mentor.MentorProfilePicture">
+        </ion-avatar>
+        <h2>{{mentor.MentorUserName}}</h2>
+        <p>has created a new contribution {{mentor.ContributionTitle}}</p>
+        </ion-item>
+    </div>
+    <div *ngIf="notifications.ChildCreateContribution && notifications.ChildCreateContribution.length">
+      <ion-item *ngFor="let child of notifications.ChildCreateContribution">
+        <ion-avatar item-start>
+          <img [src]="child.ChildProfilePicture">
+        </ion-avatar>
+        <h2>{{child.ChildUserName}}</h2>
+        <p>Your child has created a new contribution {{child.ContributionTitle}}</p>
+        </ion-item>
+    </div>
+    
+    
+    <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
+      <ion-item *ngFor="let child of notifications.MentorAprovel">
+        <ion-avatar item-start>
+          <img [src]="child.MentorProfilePicture">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Your parent has approved your request to follow {{child.MentorUserName}</p>
+        </ion-item>
+    </div>
+    
+    
+    <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
+      <ion-item *ngFor="let child of notifications.MentorAprovel">
+        <ion-avatar item-start>
+          <img [src]="child.MentorProfilePicture">
+        </ion-avatar>
+       <!-- <h2>{{comments.CommentUserName}}</h2> -->
+       <p>Your parent has approved your request to message {{child.MentorUserName}</p>
+      </ion-item>
+    </div>
+    
+    
+    <div *ngIf="notifications.AdminAproveContribution && notifications.AdminAproveContribution.length">
+      <ion-item *ngFor="let admin of notifications.AdminAproveContribution">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/admin_profile.jpg">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Admin has accepted your {{admin.ContributionType}}</p>
+        </ion-item>
+    </div>
+    
+    
+    <div *ngIf="notifications.ChildSubmitMentorForm && notifications.ChildSubmitMentorForm.length">
+      <ion-item *ngFor="let child of notifications.ChildSubmitMentorForm">
+        <ion-avatar item-start>
+          <img [src]="child.ChildProfilePicture">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Your child({{child.ChildUserName}}) has submitted a mentor form</p>
+        </ion-item>
+    </div>
+    
+    
+    <div *ngIf="notifications.AdminMentorRequest">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/avatar.png">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Admin has approved mentor Request</p>
+        </ion-item>
+    </div>
+    
+    <div *ngIf="notifications.AdminMentorRequestReject">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/avatar.png">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Admin has rejected mentor Request</p>
+        </ion-item>
+    </div>
+    
+    <div *ngIf="notifications.ParentMentorRequest">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/avatar.png">
+          </ion-avatar>
+          <!-- <h2>{{comments.CommentUserName}}</h2> -->
+          <p>Parent has accepted your mentor request</p>
+          </ion-item>
+      </div>
+    
+      <div *ngIf="notifications.ParentMentorRequestReject">
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="../../assets/imgs/avatar.png">
+            </ion-avatar>
+            <!-- <h2>{{comments.CommentUserName}}</h2> -->
+            <p>Parent has rejected mentor Request</p>
+            </ion-item>
+        </div>
+      </ion-list>
+    
+      <ion-list *ngIf="!notifications">
+        <p>No Notfications</p>
+      </ion-list>
+    
+      <ion-list *ngIf="loading">
+          <p>Loading...</p>
+        </ion-list>
+      
+</ion-content>

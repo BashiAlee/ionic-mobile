@@ -20,7 +20,7 @@ import { _,uniqBy,uniq} from 'lodash';
 export class PreferencesPage {
   preferencesData: any;
   preferencesDataPost: any=[];
-  loading: any;
+  loader: any;
   subCategory:any;
   user:any;
   userPreferences:any=[];
@@ -40,6 +40,7 @@ export class PreferencesPage {
     var data = {
       userid:this.user._id
     }
+    this.loader= true;
     this.getUserPreferences(data)
   }
   change(val) {
@@ -71,29 +72,28 @@ export class PreferencesPage {
     // this.preferencesDataPost = uniqWith(this.preferencesDataPost,this.userPreferences)
   }
   getUserPreferences(id){
-    this.loading = true;
     this.preferences.getUserPreferences(id)
     .subscribe( data => {
       if(data.status) {
         this.userPreferences = data.data.UserPreferences;
-        this.loading = false;
-      } else if (!data.status) {
+        this.loader = false;
+  } else if (!data.status) {
         this.userPreferences = null;
-        this.loading = false;
+        this.loader = false;
       }
     })
   }
 
   getPreferences(){
-    this.loading = true;
+    this.loader = true;
     this.preferences.getAllPreferences()
     .subscribe( data => {
       if(data.status) {
         this.preferencesData = data.data;
-        this.loading = false;
+        this.loader = false;
       } else if (!data.status) {
         this.preferencesData = null;
-        this.loading = false;
+        this.loader = false;
       }
     })
   }
@@ -105,16 +105,16 @@ export class PreferencesPage {
       userid: this.user._id,
       userpreferences:this.userPreferences
       }
-      this.loading = true;
+      this.loader = true;
       this.preferences.addUserPreferences(data)
       .subscribe( data => {
         console.log(data)
         if(data.status) {
-          this.loading = false;
+          this.loader = false;
           this.navCtrl.setRoot(AboutMePage)
         } else if (!data.status) {
           this.preferencesData = null;
-          this.loading = false;
+          this.loader = false;
         }
       })
   }

@@ -23,7 +23,7 @@
             Impacting Young People to Be the Best Version of Themselves
           </p>
           <div class="cover-btn">
-            <span>
+            <span *ngIf="!user">
               <button class="red-btn">
                 Sign Up
               </button>
@@ -65,7 +65,7 @@
             <p>This document is designed to inform and manage the expectations of the people who submit contributions
               to Cliiimb. There’s a lengthy, robust, and methodical process for how we handle contributor submissions,
               and that process is detailed below. </p>
-            <span>
+            <span  *ngIf="!user">
               <button class="yellow-btn">
                 REGISTER NOW
               </button>
@@ -173,7 +173,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <div class="makeCenter signup-txt">
+  <div class="makeCenter signup-txt"  *ngIf="!user">
     <a href="">Don't have and account? Sign Up Here</a>
   </div>
 </ion-content>

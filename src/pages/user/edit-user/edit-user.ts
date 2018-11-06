@@ -13,6 +13,8 @@ import { AboutMePage } from '../about-me/about-me';
 // import { Base64 } from '@ionic-native/base64';
 import { HttpClient } from '@angular/common/http';
 import { PreferencesPage } from '../../../pages/preferences/preferences';
+import { AlertController } from 'ionic-angular';
+import { LoadingController} from 'ionic-angular';
 
 declare var window: any
 
@@ -48,8 +50,11 @@ export class EditUserPage {
     private authService: AuthenticationProvider,
     private formBuilder: FormBuilder,
     private userService: UserProvider,
+    public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    public alertCtrl: AlertController,
+
   ) {
     if(this.authService.isLoggedIn) {
       this.user = this.authService.getCurrentUser();
@@ -89,8 +94,6 @@ export class EditUserPage {
   }
 
   ionViewDidLoad() {
-    console.log('DDDD', ENV)
-    console.log('ionViewDidLoad EditUserPage');
 
   }
   ionViewCanEnter(){
@@ -106,10 +109,14 @@ export class EditUserPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-    this.camera.getPicture(options).then((imageData) => {
-
+  
+       this.camera.getPicture(options).then((imageData) => {
+       let loader =  this.loadingCtrl.create({
+        content: 'Please wait...',
+      });
+      loader.present();
       this.profileImage = 'data:image/jpeg;base64,' + imageData;
-    
+      loader.dismiss();
       this.uploadCroppedImage(this.profileImage)
      }, (err) => {
 
@@ -124,11 +131,15 @@ export class EditUserPage {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
       }
-    this.camera.getPicture(options).then((result) => {
-   
-      this.profileImage = 'data:image/jpeg;base64,' + result;
 
+      this.camera.getPicture(options).then((result) => {
+      let loader =  this.loadingCtrl.create({
+        content: 'Please wait...',
+      });
+      loader.present();
+      this.profileImage = 'data:image/jpeg;base64,' + result;
       this.uploadCroppedImage(this.profileImage)
+      loader.dismiss();
     }, (err) => { });
   }
   openActionSheet() {
@@ -404,5 +415,11 @@ export class EditUserPage {
     };
   }
   
-  
+  showErrorAlert(message) {
+    const alert = this.alertCtrl.create({
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
