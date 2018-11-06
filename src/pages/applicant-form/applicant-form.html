@@ -1,5 +1,17 @@
 <header></header>
-<ion-content padding  [formGroup]="mentor">
+<ion-content *ngIf="mentorStatus">
+    <div class="makeCenter mt50 completed-check">
+      <img src="../../assets/imgs/app-logo.svg" alt="" srcset="">
+        <div class="check-click">
+            <span class="fa fa-check"></span>
+         </div>
+         <h4>Great! You have already Submitted the Form</h4>
+         <p>Your form will be reviewed by your Parent and Admin.</p>
+    </div>
+</ion-content>
+
+
+<ion-content padding  [formGroup]="mentor" *ngIf="!mentorStatus">
     <h2 class="primary-heading mt15 ">Become a Mentor</h2>
   <ion-grid>
     <ion-row>

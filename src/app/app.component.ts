@@ -40,6 +40,10 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 62ab58ca880218ce14d65e6ed45144a1224df26f
   // rootPage: any = MessagePage;
 
   pages: Array<{title: string, component: any}>;
@@ -77,6 +81,7 @@ export class MyApp {
 
   }
 
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -84,11 +89,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    if(this.authService.isLoggedIn()) {
-      var id = this.authService.getCurrentUser()._id;
-      this.getMentorStatus(id)
-  
-    }
+
 
   }
 

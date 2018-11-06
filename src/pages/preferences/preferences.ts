@@ -43,26 +43,31 @@ export class PreferencesPage {
     this.loader= true;
     this.getUserPreferences(data)
   }
-  change($event) {
-    this.subCategory=$event.SubCategories
+  change(val) {
+    // console.log("DFDDD", val, this.preferencesData)
+
+    this.subCategory = this.preferencesData.filter(cat => cat.Category == val)[0];
+    this.subCategory = this.subCategory.SubCategories;
   }
 
   selectSubCategory(subcat) {
+    console.log("DDDD", subcat)
     this.selectedPreferences= [];
     if(subcat && subcat.length) {
       subcat.forEach(subcat => {
-        this.selectedPreferences.push({SubCategory: subcat})
+        this.userPreferences.push({SubCategory: subcat})
       });
     }
+
     // console.log(this.selectedPreferences)
     // console.log(this.userPreferences)
-    this.selectedPreferences=this.selectedPreferences.concat(this.userPreferences)
-    // this.preferencesDataPost = uniqBy(this.selectedPreferences)
-    uniqBy(this.selectedPreferences, function (e) {
-    console.log(e)
-    return e;
+    // this.selectedPreferences=this.selectedPreferences.concat(this.userPreferences)
+    // // this.preferencesDataPost = uniqBy(this.selectedPreferences)
+    // uniqBy(this.selectedPreferences, function (e) {
+    // console.log(e)
+    // return e;
 
-    });
+    // });
     // this.preferencesDataPost=this.preferencesDataPost.concat(this.userPreferences)
     // this.preferencesDataPost = uniqWith(this.preferencesDataPost,this.userPreferences)
   }
@@ -92,11 +97,13 @@ export class PreferencesPage {
       }
     })
   }
-
+  removePreference(index) {
+    this.userPreferences.splice(index, 1);
+  }
   savePreferences(){
     var data ={
       userid: this.user._id,
-      userpreferences:this.preferencesDataPost
+      userpreferences:this.userPreferences
       }
       this.loader = true;
       this.preferences.addUserPreferences(data)
