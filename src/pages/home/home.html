@@ -113,9 +113,16 @@
             <h2>{{contribution.UserFullName}}</h2>
             <p>{{contribution.bio}}</p>
           </ion-item>
-          <button class="follow-btn" ion-button small color="secondary" icon-start>
-            Following
+          <button class="follow-btn blue-icon" ion-button small icon-start *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
+            Unfollow
           </button> 
+          <button class="follow-btn red-icon" ion-button small icon-start *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
+              Follow
+            </button> 
+
+            <button class="follow-btn orange-icon" ion-button small icon-start *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
+                Pending
+              </button> 
           <!-- <ion-item class="action-icons"> 
             <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
             <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>

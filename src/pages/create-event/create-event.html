@@ -15,11 +15,11 @@
     <ion-segment-button value="content">
       Create Content
     </ion-segment-button>
-    <ion-segment-button value="cover-image">
+    <ion-segment-button value="cover-image" [disabled]="(!contributionForm.controls['title'].value || !contributionForm.controls['contributiontext'].value) && (contributionForm.controls['title'].invalid || contributionForm.controls['contributiontext'].invalid)">
       Cover Image
     </ion-segment-button>
 
-    <ion-segment-button value="submit">
+    <ion-segment-button value="submit" [disabled]="contributionForm.controls['coverpage'].value">
       Submit
     </ion-segment-button>
   </ion-segment>

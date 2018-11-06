@@ -35,6 +35,7 @@ export class MentorPage {
   }
 
   getFollowerList(id) {
+    this.followersList = [];
     this.loader = true;
     this.userService.getFollower(id)
       .subscribe(
@@ -64,6 +65,24 @@ export class MentorPage {
         this.loader = false;
       }
     })
+  }
+
+  unFollowMentor(id) {
+
+    var data = {
+
+      userid: this.user._id,
+      follower: [{
+        followersid: id
+      }]
+
+    }
+    this.userService.unfollowMentor(data)
+      .subscribe(
+        data => {
+          this.getFollowerList(this.user._id)
+        },
+        error => {});
   }
 
 }

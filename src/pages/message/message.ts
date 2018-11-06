@@ -78,7 +78,7 @@ export class MessagePage {
     console.log("this is data",data)
     if (data.status) {
           this.loading = false;
-          this.getMessages(this.user._id)
+          this.getMessages(this.id)
         } else if (!data.status) {
           this.messages = null;
         }

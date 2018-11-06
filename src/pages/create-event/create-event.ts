@@ -1,5 +1,5 @@
 import { Component,ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, PopoverController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, PopoverController, ToastController, LoadingController } from 'ionic-angular';
 import { Content } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
@@ -41,6 +41,7 @@ export class CreateEventPage {
     public userService: UserProvider,
     public preferences: PreferencesProvider,
     public camera: Camera,
+    public loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     public contributionService: ContributionsProvider,
     public formBuilder: FormBuilder,
@@ -235,7 +236,10 @@ export class CreateEventPage {
   }
 
   saveEvent() {
-
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
     const control = < FormArray > this.contributionForm.controls['images'];
     this.imageStatus.forEach(status => {
       const addrCtrl = this.formBuilder.group({
@@ -257,7 +261,7 @@ export class CreateEventPage {
         duration: 3000,
         position: 'bottom'
       });
-    
+      loading.dismiss();
       toast.present();
     })
   }

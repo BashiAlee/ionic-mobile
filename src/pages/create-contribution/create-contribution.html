@@ -15,13 +15,13 @@
     <ion-segment-button value="content">
       Create Content
     </ion-segment-button>
-    <ion-segment-button value="cover-image">
-      Cover Image
-    </ion-segment-button>
-
-    <ion-segment-button value="submit">
-      Submit
-    </ion-segment-button>
+    <ion-segment-button value="cover-image" [disabled]="(!contributionForm.controls['title'].value || !contributionForm.controls['contributiontext'].value) && (contributionForm.controls['title'].invalid || contributionForm.controls['contributiontext'].invalid)">
+        Cover Image
+      </ion-segment-button>
+  
+      <ion-segment-button value="submit" [disabled]="contributionForm.controls['coverpage'].value">
+        Submit
+      </ion-segment-button>
   </ion-segment>
   <div [formGroup]="contributionForm">
   <div [ngSwitch]="contribution_action">

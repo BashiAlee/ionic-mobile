@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { UserProvider } from '../../providers/user/user';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
@@ -56,7 +56,8 @@ export class ContributionDetailsPage {
     public contributionService: ContributionsProvider,
     public userService: UserProvider,
     public authService: AuthenticationProvider,
-    public domSanitizer: DomSanitizer
+    public domSanitizer: DomSanitizer,
+    public toastCtrl: ToastController
   ) {
     this.modalArray = [".text-modal"];
     this.id = this.navParams.get('id')
@@ -359,6 +360,13 @@ deleteComment(commentID, id) {
   this.contributionService.deleteComment(data)
   .subscribe( data => {
     if(data) {
+      let toast = this.toastCtrl.create({
+        message: 'Comment deleted Successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+    
+      toast.present();
       // toastr.success('Comment Deleted','Success')
       this.getLikesAndComments(this.contributionDetails._id, this.contributionDetails);
     } else {

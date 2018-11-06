@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, LoadingController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { UserPopoverComponent } from '../../components/user-popover/user-popover';
 import { MessagePopoverComponent } from '../../components/message-popover/message-popover';
@@ -50,6 +50,7 @@ export class CreateContributionPage {
     public camera: Camera,
     private toastCtrl: ToastController,
     public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
     public contributionService: ContributionsProvider,
     public popoverCtrl: PopoverController) { 
       this.contribution_action  = 'content';
@@ -258,7 +259,11 @@ export class CreateContributionPage {
   }
 
   saveContribution() {
-
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
     const control = < FormArray > this.contributionForm.controls['images'];
     this.imageStatus.forEach(status => {
       const addrCtrl = this.formBuilder.group({
@@ -274,6 +279,7 @@ export class CreateContributionPage {
     });
     this.contributionService.createContribution(this.contributionForm.value)
     .subscribe( data => {
+      loading.dismiss();
       let toast = this.toastCtrl.create({
         message: 'Contribution Created successfully',
         duration: 3000,
