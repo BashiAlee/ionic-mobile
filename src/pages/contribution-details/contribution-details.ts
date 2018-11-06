@@ -197,9 +197,9 @@ export class ContributionDetailsPage {
   }
 
   getFollowers(id) {
-    let data = {userid: id}
+    // let data = {userid: id}
     return new Promise((resolve, reject) => {
-      this.userService.getFollower(data)
+      this.userService.getFollower(id)
       .subscribe(data => {
        
         if(data.status) {

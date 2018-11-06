@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import * as _ from 'lodash';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
+
 
 
 
@@ -35,7 +37,8 @@ export class HomePage {
     public navParams: NavParams,
     public userService: UserProvider,
     public authService: AuthenticationProvider,
-    public contributionService: ContributionsProvider
+    public contributionService: ContributionsProvider,
+    public toastCtrl: ToastController
   ) {
     this.user = this.authService.getCurrentUser();
 
@@ -96,14 +99,14 @@ export class HomePage {
       
 
               
-                
+                console.log("FFFFF", value)
                 // value.ModalValue = this.modalArray;
                 // this.modalArray = [".text-modal"];
 
                 this.contributionList.push(value)
                 // this.isViewing = false;
                 
-                console.log(this.categories)
+                // console.log(this.contributionList)
 
               }
             });
@@ -136,9 +139,8 @@ export class HomePage {
   }
 
   getFollowerList(id) {
-    let data = {userid: id}
     return new Promise((resolve, reject) => {
-      this.userService.getFollower(data)
+      this.userService.getFollower(id)
       .subscribe(data => {
        
         if(data.status) {
@@ -259,5 +261,56 @@ getAllCommentsAndLikes(id, value) {
       this.sortedContributions =  this.contributionList.filter(contribution => contribution.MainCategory == value);
       console.log("DDDD", this.sortedContributions)
     }
+  }
+
+  addMentor(id,age) {
+    if(age < 18) {
+      let toast = this.toastCtrl.create({
+        message: 'Your Request for approval has been sent to your parent',
+        duration: 3000,
+        position: 'bottom'
+      });
+    
+      toast.present();
+      // toastr.success('Your Request for approval has been sent to your parent','Success')
+    }
+    var data = {
+
+      userid: this.user._id,
+      follower: [{
+        followersid: id
+      }],
+      userage: age
+
+    }
+    this.userService.addmentor(data)
+      .subscribe(
+        data => {
+
+          // this.getFollowerList();
+        },
+        error => {});
+  }
+
+  unFollowMentor(id) {
+
+    var data = {
+
+      userid: this.user._id,
+      follower: [{
+        followersid: id
+      }]
+
+    }
+    this.userService.unfollowMentor(data)
+      .subscribe(
+        data => {
+
+        },
+        error => {});
+  }
+
+  openUserProfile(UserID) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: UserID})
   }
 }

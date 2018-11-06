@@ -14,37 +14,35 @@
           <p>Filter the Events by Date, Location or Category</p>
         </div>
         <div class="container">
-          <ion-grid>
+          <ion-grid  *ngIf="event" [formGroup]="event">
             <ion-row>
                 <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Date</p>
                     <span class="event-icon"> <ion-icon name="ios-calendar"></ion-icon></span>
-                    <input type="date" value="" placeholder="" class="mt30 mb20" class="custom-input1"/>
+                    <input type="date" placeholder="" class="mt30 mb20" class="custom-input1" formControlName="date"/>
                   </ion-col>
       
                   <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Location</p>
                     <span class="event-icon"> <ion-icon name="ios-navigate"></ion-icon></span>
-                    <input type="text" value="" placeholder="Islamabad" class="mt30 mb20" class="custom-input1"/>
+                    <input type="text" placeholder="Islamabad" class="mt30 mb20" class="custom-input1" formControlName="location"/>
                   </ion-col>
       
                   <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4>
                     <p>Category</p>
                     <ion-list>
                         <ion-item class="custom-input">
-                          <ion-label class="red">Entertainment</ion-label>
-                          <ion-select>
-                            <ion-option value="nes">Abc</ion-option>
-                            <ion-option value="n64">xyz</ion-option>
-                            <ion-option value="ps">axsa</ion-option>
-                          </ion-select>
+                          <ion-label class="red">Category</ion-label>
+                          <ion-select formControlName="maincategory">
+                              <ion-option *ngFor="let list of namesList" [value]="list.name">{{list.name}}</ion-option>
+                            </ion-select>
                         </ion-item>
                       </ion-list>
                   </ion-col>
                   
                   <div class="btn-align">
                   <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
-                      <button class="red-btn">
+                      <button class="red-btn" [disabled]="event.invalid" (click)="(event.controls['date'].value ||event.controls['maincategory'].value || event.controls['location'].value)  && searchEvent()">
                           <ion-icon class="search" name="ios-search"></ion-icon>Search
                       </button>   
                   </ion-col>
@@ -56,74 +54,80 @@
       </ion-col>
     </ion-row>
     </ion-grid>
-
-    <ion-grid>
-        <h2 class="primary-heading mt15 ">Events</h2>
-        <ion-list>
-            <ion-item class="custom-input">
-              <ion-label>Chose Catigories</ion-label>
-              <ion-select>
-                <ion-option value="nes">NES</ion-option>
-                <ion-option value="n64">Nintendo64</ion-option>
-                <ion-option value="ps">PlayStation</ion-option>
-                <ion-option value="genesis">Sega Genesis</ion-option>
-                <ion-option value="saturn">Sega Saturn</ion-option>
-                <ion-option value="snes">SNES</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
+    <ion-list class="loader makeCenter" *ngIf="loading">
+        <ion-spinner name="bubbles"></ion-spinner>
+      </ion-list>
+      <ion-list class="loader makeCenter" *ngIf="!loading && !sortedEvents.length">
+        <p>No Events Exist</p>
+      </ion-list>
+      <ion-list *ngIf="!loading && sortedEvents.length">
+          <h2 class="primary-heading mt15 ">My Events</h2>
+          <ion-item>
+            <ion-label>Categories</ion-label>
+            <ion-select [(ngModel)]="maincategory" (ionChange)="sortEvents(maincategory)">
+              <ion-option *ngFor="let catName of categories" [value]="catName.name">{{catName.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+    
+      <ion-grid>
         <ion-row>
-          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-              <ion-card>
-                  <ion-card-header>
-                    <ion-list>
-                      <ion-item no-lines>
-                        <ion-avatar item-start>
-                          <img src="../../assets/imgs/avatar.png">
-                        </ion-avatar>
-                        <div center class="slider-header">
-                          <h2>John Doe</h2>
-                          <p><a href="#">Cliiimb</a>(judicial system)</p>
-                        </div>
-                        <button item-end class="follow-btn">Follow</button>
-                      </ion-item>
-          
-                      <ion-grid>
-                        <ion-row>
-                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                            <div class="event-details">
-                                <p class="details-icon"> <ion-icon class="icon" name="ios-navigate"></ion-icon>some text here</p>
-                                <p class="details-icon"> <ion-icon class="icon" name="ios-calendar"></ion-icon>some text here</p>
-                            </div>
-                          </ion-col>
-                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                            <ion-item no-lines class="action-icons b-bot">
-                              <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                              <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                              <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-                            </ion-item>
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-                    </ion-list>
-                  </ion-card-header>
-                  <img src="../../assets/imgs/avatar.png"/>
-                  <ion-card-content>
-                      <ion-item>
-                      <span item-start>some text here </span>
-                      <span item-end><ion-icon name="ios-eye"></ion-icon>4 Views</span>
-                    </ion-item>
-                    <ion-item>
-                      <h4 class="">Cliiimb Executive Team Video Shoot</h4>
-                    </ion-item>
-                    <ion-item>
-                        <p>Cliiimb Video Shoot Overview<br>
-                          Shoot Date 09.28.2018<br>
-                          Shoot Location
-                    </ion-item>
-                    <a href="#">View Details</a>
-                  </ion-card-content>
-              </ion-card>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedEvents">
+            <ion-card>
+    
+              <ion-item>
+                <ion-avatar item-start>
+                  <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
+                  <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
+                </ion-avatar>
+                <h2>{{contribution.UserFullName}}</h2>
+                <p>{{contribution.bio}}</p>
+              </ion-item>
+              <!-- <ion-item class="action-icons"> 
+                <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+                <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+                <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+      
+              </ion-item> -->
+    
+              <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
+              <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
+    
+              <ion-card-content>
+    
+    
+                <ion-item>
+                  <h4>{{contribution.Title}}</h4>
+                  <span item-end>
+                    <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
+                  </span>
+                </ion-item>
+    
+                <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
+                <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+    
+              </ion-card-content>
+              <ion-row>
+    
+                <ion-col class="makeCenter">
+                  <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
+                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                    <div>{{contribution.Likes}} Likes</div>
+                  </button>
+                  <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
+                    <ion-icon name="heart"></ion-icon>
+                    <div>{{contribution.Likes}} Unlike</div>
+                  </button>
+                </ion-col>
+                <ion-col class="makeCenter">
+                  <button ion-button icon-start clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}Comments</div>
+                  </button>
+                </ion-col>
+              </ion-row>
+    
+            </ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
