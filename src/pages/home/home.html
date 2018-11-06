@@ -105,7 +105,7 @@
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedContributions">
         <ion-card>
 
-          <ion-item (click)="openUserProfile(contribution.UserID)">
+          <ion-item>
             <ion-avatar item-start>
               <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
               <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
@@ -113,15 +113,9 @@
             <h2>{{contribution.UserFullName}}</h2>
             <p>{{contribution.bio}}</p>
           </ion-item>
-          <ion-chip color="secondary" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed" (click)="unFollowMentor(contribution.UserID)">
-              <ion-label color="dark">Unfollow</ion-label>
-            </ion-chip>
-            <ion-chip color="secondary" *ngIf="user && !contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'" (click)="addMentor(contribution.UserID, user.Age)">
-                <ion-label color="dark">Follow</ion-label>
-              </ion-chip>
-              <ion-chip color="danger" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
-                  <ion-label>Pending</ion-label>
-                </ion-chip>
+          <button class="follow-btn" ion-button small color="secondary" icon-start>
+            Following
+          </button> 
           <!-- <ion-item class="action-icons"> 
             <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
             <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
@@ -137,14 +131,16 @@
 
             <ion-item>
               <h4>{{contribution.Title}}</h4>
+               
               <span item-end>
                 <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
               </span>
             </ion-item>
 
             <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-            <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-
+            <div class="red-text">
+              <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+            </div>
           </ion-card-content>
           <ion-row>
 

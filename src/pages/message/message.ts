@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { UserProvider } from '../../providers/user/user';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,10 +26,8 @@ export class MessagePage {
   user: any;
 
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public userService: MessagesProvider,
-    public domSanitizer: DomSanitizer,
     public formBuilder: FormBuilder,
     public authService: AuthenticationProvider
   ) {
