@@ -39,7 +39,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreateContributionPage;
+  rootPage: any = LoginPage;
 
   // rootPage: any = MessagePage;
 
@@ -78,6 +78,7 @@ export class MyApp {
 
   }
 
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -85,11 +86,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    if(this.authService.isLoggedIn()) {
-      var id = this.authService.getCurrentUser()._id;
-      this.getMentorStatus(id)
-  
-    }
+
 
   }
 

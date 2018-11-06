@@ -16,7 +16,7 @@
       <div class="b-bot btn-align" >
         <label *ngFor="let pref of userPreferences; let i = index" class="red-btn" full>
           {{pref.SubCategory}}
-            <span class="ms"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
+            <span class="ms" (click)="removePreference(index)"><ion-icon ios="ios-close" md="md-close"></ion-icon></span>
         </label>
       </div>
 
@@ -28,8 +28,8 @@
                 <ion-item class="custom-input">
                   <ion-label class="pref-labl">Select Category</ion-label>
                   <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
-                  <ion-select [(ngModel)]="mainCategory" (cancel)="onCancel()" (ionChange)="change($event)">
-                    <ion-option *ngFor="let preferences of preferencesData; let i = index" [value]="preferences">{{preferences.Category}}</ion-option>
+                  <ion-select [(ngModel)]="mainCategory" (cancel)="onCancel()" (ionChange)="change(mainCategory)">
+                    <ion-option *ngFor="let preferences of preferencesData; let i = index" [value]="preferences.Category">{{preferences.Category}}</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -37,11 +37,11 @@
         <div class="select1">
             <h2 class="xlh18">Sub Category</h2>
             <ion-list>
-              <ion-item class="custom-input">
+              <ion-item class="custom-input" *ngIf="subCategory">
                 <ion-label class="pref-labl">Sub Category</ion-label>
                 <ion-icon class="arrow-left" name="ios-arrow-round-forward" md="md-arrow-round-forward"  item-left></ion-icon>
                 <ion-select [(ngModel)]="subCat" (cancel)="onCancel()" (ionChange)="selectSubCategory(subCat)" multiple="true">
-                  <ion-option *ngFor="let sub of subCategory; let i = index"[value]="subcat">{{sub.SubCategory}}</ion-option>
+                  <ion-option *ngFor="let subcat of subCategory; let i = index"[value]="subcat.SubCategory">{{subcat.SubCategory}}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list>

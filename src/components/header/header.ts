@@ -6,6 +6,7 @@ import { UserPopoverComponent } from '../user-popover/user-popover';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { SearchContributionPage } from '../../pages/search-contribution/search-contribution';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ParentProvider } from '../../providers/parent/parent';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -16,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'header',
   templateUrl: 'header.html',
-  providers: [AuthenticationProvider]
+  providers: [AuthenticationProvider, ParentProvider]
 })
 export class HeaderComponent {
 
@@ -27,9 +28,13 @@ export class HeaderComponent {
 
   constructor( public popoverCtrl: PopoverController,
     public navCtrl: NavController,
-  public authService: AuthenticationProvider
+  public authService: AuthenticationProvider,
+  public parentService: ParentProvider
   ) {
     this.user = this.authService.getCurrentUser();
+       
+    var id = this.user._id;
+    this.getMentorStatus(id)
     console.log('Hello HeaderComponent Component');
     this.text = 'Hello World';
   }
@@ -64,6 +69,16 @@ export class HeaderComponent {
 
   searchByKeyword(e) {
     this.navCtrl.setRoot(SearchContributionPage, {query: this.query})
+  }
+
+
+  getMentorStatus(id) {
+    this.parentService.getMentorFormStatus(id)
+    .subscribe((data)=>{
+      if(data.status) {
+        localStorage.setItem('mentorStatus',data.data.status);
+      }
+    })
   }
 
 }
