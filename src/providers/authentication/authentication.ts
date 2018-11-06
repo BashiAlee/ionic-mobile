@@ -48,7 +48,13 @@ export class AuthenticationProvider {
     }
   ));
   }
-
+  resetPassword(data) {
+    return this.http.post(this.apiURL + 'passwordupdate', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
   isLoggedIn() {
     return localStorage.getItem('isLoggedIn');
   }

@@ -51,10 +51,10 @@
 <ion-footer no-border>
   <ion-toolbar>
     <div class="typ-sect">
-          <div class="typing">
-              <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1"/>
+          <div class="typing" [formGroup]="messageForm">
+              <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1" formControlName="message"/>
           </div>
-          <label class="circle green-circle">
+          <label class="circle green-circle" (click)=sendMessage()>
             <p>
               <ion-icon name="md-send"></ion-icon>
             </p>

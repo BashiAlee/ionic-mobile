@@ -7,6 +7,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { EditUserPage } from '../user/edit-user/edit-user';
 import { AlertController } from 'ionic-angular';
 import { LoadingController,ModalController, Platform } from 'ionic-angular';
+import {ForgotPasswordPage} from'../forgot-password/forgot-password';
 
 /**
  * Generated class for the LoginPage page.
@@ -47,13 +48,6 @@ export class LoginPage {
   openSignupPage() {
     this.navCtrl.push(SignupPage);
   }
-  go() {
-    this.navCtrl.push(SignupPage);
-  }
-  // openModal(characterNum) {
-  //   let modal = this.modalCtrl.create(ModalContentPage, characterNum);
-  //   modal.present();
-  // }
   login() {
     let loader =  this.loadingCtrl.create({
       content: 'Please wait...',
@@ -73,7 +67,9 @@ export class LoginPage {
     );
     // this.navCtrl.setRoot(EditUserPage)
   }
-
+  forgot(){
+    this.navCtrl.setRoot(ForgotPasswordPage)
+  }
   showErrorAlert(message) {
     const alert = this.alertCtrl.create({
       subTitle: message,

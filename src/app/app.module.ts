@@ -47,8 +47,10 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { PreferencesProvider } from '../providers/preferences/preferences';
 import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
+import { AlertModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { SearchContributionPage } from '../pages/search-contribution/search-cont
     PreferencesPage,
     MessagePage,
     MessageListPage,
-    SearchContributionPage
+    SearchContributionPage,
+    ForgotPasswordPage
 
   ],
   imports: [
@@ -89,7 +92,7 @@ import { SearchContributionPage } from '../pages/search-contribution/search-cont
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    // [BsDropdownModule.forRoot()]
+    [AlertModule.forRoot()]
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -123,7 +126,8 @@ import { SearchContributionPage } from '../pages/search-contribution/search-cont
     PreferencesPage,
     MessagePage,
     MessageListPage,
-    SearchContributionPage
+    SearchContributionPage,
+    ForgotPasswordPage
   ],
   providers: [
     StatusBar,

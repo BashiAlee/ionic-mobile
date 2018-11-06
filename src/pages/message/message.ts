@@ -4,6 +4,7 @@ import { UserProvider } from '../../providers/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 /**
  * Generated class for the MessagePage page.
  *
@@ -19,8 +20,10 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 
 })
 export class MessagePage {
+  messageForm: FormGroup;
   id: any;
-  messages: any;
+  allData:any;
+  public messages: any;
   loading: any;
   user: any;
 
@@ -29,10 +32,30 @@ export class MessagePage {
     public navParams: NavParams,
     public userService: MessagesProvider,
     public domSanitizer: DomSanitizer,
+    public formBuilder: FormBuilder,
     public authService: AuthenticationProvider
   ) {
     this.user = this.authService.getCurrentUser();
     this.id = this.navParams.get('messageDetail')
+    this.allData = this.navParams.get('messageDetail').all
+
+    this.messageForm = this.formBuilder.group({
+      message: [''],
+      receiveruserid:[''],
+      senderuserid:['']
+    })
+
+    if(this.allData.User2ID == this.user._id) {
+      this.messageForm.patchValue({
+        receiveruserid: this.allData.User1ID,
+        senderuserid: this.user._id
+      })
+    } else {
+      this.messageForm.patchValue({
+        receiveruserid: this.allData.User2ID,
+        senderuserid: this.user._id
+      })
+    }
   }
 
   ionViewDidLoad() {
@@ -52,16 +75,16 @@ export class MessagePage {
         }
       })
   }
-  sendMessage(id) {
+  sendMessage() {
     this.loading = true;
-    this.userService.sendUserMessages(id)
+    this.userService.sendUserMessages(this.messageForm.value)
       .subscribe(data => {
-        if (data.status) {
-          this.messages = data.data;
+    console.log("this is data",data)
+    if (data.status) {
           this.loading = false;
+          this.getMessages(this.user._id)
         } else if (!data.status) {
           this.messages = null;
-          this.loading = false;
         }
       })
   }

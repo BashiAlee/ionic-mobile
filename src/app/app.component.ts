@@ -29,6 +29,7 @@ import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 
 @Component({

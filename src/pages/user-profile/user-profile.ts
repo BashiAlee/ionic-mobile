@@ -38,7 +38,7 @@ export class UserProfilePage {
     this.viewProfileByID(this.id)
   }
   goTo() {
-    this.navCtrl.push(CreateContributionPage);
+    this.navCtrl.setRoot(CreateContributionPage);
   }
   viewProfileByID(id) {
     this.loading = true;

@@ -5,6 +5,7 @@ import { NotificationPopoverComponent } from '../notification-popover/notificati
 import { UserPopoverComponent } from '../user-popover/user-popover';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { SearchContributionPage } from '../../pages/search-contribution/search-contribution';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * Generated class for the HeaderComponent component.
