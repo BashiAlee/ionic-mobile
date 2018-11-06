@@ -129,4 +129,17 @@ export class ContributionsProvider {
   }));
   }
 
+  getAllEvents() {
+    return this.http.get(this.apiURL + 'showallevent')
+      .pipe(map((response: any) => {
+       return response;
+    }));
+  }
+  searchEvent(data) {
+    return this.http.post(this.apiURL + 'searchevent',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
 }

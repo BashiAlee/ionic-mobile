@@ -105,7 +105,7 @@
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedContributions">
         <ion-card>
 
-          <ion-item>
+          <ion-item (click)="openUserProfile(contribution.UserID)">
             <ion-avatar item-start>
               <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
               <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
@@ -113,6 +113,15 @@
             <h2>{{contribution.UserFullName}}</h2>
             <p>{{contribution.bio}}</p>
           </ion-item>
+          <ion-chip color="secondary" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed" (click)="unFollowMentor(contribution.UserID)">
+              <ion-label color="dark">Unfollow</ion-label>
+            </ion-chip>
+            <ion-chip color="secondary" *ngIf="user && !contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'" (click)="addMentor(contribution.UserID, user.Age)">
+                <ion-label color="dark">Follow</ion-label>
+              </ion-chip>
+              <ion-chip color="danger" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
+                  <ion-label>Pending</ion-label>
+                </ion-chip>
           <!-- <ion-item class="action-icons"> 
             <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
             <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>

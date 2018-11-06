@@ -161,4 +161,22 @@ export class UserProvider {
   ));
   }
 
+  addmentor(data) {
+    
+    return this.http.post(this.apiURL + 'addmentor', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
+  unfollowMentor(data) {
+
+    return this.http.put(this.apiURL + 'unfollow', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
 }

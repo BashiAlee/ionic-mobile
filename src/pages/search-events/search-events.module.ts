@@ -7,7 +7,7 @@ import { SearchEventsPage } from './search-events';
     SearchEventsPage,
   ],
   imports: [
-    IonicPageModule.forChild(SearchEventsPage),
+    IonicPageModule.forChild(SearchEventsPage)
   ],
 })
 export class SearchEventsPageModule {}
