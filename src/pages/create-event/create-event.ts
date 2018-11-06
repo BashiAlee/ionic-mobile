@@ -6,6 +6,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { UserProvider } from '../../providers/user/user';
 import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angular/forms';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
+import { PreferencesProvider } from '../../providers/preferences/preferences';
 
 /**
  * Generated class for the CreateEventPage page.
@@ -24,9 +25,12 @@ export class CreateEventPage {
   contribution_action: any;
   contributionForm: FormGroup;
   coverImage: any;
+  loading: any;
   user: any;
   imageStatus: any = [];
   url: any = [];
+  preferencesData: any;
+  slectedCategory:any=[];
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -35,6 +39,7 @@ export class CreateEventPage {
     public actionSheetCtrl: ActionSheetController,
     public authService: AuthenticationProvider,
     public userService: UserProvider,
+    public preferences: PreferencesProvider,
     public camera: Camera,
     private toastCtrl: ToastController,
     public contributionService: ContributionsProvider,
@@ -75,10 +80,29 @@ export class CreateEventPage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateContributionPage');
-  }
 
+  ionViewDidLoad() {
+    this.getPreferences()
+  }
+  getPreferences(){
+    this.loading = true;
+    this.preferences.getAllPreferences()
+    .subscribe( data => {
+      if(data.status) {
+        this.preferencesData = data.data;
+        this.loading = false;
+      } else if (!data.status) {
+        this.preferencesData = null;
+        this.loading = false;
+      }
+    })
+  }
+  category(categorydata){
+   this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
+  }
+  subCategory(subCategorydata){
+    console.log(subCategorydata)
+  }
 
   scroll(elementId) {
     var x=document.getElementById(elementId)

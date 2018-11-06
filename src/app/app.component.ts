@@ -39,7 +39,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = CreateContributionPage;
 
   // rootPage: any = MessagePage;
 
@@ -56,6 +56,7 @@ export class MyApp {
     this.pages = [
       { title: 'My Contribution', component: MyContributionPage },
       { title: 'My Events', component: MyEventsPage },
+      { title: 'Home', component: HomePage },
       { title: 'My Mentors', component: MentorPage },
       { title: 'My Feed', component: MyFeedsPage },
       { title: 'Create Contribution', component: CreateContributionPage },

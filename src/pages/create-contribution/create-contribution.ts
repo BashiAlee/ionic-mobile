@@ -11,6 +11,7 @@ import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
+import { PreferencesProvider } from '../../providers/preferences/preferences';
 /**
  * Generated class for the CreateContributionPage page.
  *
@@ -30,8 +31,11 @@ export class CreateContributionPage {
   contribution_action: any;
   contributionForm: FormGroup;
   coverImage: any;
+  loading: any;
   user: any;
   imageStatus: any = [];
+  preferencesData: any;
+  slectedCategory:any=[];
   url: any = [];
   @ViewChild(Content) content: Content;
 
@@ -40,6 +44,7 @@ export class CreateContributionPage {
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
     public authService: AuthenticationProvider,
+    public preferences: PreferencesProvider,
     public userService: UserProvider,
     public camera: Camera,
     private toastCtrl: ToastController,
@@ -79,8 +84,28 @@ export class CreateContributionPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateContributionPage');
+    this.getPreferences()
   }
+  getPreferences(){
+    this.loading = true;
+    this.preferences.getAllPreferences()
+    .subscribe( data => {
+      if(data.status) {
+        this.preferencesData = data.data;
+        this.loading = false;
+      } else if (!data.status) {
+        this.preferencesData = null;
+        this.loading = false;
+      }
+    })
+  }
+  category(categorydata){
+   this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
+  }
+  subCategory(subCategorydata){
+    console.log(subCategorydata)
+  }
+
   messagePopover(myEvent) {
     let popover = this.popoverCtrl.create(MessagePopoverComponent);
     popover.present({
@@ -245,7 +270,6 @@ export class CreateContributionPage {
     this.contributionForm.patchValue({
       contributionstatus: "Publish" 
     });
-
     this.contributionService.createContribution(this.contributionForm.value)
     .subscribe( data => {
       let toast = this.toastCtrl.create({

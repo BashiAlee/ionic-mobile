@@ -49,6 +49,30 @@
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <label for="cname" class="makeBlock mt15 custom-label">Category</label>
               </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 >
+                <div class="tooltip_vector f-right">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                  <ion-list>
+                      <ion-item  class="custom-input">
+                        <ion-label>Click here to select</ion-label>
+                        <ion-select  formControlName="maincategory" (cancel)="onCancel()" (ionChange)="category(contributionForm.value.maincategory)">
+                          <ion-option *ngFor="let preferences of preferencesData; let i = index" [value]="preferences.Category">{{preferences.Category}}</ion-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-list>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Sub Category</label>
+              </ion-col>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <div class="tooltip_vector f-right">
                     <img alt="" src="../../assets/imgs/tooltip_vector.png">
@@ -61,19 +85,28 @@
                   <ion-list>
                       <ion-item  class="custom-input">
                         <ion-label>Click here to select</ion-label>
-                        <ion-select>
-                          <ion-option value="nes">NES</ion-option>
-                          <ion-option value="n64">Nintendo64</ion-option>
-                          <ion-option value="ps">PlayStation</ion-option>
-                          <ion-option value="genesis">Sega Genesis</ion-option>
-                          <ion-option value="saturn">Sega Saturn</ion-option>
-                          <ion-option value="snes">SNES</ion-option>
+                        <ion-select formControlName="subcategories" (cancel)="onCancel()" (ionChange)="subCategory(contributionForm.value.subcategories)">
+                          <ion-option *ngFor="let preferences of slectedCategory.SubCategories; let i = index" [value]="preferences.SubCategory">{{preferences.SubCategory}}</ion-option>
                         </ion-select>
                       </ion-item>
                     </ion-list>
               </ion-col>
             </ion-row>
-
+            <ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Add Tags</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <div class="tooltip_vector f-right">
+                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <input type="text" value="" placeholder="Tags" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
+              </ion-col>
+            </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                 <div class="makeCenter">

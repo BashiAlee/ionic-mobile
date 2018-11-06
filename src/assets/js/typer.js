@@ -1,8 +1,8 @@
 var Typer = function(element) {
   this.element = element;
-  var delim = element.dataset.delim || ","; // default to comma
+  var delim = element.dataset.delim || ","; 
   var words = element.dataset.words || "override these,sample typing";
-  this.words = words.split(delim).filter(function(v){return v;}); // non empty words
+  this.words = words.split(delim).filter(function(v){return v;});
   this.delay = element.dataset.delay || 200;
   this.loop = element.dataset.loop || "true";
   this.deleteDelay = element.dataset.deletedelay || element.dataset.deleteDelay || 800;
