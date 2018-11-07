@@ -70,6 +70,8 @@ export class EditUserPage {
         this.minLimit = 1;
         this.doBoth = true;
        }
+
+       console.log("DDD", this.maxLimit, this.minLimit)
     }
     this.editProfileForm = this.formBuilder.group({
         _id: new FormControl(this.user._id),

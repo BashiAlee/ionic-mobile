@@ -49,6 +49,9 @@ export class MentorPage {
                 this.loader = false;
               }
             });
+          } else {
+            this.loader = false;
+            this.followersList = [];
           }
           // this.loading = false;
 

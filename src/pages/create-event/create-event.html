@@ -115,6 +115,21 @@
                         </ion-list>
                   </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                      <label for="cname" class="makeBlock mt15 custom-label">Add Tags</label>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                      <div class="tooltip_vector f-right">
+                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                      <input type="text" value="" placeholder="Add comma seperated tags" class="mt30 mb20" class="custom-input" padding [(ngModel)]="eventTags" [ngModelOptions]="{standalone: true}"/>
+                    </ion-col>
+                  </ion-row>
 
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>

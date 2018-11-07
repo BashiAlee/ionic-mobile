@@ -22,6 +22,8 @@ import { EventsProvider } from '../../providers/events/events';
 })
 export class MyEventsPage {
   eventsList: any = [];
+  eventsDraftList: any = [];
+  eventsPendingList: any = [];
   loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public contributionService: ContributionsProvider,
@@ -50,18 +52,35 @@ export class MyEventsPage {
       data => {
         if(data.status) {
           data.data.forEach(value => {
-            this.getProfileByID(value.UserID, value)
-            if(value.AdminStatus) {
+          
+            if(value.AdminStatus && value.ContributionStatus == "Publish") {
+              this.getProfileByID(value.UserID, value)
               this.eventsList.push(value);
               this.loading = false;
-            } else {
+            } 
+            else if(!value.AdminStatus && value.ContributionStatus == "Publish") {
+              this.getProfileByID(value.UserID, value)
+              this.eventsPendingList.push(value);
+              this.loading = false;
+            } 
+            else if(value.ContributionStatus == "Draft") {
+              this.getProfileByID(value.UserID, value)
+              this.eventsDraftList.push(value);
+              this.loading = false;
+            } 
+            
+            else {
               this.eventsList = [];
+              this.eventsDraftList = [];
+              this.eventsPendingList = [];
               this.loading = false;
             }
             
           });
         } else {
           this.eventsList = [];
+          this.eventsDraftList = [];
+          this.eventsPendingList = [];
           this.loading = false;
         }
       }

@@ -42,6 +42,8 @@ export class ParentActivityLogPage {
     console.log('ionViewDidLoad ParentActivityLogPage');
   }
   getKids() {
+    this.activityLog = [];
+    this.approvalList = [];
     this.kidsList = [];
     this.loading = true;
     this.parentService.GetParentsKids(this.user.Email)

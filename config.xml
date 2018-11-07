@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Cliiimb-Mobile</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <name>Cliiimb</name>
+    <description>Cliiimb, is a movement based on our belief that a community’s future sustainability will emerge by leveraging the power of our collective efforts to develop, empower, support and guide our young people.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -18,63 +18,64 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <icon density="ldpi" src="resources/android/icon/app-logo.svg" />
-        <icon density="mdpi" src="resources/android/icon/app-logo.svg" />
-        <icon density="hdpi" src="resources/android/icon/app-logo.svg" />
-        <icon density="xhdpi" src="resources/android/icon/app-logo.svg" />
-        <icon density="xxhdpi" src="resources/android/icon/app-logo.svg" />
-        <icon density="xxxhdpi" src="resources/android/icon/app-logo.svg" />
-        <splash density="land-ldpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="land-mdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="land-hdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="land-xhdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="land-xxhdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="land-xxxhdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-ldpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-mdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-hdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-xhdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-xxhdpi" src="resources/android/splash/cliiimb-splash.png" />
-        <splash density="port-xxxhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <icon density="ldpi" src="resources/android/icon/48.png" />
+        <icon density="mdpi" src="resources/android/icon/72.png" />
+        <icon density="hdpi" src="resources/android/icon/96.png" />
+        <icon density="xhdpi" src="resources/android/icon/144.png" />
+        <icon density="xxhdpi" src="resources/android/icon/512.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/1080.png" />
+        <splash density="land-ldpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-mdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-hdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-xhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-xxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-xxxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-ldpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-mdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-hdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-xhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-xxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="port-xxxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <icon height="57" src="resources/ios/icon/app-logo.svg" width="57" />
-        <icon height="114" src="resources/ios/icon/app-logo.svg" width="114" />
-        <icon height="40" src="resources/ios/icon/app-logo.svg" width="40" />
-        <icon height="80" src="resources/ios/icon/app-logo.svg" width="80" />
-        <icon height="120" src="resources/ios/icon/app-logo.svg" width="120" />
-        <icon height="50" src="resources/ios/icon/app-logo.svg" width="50" />
-        <icon height="100" src="resources/ios/icon/app-logo.svg" width="100" />
-        <icon height="60" src="resources/ios/icon/app-logo.svg" width="60" />
-        <icon height="120" src="resources/ios/icon/app-logo.svg" width="120" />
-        <icon height="180" src="resources/ios/icon/app-logo.svg" width="180" />
-        <icon height="72" src="resources/ios/icon/app-logo.svg" width="72" />
-        <icon height="144" src="resources/ios/icon/app-logo.svg" width="144" />
-        <icon height="76" src="resources/ios/icon/app-logo.svg" width="76" />
-        <icon height="152" src="resources/ios/icon/app-logo.svg" width="152" />
-        <icon height="167" src="resources/ios/icon/app-logo.svg" width="167" />
-        <icon height="29" src="resources/ios/icon/app-logo.svg" width="29" />
-        <icon height="58" src="resources/ios/icon/app-logo.svg" width="58" />
-        <icon height="87" src="resources/ios/icon/app-logo.svg" width="87" />
-        <icon height="1024" src="resources/ios/icon/app-logo.svg" width="1024" />
-        <splash height="1136" src="resources/ios/splash/cliiimb-splash.png" width="640" />
-        <splash height="1334" src="resources/ios/splash/cliiimb-splash.png" width="750" />
-        <splash height="2208" src="resources/ios/splash/cliiimb-splash.png" width="1242" />
-        <splash height="1242" src="resources/ios/splash/cliiimb-splash.png" width="2208" />
-        <splash height="1536" src="resources/ios/splash/cliiimb-splash.png" width="2048" />
-        <splash height="2048" src="resources/ios/splash/cliiimb-splash.png" width="2732" />
-        <splash height="768" src="resources/ios/splash/cliiimb-splash.png" width="1024" />
-        <splash height="2048" src="resources/ios/splash/cliiimb-splash.png" width="1536" />
-        <splash height="2732" src="resources/ios/splash/cliiimb-splash.png" width="2048" />
-        <splash height="1024" src="resources/ios/splash/cliiimb-splash.png" width="768" />
-        <splash height="960" src="resources/ios/splash/cliiimb-splash.png" width="640" />
-        <splash height="480" src="resources/ios/splash/cliiimb-splash.png" width="320" />
-        <splash height="2732" src="resources/ios/splash/cliiimb-splash.png" width="2732" />
+        <icon height="57" src="resources/ios/icon/48.png" width="57" />
+        <icon height="114" src="resources/ios/icon/144.png" width="114" />
+        <icon height="40" src="resources/ios/icon/48.png" width="40" />
+        <icon height="80" src="resources/ios/icon/144.png" width="80" />
+        <icon height="120" src="resources/ios/icon/144.png" width="120" />
+        <icon height="50" src="resources/ios/icon/48.png" width="50" />
+        <icon height="100" src="resources/ios/icon/144.png" width="100" />
+        <icon height="60" src="resources/ios/icon/48.png" width="60" />
+        <icon height="120" src="resources/ios/icon/144.png" width="120" />
+        <icon height="180" src="resources/ios/icon/144.png" width="180" />
+        <icon height="72" src="resources/ios/icon/144.png" width="72" />
+        <icon height="144" src="resources/ios/icon/144.png" width="144" />
+        <icon height="76" src="resources/ios/icon/72.png" width="76" />
+        <icon height="152" src="resources/ios/icon/144.png" width="152" />
+        <icon height="167" src="resources/ios/icon/144.png" width="167" />
+        <icon height="29" src="resources/ios/icon/48.png" width="29" />
+        <icon height="58" src="resources/ios/icon/48.png" width="58" />
+        <icon height="87" src="resources/ios/icon/72.png" width="87" />
+        <icon height="1024" src="resources/ios/icon/1080.png" width="1024" />
+        <splash height="1136" src="resources/ios/splash/cliiimb-splash.gif" width="640" />
+        <splash height="1334" src="resources/ios/splash/cliiimb-splash.gif" width="750" />
+        <splash height="2208" src="resources/ios/splash/cliiimb-splash.gif" width="1242" />
+        <splash height="1242" src="resources/ios/splash/cliiimb-splash.gif" width="2208" />
+        <splash height="1536" src="resources/ios/splash/cliiimb-splash.gif" width="2048" />
+        <splash height="2048" src="resources/ios/splash/cliiimb-splash.gif" width="2732" />
+        <splash height="768" src="resources/ios/splash/cliiimb-splash.gif" width="1024" />
+        <splash height="2048" src="resources/ios/splash/cliiimb-splash.gif" width="1536" />
+        <splash height="2732" src="resources/ios/splash/cliiimb-splash.gif" width="2048" />
+        <splash height="1024" src="resources/ios/splash/cliiimb-splash.gif" width="768" />
+        <splash height="960" src="resources/ios/splash/cliiimb-splash.gif" width="640" />
+        <splash height="480" src="resources/ios/splash/cliiimb-splash.gif" width="320" />
+        <splash height="2732" src="resources/ios/splash/cliiimb-splash.gif" width="2732" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />

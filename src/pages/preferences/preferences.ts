@@ -45,7 +45,7 @@ export class PreferencesPage {
   }
   change(val) {
     // console.log("DFDDD", val, this.preferencesData)
-
+    
     this.subCategory = this.preferencesData.filter(cat => cat.Category == val)[0];
     this.subCategory = this.subCategory.SubCategories;
   }
@@ -53,6 +53,7 @@ export class PreferencesPage {
   selectSubCategory(subcat) {
     console.log("DDDD", subcat)
     this.selectedPreferences= [];
+    console.log("FFFFF", this.userPreferences)
     if(subcat && subcat.length) {
       subcat.forEach(subcat => {
         this.userPreferences.push({SubCategory: subcat})
@@ -78,7 +79,7 @@ export class PreferencesPage {
         this.userPreferences = data.data.UserPreferences;
         this.loader = false;
   } else if (!data.status) {
-        this.userPreferences = null;
+        this.userPreferences = [];
         this.loader = false;
       }
     })
@@ -108,7 +109,6 @@ export class PreferencesPage {
       this.loader = true;
       this.preferences.addUserPreferences(data)
       .subscribe( data => {
-        console.log(data)
         if(data.status) {
           this.loader = false;
           this.navCtrl.setRoot(AboutMePage)

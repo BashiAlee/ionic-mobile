@@ -5,9 +5,13 @@
   Ionic pages and navigation.
 -->
 <header></header>
-
-<ion-content padding>
-  <div class="contribution-detail" *ngIf="contributionDetails">
+<ion-content padding *ngIf="detailLoader">
+    <div class="loader makeCenter">
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+</ion-content>
+<ion-content padding *ngIf="contributionDetails && !detailLoader">
+  <div class="contribution-detail">
     <ion-grid>
       <ion-row class="cont-back">
           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
@@ -29,9 +33,9 @@
                     <button item-end class="follow-btn">Follow</button>
                   </ion-item>
                   <ion-item class="action-icons b-bot">
-                    <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                    <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                    <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+                    <ion-icon *ngIf="contributionDetails.AudioPath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio')" ></ion-icon>
+                    <ion-icon *ngIf="contributionDetails.Videos" class="play-icon" ios="ios-play" md="md-play"  (click)="openFold('video')"></ion-icon>
+                    <!-- <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon> -->
                   </ion-item>
                 
                 </ion-list>
