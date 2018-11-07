@@ -33,7 +33,7 @@ export class UserPopoverComponent {
 
   openUserProfile() {
     this.appCtrl.getRootNav().setRoot(UserProfilePage,{id: this.user._id})
-    // this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
 }

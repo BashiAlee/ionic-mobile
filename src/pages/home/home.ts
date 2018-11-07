@@ -6,9 +6,7 @@ import { ContributionsProvider } from '../../providers/contributions/contributio
 import * as _ from 'lodash';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
-
-
-
+import Typed from 'typed.js';
 
 /**
  * Generated class for the HomePage page.
@@ -31,6 +29,7 @@ export class HomePage {
   maincategory: any;
   sortedContributions: any = [];
   loading: any;
+  typed:any;
   
   followersIds: any = [];
   constructor(public navCtrl: NavController, 
@@ -53,7 +52,16 @@ export class HomePage {
     }
   }
 
-
+  ionViewDidLoad() {
+    this.contributionList = [];
+    this.sortedContributions = [];
+    var options = {
+      strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
+      typeSpeed: 40
+    }
+    
+    this.typed = new Typed(".element", options);
+  }
   getAllContributions() {
 
     this.contributionService.getAllContribution()
@@ -132,11 +140,7 @@ export class HomePage {
         error => {});
   }
 
-  ionViewDidLoad() {
-    this.contributionList = [];
-    this.sortedContributions = [];
-    console.log('ionViewDidLoad HomePage');
-  }
+
 
   getFollowerList(id) {
     return new Promise((resolve, reject) => {

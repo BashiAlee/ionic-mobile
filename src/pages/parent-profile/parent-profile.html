@@ -40,7 +40,7 @@
                   <div class="loader makeCenter" *ngIf="loading">
                       <ion-spinner name="bubbles"></ion-spinner>
                   </div>
-                  <div class="not-found makeCenter" *ngIf="kidsList && !kidsList.length && !loading">
+                  <div class="not-found makeCenter" *ngIf="!kidsList && !kidsList.length && !loading">
                       <p>Not Found</p>
                     </div>
               </ion-col>

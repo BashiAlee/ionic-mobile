@@ -50,6 +50,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { PreferencesProvider } from '../providers/preferences/preferences';
 import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
 import { AlertModule,TooltipModule } from 'ngx-bootstrap';
+import {ChatPage} from '../pages/chat/chat';
 
 @NgModule({
   declarations: [
@@ -80,11 +81,11 @@ import { AlertModule,TooltipModule } from 'ngx-bootstrap';
     ParentProfilePage,
     PreferencesPage,
     MessagePage,
+    ChatPage,
     MessageListPage,
     NotificationListPage,
     SearchContributionPage,
-    ForgotPasswordPage
-
+    ForgotPasswordPage,
   ],
   imports: [
     BrowserModule,
@@ -126,6 +127,7 @@ import { AlertModule,TooltipModule } from 'ngx-bootstrap';
     PreferencesPage,
     MessagePage,
     MessageListPage,
+    ChatPage,
     NotificationListPage,
     SearchContributionPage,
     ForgotPasswordPage

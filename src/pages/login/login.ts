@@ -25,7 +25,8 @@ import {ForgotPasswordPage} from'../forgot-password/forgot-password';
 export class LoginPage {
 
   loginForm: FormGroup;
-  constructor(public navCtrl: NavController, 
+  constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public auth: AuthenticationProvider,

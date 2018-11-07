@@ -35,7 +35,8 @@
                       <p class="bio"> {{userData.Bio}}</p>
                   </div>
 
-                  <ion-grid>
+                  <div class="circles">
+                    <ion-grid>
                       <ion-row>
                         <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
                           <div class="circle purple-circle">
@@ -64,7 +65,7 @@
                             </ion-col>
                       </ion-row>
                     </ion-grid>
-                    
+                  </div>                   
                 </div>
                 </ion-item>
 
@@ -103,12 +104,12 @@
                       
                         <ion-card-content>
                           <h4>{{contribution.Title}}</h4>
-                          <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-                
-                
-                          <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-                       
-                      </ion-card-content>
+                          <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>                    
+                          <div class="red-text">
+                            <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+                          </div>
+                        </ion-card-content>
+                     
                         <ion-row>
                            
                             <ion-col class="makeCenter">

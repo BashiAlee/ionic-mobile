@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App } from 'ionic-angular';
+import { App,ViewController} from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { NotificationListPage } from '../../pages/notification-list/notification-list';
@@ -24,6 +24,7 @@ export class NotificationPopoverComponent {
   constructor(
     public authService: AuthenticationProvider,
     public userService: UserProvider,
+    public viewCtrl: ViewController,
     public appCtrl: App
 
   ) {
@@ -32,9 +33,12 @@ export class NotificationPopoverComponent {
     this.user = this.authService.getCurrentUser();
     this.getAllNotifications();
   }
-
+  close() {
+    this.viewCtrl.dismiss();
+  }
   viewAllNotifications(){
     this.appCtrl.getRootNav().setRoot(NotificationListPage)
+    this.close()
   }
   getAllNotifications() {
     this.loading = true;

@@ -231,7 +231,7 @@ export class CreateContributionPage {
   }
 
   uploadContributionImage(file) {
-    // this.messages.uploadImageLoader = true;
+    this.loading=true;
     var target = file.target || file.srcElement
 
     this.userService.uploadAudio(file)
@@ -246,7 +246,7 @@ export class CreateContributionPage {
               this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
               // this.url.push({title: '',description:'',img:event.target.result});
             }
-            // this.messages.uploadImageLoader = false;
+            this.loading=false;
             reader.readAsDataURL(target.files[0]);
             console.log("DD", this.imageStatus)
           }

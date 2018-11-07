@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController,App } from 'ionic-angular';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
-import{MessagePage} from '../../pages/message/message'
+import {MessagePage} from '../../pages/message/message';
+import {ChatPage} from '../../pages/chat/chat';
 /**
  * Generated class for the MessageListPage page.
  *
@@ -25,6 +26,7 @@ export class MessageListPage {
     public viewCtrl: ViewController,
     public messageService: MessagesProvider,
     public authService: AuthenticationProvider,
+    public navCtrl: NavController, 
     public appCtrl: App
   ) {
     this.user = this.authService.getCurrentUser();
@@ -35,6 +37,7 @@ export class MessageListPage {
   close() {
     this.viewCtrl.dismiss();
   }
+
 
   getAllMessages(data) {
     this.loading = true;
@@ -55,6 +58,9 @@ export class MessageListPage {
   openMessage(messages){
     var data = {chatid: messages.ChatID,senderid: this.user._id, all: messages }
     this.appCtrl.getRootNav().setRoot(MessagePage,{messageDetail: data})
+  }
+  newChat(){
+      this.navCtrl.setRoot(ChatPage)
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MessageListPage');

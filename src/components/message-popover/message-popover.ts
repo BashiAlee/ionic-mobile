@@ -38,6 +38,7 @@ export class MessagePopoverComponent {
   }
   viewAllMessages() {
     this.appCtrl.getRootNav().setRoot(MessageListPage)
+    this.close()
   }
   getAllMessages(data) {
     this.loading = true;

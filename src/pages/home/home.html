@@ -10,10 +10,11 @@
     <ion-grid>
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-          <h1>BE
+          <!-- <h1>BE
             <span class="typer" id="main" data-words="COACHABLE, HUMBLE, RESILIENT, UNIQUE, VIBRANT, FOCUSED, VICTORIOUS, CREATIVE, PREPARED, AMBITIOUS, INNOVATIVE, COMMITTED, YOURSELF, ABLE, GREATNESS, AMAZING, LEADERS, THE CHANGE, STRONG, HEALTHY, HAPPY, POWERFUL, GENIUS, MOTIVATED, A GAMECHANGER, INSPIRED, THE LIGHT, THE FUTURE, REAL"
               data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
-          </h1>
+          </h1> -->
+          <!-- <p>{{typed}}</p> -->
           <p>
             <span class="blue-boldline"></span>
             <span class="yellow-boldline"></span>
@@ -117,7 +118,7 @@
             Unfollow
           </button> 
           <button class="follow-btn red-icon" ion-button small icon-start *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
-              Follow
+              Follow 1
             </button> 
 
             <button class="follow-btn orange-icon" ion-button small icon-start *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">

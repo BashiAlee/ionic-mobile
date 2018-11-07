@@ -30,6 +30,7 @@ import { PreferencesPage } from '../pages/preferences/preferences';
 import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+import {ChatPage} from '../pages/chat/chat';
 
 
 @Component({
@@ -39,8 +40,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
-
+  rootPage: any = ChatPage;
   // rootPage: any = MessagePage;
 
   pages: Array<{title: string, component: any}>;

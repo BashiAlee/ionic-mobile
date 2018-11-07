@@ -117,6 +117,12 @@ text-align: center;
  .mb20{
     margin-bottom: 20px;
  }
+ .mb15{
+    margin-bottom: 15px;
+ }
+ .ml15{
+    margin-left: 15px;
+ }
 
  .mt10 {
     margin-top: 10px !important;
@@ -477,7 +483,16 @@ ion-spinner * {
     width: 83% !important;
     margin-top: 45px !important;
 }
-
+ion-spinner {
+    * {
+      stroke: red;
+    }
+    &.spinner-circles circle,
+    &.spinner-bubbles circle,
+    &.spinner-dots circle {
+      fill: red;
+    }
+  }
 button:focus {
     outline: 0 !important;
 }
@@ -488,8 +503,15 @@ button:focus {
     font-size: 13px !important;
     padding: 5px 10px;
     border-radius: 4px;
-
-
+    margin: 5px;
+}
+.chat-btn{
+    background: #F67823;
+    border: 1px solid #F67823;
+    padding: 8px 30px;
+    border-radius: 20px;
+    color: #fff !important;
+    font-size: 13px;
 }
 .btn-align{
     text-align: center;
