@@ -46,7 +46,7 @@ export class NotificationPopoverComponent {
     this.userService.getAllNotifications(id)
     .subscribe(
       data => {
-       if(data.status) {
+       if(data.status && data.data) {
         this.notifications = data.data[0];
         if(this.notifications.AdminMentorRequest && this.user.Age > 17) {
           this.localData.MentorStatus = 1;
@@ -60,7 +60,7 @@ export class NotificationPopoverComponent {
           localStorage.setItem('user', JSON.stringify(this.localData))
         }
         this.loading = false;
-       } else if(!data.status){
+       } else if(data.status && !data.data){
         this.loading = false;
          this.notifications = null;
         //  this.notifications = 'No';

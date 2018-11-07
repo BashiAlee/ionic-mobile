@@ -22,6 +22,8 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class MyContributionPage {
   contributionsList: any = [];
+  pendingList: any = [];
+  draftedList: any = [];
   loading: any;
   user: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -50,12 +52,30 @@ export class MyContributionPage {
       data => {
         if(data.status) {
           data.data.forEach(value => {
-            this.getProfileByID(value.UserID, value)
+          
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
-             
+              this.getProfileByID(value.UserID, value)
               this.getLikesAndComments(value._id,value);
               this.contributionsList.push(value);
+            } else if(!value.AdminStatus && value.ContributionStatus == "Publish"){
+              this.getProfileByID(value.UserID, value)
+              this.pendingList.push(value);
+              this.loading = false;
+              // this.contributionsList = [];
+              // this.loading = false;
             } 
+            else if(value.ContributionStatus == "Draft"){
+              this.getProfileByID(value.UserID, value)
+              this.draftedList.push(value);
+              this.loading = false;
+              // this.contributionsList = [];
+              // this.loading = false;
+            } else {
+               this.contributionsList = [];
+               this.pendingList = [];
+               this.draftedList = [];
+               this.loading = false;
+            }
             // else {
             //   this.contributionsList = [];
             //   this.loading = false;

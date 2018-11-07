@@ -31,6 +31,7 @@ export class CreateEventPage {
   url: any = [];
   preferencesData: any;
   slectedCategory:any=[];
+  eventTags: any;
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -240,6 +241,18 @@ export class CreateEventPage {
       content: 'Please wait...'
     });
     loading.present();
+
+
+    var tagsList = this.eventTags.split(',');
+
+    const control1 = < FormArray > this.contributionForm.controls['tags'];
+    tagsList.forEach(value => {
+      const addrCtrl = this.formBuilder.group({
+        tag: [value]
+      });
+      control1.push(addrCtrl);
+    });
+
     const control = < FormArray > this.contributionForm.controls['images'];
     this.imageStatus.forEach(status => {
       const addrCtrl = this.formBuilder.group({

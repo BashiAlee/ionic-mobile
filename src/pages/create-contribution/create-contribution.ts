@@ -38,6 +38,7 @@ export class CreateContributionPage {
   preferencesData: any;
   slectedCategory:any=[];
   url: any = [];
+  contributionTags: any;
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -264,6 +265,17 @@ export class CreateContributionPage {
     });
   
     loading.present();
+
+
+    var tagsList = this.contributionTags.split(',');
+
+    const control1 = < FormArray > this.contributionForm.controls['tags'];
+    tagsList.forEach(value => {
+      const addrCtrl = this.formBuilder.group({
+        tag: [value]
+      });
+      control1.push(addrCtrl);
+    });
     const control = < FormArray > this.contributionForm.controls['images'];
     this.imageStatus.forEach(status => {
       const addrCtrl = this.formBuilder.group({

@@ -64,13 +64,14 @@
           <!-- <label for="title" class="makeBlock mt15 custom-label">Type</label> -->
           <ion-item>
             <ion-label>Under 18</ion-label>
-            <ion-radio value="under18" name="ageUser" (change)="checkType()" [disabled]="just18Plus"></ion-radio>
+            <ion-radio value="under18" name="ageUser" (click)="checkType()" [disabled]="just18Plus"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>18+</ion-label>
-            <ion-radio value="18+" name="ageUser" (change)="checkType()"></ion-radio>
+            <ion-radio value="18+" name="ageUser" (click)="checkType()"></ion-radio>
           </ion-item>
         </ion-list>
+
 
         <ion-item *ngIf="ageFilter=='18+'">
           <label for="Age" class="makeBlock mt15 custom-label">Age</label>

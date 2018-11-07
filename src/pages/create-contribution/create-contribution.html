@@ -105,7 +105,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Tags" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
+                <input type="text" value="" placeholder="Add comma seperated tags" class="mt30 mb20" class="custom-input" padding [(ngModel)]="contributionTags" [ngModelOptions]="{standalone: true}"/>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -242,6 +242,10 @@
                   </div>
                 </div>
       </ion-list>
+<!-- 
+      <button>Save</button>
+      <button>Next</button>
+      <button>Draft</button> -->
     </div>
 
     <div *ngSwitchCase="'cover-image'">

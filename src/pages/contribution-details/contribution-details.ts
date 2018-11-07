@@ -50,7 +50,7 @@ export class ContributionDetailsPage {
   ];
   comment: any = {};
   userComment: any;
-  
+  detailLoader: any = false;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public contributionService: ContributionsProvider,
@@ -69,6 +69,7 @@ export class ContributionDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributionDetailsPage');
+    this.detailLoader = true;
   }
 
   moveForward(modalArray) {
@@ -243,6 +244,7 @@ getLikesAndComments(id,value) {
         });
         
       }
+      this.detailLoader = false;
   })
   // this.loading = false;
 }
@@ -302,7 +304,7 @@ getAllCommentsAndLikes(id, value) {
         
       }
 
-
+      this.detailLoader = false;
 
     })
 
@@ -373,6 +375,23 @@ deleteComment(commentID, id) {
       // toastr.error('Error Deleting Comment','Error')
     }
   })
+}
+
+openFold(type) {
+  if(type =='video') {
+    $('.text-modal').hide();
+    $('.modal-video-view').show();
+    $('.modal-audio-view').hide();
+    $('.modal-gallery-view').hide();
+    $('.modal-links-view').hide();
+  }
+  if(type == 'audio') {
+    $('.text-modal').hide();
+    $('.modal-video-view').hide();
+    $('.modal-audio-view').show();
+    $('.modal-gallery-view').hide();
+    $('.modal-links-view').hide();
+  }
 }
 
 
