@@ -7,6 +7,7 @@ import { UserProvider } from '../../providers/user/user';
 import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angular/forms';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { PreferencesProvider } from '../../providers/preferences/preferences';
+import { MyEventsPage } from '../../pages/my-events/my-events';
 
 /**
  * Generated class for the CreateEventPage page.
@@ -82,7 +83,59 @@ export class CreateEventPage {
     
   }
 
-
+  previous(){
+    this.contribution_action='content';
+  }
+  goTo(){
+    this.contribution_action='cover-image';
+  }
+  next(){
+    this.contribution_action='submit';
+  }
+  saveDraft(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    var tagsList = this.eventTags
+    if(tagsList){
+      var tagsList = this.eventTags.split(',');
+      const control1 = < FormArray > this.contributionForm.controls['tags'];
+      tagsList.forEach(value => {
+        const addrCtrl = this.formBuilder.group({
+          tag: [value]
+        });
+        control1.push(addrCtrl);
+      });
+    }
+    
+    const control = < FormArray > this.contributionForm.controls['images'];
+    if (this.imageStatus){
+      this.imageStatus.forEach(status => {
+        const addrCtrl = this.formBuilder.group({
+          imagestatus: [status.img],
+          imagetitle: [status.title],
+          imagedescription: [status.description]
+        });
+        control.push(addrCtrl);
+     
+      });
+    }
+    this.contributionForm.patchValue({
+      contributionstatus: "Draft" 
+    });
+    this.contributionService.createContribution(this.contributionForm.value)
+    .subscribe( data => {
+      let toast = this.toastCtrl.create({
+        message: 'Draft Created successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+      loading.dismiss();
+      toast.present();
+      this.navCtrl.setRoot(MyEventsPage);
+    })
+  }
   ionViewDidLoad() {
     this.getPreferences()
   }

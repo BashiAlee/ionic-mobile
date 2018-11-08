@@ -29,7 +29,6 @@ export class HomePage {
   maincategory: any;
   sortedContributions: any = [];
   loading: any;
-  typed:any;
   
   followersIds: any = [];
   constructor(public navCtrl: NavController, 
@@ -55,12 +54,20 @@ export class HomePage {
   ionViewDidLoad() {
     this.contributionList = [];
     this.sortedContributions = [];
-    // var options = {
-    //   strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
-    //   typeSpeed: 40
-    // }
+
     
-    // this.typed = new Typed(".element", options);
+      new Typed('#typed', {
+      strings: ["COACHABLE", "HUMBLE", "RESILIENT", "UNIQUE", "VIBRANT", "FOCUSED", "VICTORIOUS", "CREATIVE", "PREPARED", "AMBITIOUS", "INNOVATIVE", "COMMITTED", "YOURSELF", "ABLE", "GREATNESS", "AMAZING", "LEADERS", "THE CHANGE", "STRONG", "HEALTHY", "HAPPY", "POWERFUL", "GENIUS", "MOTIVATED", "A GAMECHANGER", "INSPIRED", "THE LIGHT"," THE FUTURE", "REAL"],
+      typeSpeed: 100,
+      backSpeed: 100,
+      backDelay: 500,
+      startDelay: 1000,
+      cursorChar: '',
+      shuffle: true,
+      smartBackspace: false,
+      loop: true
+    });
+    
   }
   getAllContributions() {
 
@@ -104,10 +111,7 @@ export class HomePage {
                   this.getAllCommentsAndLikes(value._id, value)
                 }
 
-      
-
-              
-                console.log("FFFFF", value)
+                // console.log("FFFFF", value)
                 // value.ModalValue = this.modalArray;
                 // this.modalArray = [".text-modal"];
 
@@ -140,13 +144,10 @@ export class HomePage {
         error => {});
   }
 
-
-
   getFollowerList(id) {
     return new Promise((resolve, reject) => {
       this.userService.getFollower(id)
       .subscribe(data => {
-       
         if(data.status) {
           resolve(this.followersIds = data.data);
           this.getAllContributions();
@@ -274,22 +275,20 @@ getAllCommentsAndLikes(id, value) {
         duration: 3000,
         position: 'bottom'
       });
-    
       toast.present();
       // toastr.success('Your Request for approval has been sent to your parent','Success')
     }
     var data = {
-
       userid: this.user._id,
       follower: [{
         followersid: id
       }],
       userage: age
-
     }
     this.userService.addmentor(data)
       .subscribe(
         data => {
+    console.log(data)
 
           // this.getFollowerList();
         },
@@ -297,22 +296,21 @@ getAllCommentsAndLikes(id, value) {
   }
 
   unFollowMentor(id) {
-
     var data = {
-
       userid: this.user._id,
       follower: [{
         followersid: id
       }]
-
     }
     this.userService.unfollowMentor(data)
       .subscribe(
         data => {
+    console.log(data)
 
         },
         error => {});
   }
+  
 
   openUserProfile(UserID) {
     this.navCtrl.setRoot(ViewerProfilePage, {userid: UserID})

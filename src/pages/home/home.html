@@ -14,7 +14,8 @@
             <span class="typer" id="main" data-words="COACHABLE, HUMBLE, RESILIENT, UNIQUE, VIBRANT, FOCUSED, VICTORIOUS, CREATIVE, PREPARED, AMBITIOUS, INNOVATIVE, COMMITTED, YOURSELF, ABLE, GREATNESS, AMAZING, LEADERS, THE CHANGE, STRONG, HEALTHY, HAPPY, POWERFUL, GENIUS, MOTIVATED, A GAMECHANGER, INSPIRED, THE LIGHT, THE FUTURE, REAL"
               data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
           </h1> -->
-          <!-- <p>{{typed}}</p> -->
+          <h1>BE<p id="typed"></p></h1>
+          
           <p>
             <span class="blue-boldline"></span>
             <span class="yellow-boldline"></span>
@@ -103,40 +104,44 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedContributions">
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let contribution of sortedContributions">
         <ion-card>
-
-          <ion-item>
-            <ion-avatar item-start>
-              <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
-              <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
-            </ion-avatar>
-            <h2>{{contribution.UserFullName}}</h2>
-            <p>{{contribution.bio}}</p>
-          </ion-item>
-          <button class="follow-btn blue-icon" ion-button small icon-start *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
-            Unfollow
-          </button> 
-          <button class="follow-btn red-icon" ion-button small icon-start *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
-              Follow 1
-            </button> 
-
-            <button class="follow-btn orange-icon" ion-button small icon-start *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
-                Pending
-              </button> 
+          <ion-grid>
+              <ion-row>
+                  <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+                    <div class="custom-titl">
+                      <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
+                      <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
+                      <div class="mt12">
+                          <h2>{{contribution.UserFullName}}</h2>
+                          <p>{{contribution.bio}}</p>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                      <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contribution.UserID)" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
+                        Unfollow
+                      </button>
+                      <button class="follow-btn f-right" (click)="addMentor(contribution.UserID,user.Age)" *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
+                        Follow
+                      </button> 
+                      <button class="follow-btn orange-icon f-right" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
+                        Pending
+                      </button> 
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+           
           <!-- <ion-item class="action-icons"> 
             <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
             <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
             <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-  
           </ion-item> -->
 
           <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
           <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
 
           <ion-card-content>
-
-
             <ion-item>
               <h4>{{contribution.Title}}</h4>
                
@@ -169,7 +174,6 @@
               </button>
             </ion-col>
           </ion-row>
-
         </ion-card>
       </ion-col>
     </ion-row>
