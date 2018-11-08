@@ -85,7 +85,60 @@ export class CreateContributionPage {
       });
     
   }
+  previous(){
+    this.contribution_action='content';
+  }
+  goTo(){
+    this.contribution_action='cover-image';
+  }
+  next(){
+    this.contribution_action='submit';
+  }
+  saveDraft(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    var tagsList = this.contributionTags;
+    if (tagsList){
+      var tagsList = this.contributionTags.split(',');
+      const control1 = < FormArray > this.contributionForm.controls['tags'];
+      tagsList.forEach(value => {
+        const addrCtrl = this.formBuilder.group({
+          tag: [value]
+        });
+        control1.push(addrCtrl);
+      });
+    }
+    const control = < FormArray > this.contributionForm.controls['images'];
+    if (this.imageStatus){
+      this.imageStatus.forEach(status => {
+        const addrCtrl = this.formBuilder.group({
+          imagestatus: [status.img],
+          imagetitle: [status.title],
+          imagedescription: [status.description]
+        });
+        control.push(addrCtrl);
+     
+      });
+    }
+  
+    this.contributionForm.patchValue({
+      contributionstatus: "Draft" 
+    });
+    this.contributionService.createContribution(this.contributionForm.value)
+    .subscribe( data => {
+      loading.dismiss();
+      let toast = this.toastCtrl.create({
+        message: 'Contribution Created successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.navCtrl.setRoot(MyContributionPage);
 
+    });
+  }
   ionViewDidLoad() {
     this.getPreferences()
   }
@@ -263,10 +316,7 @@ export class CreateContributionPage {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-  
     loading.present();
-
-
     var tagsList = this.contributionTags.split(',');
 
     const control1 = < FormArray > this.contributionForm.controls['tags'];
@@ -301,9 +351,6 @@ export class CreateContributionPage {
       this.navCtrl.setRoot(MyContributionPage);
 
     });
-    console.log("FFF", this.contributionForm.value)
-
-    
   }
 
   removeImage(index) {

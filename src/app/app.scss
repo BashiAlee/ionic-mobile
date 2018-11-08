@@ -108,6 +108,7 @@ text-align: center;
 .mt12{
     margin-top: 10px !important;
 }
+
 .mt30 {
     margin-top: 30px;
 }
@@ -503,7 +504,7 @@ button:focus {
     font-size: 13px !important;
     padding: 5px 10px;
     border-radius: 4px;
-    margin: 5px;
+    margin: 5px 10px;
 }
 .chat-btn{
     background: #F67823;
@@ -516,6 +517,12 @@ button:focus {
 .btn-align{
     text-align: center;
     width: 100%;
+}
+.btn-group{
+    width: 100%;
+    .red-btn,.blue-btn,.yellow-btn{
+        width: 100%;
+    }
 }
 .red-btn{
     cursor: pointer;
