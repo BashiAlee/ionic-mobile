@@ -4,7 +4,6 @@ import { ApplicantFormPage } from './applicant-form';
 
 @NgModule({
   declarations: [
-    ApplicantFormPage,
   ],
   imports: [
     IonicPageModule.forChild(ApplicantFormPage),

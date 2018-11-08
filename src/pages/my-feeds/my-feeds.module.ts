@@ -4,7 +4,6 @@ import { MyFeedsPage } from './my-feeds';
 
 @NgModule({
   declarations: [
-    MyFeedsPage,
   ],
   imports: [
     IonicPageModule.forChild(MyFeedsPage),

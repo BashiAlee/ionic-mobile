@@ -51,6 +51,8 @@ import { PreferencesProvider } from '../providers/preferences/preferences';
 import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
 import { AlertModule,TooltipModule } from 'ngx-bootstrap';
 import {ChatPage} from '../pages/chat/chat';
+import { SplashPage } from '../pages/splash/splash';
+import { EventsPage } from '../pages/events/events';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import {ChatPage} from '../pages/chat/chat';
     NotificationListPage,
     SearchContributionPage,
     ForgotPasswordPage,
+    SplashPage,
+    EventsPage
   ],
   imports: [
     BrowserModule,
@@ -130,7 +134,9 @@ import {ChatPage} from '../pages/chat/chat';
     ChatPage,
     NotificationListPage,
     SearchContributionPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    SplashPage,
+    EventsPage
   ],
   providers: [
     StatusBar,

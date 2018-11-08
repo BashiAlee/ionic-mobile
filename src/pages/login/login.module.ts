@@ -6,7 +6,7 @@ import { LoginPage } from './login';
 
 @NgModule({
   declarations: [
-    LoginPage,
+
   ],
   imports: [
     IonicPageModule.forChild(LoginPage),
@@ -14,7 +14,7 @@ import { LoginPage } from './login';
   providers:[
   ],
   exports: [
-    LoginPage
+
   ]
 })
 export class LoginPageModule {}

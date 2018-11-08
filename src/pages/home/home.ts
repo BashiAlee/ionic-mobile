@@ -55,12 +55,12 @@ export class HomePage {
   ionViewDidLoad() {
     this.contributionList = [];
     this.sortedContributions = [];
-    var options = {
-      strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
-      typeSpeed: 40
-    }
+    // var options = {
+    //   strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
+    //   typeSpeed: 40
+    // }
     
-    this.typed = new Typed(".element", options);
+    // this.typed = new Typed(".element", options);
   }
   getAllContributions() {
 

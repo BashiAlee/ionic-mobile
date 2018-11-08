@@ -4,7 +4,7 @@ import { SearchEventsPage } from './search-events';
 
 @NgModule({
   declarations: [
-    SearchEventsPage,
+
   ],
   imports: [
     IonicPageModule.forChild(SearchEventsPage)

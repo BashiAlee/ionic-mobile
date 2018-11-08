@@ -31,23 +31,7 @@ export class ContributionDetailsPage {
   options = {
     slidesPerView: 3
   }
-  slides = [
-    {
-      title: "Welcome to the Docs!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
-      image: "assets/img/ica-slidebox-img-1.png",
-    },
-    {
-      title: "What is Ionic?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-      image: "assets/img/ica-slidebox-img-2.png",
-    },
-    {
-      title: "What is Ionic Cloud?",
-      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
-      image: "assets/img/ica-slidebox-img-3.png",
-    }
-  ];
+
   comment: any = {};
   userComment: any;
   detailLoader: any = false;
@@ -165,19 +149,22 @@ export class ContributionDetailsPage {
             if(videoClient>-1) {
              let id = this.getYouTubeId(this.contributionDetails.Videos);
              let videoSrc = id
-       
+              this.contributionDetails.Videos = videoSrc;
             //  this.contributionDetails.Videos = videoSrc;
-              $(document).ready(function() {
-              $("#videoModal").attr('src', videoSrc);
-          })
+              // $(document).ready(function() {
+                // document.getElementById('videoModal').setAttribute("src",videoSrc);
+              // $("#videoModal").attr('src', videoSrc);
+          //})
+          console.log("DDD", videoSrc)
             } else {
              let id = this.GetVimeoIDbyUrl(this.contributionDetails.Videos);
              let videoSrc = id
-       
+             this.contributionDetails.Videos = videoSrc;
             //  this.contributionDetails.Videos =videoSrc;
-              $(document).ready(function() {
-              $("#videoModal").attr('src', videoSrc);
-          })
+              // $(document).ready(function() {
+                // document.getElementById('videoModal').setAttribute("src",videoSrc);
+              // $("#videoModal").attr('src', videoSrc);
+          // })
             }
           
           }
@@ -190,7 +177,7 @@ export class ContributionDetailsPage {
   
           this.contributionDetails.ModalValue = this.modalArray;
 
-          console.log("FFFF", this.contributionDetails)
+          console.log("detaaaaaaaaa", this.contributionDetails)
        
       });
      }
@@ -393,6 +380,46 @@ openFold(type) {
     $('.modal-links-view').hide();
   }
 }
+
+shareTwitter(e) {
+  var url = "https://cliiimb.com/spotlight-details/"+ this.id;
+  //  var _this = this;
+  e.preventDefault();
+  var twitterWindow = window.open('https://twitter.com/share?url=' + url, 'twitter-popup', 'height=350,width=600');
+  if(twitterWindow.focus) { twitterWindow.focus(); }
+    return false;
+ }
+ shareFacebook(e) {
+  var url = "https://cliiimb.com/spotlight-details/"+ this.id;
+  e.preventDefault();
+  var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, 'facebook-popup', 'height=350,width=600');
+  if(facebookWindow.focus) { facebookWindow.focus(); }
+    return false;
+ }
+ shareGooglePlus(e) {
+  var url = "https://cliiimb.com/spotlight-details/"+ this.id;
+  //  var _this = this;
+  e.preventDefault();
+  var GooglePlusWindow = window.open('https://plus.google.com/share?url=' + url, 'googleplus-popup', 'height=350,width=600');
+  if(GooglePlusWindow.focus) { GooglePlusWindow.focus(); }
+    return false;
+ }
+ shareLinkedIn(e) {
+  var url = "https://cliiimb.com/spotlight-details/"+ this.id;
+  var title = "Cliimb";
+  var text = url;
+  window.open('http://www.linkedin.com/shareArticle?mini=true&url='+url, 'sharer', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+ }
+
+ openEmailClient() {
+  var url = "https://cliiimb.com/spotlight-details/"+ this.id;
+  var email = '';
+  var subject = 'Cliiimb';
+  var emailBody = url;
+  let Link="mailto:"+email+"?subject="+subject+"&body="+emailBody;
+  window.open(Link, "_system");
+  // window.open("mailto:"+email+"?subject="+subject+"&body="+emailBody, '_system');
+ }
 
 
 }

@@ -4,7 +4,6 @@ import { ChatPage } from './chat';
 
 @NgModule({
   declarations: [
-    ChatPage,
   ],
   imports: [
     IonicPageModule.forChild(ChatPage),

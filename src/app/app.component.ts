@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -31,6 +31,7 @@ import { MessagePage } from '../pages/message/message';
 import { MessageListPage } from '../pages/message-list/message-list';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import {ChatPage} from '../pages/chat/chat';
+import { SplashPage } from '../pages/splash/splash';
 
 
 @Component({
@@ -40,7 +41,7 @@ import {ChatPage} from '../pages/chat/chat';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ChatPage;
+  rootPage: any = SplashPage;
   // rootPage: any = MessagePage;
 
   pages: Array<{title: string, component: any}>;
@@ -48,7 +49,8 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public parentService: ParentProvider,
-    public authService: AuthenticationProvider
+    public authService: AuthenticationProvider,
+    public modalCtrl: ModalController
   ) {
     this.initializeApp();
 
@@ -84,7 +86,9 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // let splash = this.modalCtrl.create(SplashPage);
+      //       splash.present();
+      // this.splashScreen.hide();
     });
 
 

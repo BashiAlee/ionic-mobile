@@ -4,13 +4,13 @@ import { AboutMePage } from './about-me';
 
 @NgModule({
   declarations: [
-    AboutMePage,
+
   ],
   imports: [
     IonicPageModule.forChild(AboutMePage),
   ],
   exports: [
-    AboutMePage
+
   ]
 })
 export class AboutMePageModule {}

@@ -47,8 +47,8 @@
 
               <div style="display: none" class="modal-video-view">
                 <ion-item class="mt30" no-lines>
-                  <!-- <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="domSanitizer.bypassSecurityTrustUrl(contributionDetails.Videos)"></iframe> -->
-                  <iframe  style="width: 100%" class="embed-responsive-item" id="videoModal"></iframe>
+                  <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="domSanitizer.bypassSecurityTrustResourceUrl(contributionDetails.Videos)"></iframe>
+                  <!-- <iframe  style="width: 100%" class="embed-responsive-item" id="videoModal"></iframe> -->
                 </ion-item>
               </div>
 
@@ -67,22 +67,21 @@
 
               <div style="display: none" class="modal-gallery-view">
                   <ion-slides pager>
-                      <ion-slide>
-                          <img src="../../assets/imgs/avatar.png">
-                        <h1>title 1</h1>
-                      </ion-slide>
-                      <ion-slide>
-                          <img src="../../assets/imgs/avatar.png">
-                        <h1>title 2</h1>
-                      </ion-slide>
-                      <ion-slide>
-                          <img src="../../assets/imgs/avatar.png">
-                          <h1>title 3</h1>
+                      <ion-slide *ngFor="let slide of contributionDetails.Images; let i = index">
+                          <img *ngIf="slide.Imagestatus" [src]="slide.Imagestatus">
+                          <img *ngIf="!slide.Imagestatus" src="../../assets/imgs/avatar.png">
+                        <h4>{{slide.ImageTitle}}</h4>
+                        <p>{{slide.ImageDescription}}</p>
                       </ion-slide>
                     </ion-slides>
               </div>
               <div style="display: none" class="modal-links-view">
-                <h1>Links</h1>
+                  <div class="item" *ngFor="let urls of contributionDetails.Website; let i = index">
+                      <div class="thumbnail mythumbnail text-center itemThumbail">
+                        <h3>{{urls.WebsiteTitle}} </h3>
+                        <a class="makeRed" [href]="urls.Websiteurl" target="_blank">Visit this link</a>
+                      </div>
+                    </div>
                 <!-- <ion-slides pager>
                     <ion-slide>
                         <img src="../../assets/imgs/avatar.png">
@@ -158,7 +157,17 @@
         
     </ion-grid>
   </div>
+  <ion-fab right bottom>
+      <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list side="top">
+          <button ion-fab (click)="shareFacebook($event)"><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-fab (click)="shareTwitter($event)"><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab (click)="shareLinkedIn($event)"> <ion-icon ios="logo-linkedin" md="logo-linkedin"></ion-icon></button>
+          <button ion-fab (click)="shareGooglePlus($event)"><ion-icon name="logo-googleplus"></ion-icon></button>
+          <button ion-fab (click)="openEmailClient($event)"><ion-icon ios="ios-mail" md="md-mail"></ion-icon></button>
 
+        </ion-fab-list>
+    </ion-fab>
 
 </ion-content>
 
