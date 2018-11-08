@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
 import Typed from 'typed.js';
+import { SearchEventsPage } from '../../pages/search-events/search-events';
 
 /**
  * Generated class for the HomePage page.
@@ -59,14 +60,16 @@ export class HomePage {
       strings: ["COACHABLE", "HUMBLE", "RESILIENT", "UNIQUE", "VIBRANT", "FOCUSED", "VICTORIOUS", "CREATIVE", "PREPARED", "AMBITIOUS", "INNOVATIVE", "COMMITTED", "YOURSELF", "ABLE", "GREATNESS", "AMAZING", "LEADERS", "THE CHANGE", "STRONG", "HEALTHY", "HAPPY", "POWERFUL", "GENIUS", "MOTIVATED", "A GAMECHANGER", "INSPIRED", "THE LIGHT"," THE FUTURE", "REAL"],
       typeSpeed: 100,
       backSpeed: 100,
-      backDelay: 500,
-      startDelay: 1000,
       cursorChar: '',
       shuffle: true,
       smartBackspace: false,
       loop: true
     });
     
+  }
+  showEvents(){
+    this.navCtrl.setRoot(SearchEventsPage);
+
   }
   getAllContributions() {
 

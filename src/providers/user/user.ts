@@ -55,10 +55,9 @@ export class UserProvider {
     
     formData.append('file',new Blob([target.files[0]]),target.files[0].name);
     return this.http.post(this.staticURL,formData)
-    .pipe(map((response: any) => {
-  
-     return response;
-  }));
+      .pipe(map((response: any) => {
+      return response;
+    }));
   }
 
   updateProfile(data) {
