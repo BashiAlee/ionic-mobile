@@ -10,10 +10,6 @@
     <ion-grid>
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-          <!-- <h1>BE
-            <span class="typer" id="main" data-words="COACHABLE, HUMBLE, RESILIENT, UNIQUE, VIBRANT, FOCUSED, VICTORIOUS, CREATIVE, PREPARED, AMBITIOUS, INNOVATIVE, COMMITTED, YOURSELF, ABLE, GREATNESS, AMAZING, LEADERS, THE CHANGE, STRONG, HEALTHY, HAPPY, POWERFUL, GENIUS, MOTIVATED, A GAMECHANGER, INSPIRED, THE LIGHT, THE FUTURE, REAL"
-              data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
-          </h1> -->
           <h1>BE<p id="typed"></p></h1>
           
           <p>
@@ -27,12 +23,12 @@
           <div class="cover-btn">
             <span *ngIf="!user">
               <button class="red-btn">
-                Sign Up
+                SIGN UP
               </button>
             </span>
             <span>
-              <button class="blue-btn">
-                Events
+              <button class="blue-btn" (click)="showEvents()">
+                EVENTS
               </button>
             </span>
           </div>
@@ -120,13 +116,13 @@
                   </ion-col>
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
                       <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contribution.UserID)" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
-                        Unfollow
+                        UNFOLLOW
                       </button>
                       <button class="follow-btn f-right" (click)="addMentor(contribution.UserID,user.Age)" *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
-                        Follow
+                        FOLLOW
                       </button> 
                       <button class="follow-btn orange-icon f-right" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
-                        Pending
+                        PENDING
                       </button> 
                   </ion-col>
               </ion-row>
@@ -142,13 +138,20 @@
           <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
 
           <ion-card-content>
-            <ion-item>
-              <h4>{{contribution.Title}}</h4>
+              <ion-grid>
+                  <ion-row>
+                      <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
+                        <div class="custom-titl">
+                          <h4>{{contribution.Title}}</h4>
+                        </div>
+                      </ion-col>
+                      <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
+                          <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
+                      </ion-col>
+                  </ion-row>
+              </ion-grid>
                
-              <span item-end>
-                <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
-              </span>
-            </ion-item>
+              
 
             <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
             <div class="red-text">

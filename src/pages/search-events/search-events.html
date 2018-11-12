@@ -95,13 +95,18 @@
     
               <ion-card-content>
     
-    
-                <ion-item>
-                  <h4>{{contribution.Title}}</h4>
-                  <span item-end>
-                    <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
-                  </span>
-                </ion-item>
+                  <ion-grid>
+                      <ion-row>
+                          <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
+                            <div class="custom-titl">
+                              <h4>{{contribution.Title}}</h4>
+                            </div>
+                          </ion-col>
+                          <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
+                            <ion-icon name="ios-eye"></ion-icon>{{contribution.ViewCount}} Views
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
     
                 <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
                 <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>

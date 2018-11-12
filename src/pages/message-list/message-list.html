@@ -3,11 +3,11 @@
 
 <ion-content padding>
     <h2 class="primary-heading mt15 ">Messages</h2>
-    <div class="btn-align">
+    <!-- <div class="btn-align">
         <button class="chat-btn" (click)="newChat()">
             <ion-icon class="chat" name="ios-chatbubbles"></ion-icon>New Chat
         </button> 
-    </div>
+    </div> -->
     <div *ngIf="userMessageNotication && userMessageNotication.length">
         <ion-list no-lines *ngFor="let messages of userMessageNotication; let i = index" [ngClass]="(messages.User1ID == user._id && messages.User1ChatStatus) || (messages.User2ID == user._id && messages.User2ChatStatus)? 'unread': 'read'" (click)="openMessage(messages)" >
           <div class="b-bot">

@@ -262,7 +262,7 @@ export class CreateContributionPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
-    
+    this.loading=true;
     var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
     if (FileSize > 20) {
         // this.messages.maxSize = true;
@@ -276,9 +276,7 @@ export class CreateContributionPage {
             this.contributionForm.patchValue({
               audiopath: data.status
             });
-            // this.sucessUpload = true;
-            // this.showUploader = false;
-  
+            this.loading=false;
           },
           error => {});
     }
@@ -291,10 +289,8 @@ export class CreateContributionPage {
     this.userService.uploadAudio(file)
       .subscribe(
         data => {
-        
           if (target.files && target.files[0]) {
             var reader = new FileReader();
-
             reader.onload = (event: any) => {
               // this.url = event.target.result;
               this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
@@ -304,7 +300,6 @@ export class CreateContributionPage {
             reader.readAsDataURL(target.files[0]);
             console.log("DD", this.imageStatus)
           }
-
         },
         error => {
           // this.messages.uploadImageLoader = false;

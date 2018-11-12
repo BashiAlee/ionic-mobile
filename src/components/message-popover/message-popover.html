@@ -1,6 +1,6 @@
 <ion-list>
   <div *ngIf="userMessageNotication && userMessageNotication.length">
-      <ion-item *ngFor="let notification of userMessageNotication; let i = index" [ngClass]="(notification.User1ID == user._id && notification.User1ChatStatus) || (notification.User2ID == user._id && notification.User2ChatStatus)? 'unread': 'read'" >
+      <ion-item (click)="viewAllMessages()" *ngFor="let notification of userMessageNotication; let i = index" [ngClass]="(notification.User1ID == user._id && notification.User1ChatStatus) || (notification.User2ID == user._id && notification.User2ChatStatus)? 'unread': 'read'" >
           <ion-avatar item-start>
               <img *ngIf="user._id == notification.User1ID" [src]="notification.User2ProfilePicture" alt="User Avatar" class="img-circle">
               <img *ngIf="user._id == notification.User2ID" [src]="notification.User1ProfilePicture" alt="User Avatar" class="img-circle">
@@ -13,12 +13,14 @@
   </div>
   </ion-list>
   <div class="makeCenter">
-      <a class="custon-anchor" href="#"  (click)="viewAllMessages()">View All</a>
-  </div>
-  <ion-list *ngIf="!userMessageNotication">
-    <p>Not Found</p>
-  </ion-list>
-  <ion-list *ngIf="loading">
-      <p>Loading...</p>
+    <ion-list *ngIf="loading">
+        <p>Loading...</p>
     </ion-list>
-  
+    <ion-list class="pt15" *ngIf="!userMessageNotication">
+        <p>Not Messages</p>
+    </ion-list>
+    <div *ngIf="userMessageNotication">
+        <a class="custon-anchor" href="#"  (click)="viewAllMessages()">View All</a>
+    </div>
+  </div>
+    
