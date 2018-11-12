@@ -1,0 +1,87 @@
+page-how-to-protect {
+    .about-us{
+        font-size: 16px;
+      }
+      
+      .about-us p{
+        font-family: 'Brandon_reg';
+        font-size: 18px;
+        margin-bottom:  20px;
+      }
+      .about-us h4{
+        font-size: 20px;
+        font-family: 'Brandon_bld';
+      
+      }
+      
+      .about-us h5{
+        font-size: 19px;
+        font-family: 'Brandon_bld';
+      
+      }
+      
+      .about-us h1{
+        text-align: center !important;
+        margin-bottom: 30px !important;
+      
+      }
+      
+      .about-us ul{
+        list-style-type: none;
+        padding-left: 0;
+      }
+      
+      .about-us ul li{
+        font-family: 'Brandon_reg';
+        font-size: 18px;
+        margin-bottom:  5px;
+      }
+      
+      
+      
+       .question-ans{
+           padding-top: 0px;
+           padding-bottom: 50px;
+           background: #fff;
+      }
+       .question-ans h2{
+           color: #AFAEC4;
+      }
+       .question-ans .panel-title{
+           color: #55537F !important;
+           font-size: 24px !important;
+           font-family: 'Brandon_reg';
+      }
+       .panel-title > a:before {
+           float: right !important;
+           content:"HIDE ANSWER";
+           padding-right: 5px;
+           color: #FD568B;
+           font-size: 13px;
+      }
+      .redcolor{
+        color: #FD568B !important;
+        text-decoration: none !important;
+      }
+      
+       .panel-title > a.collapsed:before {
+           float: right !important;
+           content:"SHOW ANSWER";
+           color: #FD568B;
+           font-size: 13px;
+      }
+       .panel-title > a:hover, .panel-title > a:active, .panel-title > a:focus {
+           text-decoration:none;
+      }
+       .question-ans .panel-body{
+           color: #656480;
+           line-height: 27px;
+          font-size: 17px;
+           padding-left: 0;
+      }
+       .question-ans .panel-heading{
+           padding: 20px 0px;
+      }
+      /************ about-us *********/
+    
+}

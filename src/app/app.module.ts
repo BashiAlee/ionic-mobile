@@ -53,6 +53,9 @@ import { AlertModule,TooltipModule } from 'ngx-bootstrap';
 import {ChatPage} from '../pages/chat/chat';
 import { SplashPage } from '../pages/splash/splash';
 import { EventsPage } from '../pages/events/events';
+import { AboutUsPage } from '../pages/about-us/about-us';
+import { LearnMoreMentorPage } from '../pages/learn-more-mentor/learn-more-mentor';
+import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import { EventsPage } from '../pages/events/events';
     SearchContributionPage,
     ForgotPasswordPage,
     SplashPage,
-    EventsPage
+    EventsPage,
+    AboutUsPage,
+    LearnMoreMentorPage,
+    HowToProtectPage
   ],
   imports: [
     BrowserModule,
@@ -136,7 +142,10 @@ import { EventsPage } from '../pages/events/events';
     SearchContributionPage,
     ForgotPasswordPage,
     SplashPage,
-    EventsPage
+    EventsPage,
+    AboutUsPage,
+    LearnMoreMentorPage,
+    HowToProtectPage
   ],
   providers: [
     StatusBar,

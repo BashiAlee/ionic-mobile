@@ -8,6 +8,10 @@ import { ContributionDetailsPage } from '../../pages/contribution-details/contri
 import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
 import Typed from 'typed.js';
 import { SearchEventsPage } from '../../pages/search-events/search-events';
+import { LearnMoreMentorPage } from '../learn-more-mentor/learn-more-mentor';
+
+import { AboutUsPage } from '../about-us/about-us';
+import { HowToProtectPage } from '../how-to-protect/how-to-protect';
 
 /**
  * Generated class for the HomePage page.
@@ -317,5 +321,17 @@ getAllCommentsAndLikes(id, value) {
 
   openUserProfile(UserID) {
     this.navCtrl.setRoot(ViewerProfilePage, {userid: UserID})
+  }
+
+  goToLearnMentorPage() {
+    this.navCtrl.setRoot(LearnMoreMentorPage)
+  }
+
+  goToAboutUS() {
+    this.navCtrl.setRoot(AboutUsPage)
+  }
+
+  goToProtectionPage() {
+    this.navCtrl.setRoot(HowToProtectPage)
   }
 }

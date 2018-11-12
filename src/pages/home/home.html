@@ -43,7 +43,7 @@
             </p>
             <div class="about-btn">
               <span>
-                <button class="blue-btn">
+                <button class="blue-btn" (click)="goToAboutUS()">
                   LEARN MORE
                 </button>
               </span>
@@ -67,7 +67,14 @@
               <button class="yellow-btn">
                 REGISTER NOW
               </button>
-            </span>
+            </span>         
+            <span>
+                <button class="blue-btn" (click)="goToLearnMentorPage()">
+                  LEARN MORE
+                </button>
+              </span>
+
+     
           </div>
         </ion-col>
 
@@ -77,6 +84,11 @@
             <span class="red-boldline"></span>
             <p>Message to parents of how we will protect them - The flow of the system of how it will protect and
               manage younger members under the age of 18 </p>
+              <span>
+                  <button class="blue-btn" (click)="goToProtectionPage()">
+                    LEARN MORE
+                  </button>
+                </span>
           </div>
         </ion-col>
       </ion-row>

@@ -32,6 +32,7 @@ import { MessageListPage } from '../pages/message-list/message-list';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import {ChatPage} from '../pages/chat/chat';
 import { SplashPage } from '../pages/splash/splash';
+import { AboutUsPage } from '../pages/about-us/about-us';
 
 
 @Component({
@@ -66,7 +67,7 @@ export class MyApp {
       // { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ApplicantFormPage },
       { title: 'Mentor', component: MentorPage },
-      // { title: 'Feed', component: HomePage },
+      // { title: 'About US', component: AboutUsPage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },
