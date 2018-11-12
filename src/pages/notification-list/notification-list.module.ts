@@ -4,7 +4,6 @@ import { NotificationListPage } from './notification-list';
 
 @NgModule({
   declarations: [
-    NotificationListPage,
   ],
   imports: [
     IonicPageModule.forChild(NotificationListPage),

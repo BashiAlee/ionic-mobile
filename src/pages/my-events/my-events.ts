@@ -61,20 +61,20 @@ export class MyEventsPage {
             else if(!value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsPendingList.push(value);
-              this.loading = false;
+              // this.loading = false;
             } 
             else if(value.ContributionStatus == "Draft") {
               this.getProfileByID(value.UserID, value)
               this.eventsDraftList.push(value);
-              this.loading = false;
+              // this.loading = false;
             } 
             
-            else {
-              this.eventsList = [];
-              this.eventsDraftList = [];
-              this.eventsPendingList = [];
-              this.loading = false;
-            }
+            // else {
+            //   this.eventsList = [];
+            //   this.eventsDraftList = [];
+            //   this.eventsPendingList = [];
+            //   this.loading = false;
+            // }
             
           });
         } else {

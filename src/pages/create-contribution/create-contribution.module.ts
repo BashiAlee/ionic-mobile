@@ -4,14 +4,12 @@ import { CreateContributionPage } from './create-contribution';
 
 @NgModule({
   declarations: [
-    CreateContributionPage,
   ],
   imports: [
     IonicPageModule.forChild(CreateContributionPage),
   ],
 
   exports: [
-    CreateContributionPage
   ]
   
 })

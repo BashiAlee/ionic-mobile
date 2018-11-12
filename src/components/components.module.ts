@@ -18,19 +18,9 @@ import {
 } from './header/header';
 @NgModule({
   declarations: [
-    PopoverContributionComponent,
-    UserPopoverComponent,
-    NotificationPopoverComponent,
-    MessagePopoverComponent,
-    HeaderComponent
   ],
   imports: [],
   exports: [
-    PopoverContributionComponent,
-    UserPopoverComponent,
-    NotificationPopoverComponent,
-    MessagePopoverComponent,
-    HeaderComponent
   ]
 })
 export class ComponentsModule {}

@@ -4,7 +4,7 @@ import { SearchContributionPage } from './search-contribution';
 
 @NgModule({
   declarations: [
-    SearchContributionPage,
+
   ],
   imports: [
     IonicPageModule.forChild(SearchContributionPage),

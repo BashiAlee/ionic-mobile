@@ -4,7 +4,6 @@ import { MentorPage } from './mentor';
 
 @NgModule({
   declarations: [
-    MentorPage,
   ],
   imports: [
     IonicPageModule.forChild(MentorPage),

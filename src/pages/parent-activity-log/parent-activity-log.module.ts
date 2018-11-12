@@ -4,7 +4,6 @@ import { ParentActivityLogPage } from './parent-activity-log';
 
 @NgModule({
   declarations: [
-    ParentActivityLogPage,
   ],
   imports: [
     IonicPageModule.forChild(ParentActivityLogPage),

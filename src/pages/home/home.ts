@@ -57,6 +57,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.contributionList = [];
     this.sortedContributions = [];
+
     
       new Typed('#typed', {
       strings: ["COACHABLE", "HUMBLE", "RESILIENT", "UNIQUE", "VIBRANT", "FOCUSED", "VICTORIOUS", "CREATIVE", "PREPARED", "AMBITIOUS", "INNOVATIVE", "COMMITTED", "YOURSELF", "ABLE", "GREATNESS", "AMAZING", "LEADERS", "THE CHANGE", "STRONG", "HEALTHY", "HAPPY", "POWERFUL", "GENIUS", "MOTIVATED", "A GAMECHANGER", "INSPIRED", "THE LIGHT"," THE FUTURE", "REAL"],

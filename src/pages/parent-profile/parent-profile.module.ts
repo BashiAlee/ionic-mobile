@@ -4,7 +4,6 @@ import { ParentProfilePage } from './parent-profile';
 
 @NgModule({
   declarations: [
-    ParentProfilePage,
   ],
   imports: [
     IonicPageModule.forChild(ParentProfilePage),
