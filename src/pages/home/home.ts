@@ -30,7 +30,9 @@ export class HomePage {
   maincategory: any;
   sortedContributions: any = [];
   loading: any;
-  
+  // userData:any=[];
+  isFollowed:any;
+
   followersIds: any = [];
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -270,7 +272,7 @@ getAllCommentsAndLikes(id, value) {
     }
   }
 
-  addMentor(id,age) {
+  addMentor(id,age,contribution) {
     if(age < 18) {
       let toast = this.toastCtrl.create({
         message: 'Your Request for approval has been sent to your parent',
@@ -290,14 +292,15 @@ getAllCommentsAndLikes(id, value) {
     this.userService.addmentor(data)
       .subscribe(
         data => {
-    console.log(data)
-
+          if (data.status){
+            contribution.hasFollowing=true
+          }
           // this.getFollowerList();
         },
         error => {});
   }
 
-  unFollowMentor(id) {
+  unFollowMentor(id,contribution) {
     var data = {
       userid: this.user._id,
       follower: [{
@@ -307,8 +310,9 @@ getAllCommentsAndLikes(id, value) {
     this.userService.unfollowMentor(data)
       .subscribe(
         data => {
-    console.log(data)
-
+          if (data.status){
+            contribution.hasFollowing=false
+          }
         },
         error => {});
   }
