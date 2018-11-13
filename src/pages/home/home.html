@@ -127,12 +127,12 @@
                     </div>
                   </ion-col>
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                      <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contribution.UserID)" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
+                      <button class="follow-btn f-right" (click)="addMentor(contribution.UserID,user.Age,contribution)" *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
+                          FOLLOW
+                        </button> 
+                      <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contribution.UserID, contribution)" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
                         UNFOLLOW
                       </button>
-                      <button class="follow-btn f-right" (click)="addMentor(contribution.UserID,user.Age)" *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
-                        FOLLOW
-                      </button> 
                       <button class="follow-btn orange-icon f-right" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
                         PENDING
                       </button> 

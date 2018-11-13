@@ -50,17 +50,20 @@ export class SignupPage {
       content: 'Please wait...',
     });
     loader.present();
-    this.authService.signup(this.signupForm.value)
-    .subscribe( data=> {
-      if(data.status) {
         loader.dismiss();
-        this.presentToast(data.message)
-        this.navCtrl.setRoot(LoginPage)
-      } else if(!data.status){
-        loader.dismiss();
-        this.showErrorAlert(data.message)
-      }
-    });
+
+    this.presentToast("this is toast")
+    // this.authService.signup(this.signupForm.value)
+    // .subscribe( data=> {
+    //   if(data.status) {
+    //     loader.dismiss();
+    //     this.presentToast(data.message)
+    //     this.navCtrl.setRoot(LoginPage)
+    //   } else if(!data.status){
+    //     loader.dismiss();
+    //     this.showErrorAlert(data.message)
+    //   }
+    // });
   }
   showErrorAlert(message) {
     const alert = this.alertCtrl.create({
@@ -75,7 +78,7 @@ export class SignupPage {
     let toast = this.toastCtrl.create({
       message: message+" Please verify your email to login",
       duration: 5000,
-      position: 'top'
+      position: 'top',
     });
   
     toast.onDidDismiss(() => {

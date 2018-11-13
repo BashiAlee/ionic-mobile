@@ -1,7 +1,7 @@
 page-message {
     .chat-header{
         position: fixed;
-        // top: 50px;
+        top: 50px;
         .title1{
             margin-top:15px; 
     
@@ -15,41 +15,6 @@ page-message {
         .back-btn{
             font-size: 10px;
             margin: 3px 5px 0px 5px;
-        }
-    }
-    .msg-section{
-        overflow: scroll;
-        height: auto;
-        margin-top: 50px;
-        color: #fff;
-        padding: 10px 20px;
-        font-size: 15px;
-        .left-msg{
-            .txt{
-                background: $primary-blue;
-                border-radius:10px 10px 10px 0px;
-            }
-            .time{
-            }
-        }
-        .right-msg{
-            text-align: right;
-            .txt{
-                background: $primary-color;
-                border-radius: 10px 10px 0px 10px;
-            }
-            .time{
-                top: -10px;
-            }
-        }
-    }   
-    .typ-sect{
-        margin: auto;
-        display: grid;
-        grid-template-columns: 80% 20%;
-        padding: 30px 10px 20px 20px;
-        .typing{
-            color: #000;
         }
     }
 }

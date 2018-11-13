@@ -12,21 +12,43 @@
   <div class="loader makeCenter" *ngIf="loader">
       <ion-spinner name="bubbles"></ion-spinner>
   </div>
-  <div class="not-found makeCenter" *ngIf="followersList && !followersList.length && !loader">
+  <div class="not-found makeCenter" *ngIf="!followersList.length && !loader">
     <p>No Followers</p>
   </div>
-<ion-grid>
-  <ion-row>
-    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-        <ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+          <ion-list *ngIf="followersList">
             <ion-item  class="custom-input">
               <ion-label>Choose follower to chat</ion-label>
-              <!-- <ion-select (cancel)="onCancel()" (ionChange)="subCategory(contributionForm.value.subcategories)">
-                <ion-option *ngFor="let preferences of slectedCategory.SubCategories; let i = index" [value]="preferences.SubCategory">{{preferences.SubCategory}} ></ion-option>
-              </ion-select> -->
+              <ion-select (cancel)="onCancel()" [(ngModel)]="followerId">
+                <ion-option *ngFor="let follower of followersList; let i = index" [value]="follower._id">{{follower.FullName}}</ion-option>
+              </ion-select>
             </ion-item>
           </ion-list>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <div>
+            <ion-list class="loader makeCenter" *ngIf="loading.sendMsg">
+                <ion-spinner name="bubbles"></ion-spinner>
+            </ion-list>
+        </div>
+      <div class="typ-sect">
+          <div class="typing" [formGroup]="messageForm">
+              <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1" formControlName="message"/>
+          </div>
+          <label class="circle green-circle" (click)="sendMessage()">
+            <p>
+              <ion-icon name="md-send"></ion-icon>
+            </p>
+          </label>     
+      </div>
+    </ion-toolbar>
+  </ion-footer>

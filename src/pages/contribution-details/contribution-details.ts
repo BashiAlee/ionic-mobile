@@ -78,7 +78,7 @@ export class ContributionDetailsPage {
         $(this.modalArray[i]).hide();
       }
     }
-    console.log("FFFF", this.modalArray, this.current,this.first)
+    // console.log("FFFF", this.modalArray, this.current,this.first)
   }
 
   moveBackward(modalArray) {
@@ -108,15 +108,12 @@ export class ContributionDetailsPage {
       this.contributionDetails = data.data
       this.getFollowers(this.user._id)
       .then((data) => {
-        if(data) {
+      if(data) {
           if (this.followersIds.Follower.length) {
             this.followersIds.Follower.forEach(follower => {
               if (follower.Userfollowerid === this.contributionDetails.UserID) {
-                
                 this.contributionDetails.hasFollowing = true;
-             
               }
-
               if((follower.Userfollowerid === this.contributionDetails.UserID) && follower.MessageStatus) {
                 this.contributionDetails.canSendMessage = true;
               }
@@ -198,6 +195,53 @@ export class ContributionDetailsPage {
         }
     });
   })
+}
+addMentor(id,age,contributionDetails) {
+  var data = {
+    userid: this.user._id,
+    follower: [{
+      followersid: id
+    }],
+    userage: age
+  }
+  this.userService.addmentor(data)
+    .subscribe(
+      data => {
+        if (data.status){
+          if(age < 18) {
+            let toast = this.toastCtrl.create({
+              message: 'Your Request for approval has been sent to your parent',
+              duration: 3000,
+              position: 'bottom'
+            });
+            toast.present();
+          }
+          else{
+            contributionDetails.hasFollowing=true
+            contributionDetails.isAllowed=true
+          }
+        }
+        // this.getFollowerList();
+      },
+      error => {});
+}
+
+unFollowMentor(id,contributionDetails) {
+  var data = {
+    userid: this.user._id,
+    follower: [{
+      followersid: id
+    }]
+  }
+  this.userService.unfollowMentor(data)
+    .subscribe(
+      data => {
+        if (data.status){
+          contributionDetails.hasFollowing=false
+          contributionDetails.isAllowed=false
+        }
+      },
+      error => {});
 }
 
 getLikesAndComments(id,value) {

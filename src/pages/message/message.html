@@ -12,34 +12,33 @@
         <ion-grid>
             <ion-row class="b-bot">
               <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <button ion-button color="red" class="back-icon" clear icon-start>
+                  <button ion-button color="red" class="back-icon" clear icon-start (click)="goTo()">
                     <span class="back-btn"><ion-icon name='ios-arrow-back'></ion-icon></span>
                     Back
                   </button>
               </ion-col>
               <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-md-1>
                   <div icon-center class="title1">
-                    <h2>{{user.FullName}}</h2>
+                    <h2>{{allData.User2UserName}}</h2>
                   </div>
               </ion-col>
             </ion-row>
           </ion-grid>
     </ion-navbar>
   </ion-header>
-  
   <ion-grid>
     <div *ngIf="messages && messages.length" class="msg-section">
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
           <div *ngFor="let message of messages; let i = index" class="left-msg">
-            <p *ngIf="user._id == message.SenderUserId" class="txt">{{message.Message}}</p>
+            <p *ngIf="user._id != message.SenderUserId" class="txt">{{message.Message}}</p>
             <!-- <p class="time">wed | 14:00</p> -->
           </div>
         </ion-col>
 
         <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
           <div *ngFor="let message of messages; let i = index" class="right-msg">
-            <p *ngIf="user._id != message.SenderUserId" class="txt">{{message.Message}}</p>
+            <p *ngIf="user._id == message.SenderUserId" class="txt">{{message.Message}}</p>
             <!-- <p class="time">wed | 14:00</p> -->
           </div>
         </ion-col>

@@ -30,8 +30,16 @@
                       <h2>{{contributionDetails.UserFullName}}</h2>
                       <p><a href="#">Cliiimb</a>(judicial system)</p>
                     </div>
-                    <button item-end class="follow-btn">Follow</button>
                   </ion-item>
+                  <button class="follow-btn f-right" (click)="addMentor(contributionDetails.UserID,user.Age,contributionDetails)" *ngIf="user &&!contributionDetails.hasFollowing && user._id != contributionDetails.UserID  && contributionDetails.userType!='admin'">
+                    FOLLOW
+                  </button> 
+                  <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contributionDetails.UserID, contributionDetails)" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && contributionDetails.isAllowed">
+                    UNFOLLOW
+                  </button>
+                  <button class="follow-btn orange-icon f-right" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && !contributionDetails.isAllowed">
+                    PENDING
+                  </button> 
                   <ion-item class="action-icons b-bot">
                     <ion-icon *ngIf="contributionDetails.AudioPath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio')" ></ion-icon>
                     <ion-icon *ngIf="contributionDetails.Videos" class="play-icon" ios="ios-play" md="md-play"  (click)="openFold('video')"></ion-icon>
