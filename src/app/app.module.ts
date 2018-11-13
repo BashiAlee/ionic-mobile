@@ -56,7 +56,8 @@ import { EventsPage } from '../pages/events/events';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { LearnMoreMentorPage } from '../pages/learn-more-mentor/learn-more-mentor';
 import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
-
+// import "../../node_modules/froala-editor/js/froala_editor.pkgd.min.js";
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
   declarations: [
     ApplicantFormPage,
@@ -103,7 +104,8 @@ import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    [AlertModule.forRoot(),TooltipModule.forRoot()]
+    [AlertModule.forRoot(),TooltipModule.forRoot()],
+    [FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()]
   ],
   bootstrap: [IonicApp],
   entryComponents: [

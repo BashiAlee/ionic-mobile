@@ -1,5 +1,9 @@
 
-<ion-content padding class="login-details">
+<ion-content class="login-details">
+  <div class="blue-square">
+    <img src="../assets/imgs/blue-square.png" alt="blue-square">
+  </div>
+  
   <div class="inner-details">
       <div class="top-content makeCenter pt15">
           <div class="image">
@@ -39,8 +43,18 @@
       </div>
     </div>
     <div class="makeRed">
-        <p>Don't have an account? <a (click)="openSignupPage()">Sign up</a> </p>
-      </div> 
+      <p>Don't have an account? <a (click)="openSignupPage()">Sign up</a> </p>
+    </div> 
+    <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+              <img class="orange-square" src="../assets/imgs/orange-square.png" alt="orange-square">
+          </ion-col>
+          <ion-col col-6>
+              <img class="red-square" src="../../assets/imgs/red-square.png" alt="red-square">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 </ion-content>
 
 

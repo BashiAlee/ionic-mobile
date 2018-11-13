@@ -7,6 +7,7 @@
 <header></header>
 <ion-content padding>
   <div class="home-content makeCenter">
+    
     <ion-grid>
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
@@ -47,13 +48,9 @@
                   LEARN MORE
                 </button>
               </span>
-              <span>
-                <button class="yellow-btn">
-                  WATCH FILM
-                </button>
-              </span>
             </div>
           </div>
+
         </ion-col>
 
         <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
@@ -94,6 +91,8 @@
       </ion-row>
     </ion-grid>
   </div>
+  <!-- <div [froalaEditor]>Hello, Froala!</div> -->
+
   <ion-list class="loader makeCenter" *ngIf="loading">
     <ion-spinner name="bubbles"></ion-spinner>
   </ion-list>

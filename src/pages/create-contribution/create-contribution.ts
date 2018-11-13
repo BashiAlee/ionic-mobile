@@ -33,6 +33,7 @@ export class CreateContributionPage {
   contributionForm: FormGroup;
   coverImage: any;
   loading: any;
+  loaders: any={};
   user: any;
   imageStatus: any = [];
   preferencesData: any;
@@ -221,21 +222,23 @@ export class CreateContributionPage {
   }
 
   chooseFromGallery() {
+    this.loading= true;
     let options = {
       maximumImagesCount:1,//select number of image default is 15
       destinationType: this.camera.DestinationType.DATA_URL,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
       }
-    this.camera.getPicture(options).then((result) => {
+      this.camera.getPicture(options).then((result) => {
    
       this.coverImage = 'data:image/jpeg;base64,' + result;
-
+      this.loading = false;
       this.uploadCroppedImage(this.coverImage)
     }, (err) => { });
   }
 
   openCamera() {
+    this.loading= true;
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -245,7 +248,7 @@ export class CreateContributionPage {
     this.camera.getPicture(options).then((imageData) => {
 
       this.coverImage = 'data:image/jpeg;base64,' + imageData;
-    
+      this.loading = false;
       this.uploadCroppedImage(this.coverImage)
      }, (err) => {
 
@@ -262,7 +265,7 @@ export class CreateContributionPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
-    this.loading=true;
+    this.loaders.audio=true;
     var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
     if (FileSize > 20) {
         // this.messages.maxSize = true;
@@ -276,14 +279,14 @@ export class CreateContributionPage {
             this.contributionForm.patchValue({
               audiopath: data.status
             });
-            this.loading=false;
+            this.loaders.audio=false;
           },
           error => {});
     }
   }
 
   uploadContributionImage(file) {
-    this.loading=true;
+    this.loaders.img=true;
     var target = file.target || file.srcElement
 
     this.userService.uploadAudio(file)
@@ -296,9 +299,8 @@ export class CreateContributionPage {
               this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
               // this.url.push({title: '',description:'',img:event.target.result});
             }
-            this.loading=false;
+            this.loaders.img=false;
             reader.readAsDataURL(target.files[0]);
-            console.log("DD", this.imageStatus)
           }
         },
         error => {

@@ -61,8 +61,6 @@ export class HomePage {
   ionViewDidLoad() {
     this.contributionList = [];
     this.sortedContributions = [];
-
-    
       new Typed('#typed', {
       strings: ["COACHABLE", "HUMBLE", "RESILIENT", "UNIQUE", "VIBRANT", "FOCUSED", "VICTORIOUS", "CREATIVE", "PREPARED", "AMBITIOUS", "INNOVATIVE", "COMMITTED", "YOURSELF", "ABLE", "GREATNESS", "AMAZING", "LEADERS", "THE CHANGE", "STRONG", "HEALTHY", "HAPPY", "POWERFUL", "GENIUS", "MOTIVATED", "A GAMECHANGER", "INSPIRED", "THE LIGHT"," THE FUTURE", "REAL"],
       typeSpeed: 100,
@@ -72,19 +70,15 @@ export class HomePage {
       smartBackspace: false,
       loop: true
     });
-    
   }
   showEvents(){
     this.navCtrl.setRoot(SearchEventsPage);
-
   }
   getAllContributions() {
-
     this.contributionService.getAllContribution()
       .subscribe(
         data => {
           if (data.status) {
-
             data.data.forEach(value => {
               // this.contributionService.parseHTML(value.ContributionText)
               // value.ContributionText =  this.sanitizer.bypassSecurityTrustHtml(value.ContributionText);
@@ -102,11 +96,8 @@ export class HomePage {
                       if((follower.Userfollowerid === value.UserID) && follower.ParentStatus) {
                         value.isAllowed = true;
                       }
-                      
                     });
                   }
-
-                 
                 }
                 if(value.MainCategory) {
                   this.categories.push({
@@ -278,15 +269,6 @@ getAllCommentsAndLikes(id, value) {
   }
 
   addMentor(id,age,contribution) {
-    if(age < 18) {
-      let toast = this.toastCtrl.create({
-        message: 'Your Request for approval has been sent to your parent',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
-      // toastr.success('Your Request for approval has been sent to your parent','Success')
-    }
     var data = {
       userid: this.user._id,
       follower: [{
@@ -298,9 +280,19 @@ getAllCommentsAndLikes(id, value) {
       .subscribe(
         data => {
           if (data.status){
-            contribution.hasFollowing=true
+            if(age < 18) {
+              let toast = this.toastCtrl.create({
+                message: 'Your Request for approval has been sent to your parent',
+                duration: 3000,
+                position: 'bottom'
+              });
+              toast.present();
+            }
+            else{
+              contribution.hasFollowing=true
+              contribution.isAllowed=true
+            }
           }
-          // this.getFollowerList();
         },
         error => {});
   }
@@ -317,6 +309,7 @@ getAllCommentsAndLikes(id, value) {
         data => {
           if (data.status){
             contribution.hasFollowing=false
+            contribution.isAllowed=true
           }
         },
         error => {});

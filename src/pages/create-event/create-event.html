@@ -6,8 +6,16 @@
 -->
 <header></header>
 
-
-<ion-content padding>
+<ion-content *ngIf="!user.MentorStatus">
+  <div class="makeCenter mt50 completed-check">
+    <img src="../../assets/imgs/app-logo.svg" alt="" srcset="">
+      <div class="times-click">
+          <span class="fa fa-times"></span>
+       </div>
+       <p>Sorry! You are not allowed to perform this action unless you are a Super Contributor and Mentor.</p>
+  </div>
+</ion-content>
+<ion-content padding *ngIf="user.MentorStatus">
   <h3 class="makeCenter">Create Your Event</h3>
    <!-- Segment buttons with text -->
    
@@ -34,8 +42,9 @@
                 <label for="cname" class="makeBlock mt15 custom-label">Event Title</label>
               </ion-col>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                <div class="tooltip_vector f-right">
-                    <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                <div class="tooltip_vector v1 f-right">
+                    <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                    triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
                 </div>
               </ion-col>
             </ion-row>
@@ -48,7 +57,12 @@
             <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                 <label for="cname" class="makeBlock mt15 custom-label">Location</label>
               </ion-col>
-
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                  <div class="tooltip_vector v1 f-right">
+                      <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                      triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
+                  </div>
+                </ion-col>
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
@@ -57,11 +71,16 @@
             </ion-row>
 
             <ion-row>
-                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                    <label for="cname" class="makeBlock mt15 custom-label">Date</label>
-                  </ion-col>
-     
-                </ion-row>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <label for="cname" class="makeBlock mt15 custom-label">Date</label>
+              </ion-col>
+              <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                  <div class="tooltip_vector v1 f-right">
+                      <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                      triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
+                  </div>
+                </ion-col>
+            </ion-row>
                 <ion-row>
                   <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                     <input type="date" class="mt30 mb20" class="custom-input" padding formControlName="date"/>
@@ -73,9 +92,10 @@
                     <label for="cname" class="makeBlock mt15 custom-label">Category</label>
                   </ion-col>
                   <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 >
-                    <div class="tooltip_vector f-right">
-                        <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                    </div>
+                      <div class="tooltip_vector v1 f-right">
+                          <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                          triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
+                      </div>
                   </ion-col>
                 </ion-row>
     
@@ -97,8 +117,9 @@
                     <label for="cname" class="makeBlock mt15 custom-label">Sub Category</label>
                   </ion-col>
                   <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                    <div class="tooltip_vector f-right">
-                        <img alt="" src="../../assets/imgs/tooltip_vector.png">
+                    <div class="tooltip_vector v1 f-right">
+                        <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                        triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
                     </div>
                   </ion-col>
                 </ion-row>
@@ -120,9 +141,10 @@
                       <label for="cname" class="makeBlock mt15 custom-label">Add Tags</label>
                     </ion-col>
                     <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                      <div class="tooltip_vector f-right">
-                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                        <div class="tooltip_vector v1 f-right">
+                            <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
+                            triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
+                        </div>
                     </ion-col>
                   </ion-row>
                   <ion-row>
@@ -149,9 +171,10 @@
                         <i class="fas fa-text-width icon-bg"></i>
                         <p>Text</p>
                       </a>
-                      <div class="tooltip_vector">
-                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                  </div>
+                  <div class="tooltip_vector v2">
+                      <img tooltip="You can add text here"
+                      triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
                   </div>
                 </ion-col>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
@@ -160,9 +183,10 @@
                         <i class="fas fa-code icon-bg"></i>
                         <p>Embed Video</p>
                       </a>
-                      <div class="tooltip_vector">
-                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                  </div>
+                  <div class="tooltip_vector v2">
+                      <img tooltip="You can embed video here"
+                      triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
                   </div>
                 </ion-col>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
@@ -171,9 +195,10 @@
                         <i class="fas fa-volume-up icon-bg"></i>
                         <p>Audio</p>
                       </a>
-                      <div class="tooltip_vector">
-                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                  </div>
+                  <div class="tooltip_vector v2">
+                      <img tooltip="You can add audio here"
+                      triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
                   </div>
                 </ion-col>
               </ion-row>
@@ -184,9 +209,10 @@
                         <i class="fas fa-th icon-bg"></i>
                         <p>Image Gellary</p>
                       </a>
-                      <div class="tooltip_vector add-link">
-                          <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                    </div>
+                    <div class="tooltip_vector v2">
+                        <img tooltip="You can add image gallery here"
+                        triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
                     </div>
                   </ion-col>
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
@@ -195,9 +221,10 @@
                           <i class="fas fa-link icon-bg"></i>
                           <p>Add Link</p>
                         </a>
-                        <div class="tooltip_vector">
-                            <img alt="" src="../../assets/imgs/tooltip_vector.png">
-                        </div>
+                    </div>
+                    <div class="tooltip_vector v2">
+                        <img tooltip="You can add links here"
+                        triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
                     </div>
                   </ion-col>
                 </ion-row>
@@ -208,66 +235,66 @@
 
       
       <ion-list>
-                <div class="foldings makeCenter">
-                  <div id="fold-1" style="display: none">
-                      <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
-                      <hr>                            
-                      <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1" formControlName="contributiontext" />
-                  </div>
+          <div class="foldings makeCenter">
+            <div id="fold-1" style="display: none">
+                <p class="makeBlock mt15">Add Text to your contribution. Require a minimum of 10 Words*</p>
+                <hr>                            
+                <input type="text" value="" placeholder="" class="mt30 mb20" class="custom-input1" formControlName="contributiontext" />
+            </div>
 
-                  <div id="fold-2" style="display: none">
-                      <hr>                            
-                      <h3 class="">Add Video(Optional)</h3> 
-                      <p class="makeBlock mt15">Paste link of the Video Here</p>
-                      <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1" formControlName="videos" />
-                  </div>
+            <div id="fold-2" style="display: none">
+                <hr>                            
+                <h3 class="">Add Video(Optional)</h3> 
+                <p class="makeBlock mt15">Paste link of the Video Here</p>
+                <input type="text" value="" placeholder="https://www.youtube.com/watch?v=UthcbjOx598" class="mt30 mb20" class="custom-input1" formControlName="videos" />
+            </div>
 
-                  <div id="fold-3" style="display: none">
-                    <hr> 
-                    <div class="loader makeCenter" *ngIf="loading">
-                        <ion-spinner name="bubbles"></ion-spinner>
-                    </div>    
-                    <h3 class="">Add Audio(Optional)</h3>
-                     <input type="file" id="file-2" class="inputfile inputfile-4" (change)="uploadAudio($event)" accept="audio/*">
-                    <label for="file-2"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure> <span>Choose a file</span></label>
-                    <!-- <input type="file" (change)="uploadAudio($event)" accept="audio/mp3"> -->
-                    <p class="makeBlock mt15">Max File size is 20MB</p>
-                  </div>    
+            <div id="fold-3" style="display: none">
+              <hr> 
+              <div class="loader makeCenter" *ngIf="loaders.audio">
+                  <ion-spinner name="bubbles"></ion-spinner>
+              </div>    
+              <h3 class="">Add Audio(Optional)</h3>
+                <input type="file" id="file-2" class="inputfile inputfile-4" (change)="uploadAudio($event)" accept="audio/*">
+              <label for="file-2"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure> <span>Choose a file</span></label>
+              <!-- <input type="file" (change)="uploadAudio($event)" accept="audio/mp3"> -->
+              <p class="makeBlock mt15">Max File size is 20MB</p>
+            </div>    
 
-                  <div id="fold-4" style="display: none">
-                    <hr>    
-                    <div class="loader makeCenter" *ngIf="loading">
-                        <ion-spinner name="bubbles"></ion-spinner>
-                    </div>  
-                    <h3 class="">Add Images(Optional)</h3>
-                    <div  *ngFor="let pics of imageStatus; let i = index">
-                        <img [src]="pics.localImage" height="150px" />
-                        <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
-                        <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
-                        <button class="red-btn mt15 mb15" (click)="removeImage(i)">Remove Image</button>
-                    </div>
-                    <!-- <input type="file" name="Choose Image" id="" accept="image/x-png,image/jpeg" (change)="uploadContributionImage($event)"> -->
-                    <input type="file" id="file-5" class="inputfile inputfile-4" accept="image/png,image/jpeg,image/jpg" (change)="uploadContributionImage($event)">
-                    <label for="file-5"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure> <span>Choose a file</span></label>
-                    
-                  </div>
+            <div id="fold-4" style="display: none">
+              <hr>    
+              <div class="loader makeCenter" *ngIf="loaders.img">
+                  <ion-spinner name="bubbles"></ion-spinner>
+              </div>  
+              <h3 class="">Add Images(Optional)</h3>
+              <div  *ngFor="let pics of imageStatus; let i = index">
+                  <img [src]="pics.localImage" height="150px" />
+                  <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
+                  <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
+                  <button class="red-btn mt15 mb15" (click)="removeImage(i)">Remove Image</button>
+              </div>
+              <!-- <input type="file" name="Choose Image" id="" accept="image/x-png,image/jpeg" (change)="uploadContributionImage($event)"> -->
+              <input type="file" id="file-5" class="inputfile inputfile-4" accept="image/png,image/jpeg,image/jpg" (change)="uploadContributionImage($event)">
+              <label for="file-5"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure> <span>Choose a file</span></label>
+              
+            </div>
 
-                  <div id="fold-5" style="display: none">
-                    <fieldset formArrayName="website">
-                      <hr>    
-                      <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
-                      <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
-                          <p class="makeBlock mt15">Title</p>
-                          <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
-                          <p class="makeBlock mt15">Paste link Here</p>
-                          <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1" formControlName="websiteurl"/>
-                      </div>
-                      <button class="red-btn" (click)="addNewUrl()">
-                          Create More Links
-                      </button>   
-                    </fieldset>  
-                  </div>
+            <div id="fold-5" style="display: none">
+              <fieldset formArrayName="website">
+                <hr>    
+                <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
+                <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
+                    <p class="makeBlock mt15">Title</p>
+                    <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
+                    <p class="makeBlock mt15">Paste link Here</p>
+                    <input type="text" value="" placeholder="Copy and paste link here" class="mt30 mb20" class="custom-input1" formControlName="websiteurl"/>
                 </div>
+                <button class="red-btn" (click)="addNewUrl()">
+                    Create More Links
+                </button>   
+              </fieldset>  
+            </div>
+          </div>
       </ion-list>
       <div class="btn-group">
           <ion-grid>

@@ -9,9 +9,17 @@
          <p>Your form will be reviewed by your Parent and Admin.</p>
     </div>
 </ion-content>
+<ion-content *ngIf="!canFill">
+  <div class="makeCenter mt50 completed-check">
+    <img src="../../assets/imgs/app-logo.svg" alt="" srcset="">
+      <div class="times-click">
+          <span class="fa fa-times"></span>
+       </div>
+       <h4>Please! Complete your profile in order to become a mentor</h4>
+  </div>
+</ion-content>
 
-
-<ion-content padding  [formGroup]="mentor" *ngIf="!mentorStatus">
+<ion-content padding  [formGroup]="mentor" *ngIf="!mentorStatus&& canFill">
     <h2 class="primary-heading mt15 ">Become a Mentor</h2>
   <ion-grid>
     <ion-row>

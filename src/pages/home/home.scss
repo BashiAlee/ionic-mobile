@@ -3,7 +3,6 @@ page-home {
     .content-md{
         background:#F7F7F7;
     }
-    font-family: 'Brandon_reg';
     .custom-titl{
         display: flex;
         img{
@@ -19,6 +18,7 @@ page-home {
         }
     }
     .home-content{
+        font-family: 'Brandon_reg';
         h1{
             font-size: 30px;
         }

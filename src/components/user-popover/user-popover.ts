@@ -29,11 +29,14 @@ export class UserPopoverComponent {
   logout() {
     localStorage.clear();
     this.appCtrl.getRootNav().setRoot(LoginPage)
+    this.close()
   }
 
   openUserProfile() {
     this.appCtrl.getRootNav().setRoot(UserProfilePage,{id: this.user._id})
-    this.viewCtrl.dismiss();
+    // this.viewCtrl.dismiss();
+    this.close()
+
   }
 
 }

@@ -27,6 +27,7 @@ export class CreateEventPage {
   contributionForm: FormGroup;
   coverImage: any;
   loading: any;
+  loaders: any={};
   user: any;
   imageStatus: any = [];
   url: any = [];
@@ -50,6 +51,7 @@ export class CreateEventPage {
     public popoverCtrl: PopoverController) { 
       this.contribution_action  = 'content';
       this.user = this.authService.getCurrentUser();
+  
       this.contributionForm = this.formBuilder.group({
         useremail: new FormControl(this.user.Email),
         title: new FormControl('', Validators.required),
@@ -80,7 +82,7 @@ export class CreateEventPage {
 
         ]),
       });
-    
+    console.log(this.user)
   }
 
   previous(){
@@ -198,7 +200,7 @@ export class CreateEventPage {
   }
 
   chooseFromGallery() {
-    this.loading = true;
+    this.loading= true;
     let options = {
       maximumImagesCount:1,//select number of image default is 15
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -239,7 +241,7 @@ export class CreateEventPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
-    this.loading = true;
+    this.loaders.audio = true;
     var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
     if (FileSize > 20) {
         // this.messages.maxSize = true;
@@ -252,14 +254,14 @@ export class CreateEventPage {
             this.contributionForm.patchValue({
               audiopath: data.status
             });
-            this.loading = false;
+            this.loaders.audio = false;
           },
           error => {});
     }
   }
 
   uploadContributionImage(file) {
-    this.loading = true;
+    this.loaders.img = true;
     var target = file.target || file.srcElement
 
     this.userService.uploadAudio(file)
@@ -272,9 +274,8 @@ export class CreateEventPage {
               this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
               // this.url.push({title: '',description:'',img:event.target.result});
             }
-            this.loading = false;
+            this.loaders.img = false;
             reader.readAsDataURL(target.files[0]);
-            console.log("DD", this.imageStatus)
           }
 
         },
