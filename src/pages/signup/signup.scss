@@ -2,68 +2,70 @@ page-signup {
     ion-label {
         margin: 0 !important;
     }
+    .scroll-content {
+        margin-top: 0px; 
+    }
     .top-content {
-        .image {
-            img {
-                width: 50%;
-            }
-        }
-        .tagline {
-            position: relative;
-            p {
-                color: $grey-color;
-                font-family: 'Brandon_med';
-                font-size: 17px;
-                margin: 0;
-            
-            }
-            &:after {
-                content: "";
-                border-bottom: 1px solid $light-grey;
-                position: absolute;
- 
-                left: 0;
-    
-                right: 0;
-                width: 140px;
-                z-index: 999999;
-                margin: 0 auto;
-                margin-top: 9px;
-            }
+    .image {
+        img {
+            width: 50%;
         }
     }
-
-    .signup-form {
-        div.item-inner{
-            border-bottom: none !important;
-            // .input {
-            //     border: 1px solid $light-grey;
-            //     border-radius: 7px;
-            // }
+    .tagline {
+        position: relative;
+        p {
+            color: $grey-color;
+            font-family: 'Brandon_med';
+            font-size: 17px;
+            margin: 0;
         }
-        ion-item.item-input:last-child {
-            border-bottom: none !important;
-        }
-        .item-md {
-            padding-left: 7px !important;
-        }
-    }
-
-    .signup-details {
-        .scroll-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            .inner-details {
-                border: 1px solid $border-color;
-                border-radius: 7px;
-            }
+        &:after {
+            content: "";
+            border-bottom: 1px solid $light-grey;
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 140px;
+            z-index: 999999;
+            margin: 0 auto;
+            margin-top: 9px;
         }
     }
- 
 }
 
+    .signup-details {
+        position: relative;
+        .inner-details {
+            border: 1px solid $border-color;
+            border-radius: 7px;
+            margin: 0px 20px;
+        }
+        .blue-square{
+            display: flex;
+            justify-content: flex-end;
+            img{
+                margin-top: 10px;
+                width:70px;
+                height: 70px;
+            }
+        }
+        .orange-square{
+            position: absolute;
+            padding-left: 15px;
+            width:90px;
+            height: 90px;
+        }
+        .red-square{
+            position: absolute;
+            right: 0;
+            width:100px;
+            height: 100px;
+        }
+        .makeRed{
+            margin: 0px 20px;
+        }
+    }
+}
 .toast-message {
     background: $green !important;
 }  

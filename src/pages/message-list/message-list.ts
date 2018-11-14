@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController,App } from 'ionic-angular';
+import { IonicPage, NavController,ViewController,App } from 'ionic-angular';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import {MessagePage} from '../../pages/message/message';

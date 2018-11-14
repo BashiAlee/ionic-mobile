@@ -3,6 +3,7 @@ import { ViewController,App } from 'ionic-angular';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { MessageListPage } from '../../pages/message-list/message-list';
+import {ChatPage} from '../../pages/chat/chat';
 
 /**
  * Generated class for the MessagePopoverComponent component.
@@ -35,6 +36,10 @@ export class MessagePopoverComponent {
 
   close() {
     this.viewCtrl.dismiss();
+  }
+  newChat(){
+    this.appCtrl.getRootNav().setRoot(ChatPage)
+    this.close()
   }
   viewAllMessages() {
     this.appCtrl.getRootNav().setRoot(MessageListPage)

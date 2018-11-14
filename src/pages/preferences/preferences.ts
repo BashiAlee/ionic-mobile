@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PreferencesProvider } from '../../providers/preferences/preferences';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { AboutMePage } from '../user/about-me/about-me';
+import { UserProfilePage } from '../../pages/user-profile/user-profile';
 import { _,uniqBy,uniq} from 'lodash';
 /**
  * Generated class for the PreferencesPage page.
@@ -111,7 +111,7 @@ export class PreferencesPage {
       .subscribe( data => {
         if(data.status) {
           this.loader = false;
-          this.navCtrl.setRoot(AboutMePage)
+          this.navCtrl.setRoot(UserProfilePage)
         } else if (!data.status) {
           this.preferencesData = null;
           this.loader = false;

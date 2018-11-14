@@ -35,11 +35,22 @@ export class CreateContributionPage {
   loading: any;
   loaders: any={};
   user: any;
+  isUploaded:any={};
   imageStatus: any = [];
   preferencesData: any;
   slectedCategory:any=[];
   url: any = [];
   contributionTags: any;
+  opts: Object = {
+    charCounterCount: true,
+    key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
+    heightMin: 100,
+    heightMax: 200,
+    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsXS: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsSM: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsMD: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+  };
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -267,7 +278,7 @@ export class CreateContributionPage {
   uploadAudio(file) {
     this.loaders.audio=true;
     var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
-    if (FileSize > 20) {
+    if (FileSize > 5) {
         // this.messages.maxSize = true;
        // $(file).val(''); //for clearing with Jquery
     } else {
@@ -276,12 +287,21 @@ export class CreateContributionPage {
       this.userService.uploadAudio(file)
         .subscribe(
           data => {
-            this.contributionForm.patchValue({
-              audiopath: data.status
-            });
-            this.loaders.audio=false;
+            console.log(data)
+
+            if (data.status){
+              this.contributionForm.patchValue({
+                audiopath: data.status
+              });
+              this.loaders.audio=false;
+              this.isUploaded.audio=true;
+            }else{
+              this.isUploaded.error=true;
+            }
           },
-          error => {});
+          error => {
+            this.isUploaded.error=true;
+          });
     }
   }
 

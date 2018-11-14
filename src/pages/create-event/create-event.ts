@@ -28,12 +28,23 @@ export class CreateEventPage {
   coverImage: any;
   loading: any;
   loaders: any={};
+  isUploaded:any={};
   user: any;
   imageStatus: any = [];
   url: any = [];
   preferencesData: any;
   slectedCategory:any=[];
   eventTags: any;
+  opts: Object = {
+    charCounterCount: true,
+    key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
+    heightMin: 100,
+    heightMax: 200,
+    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsXS: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsSM: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+    toolbarButtonsMD: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
+  };
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -251,12 +262,20 @@ export class CreateEventPage {
       this.userService.uploadAudio(file)
         .subscribe(
           data => {
-            this.contributionForm.patchValue({
-              audiopath: data.status
-            });
-            this.loaders.audio = false;
+            if(data.status){
+              this.contributionForm.patchValue({
+                audiopath: data.status
+              });
+              this.loaders.audio = false;
+              this.isUploaded.audio=true;
+            }else{
+              this.isUploaded.error=false;
+            }
+            
           },
-          error => {});
+          error => {
+            this.isUploaded.error=false;
+          });
     }
   }
 

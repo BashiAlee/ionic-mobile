@@ -9,8 +9,26 @@ page-create-contribution {
                 margin: 0px 10px  0px 0px;
             }
         }
+        .completed-check{
+            .check-click{
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                padding-top: 7px;
+                margin-bottom: 10px;
+            }
+            .times-click{
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                padding-top: 7px;
+                margin-bottom: 10px;
+            }
+            p{
+                color: #d3394c;
+            }
+        }
     }
- 
 }
 .inputfile {
     width: 0.1px;
