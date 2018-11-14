@@ -145,8 +145,8 @@
             <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
           </ion-item> -->
 
-          <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
-          <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
+          <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage" (click)="openDetails(contribution._id)">
+          <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
 
           <ion-card-content>
               <ion-grid>

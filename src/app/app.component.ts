@@ -34,7 +34,6 @@ import {ChatPage} from '../pages/chat/chat';
 import { SplashPage } from '../pages/splash/splash';
 import { AboutUsPage } from '../pages/about-us/about-us';
 
-
 @Component({
   templateUrl: 'app.html',
   providers: [AuthenticationProvider]
