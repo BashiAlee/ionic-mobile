@@ -28,7 +28,7 @@
                     </ion-avatar>
                     <div center class="slider-header">
                       <h2>{{contributionDetails.UserFullName}}</h2>
-                      <p><a href="#">Cliiimb</a>(judicial system)</p>
+                      <p><a href="#">{{contributionDetails.bio}}</a></p>
                     </div>
                   </ion-item>
                   <button class="follow-btn f-right" (click)="addMentor(contributionDetails.UserID,user.Age,contributionDetails)" *ngIf="user &&!contributionDetails.hasFollowing && user._id != contributionDetails.UserID  && contributionDetails.userType!='admin'">
@@ -116,18 +116,22 @@
                           </a>
                         </div>
                     </ion-col>
-                    <ion-col>
-                      <button ion-button item-end clear class="text-align">
-                        <ion-icon name="thumbs-up"></ion-icon>
-                        <div>12 Likes</div>
-                      </button>
-                    </ion-col>
-                    <ion-col>
-                      <button ion-button item-start clear>
-                        <ion-icon name="text"></ion-icon>
-                        <div>4 Comments</div>
-                      </button>
-                    </ion-col>
+                    <ion-col class="makeCenter">
+                        <button ion-button icon-start clear small *ngIf="!contributionDetails.isLiked" (click)="addLike(contributionDetails,contributionDetails._id)">
+                          <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                          <div>{{contributionDetails.Likes}} Likes</div>
+                        </button>
+                        <button ion-button icon-start clear small *ngIf="contributionDetails.isLiked" (click)="unLike(contributionDetails,contributionDetails._id)">
+                          <ion-icon name="heart"></ion-icon>
+                          <div>{{contributionDetails.Likes}} Unlike</div>
+                        </button>
+                      </ion-col>
+                      <ion-col class="makeCenter">
+                        <button ion-button icon-start clear small>
+                          <ion-icon name="text"></ion-icon>
+                          <div *ngIf="contributionDetails.social">{{contributionDetails.social.Comments.length}}Comments</div>
+                        </button>
+                      </ion-col>
                     </ion-row>
                 </ion-list>
               </div>

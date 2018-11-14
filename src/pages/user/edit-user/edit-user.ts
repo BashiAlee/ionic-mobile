@@ -75,7 +75,7 @@ export class EditUserPage {
     }
     this.editProfileForm = this.formBuilder.group({
         _id: new FormControl(this.user._id),
-        aboutMe: new FormControl(),
+        aboutMe: new FormControl(''),
         companyName: new FormControl(this.user.CompanyName,Validators.required),
         fullName: new FormControl(this.user.FullName,Validators.required),
         email: new FormControl(this.user.Email),
@@ -106,7 +106,7 @@ export class EditUserPage {
   openCamera() {
     
     const options: CameraOptions = {
-      quality: 100,
+      quality: 70,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -336,8 +336,8 @@ export class EditUserPage {
   
 
   updateProfileInfo() {
-    
- 
+    console.log("asdasdds",this.editProfileForm.value)
+    // return;
     this.userService.updateProfile(this.editProfileForm.value)
     .subscribe(
       data =>{

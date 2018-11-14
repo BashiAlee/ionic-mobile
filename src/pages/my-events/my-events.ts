@@ -52,7 +52,7 @@ export class MyEventsPage {
       data => {
         if(data.status) {
           data.data.forEach(value => {
-          
+          if(value.ContributionStatus!="Reject") {
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsList.push(value);
@@ -61,13 +61,17 @@ export class MyEventsPage {
             else if(!value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsPendingList.push(value);
-              // this.loading = false;
+              this.loading = false;
             } 
             else if(value.ContributionStatus == "Draft") {
               this.getProfileByID(value.UserID, value)
               this.eventsDraftList.push(value);
-              // this.loading = false;
+              this.loading = false;
             } 
+          } else {
+            this.loading = false;
+          }
+    
             
             // else {
             //   this.eventsList = [];

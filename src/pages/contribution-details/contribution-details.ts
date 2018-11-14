@@ -196,6 +196,39 @@ export class ContributionDetailsPage {
     });
   })
 }
+addLike(value,id) {
+  var data = {
+    contributionid: id,
+    likes: [{
+      likeuserid: this.user._id
+    }]
+  }
+
+  this.contributionService.addLike(data)
+    .subscribe(res => {
+      if(res.status) {
+        value.isLiked = true;
+          value.Likes = res.data;
+      }
+
+    })
+}
+unLike(value,id) {
+  var data = {
+    contributionid: id,
+    likes: [{
+      likeuserid: this.user._id
+    }]
+  }
+
+  this.contributionService.unLike(data)
+    .subscribe(res => {
+      if(res.status) {  
+          value.isLiked = false;
+          value.Likes = res.data;
+      }
+    })
+}
 addMentor(id,age,contributionDetails) {
   var data = {
     userid: this.user._id,
@@ -351,7 +384,12 @@ viewProfileByID(id, value) {
       value.profilePicture = user.ProfilePicture;
       value.name = user.FullName;
       value.userType = user.UserType;
-      value.bio = user.Bio
+      if (user.Bio) {
+        value.bio = user.Bio
+      } else {
+        value.bio = '-'
+      }
+     
     }
     // this.detailsLoader = false;
   })

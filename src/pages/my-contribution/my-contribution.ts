@@ -54,26 +54,26 @@ export class MyContributionPage {
     
           data.data.forEach(value => {
           
-            if(value.AdminStatus && value.ContributionStatus == "Publish") {
-              this.getProfileByID(value.UserID, value)
-              this.getLikesAndComments(value._id,value);
-              this.contributionsList.push(value);
-            } if(!value.AdminStatus && value.ContributionStatus == "Publish"){
-              this.getProfileByID(value.UserID, value)
-              this.pendingList.push(value);
-              // this.contributionsList = [];
-              // this.loading = false;
-            } 
-            if(value.ContributionStatus == "Draft"){
-              this.getProfileByID(value.UserID, value)
-              this.draftedList.push(value);
-              // this.contributionsList = [];
-              // this.loading = false;
-            } 
-            // else {
-            //   this.contributionsList = [];
-            //   this.loading = false;
-            // }
+            if(value.ContributionStatus!="Reject") {
+              if(value.AdminStatus && value.ContributionStatus == "Publish") {
+                this.getProfileByID(value.UserID, value)
+                this.getLikesAndComments(value._id,value);
+                this.contributionsList.push(value);
+              } if(!value.AdminStatus && value.ContributionStatus == "Publish"){
+                this.getProfileByID(value.UserID, value)
+                this.pendingList.push(value);
+                // this.contributionsList = [];
+                this.loading = false;
+              } 
+              if(value.ContributionStatus == "Draft"){
+                this.getProfileByID(value.UserID, value)
+                this.draftedList.push(value);
+                // this.contributionsList = [];
+                this.loading = false;
+              } 
+            } else {
+              this.loading = false;
+            }
             
           });
         } else {
