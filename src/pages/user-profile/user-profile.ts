@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { CreateContributionPage } from '../../pages/create-contribution/create-contribution';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 
 /**
  * Generated class for the UserProfilePage page.
@@ -74,7 +75,9 @@ export class UserProfilePage {
       }
     })
   }
-
+  openDetails(id) {
+    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+  }
   getUserContributionByEmail(email) {
     this.userService.getUserConstributionsbyEmail(email)
     .subscribe( data=> {
