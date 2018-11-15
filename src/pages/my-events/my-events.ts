@@ -58,10 +58,16 @@ export class MyEventsPage {
     this.eventsService.searchEvents(email)
     .subscribe(
       data => {
+<<<<<<< HEAD
         console.log(data)
         if(data.Data) {
           data.Data.forEach(value => {
             if(value.ContributionStatus!="Reject") {
+=======
+        if(data.status) {
+          data.data.forEach(value => {
+          if(value.ContributionStatus!="Reject") {
+>>>>>>> 7dcedcb4b70315b9e8f91d579fa80a9bf12cb3ae
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsList.push(value);
@@ -70,16 +76,20 @@ export class MyEventsPage {
              if(!value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsPendingList.push(value);
-              // this.loading = false;
+              this.loading = false;
             } 
              if(value.ContributionStatus == "Draft") {
               this.getProfileByID(value.UserID, value)
               this.eventsDraftList.push(value);
-              // this.loading = false;
+              this.loading = false;
             } 
           } else {
             this.loading = false;
           }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 7dcedcb4b70315b9e8f91d579fa80a9bf12cb3ae
             
             // else {
             //   this.eventsList = [];
