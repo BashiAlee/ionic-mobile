@@ -9,9 +9,10 @@
 <ion-content>
       <div class="parent-activity makeCenter">
         <div class="img-content">
-          <img style="width: 120px;height: 120px" src="../../../assets/imgs/user.png" alt="app-logo">
-          <h2>John Doe</h2>
-          <p> test</p>
+          <img style="width: 120px;height: 120px; border-radius: 50%" *ngIf="user.ProfilePicture" [src]="user.ProfilePicture" alt="app-logo">
+          <img style="width: 120px;height: 120px;border-radius: 50%" *ngIf="!user.ProfilePicture" src="../../assets/imgs/avatar.png" alt="app-logo">
+          <h2>{{user.FullName}}</h2>
+          <p> {{user.Bio}}</p>
         </div>
       
         <div class="actvity-circle">

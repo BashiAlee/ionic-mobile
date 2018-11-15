@@ -111,8 +111,9 @@ export class PreferencesPage {
       .subscribe( data => {
         if(data.status) {
           this.loader = false;
-          this.navCtrl.setRoot(UserProfilePage)
+          this.navCtrl.setRoot(UserProfilePage,{id: this.user._id})
         } else if (!data.status) {
+          this.navCtrl.setRoot(UserProfilePage,{id: this.user._id})
           this.preferencesData = null;
           this.loader = false;
         }

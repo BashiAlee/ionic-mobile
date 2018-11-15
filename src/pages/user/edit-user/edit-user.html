@@ -97,7 +97,7 @@
         
       </ion-list>
       <div padding>
-        <button ion-button color="primary" class="cliiimb-btn-primary"  block
+        <button ion-button color="primary" [disabled]="editProfileForm.invalid" class="cliiimb-btn-primary"  block
           (click)="updateProfileInfo()">Save Changes & Continue</button>
       </div>
     </div>
