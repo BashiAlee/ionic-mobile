@@ -31,16 +31,18 @@ import { MyContributionPage } from '../../pages/my-contribution/my-contribution'
 export class CreateContributionPage {
   contribution_action: any;
   contributionForm: FormGroup;
+  contributionData:any=[];
   coverImage: any;
   loading: any;
   loaders: any={};
   user: any;
+  contributionId:any;
   isUploaded:any={};
   imageStatus: any = [];
   preferencesData: any;
   slectedCategory:any=[];
   url: any = [];
-  contributionTags: any;
+  contributionTags: any = '';
   opts: Object = {
     charCounterCount: true,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
@@ -65,37 +67,39 @@ export class CreateContributionPage {
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
     public contributionService: ContributionsProvider,
-    public popoverCtrl: PopoverController) { 
-      this.contribution_action  = 'content';
-      this.user = this.authService.getCurrentUser();
-      this.contributionForm = this.formBuilder.group({
-        useremail: new FormControl(this.user.Email),
-        title: new FormControl('', Validators.required),
-        username: new FormControl(this.user.FullName),
-        userid: new FormControl(this.user._id),
-        userprofilepicture: new FormControl(this.user.ProfilePicture),
-        maincategory: new FormControl(),
-        subcategories: new FormControl(),
-        contributiontext: new FormControl('', Validators.required),
-        videos: new FormControl(),
-        contributionstatus: new FormControl('', Validators.required),
-        audiopath: new FormControl(),
-        adminstatus: new FormControl(0),
-        images: this.formBuilder.array([]),
-  
-        website: this.formBuilder.array([
-          this.formBuilder.group({
-            websiteurl: new FormControl(''),
-            websitetitle: new FormControl('')
-          })
-        ]),
-        coverpage: new FormControl('', Validators.required),
-        contributiontype: new FormControl('contribution'),
-        tags: this.formBuilder.array([
+    public popoverCtrl: PopoverController  
+  ) { 
+    this.contribution_action  = 'content';
+    this.user = this.authService.getCurrentUser();
+    this.contributionId = this.navParams.get('id')
 
-        ]),
-      });
-    
+    this.contributionForm = this.formBuilder.group({
+      useremail: new FormControl(this.user.Email),
+      title: new FormControl('', Validators.required),
+      username: new FormControl(this.user.FullName),
+      userid: new FormControl(this.user._id),
+      userprofilepicture: new FormControl(this.user.ProfilePicture),
+      maincategory: new FormControl(),
+      subcategories: new FormControl(),
+      contributiontext: new FormControl('', Validators.required),
+      videos: new FormControl(),
+      contributionstatus: new FormControl('', Validators.required),
+      audiopath: new FormControl(),
+      adminstatus: new FormControl(0),
+      images: this.formBuilder.array([]),
+
+      website: this.formBuilder.array([
+        this.formBuilder.group({
+          websiteurl: new FormControl(''),
+          websitetitle: new FormControl('')
+        })
+      ]),
+      coverpage: new FormControl('', Validators.required),
+      contributiontype: new FormControl('contribution'),
+      tags: this.formBuilder.array([
+
+      ]),
+    });
   }
   previous(){
     this.contribution_action='content';
@@ -106,6 +110,7 @@ export class CreateContributionPage {
   next(){
     this.contribution_action='submit';
   }
+
   saveDraft(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -138,6 +143,7 @@ export class CreateContributionPage {
     this.contributionForm.patchValue({
       contributionstatus: "Draft" 
     });
+    console.log("****",this.contributionForm.value)
     this.contributionService.createContribution(this.contributionForm.value)
     .subscribe( data => {
       loading.dismiss();
@@ -153,6 +159,104 @@ export class CreateContributionPage {
   }
   ionViewDidLoad() {
     this.getPreferences()
+    this.getContributionByContributionId(this.contributionId)
+  }
+  getContributionByContributionId(contributionId){
+    this.loading = true;
+    this.contributionService.searchContributionByContributionId(contributionId)
+    .subscribe( data => {
+      if (data.status) {
+        console.log("this isdb response",data.data)
+
+        this.contributionForm.patchValue({
+          useremail: data.data.UserEmail,
+          title: data.data.Title,
+          username: data.data.UserFullName,
+          userid: data.data.UserID,
+          userprofilepicture: data.data.UserProfilePicture,
+          maincategory: data.data.MainCategory,
+          subcategories: data.data.SubCategories,
+          contributiontext: data.data.ContributionText,
+          videos: data.data.Videos,
+          contributionstatus: data.data.ContributionStatus,
+          audiopath: data.data.AudioPath,
+          adminstatus:data.data.AdminStatus,
+          website: data.data.Website,
+          coverpage: data.data.Coverpage,
+        });
+        this.coverImage = data.data.Coverpage;
+        var d = data.data.Tags;
+        d.forEach(tags => {
+          if(tags.Tag) {
+            this.contributionTags += tags.Tag+",";
+          }
+          
+        });
+        this.contributionTags = this.contributionTags.replace(/,\s*$/, "");
+
+        var e= data.data.Images;
+        e.forEach(imgs => {
+            this.imageStatus.push({
+              localImage: imgs.Imagestatus,
+              title:  imgs.ImageTitle,
+              description: imgs.ImageDescription
+            })
+        });
+        this.category(this.contributionForm.value.maincategory);
+
+        console.log("this is data",this.contributionForm.value)
+          
+      }
+      // if(data.status) {
+      //   // this.preferencesData = data.data;
+      //   this.loading = false;
+      // } 
+      else if (!data.status) {
+        // this.preferencesData = null;
+        this.loading = false;
+      }
+    })
+  }
+  updateCotribution(){
+    this.contributionForm.addControl('_id', new FormControl(this.contributionId,Validators.required));
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    var tagsList = this.contributionTags.split(',');
+
+    const control1 = < FormArray > this.contributionForm.controls['tags'];
+    tagsList.forEach(value => {
+      const addrCtrl = this.formBuilder.group({
+        tag: [value]
+      });
+      control1.push(addrCtrl);
+    });
+    const control = < FormArray > this.contributionForm.controls['images'];
+    this.imageStatus.forEach(status => {
+      const addrCtrl = this.formBuilder.group({
+        imagestatus: [status.img],
+        imagetitle: [status.title],
+        imagedescription: [status.description]
+      });
+      control.push(addrCtrl);
+   
+    });
+    this.contributionForm.patchValue({
+      contributionstatus: "Publish" 
+    });
+    this.contributionService.editContribution(this.contributionForm.value)
+    .subscribe( data => {
+      console.log(data)
+      loading.dismiss();
+      let toast = this.toastCtrl.create({
+        message: 'Contribution Updated successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.navCtrl.setRoot(MyContributionPage);
+    });
   }
   getPreferences(){
     this.loading = true;
@@ -382,13 +486,16 @@ export class CreateContributionPage {
     const fd = new FormData();
     fd.append('file', blob, filename);
     this.userService.uploadImage(fd).subscribe(data => {
-    if (data.status) {
-            this.contributionForm.patchValue(
-              {
-                coverpage: data.status
-              }
-            );
+      if (data.status) {
+        this.contributionForm.patchValue(
+          {
+            coverpage: data.status
           }
+        );
+      }else{
+        this.isUploaded.error=true;
+        this.coverImage= '';
+      }
     })
   }
   private convertBase64ToBlob(base64: string) {

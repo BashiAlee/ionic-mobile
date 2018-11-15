@@ -25,6 +25,7 @@ import { MyEventsPage } from '../../pages/my-events/my-events';
 export class CreateEventPage {
   contribution_action: any;
   contributionForm: FormGroup;
+  eventId:any;
   coverImage: any;
   loading: any;
   loaders: any={};
@@ -60,6 +61,8 @@ export class CreateEventPage {
     public contributionService: ContributionsProvider,
     public formBuilder: FormBuilder,
     public popoverCtrl: PopoverController) { 
+      this.eventId = this.navParams.get('id')
+
       this.contribution_action  = 'content';
       this.user = this.authService.getCurrentUser();
   
@@ -93,7 +96,6 @@ export class CreateEventPage {
 
         ]),
       });
-    console.log(this.user)
   }
 
   previous(){
@@ -105,6 +107,7 @@ export class CreateEventPage {
   next(){
     this.contribution_action='submit';
   }
+
   saveDraft(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -151,6 +154,109 @@ export class CreateEventPage {
   }
   ionViewDidLoad() {
     this.getPreferences()
+    this.getEventByContributionId(this.eventId)
+  }
+  getEventByContributionId(eventId){
+    this.loading = true;
+    this.contributionService.searchContributionByContributionId(eventId)
+    .subscribe( data => {
+      if (data.status) {
+        console.log("this isdb response",data.data)
+
+        this.contributionForm.patchValue({
+          useremail: data.data.UserEmail,
+          title: data.data.Title,
+          username: data.data.UserFullName,
+          userid: data.data.UserID,
+          userprofilepicture: data.data.UserProfilePicture,
+          maincategory: data.data.MainCategory,
+          subcategories: data.data.SubCategories,
+          contributiontext: data.data.ContributionText,
+          videos: data.data.Videos,
+          contributionstatus: data.data.ContributionStatus,
+          audiopath: data.data.AudioPath,
+          adminstatus:data.data.AdminStatus,
+          website: data.data.Website,
+          coverpage: data.data.Coverpage,
+          date: data.data.Date,
+          location:  data.data.Location
+          // date: data.data.Da,
+          // location: new FormControl(this.user.City),
+        });
+        this.coverImage = data.data.Coverpage;
+        var d = data.data.Tags;
+        d.forEach(tags => {
+          if(tags.Tag) {
+            this.eventTags += tags.Tag+",";
+          }
+          
+        });
+        this.eventTags = this.eventTags.replace(/,\s*$/, "");
+
+        var e= data.data.Images;
+        e.forEach(imgs => {
+          // if(imgs) {
+            this.imageStatus.push({
+              localImage: imgs.Imagestatus,
+              title:  imgs.ImageTitle,
+              description: imgs.ImageDescription
+            })
+        });
+        this.category(this.contributionForm.value.maincategory);
+
+        console.log("this is data",this.contributionForm.value)
+          
+      }
+      // if(data.status) {
+      //   // this.preferencesData = data.data;
+      //   this.loading = false;
+      // } 
+      else if (!data.status) {
+        // this.preferencesData = null;
+        this.loading = false;
+      }
+    })
+  }
+  updateEvent(){
+    this.contributionForm.addControl('_id', new FormControl(this.eventId,Validators.required));
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    var tagsList = this.eventTags.split(',');
+
+    const control1 = < FormArray > this.contributionForm.controls['tags'];
+    tagsList.forEach(value => {
+      const addrCtrl = this.formBuilder.group({
+        tag: [value]
+      });
+      control1.push(addrCtrl);
+    });
+    const control = < FormArray > this.contributionForm.controls['images'];
+    this.imageStatus.forEach(status => {
+      const addrCtrl = this.formBuilder.group({
+        imagestatus: [status.img],
+        imagetitle: [status.title],
+        imagedescription: [status.description]
+      });
+      control.push(addrCtrl);
+   
+    });
+    this.contributionForm.patchValue({
+      contributionstatus: "Publish" 
+    });
+    this.contributionService.editContribution(this.contributionForm.value)
+    .subscribe( data => {
+      console.log(data)
+      loading.dismiss();
+      let toast = this.toastCtrl.create({
+        message: 'Contribution Updated successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.navCtrl.setRoot(MyEventsPage);
+    });
   }
   getPreferences(){
     this.loading = true;
@@ -166,7 +272,9 @@ export class CreateEventPage {
     })
   }
   category(categorydata){
+    console.log(this.preferencesData)
    this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
+   console.log("cat data",this.slectedCategory)
   }
   subCategory(subCategorydata){
     console.log(subCategorydata)

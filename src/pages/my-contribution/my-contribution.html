@@ -133,15 +133,25 @@
           </div>
           <div class="contribution-data" *ngIf="draftedList && draftedList.length && !loading">
           <ion-card *ngFor="let contribution of draftedList">
-      
-              <ion-item>
-                <ion-avatar item-start>
-                  <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
-                  <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
-                </ion-avatar>
-                <h2>{{contribution.UserFullName}}</h2>
-                <p>{{contribution.bio}}</p>
-              </ion-item>
+            <ion-grid>
+                <ion-row>
+                  <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
+                      <div class="custom-titl">
+                          <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
+                          <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
+                          <div class="mt12">
+                              <h2>{{contribution.UserFullName}}</h2>
+                              <p>{{contribution.bio}}</p>
+                          </div>
+                        </div>
+                  </ion-col>
+                  <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
+                    <span (click)="editContribution(contribution._id)">
+                        <ion-icon name="create" class="edit-icon"></ion-icon>
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
             
               <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
               <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">

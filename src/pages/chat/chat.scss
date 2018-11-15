@@ -1,3 +1,8 @@
 page-chat {
-
+    label.disabledLabel{
+        pointer-events: none;
+        p{
+            background: #ccc;
+        }
+    }
 }

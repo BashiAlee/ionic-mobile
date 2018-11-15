@@ -35,7 +35,7 @@ export class ChatPage {
   ) {
     this.user = this.authService.getCurrentUser();
     this.messageForm = this.formBuilder.group({
-      message: [''],
+      message: ['',Validators.required],
       receiveruserid:[''],
       senderuserid:['']
     })

@@ -22,7 +22,7 @@
         <ion-item>
           <ion-avatar item-start>
             <img *ngIf="!event.UserProfilePicture" src="../../assets/imgs/avatar.png">
-            <img *ngIf="event.UserProfilePicture" [src]="contribution.UserProfilePicture">
+            <img *ngIf="event.UserProfilePicture" [src]="event.UserProfilePicture">
           </ion-avatar>
           <h2>{{event.UserFullName}}</h2>
           <p>{{event.bio}}</p>
@@ -42,7 +42,7 @@
           <p [innerHTML]="event.ContributionText"></p>
 
 
-          <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+          <a ion-button clear small (click)="openDetails(event._id)" class="makeRed left-align">View Detail</a>
        
       </ion-card-content>
         <ion-row>
@@ -80,7 +80,7 @@
             <ion-item>
               <ion-avatar item-start>
                 <img *ngIf="!event.UserProfilePicture" src="../../assets/imgs/avatar.png">
-                <img *ngIf="event.UserProfilePicture" [src]="contribution.UserProfilePicture">
+                <img *ngIf="event.UserProfilePicture" [src]="event.UserProfilePicture">
               </ion-avatar>
               <h2>{{event.UserFullName}}</h2>
               <p>{{event.bio}}</p>
@@ -134,21 +134,25 @@
           <div class="contribution-data" *ngIf="eventsDraftList && eventsDraftList.length && !loading">
           <ion-card *ngFor="let event of eventsDraftList">
       
-              <ion-item>
-                <ion-avatar item-start>
-                  <img *ngIf="!event.UserProfilePicture" src="../../assets/imgs/avatar.png">
-                  <img *ngIf="event.UserProfilePicture" [src]="contribution.UserProfilePicture">
-                </ion-avatar>
-                <h2>{{event.UserFullName}}</h2>
-                <p>{{event.bio}}</p>
-              </ion-item>
-              <!-- <ion-item class="action-icons"> 
-                <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-      
-              </ion-item> -->
-            
+            <ion-grid>
+                <ion-row>
+                  <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
+                      <div class="custom-titl">
+                          <img *ngIf="!event.UserProfilePicture" src="../../assets/imgs/avatar.png">
+                          <img *ngIf="event.UserProfilePicture" [src]="event.UserProfilePicture">
+                          <div class="mt12">
+                              <h2>{{event.UserFullName}}</h2>
+                              <p>{{event.bio}}</p>
+                          </div>
+                        </div>
+                  </ion-col>
+                  <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
+                    <span (click)="editEvent(event._id)">
+                        <ion-icon name="create"class="edit-icon"></ion-icon>
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
               <img *ngIf="event.Coverpage" [src]="event.Coverpage">
               <img *ngIf="!event.Coverpage" src="../../assets/imgs/avatar.png">
             
@@ -157,7 +161,7 @@
                 <p [innerHTML]="event.ContributionText"></p>
       
       
-                <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+                <a ion-button clear small (click)="openDetails(event._id)" class="makeRed left-align">View Detail</a>
              
             </ion-card-content>
               <!-- <ion-row>

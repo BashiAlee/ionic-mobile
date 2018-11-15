@@ -7,6 +7,7 @@ import { PopoverContributionComponent } from '../../components/popover-contribut
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { UserProvider } from '../../providers/user/user';
 import { EventsProvider } from '../../providers/events/events';
+import { CreateEventPage } from '../create-event/create-event';
 
 /**
  * Generated class for the MyContributionPage page.
@@ -33,7 +34,11 @@ export class MyEventsPage {
     public popoverCtrl: PopoverController) {
 
       var email = this.authService.getCurrentUser().Email;
-      this.getEventsByEmail(email);
+      console.log(email)
+      var data = {
+        useremail: email
+      }
+      this.getEventsByEmail(data);
 
 
   }
@@ -45,29 +50,36 @@ export class MyEventsPage {
     const popover = this.popoverCtrl.create(PopoverContributionComponent);
     popover.present();
   }
+  editEvent(eventId){
+    this.navCtrl.setRoot(CreateEventPage,{id:eventId})
+  }
   getEventsByEmail(email) {
     this.loading = true;
     this.eventsService.searchEvents(email)
     .subscribe(
       data => {
-        if(data.status) {
-          data.data.forEach(value => {
-          
+        console.log(data)
+        if(data.Data) {
+          data.Data.forEach(value => {
+            if(value.ContributionStatus!="Reject") {
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsList.push(value);
               this.loading = false;
             } 
-            else if(!value.AdminStatus && value.ContributionStatus == "Publish") {
+             if(!value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.eventsPendingList.push(value);
               // this.loading = false;
             } 
-            else if(value.ContributionStatus == "Draft") {
+             if(value.ContributionStatus == "Draft") {
               this.getProfileByID(value.UserID, value)
               this.eventsDraftList.push(value);
               // this.loading = false;
             } 
+          } else {
+            this.loading = false;
+          }
             
             // else {
             //   this.eventsList = [];

@@ -38,7 +38,6 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
     this.loginForm = this.formBuilder.group({
       Email: ['', [Validators.required,Validators.email]],
       Password: ['', Validators.required]

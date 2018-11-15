@@ -36,7 +36,6 @@ export class MessagePage {
     this.user = this.authService.getCurrentUser();
     this.id = this.navParams.get('messageDetail')
     this.allData = this.navParams.get('messageDetail').all
-    console.log("this ", this.allData)
 
     this.messageForm = this.formBuilder.group({
       message: [''],

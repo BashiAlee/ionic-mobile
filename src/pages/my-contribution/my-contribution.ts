@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,App, NavController, NavParams } from 'ionic-angular';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { PopoverController } from 'ionic-angular';
 import { PopoverContributionComponent } from '../../components/popover-contribution/popover-contribution';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { UserProvider } from '../../providers/user/user';
+import { CreateContributionPage } from '../../pages/create-contribution/create-contribution';
 
 /**
  * Generated class for the MyContributionPage page.
@@ -30,7 +31,10 @@ export class MyContributionPage {
     public contributionService: ContributionsProvider,
     public authService: AuthenticationProvider,
     public userService: UserProvider,
-    public popoverCtrl: PopoverController) {
+    public popoverCtrl: PopoverController,
+    public appCtrl: App
+    
+  ) {
       this.user = this.authService.getCurrentUser();
       var email = this.authService.getCurrentUser().Email;
       this.getContributionByEmail(email);
@@ -39,11 +43,13 @@ export class MyContributionPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyContributionPage');
   }
   presentPopover() {
     const popover = this.popoverCtrl.create(PopoverContributionComponent);
     popover.present();
+  }
+  editContribution(contributionsId){
+    this.navCtrl.setRoot(CreateContributionPage,{id:contributionsId})
   }
   getContributionByEmail(email) {
     this.loading = true;
@@ -51,9 +57,7 @@ export class MyContributionPage {
     .subscribe(
       data => {
         if(data.status) {
-    
           data.data.forEach(value => {
-          
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
               this.getLikesAndComments(value._id,value);
@@ -83,7 +87,6 @@ export class MyContributionPage {
           this.loading = false;
         }
 
-        console.log(this.contributionsList)
       }
     )
   }

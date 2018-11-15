@@ -35,6 +35,13 @@ export class ContributionsProvider {
         return response;
       }));
   }
+ 
+  editContribution(data) {
+    return this.http.put(this.apiURL + 'editcontribution',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
 
   searchContributionByContributionId(data) {
     var id = {
@@ -44,7 +51,6 @@ export class ContributionsProvider {
       .pipe(map((response: any) => {
         return response;
       }));
-
   }
 
   getAllCategoriesName() {

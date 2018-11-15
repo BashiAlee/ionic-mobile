@@ -27,7 +27,6 @@ export class MessagePopoverComponent {
   public authService: AuthenticationProvider,
   public appCtrl: App
   ) {
-    // this.localData = this.authService.getCurrentUser();
     this.user = this.authService.getCurrentUser();
     if(this.user._id) {
       this.getAllMessages(this.user._id);

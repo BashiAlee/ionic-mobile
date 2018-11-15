@@ -25,8 +25,6 @@ export class AuthenticationProvider {
   }
   login(data) {
     var data = data;
-    console.log(data)
-
     return this.http.post(this.apiURL + 'login', data)
       .pipe(map((response: any) => {
         let user = response;
