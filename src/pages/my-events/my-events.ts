@@ -26,13 +26,14 @@ export class MyEventsPage {
   eventsDraftList: any = [];
   eventsPendingList: any = [];
   loading: any;
+  user: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public contributionService: ContributionsProvider,
     public eventsService: EventsProvider,
     public authService: AuthenticationProvider,
     public userService: UserProvider,
     public popoverCtrl: PopoverController) {
-
+      this.user = this.authService.getCurrentUser();
       var email = this.authService.getCurrentUser().Email;
       console.log(email)
       var data = {
@@ -58,18 +59,12 @@ export class MyEventsPage {
     this.eventsService.searchEvents(email)
     .subscribe(
       data => {
-<<<<<<< HEAD
-        console.log(data)
         if(data.Data) {
           data.Data.forEach(value => {
-            if(value.ContributionStatus!="Reject") {
-=======
-        if(data.status) {
-          data.data.forEach(value => {
           if(value.ContributionStatus!="Reject") {
->>>>>>> 7dcedcb4b70315b9e8f91d579fa80a9bf12cb3ae
             if(value.AdminStatus && value.ContributionStatus == "Publish") {
               this.getProfileByID(value.UserID, value)
+              this.getLikesAndComments(value._id,value);
               this.eventsList.push(value);
               this.loading = false;
             } 
@@ -86,10 +81,7 @@ export class MyEventsPage {
           } else {
             this.loading = false;
           }
-<<<<<<< HEAD
-=======
     
->>>>>>> 7dcedcb4b70315b9e8f91d579fa80a9bf12cb3ae
             
             // else {
             //   this.eventsList = [];
@@ -124,5 +116,34 @@ export class MyEventsPage {
   
       });
   }
+
+  getLikesAndComments(id,value) {
+    this.contributionService.getLikesAndComments(id)
+    .subscribe(data => {
+        if(!data.status) {
+          value.social = {
+            Likes: [],
+            Comments: []
+          }
+        } else if(data.status) {
+          value.social = data.data;
+        }
+  
+        if(value.social.Likes && value.social.Likes.length) {
+          value.social.Likes.forEach(id => {
+            if(this.user._id === id.LikeUserID) {
+              value.isLiked = true;
+              return;
+            } else {
+              value.isLiked = false;
+            }
+          });
+        } else {
+          value.isLiked = false;
+        }
+    })
+    this.loading = false;
+  }
+
 
 }

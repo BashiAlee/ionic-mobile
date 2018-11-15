@@ -54,11 +54,11 @@
               </button>
             </ion-col>
             <ion-col class="makeCenter">
-                <button ion-button icon-start clear small>
-                    <ion-icon name="text"></ion-icon>
-                    <div>4 Comments</div>
-                  </button>
-            </ion-col>
+              <button ion-button icon-start clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div *ngIf="contribution.social">{{contribution.social.Comments.length}}Comments</div>
+                </button>
+          </ion-col>
           </ion-row>
       
       </ion-card>
