@@ -5,12 +5,15 @@
   Ionic pages and navigation.
 -->
 <header></header>
+<ion-content padding *ngIf="loaders.detailLoader">
+  <ion-list class="loader makeCenter" >
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-list>
+</ion-content>
 
-
-<ion-content padding>
-  <h2 class="primary-heading mt15 ">Create a Contribution</h2>
-
-   <!-- Segment buttons with text -->
+<ion-content padding *ngIf="!loaders.detailLoader">
+  <h2 *ngIf="!contributionId" class="primary-heading mt15">Create a Contribution</h2>
+  <h2 *ngIf="contributionId" class="primary-heading mt15 ">Edit Contribution</h2>
    
    <ion-segment  color="primary" [(ngModel)]="contribution_action" [ngModelOptions]="{standalone: true}">
     <ion-segment-button value="content">
@@ -37,7 +40,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Enter your title here" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
+                <input type="text" value="" placeholder="Enter your title here" class="mt30 mb20" class="custom-input1" formControlName="title"/>
               </ion-col>
             </ion-row>
             
@@ -62,7 +65,7 @@
 
             <ion-row>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                <label for="cname" class="makeBlock mt15 custom-label">Sub Category</label>
+                <label for="cname" class="makeBlock custom-label">Sub Category</label>
               </ion-col>
             </ion-row>
 
@@ -80,12 +83,12 @@
             </ion-row>
             <ion-row>
               <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                <label for="cname" class="makeBlock mt15 custom-label">Add Tags</label>
+                <label for="cname" class="makeBlock custom-label">Add Tags</label>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Add comma seperated tags" class="mt30 mb20" class="custom-input" padding [(ngModel)]="contributionTags" [ngModelOptions]="{standalone: true}"/>
+                <input type="text" value="" placeholder="Add comma seperated tags" class="mt30 mb20" class="custom-input1" [(ngModel)]="contributionTags" [ngModelOptions]="{standalone: true}"/>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -150,8 +153,8 @@
               <h3 class="">Add Images(Optional)</h3>
               <div  *ngFor="let pics of imageStatus; let i = index" class="img-upload">
                   <img [src]="pics.localImage" height="150px" />
-                  <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
-                  <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
+                  <input type="text" value="" placeholder="Image Title" class="custom-input1 mt15" [(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
+                  <input type="text" value="" placeholder="Image Description" class="custom-input1 mt15 mb15" [(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
                   <div class="delete-icon" (click)="removeImage(i)">
                       <ion-icon name="ios-trash-outline" md="md-trash"></ion-icon>
                   </div>

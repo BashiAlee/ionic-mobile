@@ -5,6 +5,11 @@
   Ionic pages and navigation.
 -->
 <header></header>
+<ion-content padding *ngIf="loaders.detailLoader">
+  <ion-list class="loader makeCenter" >
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-list>
+</ion-content>
 
 <ion-content *ngIf="!user.MentorStatus">
   <div class="makeCenter mt50 completed-check">
@@ -15,8 +20,9 @@
        <p>Sorry! You are not allowed to perform this action unless you are a Super Contributor and Mentor.</p>
   </div>
 </ion-content>
-<ion-content padding *ngIf="user.MentorStatus">
-  <h2 class="primary-heading mt15 ">Create an Event</h2>
+<ion-content padding *ngIf="user.MentorStatus && !loaders.detailLoader">
+  <h2 *ngIf="!eventId" class="primary-heading mt15 ">Create an Event</h2>
+  <h2 *ngIf="eventId" class="primary-heading mt15 ">Edit Contribution</h2>
    <!-- Segment buttons with text -->
    
    <ion-segment  color="primary" [(ngModel)]="contribution_action" [ngModelOptions]="{standalone: true}">
@@ -44,7 +50,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Enter your title here" class="mt30 mb20" class="custom-input" padding formControlName="title"/>
+                <input type="text" value="" placeholder="Enter your title here" class="mt30 mb20" class="custom-input1" formControlName="title"/>
               </ion-col>
             </ion-row>
           <ion-row>
@@ -54,7 +60,7 @@
             </ion-row>
             <ion-row>
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input" padding formControlName="location"/>
+                <input type="text" value="" placeholder="Enter you title here" class="mt30 mb20" class="custom-input1" formControlName="location"/>
               </ion-col>
             </ion-row>
 
@@ -66,7 +72,7 @@
             </ion-row>
                 <ion-row>
                   <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                    <input type="date" class="mt30 mb20" class="custom-input" padding formControlName="date"/>
+                    <input type="date" class="mt30 mb20" class="custom-input1" formControlName="date"/>
                   </ion-col>
                 </ion-row>
             
@@ -91,7 +97,7 @@
     
                 <ion-row>
                   <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                    <label for="cname" class="makeBlock mt15 custom-label">Sub Category</label>
+                    <label for="cname" class="makeBlock custom-label">Sub Category</label>
                   </ion-col>
                 </ion-row>
     
@@ -109,7 +115,7 @@
                 </ion-row>
                 <ion-row>
                   <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                    <label for="cname" class="makeBlock mt15 custom-label">Add Tags</label>
+                    <label for="cname" class="makeBlock custom-label">Add Tags</label>
                   </ion-col>
                 </ion-row>
                 <ion-row>
@@ -130,77 +136,6 @@
                   </ion-col>
                 </ion-row>
           </ion-grid>
-
-      <ion-list>
-          <ion-grid>
-              <ion-row>
-                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt add-text-area" (click)="scroll('fold-1')">
-                      <a href="#">
-                        <i class="fas fa-text-width icon-bg"></i>
-                        <p>Text</p>
-                      </a>
-                  </div>
-                  <div class="tooltip_vector v2">
-                      <img tooltip="You can add text here"
-                      triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
-                  </div>
-                </ion-col>
-                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt add-embedvideo" (click)="scroll('fold-2')">
-                      <a href="#">
-                        <i class="fas fa-code icon-bg"></i>
-                        <p>Embed Video</p>
-                      </a>
-                  </div>
-                  <div class="tooltip_vector v2">
-                      <img tooltip="You can embed video here"
-                      triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
-                  </div>
-                </ion-col>
-                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                  <div class="tool-buckt add-audio" (click)="scroll('fold-3')">
-                      <a href="#">
-                        <i class="fas fa-volume-up icon-bg"></i>
-                        <p>Audio</p>
-                      </a>
-                  </div>
-                  <div class="tooltip_vector v2">
-                      <img tooltip="You can add audio here"
-                      triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
-                  </div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-2>
-                    <div class="tool-buckt add-imagegallery" (click)="scroll('fold-4')">
-                      <a href="#">
-                        <i class="fas fa-th icon-bg"></i>
-                        <p>Image Gellary</p>
-                      </a>
-                    </div>
-                    <div class="tooltip_vector v2">
-                        <img tooltip="You can add image gallery here"
-                        triggers="click" placement="right" alt="" src="../../assets/imgs/tooltip_vector.png">
-                    </div>
-                  </ion-col>
-                  <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                    <div class="tool-buckt add-link" (click)="scroll('fold-5')">
-                        <a href="#">
-                          <i class="fas fa-link icon-bg"></i>
-                          <p>Add Link</p>
-                        </a>
-                    </div>
-                    <div class="tooltip_vector v2">
-                        <img tooltip="You can add links here"
-                        triggers="click" placement="left" alt="" src="../../assets/imgs/tooltip_vector.png">
-                    </div>
-                  </ion-col>
-                </ion-row>
-            </ion-grid>
-
-
-      </ion-list>
 
       
       <ion-list>
@@ -249,8 +184,8 @@
               <h3 class="">Add Images(Optional)</h3>
               <div  *ngFor="let pics of imageStatus; let i = index" class="img-upload">
                   <img [src]="pics.localImage" height="150px" />
-                  <input type="text" value="" placeholder="Image Title" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
-                  <input type="text" value="" placeholder="Image Description" class="mt30 mb20" class="custom-input1"[(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
+                  <input type="text" value="" placeholder="Image Title" class="custom-input1 mt15" [(ngModel)]="pics.title" [ngModelOptions]="{standalone: true}"/>
+                  <input type="text" value="" placeholder="Image Description" class="custom-input1 mt15 mb15" [(ngModel)]="pics.description" [ngModelOptions]="{standalone: true}"/>
                   <div class="delete-icon" (click)="removeImage(i)">
                       <ion-icon name="ios-trash-outline" md="md-trash"></ion-icon>
                   </div>
