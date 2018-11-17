@@ -8,6 +8,7 @@ import { EditUserPage } from '../user/edit-user/edit-user';
 import { AlertController } from 'ionic-angular';
 import { LoadingController,ModalController, Platform } from 'ionic-angular';
 import {ForgotPasswordPage} from'../forgot-password/forgot-password';
+import { UserProfilePage } from '../user-profile/user-profile';
 
 /**
  * Generated class for the LoginPage page.
@@ -57,7 +58,15 @@ export class LoginPage {
     .subscribe(
       data =>{
         if(data.status) {
-          this.navCtrl.setRoot(EditUserPage)
+          var user = data.data;
+          if(user.FullName && user.Bio && user.Age && user.City && user.ZipCode && user.UserType != 'admin' && user.AboutMe) {
+            
+            this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+          }if(user.UserType != 'admin'){
+            // this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+            this.navCtrl.setRoot(EditUserPage)
+          }
+       
           loader.dismiss();
         } else if(!data.status){
           loader.dismiss();

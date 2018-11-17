@@ -303,7 +303,7 @@ unLike(value,id) {
 }
 
 openDetails(id) {
-  this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+  this.navCtrl.push(ContributionDetailsPage, {id: id})
 }
 
 getProfileById(id,value) {

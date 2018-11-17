@@ -93,7 +93,7 @@ export class MyContributionPage {
   }
 
   openDetails(id) {
-    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
 
   getProfileByID(id,value) {

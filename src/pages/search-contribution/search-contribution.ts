@@ -157,7 +157,7 @@ export class SearchContributionPage {
     this.loading = false;
   }
   openDetails(id) {
-    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
   
 

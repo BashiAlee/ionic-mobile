@@ -24,7 +24,8 @@
                 <ion-list>
                   <ion-item no-lines>
                     <ion-avatar item-start>
-                      <img src="../../assets/imgs/avatar.png">
+                      <img *ngIf="contributionDetails.UserProfilePicture" [src]="contributionDetails.UserProfilePicture" alt="">
+                      <img *ngIf="!contributionDetails.UserProfilePicture"src="../../assets/imgs/avatar.png">
                     </ion-avatar>
                     <div center class="slider-header">
                       <h2>{{contributionDetails.UserFullName}}</h2>
@@ -65,8 +66,8 @@
                   <ion-item class="mt50" no-lines>
                     <h4 class="makeCenter">Audio</h4>
                     <audio controls style="width: 100%">
-                        <source src="horse.ogg" type="audio/ogg">
-                        <source src="horse.mp3" type="audio/mpeg">
+                        <!-- <source src="horse.ogg" type="audio/ogg"> -->
+                        <source [src]="contributionDetails.AudioPath" type="audio/mpeg">
                           Your browser does not support the audio element.
                       </audio>
                   </ion-item>

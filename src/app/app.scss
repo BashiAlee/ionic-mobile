@@ -579,7 +579,9 @@ button:focus {
 
 
 .cover-image {
-    height: 330px;
+    // height: 330px;
+    // overflow: hidden;
+    height: auto;
     overflow: hidden;
 }
 .blue-text {

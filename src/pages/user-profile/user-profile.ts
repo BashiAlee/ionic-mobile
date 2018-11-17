@@ -76,7 +76,7 @@ export class UserProfilePage {
     })
   }
   openDetails(id) {
-    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
   getUserContributionByEmail(email) {
     this.userService.getUserConstributionsbyEmail(email)
