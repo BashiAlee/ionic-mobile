@@ -1,9 +1,8 @@
 header {
-.custom-search {
-    input.searchbar-input {
-        border: 0;
-        box-shadow: none;
+    .custom-search {
+        border-bottom:1px solid $light-grey;
+        font-size:22px;
+        color: $medium-gray;
+        padding: 0px 10px 0px 0px;
     }
-
-}
 }

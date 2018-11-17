@@ -12,7 +12,7 @@
         (search)="searchByKeyword($event)"
         >
 </ion-searchbar>
-<ion-icon ios="ios-search" md="md-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"></ion-icon>
+<ion-icon class="custom-search" ios="ios-search" md="md-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"></ion-icon>
 
         <ion-buttons start="" *ngIf="!showSearch" >
           <div class="nav-content">
