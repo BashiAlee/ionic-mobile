@@ -207,7 +207,7 @@ export class MyFeedsPage {
   }
 
   openDetails(id) {
-    this.navCtrl.setRoot(ContributionDetailsPage, {id: id})
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
 
   

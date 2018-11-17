@@ -58,6 +58,9 @@ import { LearnMoreMentorPage } from '../pages/learn-more-mentor/learn-more-mento
 import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import { Crop } from '@ionic-native/crop';
+import { Base64 } from '@ionic-native/base64';
+
 @NgModule({
   declarations: [
     ApplicantFormPage,
@@ -153,6 +156,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
     StatusBar,
     SplashScreen,
     Camera,
+    Crop,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthenticationProvider,
     UserProvider,
@@ -160,7 +164,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
     EventsProvider,
     ParentProvider,
     MessagesProvider,
-    PreferencesProvider
+    PreferencesProvider,
+    Base64
   ]
 })
 export class AppModule {}

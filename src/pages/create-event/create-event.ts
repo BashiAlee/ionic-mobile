@@ -8,6 +8,9 @@ import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angu
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { PreferencesProvider } from '../../providers/preferences/preferences';
 import { MyEventsPage } from '../../pages/my-events/my-events';
+import { Crop } from '@ionic-native/crop';
+import { Base64 } from '@ionic-native/base64';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * Generated class for the CreateEventPage page.
@@ -60,6 +63,9 @@ export class CreateEventPage {
     private toastCtrl: ToastController,
     public contributionService: ContributionsProvider,
     public formBuilder: FormBuilder,
+    private crop: Crop,
+    private base64: Base64,
+    private sanitizer: DomSanitizer,
     public popoverCtrl: PopoverController) { 
       this.eventId = this.navParams.get('id')
 
@@ -322,33 +328,61 @@ export class CreateEventPage {
     this.loading= true;
     let options = {
       maximumImagesCount:1,//select number of image default is 15
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
       }
       this.camera.getPicture(options).then((result) => {
-      this.coverImage = 'data:image/jpeg;base64,' + result;
+   
+ 
       this.loading = false;
-      this.uploadCroppedImage(this.coverImage)
+      this.crop.crop(result, {quality: 100})
+      .then(newImage => {
+        this.base64.encodeFile(newImage).then((base64File: string) => {
+          this.coverImage =  this.sanitizer.bypassSecurityTrustUrl(base64File)
+          this.uploadCroppedImage(this.coverImage)
+        }, (err) => {
+          console.log(err);
+        });
+        // console.log('new image path is: ' + newImage)
+       },
+          error => console.error('Error cropping image', error)
+       );
+      // this.uploadCroppedImage(this.coverImage)
     }, (err) => { });
   }
 
   openCamera() {
-    this.loading = true;
+    this.loading= true;
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-      this.camera.getPicture(options).then((imageData) => {
-      this.coverImage = 'data:image/jpeg;base64,' + imageData;
+    this.camera.getPicture(options).then((result) => {
       this.loading = false;
-      this.uploadCroppedImage(this.coverImage)
-     }, (err) => {
+      this.crop.crop(result, {quality: 100})
+      .then(newImage => {
+        this.base64.encodeFile(newImage).then((base64File: string) => {
+          this.coverImage =  this.sanitizer.bypassSecurityTrustUrl(base64File)
+          this.uploadCroppedImage(this.coverImage)
+        }, (err) => {
+          console.log(err);
+        });
+        // console.log('new image path is: ' + newImage)
+       },
+          error => console.error('Error cropping image', error)
+       );
+      // this.uploadCroppedImage(this.coverImage)
+    }, (err) => { });
+    //   this.coverImage = 'data:image/jpeg;base64,' + imageData;
+    //   this.loading = false;
+    //   this.uploadCroppedImage(this.coverImage)
+    //  }, (err) => {
 
-      // Handle error
-     });
+    //   // Handle error
+    //  });
   }
 
   addNewUrl() {
