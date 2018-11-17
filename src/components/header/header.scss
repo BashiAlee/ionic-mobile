@@ -1,8 +1,31 @@
 header {
-    .custom-search {
+    .custom-nav{
+        display:flex;
         border-bottom:1px solid $light-grey;
-        font-size:22px;
-        color: $medium-gray;
-        padding: 0px 10px 0px 0px;
+        .custom-search {
+            font-size:18px;
+            color: $medium-gray;
+            padding: 0px;
+        }
+        .nav-content{
+            i{
+                font-size:22px;
+                color: $medium-gray;
+                padding: 0px 10px 0px 0px;
+            }
+        }
+        .nav-dp{
+            display:flex;
+            .nav-arrow{
+                font-size: $p2;
+                margin-top: 5px;
+                min-width: 15px;
+                color: #000;
+            }
+            img{
+                border-radius: 50%;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        }
     }
 }

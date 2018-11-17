@@ -3,16 +3,17 @@
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-searchbar class="custom-search" 
-        [(ngModel)]="query"
+        <ion-searchbar  
+        [(ngModel)]="query" class="custom-search"
         *ngIf="showSearch"
         [showCancelButton]="true"
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)"
         (search)="searchByKeyword($event)"
         >
-</ion-searchbar>
-<ion-icon class="custom-search" ios="ios-search" md="md-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"></ion-icon>
+        </ion-searchbar>
+        <span class="custom-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"><i class="fas fa-search" ></i></span>
+        <!-- <ion-icon class="custom-search" md="md-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"></ion-icon> -->
 
         <ion-buttons start="" *ngIf="!showSearch" >
           <div class="nav-content">
