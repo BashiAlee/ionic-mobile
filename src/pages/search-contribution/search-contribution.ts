@@ -107,6 +107,8 @@ export class SearchContributionPage {
             this.contributionsList.push(value)
   
             this.loading = false;
+          }  else {
+            this.loading = false;
           }
         });
       } else {

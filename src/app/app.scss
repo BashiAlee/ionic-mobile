@@ -58,9 +58,13 @@ ion-list.sideMenu {
 .sideMenu-header {
     color: $primary-color;
     div.toolbar-content {
-        display: flex;
-        justify-content: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        display: grid;
+        grid-template-columns: 60% auto;
         align-items: center;
+        justify-content: end;
         // .toolbar-title {
         //     color: $primary-color;
         // }
