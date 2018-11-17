@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import {LoginPage} from'../login/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController,ModalController, Platform } from 'ionic-angular';
@@ -27,7 +27,8 @@ export class ForgotPasswordPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public auth: AuthenticationProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private menu: MenuController
   ) {
     this.forgotForm = this.formBuilder.group({
       email: ['']
@@ -60,4 +61,20 @@ export class ForgotPasswordPage {
   back(){
     this.navCtrl.setRoot(LoginPage)
   }
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(false, 'menu1');
+  }
+
+  ionViewWillLeave() {
+    // Don't forget to return the swipe to normal, otherwise 
+    // the rest of the pages won't be able to swipe to open menu
+    this.menu.swipeEnable(true);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(true, 'menu1');
+   }
+
 }

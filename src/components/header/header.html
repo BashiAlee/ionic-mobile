@@ -10,6 +10,7 @@
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)"
         (search)="searchByKeyword($event)"
+        placeholder= "Search a Topic by Keywords"
         >
         </ion-searchbar>
         <span class="custom-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"><i class="fas fa-search" ></i></span>

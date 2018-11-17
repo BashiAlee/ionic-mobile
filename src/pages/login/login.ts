@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,7 +33,8 @@ export class LoginPage {
     public auth: AuthenticationProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public menu : MenuController
   ) {
 
   }
@@ -59,12 +60,20 @@ export class LoginPage {
       data =>{
         if(data.status) {
           var user = data.data;
-          if(user.FullName && user.Bio && user.Age && user.City && user.ZipCode && user.UserType != 'admin' && user.AboutMe) {
+          if(user.FullName && user.Bio && user.Age && user.City && user.ZipCode && user.UserType == 'user' && user.AboutMe) {
             
             this.navCtrl.setRoot(UserProfilePage,{id: user._id})
-          }if(user.UserType != 'admin'){
+            // return;
+          }
+          if(user.UserType == 'admin'){
             // this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+            this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+            // return;
+          }
+
+          if(user.UserType == 'user' && (!user.FullName || !user.Bio || !user.Age || !user.City || !user.ZipCode || !user.UserType)) {
             this.navCtrl.setRoot(EditUserPage)
+            // return;
           }
        
           loader.dismiss();
@@ -92,6 +101,21 @@ export class LoginPage {
     if(this.auth.isLoggedIn()) {
       this.navCtrl.setRoot(EditUserPage)
     }
+   }
+   ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(false, 'menu1');
+  }
+
+  ionViewWillLeave() {
+    // Don't forget to return the swipe to normal, otherwise 
+    // the rest of the pages won't be able to swipe to open menu
+    this.menu.swipeEnable(true);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(true, 'menu1');
    }
 
 

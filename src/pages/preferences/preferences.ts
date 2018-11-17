@@ -57,9 +57,10 @@ export class PreferencesPage {
     if(subcat && subcat.length) {
       subcat.forEach(subcat => {
         this.userPreferences.push({SubCategory: subcat})
+       
       });
     }
-
+  this.userPreferences = uniqBy(this.userPreferences, 'SubCategory');
     // console.log(this.selectedPreferences)
     // console.log(this.userPreferences)
     // this.selectedPreferences=this.selectedPreferences.concat(this.userPreferences)
