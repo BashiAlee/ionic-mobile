@@ -104,7 +104,9 @@
                         <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
                       
                         <ion-card-content>
-                          <h4>{{contribution.Title}}</h4>
+                          <div class="custom-titl">
+                            <h4>{{contribution.Title}}</h4>
+                          </div>
                           <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>                    
                           <div class="red-text">
                             <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
