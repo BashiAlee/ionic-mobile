@@ -5,6 +5,7 @@ import { AuthenticationProvider } from '../../../providers/authentication/authen
 import { UserProvider } from '../../../providers/user/user';
 import { ToastController } from 'ionic-angular';
 import { UserProfilePage } from '../../user-profile/user-profile';
+import { HomePage } from '../../../pages/home/home';
 /**
  * Generated class for the AboutMePage page.
  *
@@ -82,6 +83,10 @@ export class AboutMePage {
         }
       }
     )
+  }
+
+  openHomePage() {
+    this.navCtrl.setRoot(HomePage)
   }
 
 }

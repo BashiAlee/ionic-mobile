@@ -48,8 +48,8 @@ export class ViewerProfilePage {
     .subscribe( data => {
       if(data.status) {
         this.userData = data.data;
-        this.getFollowersCountById(this.user._id);
-        this.getUserContributionByEmail(this.user.Email);
+        this.getFollowersCountById(this.userData._id);
+        this.getUserContributionByEmail(this.userData.Email);
 
         this.loading = false;
       } else if (!data.status) {

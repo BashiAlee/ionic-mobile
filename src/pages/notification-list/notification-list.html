@@ -9,7 +9,7 @@
             <ion-avatar item-start>
                 <img [src]="comments.CommentUserProfilePicture">
               </ion-avatar>
-              <h2>{{comments.CommentUserName}}</h2>
+              <h2>{{comments.CommentUserID == user._id ? 'You' : comments.CommentUserName }}</h2>
               <p>commented on Your Contribution</p>
             </ion-item>
       </div>
@@ -18,7 +18,7 @@
           <ion-avatar item-start>
             <img [src]="likes.LikeUserProfilePicture">
           </ion-avatar>
-          <h2>{{likes.LikeUserName}}</h2>
+          <h2>{{likes.LikeUserID == user._id ? 'You' : likes.LikeUserName }}</h2>
           <p>Liked Your Contribution</p>
           </ion-item>
     </div>

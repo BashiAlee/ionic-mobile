@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { PreferencesPage } from '../../../pages/preferences/preferences';
 import { AlertController } from 'ionic-angular';
 import { LoadingController} from 'ionic-angular';
+import { HomePage } from '../../../pages/home/home';
 
 declare var window: any
 
@@ -423,5 +424,9 @@ export class EditUserPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  openHomePage() {
+    this.navCtrl.setRoot(HomePage)
   }
 }
