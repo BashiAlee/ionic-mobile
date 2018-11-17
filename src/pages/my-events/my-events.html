@@ -38,7 +38,9 @@
         <img *ngIf="!event.Coverpage" src="../../assets/imgs/avatar.png">
       
         <ion-card-content>
-          <h4>{{event.Title}}</h4>
+          <div class="custom-titl">
+            <h4>{{event.Title}}</h4>
+          </div>
           <p [innerHTML]="event.ContributionText"></p>
 
 
@@ -96,7 +98,9 @@
             <img *ngIf="!event.Coverpage" src="../../assets/imgs/avatar.png">
           
             <ion-card-content>
-              <h4>{{event.Title}}</h4>
+              <div class="custom-titl">
+                <h4>{{event.Title}}</h4>
+              </div>
               <p [innerHTML]="event.ContributionText"></p>
     
     
@@ -157,7 +161,9 @@
               <img *ngIf="!event.Coverpage" src="../../assets/imgs/avatar.png">
             
               <ion-card-content>
-                <h4>{{event.Title}}</h4>
+                <div class="custom-titl">
+                  <h4>{{event.Title}}</h4>
+                </div>
                 <p [innerHTML]="event.ContributionText"></p>
       
       

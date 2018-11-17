@@ -20,27 +20,35 @@
             </ion-card-header>
           </ion-col>
           <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-              <div class="text-modal">   
+              <div class="text-modal">  
+                  <ion-grid>
+                      <ion-row>
+                          <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+                            <div class="custom-titl">
+                              <img *ngIf="contributionDetails.UserProfilePicture" [src]="contributionDetails.UserProfilePicture" alt="">
+                              <img *ngIf="!contributionDetails.UserProfilePicture"src="../../assets/imgs/avatar.png">
+                              <div class="mt12">
+                                  <h2>{{contributionDetails.UserFullName}}</h2>
+                                  <p><a href="#">{{contributionDetails.bio}}</a></p>
+                              </div>
+                            </div>
+                          </ion-col>
+                          <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                              <button class="follow-btn f-right" (click)="addMentor(contributionDetails.UserID,user.Age,contributionDetails)" *ngIf="user &&!contributionDetails.hasFollowing && user._id != contributionDetails.UserID  && contributionDetails.userType!='admin'">
+                                  FOLLOW
+                                </button> 
+                                <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contributionDetails.UserID, contributionDetails)" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && contributionDetails.isAllowed">
+                                  UNFOLLOW
+                                </button>
+                                <button class="follow-btn orange-icon f-right" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && !contributionDetails.isAllowed">
+                                  PENDING
+                                </button> 
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid> 
                 <ion-list>
-                  <ion-item no-lines>
-                    <ion-avatar item-start>
-                      <img *ngIf="contributionDetails.UserProfilePicture" [src]="contributionDetails.UserProfilePicture" alt="">
-                      <img *ngIf="!contributionDetails.UserProfilePicture"src="../../assets/imgs/avatar.png">
-                    </ion-avatar>
-                    <div center class="slider-header">
-                      <h2>{{contributionDetails.UserFullName}}</h2>
-                      <p><a href="#">{{contributionDetails.bio}}</a></p>
-                    </div>
-                  </ion-item>
-                  <button class="follow-btn f-right" (click)="addMentor(contributionDetails.UserID,user.Age,contributionDetails)" *ngIf="user &&!contributionDetails.hasFollowing && user._id != contributionDetails.UserID  && contributionDetails.userType!='admin'">
-                    FOLLOW
-                  </button> 
-                  <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contributionDetails.UserID, contributionDetails)" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && contributionDetails.isAllowed">
-                    UNFOLLOW
-                  </button>
-                  <button class="follow-btn orange-icon f-right" *ngIf="user && contributionDetails.hasFollowing && user._id != contributionDetails.UserID && !contributionDetails.isAllowed">
-                    PENDING
-                  </button> 
+            
+            
                   <ion-item class="action-icons b-bot">
                     <ion-icon *ngIf="contributionDetails.AudioPath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio')" ></ion-icon>
                     <ion-icon *ngIf="contributionDetails.Videos" class="play-icon" ios="ios-play" md="md-play"  (click)="openFold('video')"></ion-icon>
@@ -48,6 +56,7 @@
                   </ion-item>
                 
                 </ion-list>
+                
                 <div class="slider-content">
                   <h3 [innerHTML]="contributionDetails.Title">DISCIPLINE TO GROW YOURSELF</h3>
                   <p [innerHTML]="contributionDetails.ContributionText">DISCIPLINE! The 14th Ultimate 30-Minute Motivational Speech Compilation is here! </p>

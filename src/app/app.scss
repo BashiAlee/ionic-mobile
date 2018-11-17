@@ -450,6 +450,20 @@ a{
         font-size: $p2;
     }
 }
+.custom-titl{
+    display: flex;
+    img{
+        border-radius: 50%;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        margin: 5px 5px 0px 10px;
+        display: block;
+    }
+    h4{
+        font-weight: bold;
+    }
+}
 ion-spinner * {
     width: 28px;
     height: 28px;
@@ -744,4 +758,7 @@ button:focus {
 }
 .bold{
     font-weight: bold;
+}
+#ion-diagnostics-toast {
+    background: transparent !important;
 }

@@ -121,7 +121,7 @@ export class CreateEventPage {
     loading.present();
     var tagsList = this.eventTags
     if(tagsList){
-      var tagsList = this.eventTags.split(',');
+      tagsList = this.eventTags.split(',');
       const control1 = < FormArray > this.contributionForm.controls['tags'];
       tagsList.forEach(value => {
         const addrCtrl = this.formBuilder.group({
@@ -163,12 +163,10 @@ export class CreateEventPage {
     this.getEventByContributionId(this.eventId)
   }
   getEventByContributionId(eventId){
-    this.loading = true;
+    this.loaders.detailLoader = true;
     this.contributionService.searchContributionByContributionId(eventId)
     .subscribe( data => {
       if (data.status) {
-        console.log("this isdb response",data.data)
-
         this.contributionForm.patchValue({
           useremail: data.data.UserEmail,
           title: data.data.Title,
@@ -186,8 +184,6 @@ export class CreateEventPage {
           coverpage: data.data.Coverpage,
           date: data.data.Date,
           location:  data.data.Location
-          // date: data.data.Da,
-          // location: new FormControl(this.user.City),
         });
         this.coverImage = data.data.Coverpage;
         var d = data.data.Tags;
@@ -195,13 +191,10 @@ export class CreateEventPage {
           if(tags.Tag) {
             this.eventTags += tags.Tag+",";
           }
-          
         });
         this.eventTags = this.eventTags.replace(/,\s*$/, "");
-
         var e= data.data.Images;
         e.forEach(imgs => {
-          // if(imgs) {
             this.imageStatus.push({
               localImage: imgs.Imagestatus,
               title:  imgs.ImageTitle,
@@ -209,17 +202,11 @@ export class CreateEventPage {
             })
         });
         this.category(this.contributionForm.value.maincategory);
-
-        console.log("this is data",this.contributionForm.value)
-          
+        this.loaders.detailLoader = false;
       }
-      // if(data.status) {
-      //   // this.preferencesData = data.data;
-      //   this.loading = false;
-      // } 
       else if (!data.status) {
         // this.preferencesData = null;
-        this.loading = false;
+        this.loaders.detailLoader = false;
       }
     })
   }

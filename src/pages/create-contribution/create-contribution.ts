@@ -168,12 +168,10 @@ export class CreateContributionPage {
     this.getContributionByContributionId(this.contributionId)
   }
   getContributionByContributionId(contributionId){
-    this.loading = true;
+    this.loaders.detailLoader = true;
     this.contributionService.searchContributionByContributionId(contributionId)
     .subscribe( data => {
       if (data.status) {
-        console.log("this isdb response",data.data)
-
         this.contributionForm.patchValue({
           useremail: data.data.UserEmail,
           title: data.data.Title,
@@ -199,7 +197,6 @@ export class CreateContributionPage {
           
         });
         this.contributionTags = this.contributionTags.replace(/,\s*$/, "");
-
         var e= data.data.Images;
         e.forEach(imgs => {
             this.imageStatus.push({
@@ -209,17 +206,11 @@ export class CreateContributionPage {
             })
         });
         this.category(this.contributionForm.value.maincategory);
-
-        console.log("this is data",this.contributionForm.value)
-          
+        this.loaders.detailLoader = false;
       }
-      // if(data.status) {
-      //   // this.preferencesData = data.data;
-      //   this.loading = false;
-      // } 
       else if (!data.status) {
         // this.preferencesData = null;
-        this.loading = false;
+        this.loaders.detailLoader = false;
       }
     })
   }

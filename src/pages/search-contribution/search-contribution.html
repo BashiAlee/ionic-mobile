@@ -34,17 +34,18 @@
 
         </ion-item> -->
       
-        <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage">
-        <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png">
+        <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage" (click)="openDetails(contribution._id)">
+        <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
       
         <ion-card-content>
-          <h4>{{contribution.Title}}</h4>
+            <div class="custom-titl">
+                <h4>{{contribution.Title}}</h4>
+              </div>
           <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-
-
-          <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-       
-      </ion-card-content>
+          <div class="red-text">
+            <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+          </div>
+        </ion-card-content>
         <ion-row>
            
             <ion-col class="makeCenter">
