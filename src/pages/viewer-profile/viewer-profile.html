@@ -33,11 +33,15 @@
   
                     <ion-grid>
                         <ion-row>
-                          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
-                              <div class="circle blue-circle">
-                                       <p>{{totalFollowers.length}}</p>
-                              <h6>FOLLOWING</h6>
-                              </div>
+                          <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                            <div class="circle yellow-circle" *ngIf="totalFollowers">
+                                <p>{{totalFollowers.length}}</p>
+                              <h6>Following</h6>
+                            </div>
+                            <div class="circle yellow-circle" *ngIf="!totalFollowers">
+                                <p>0</p>
+                              <h6>Following</h6>
+                            </div>
                           </ion-col>
                           <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                               <div class="circle yellow-circle">
@@ -87,8 +91,12 @@
                               <h4>{{contribution.Title}}</h4>
                             </div>
                             <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
-                            <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
-                          </ion-card-content>
+                  
+                            <div class="red-text">
+                              <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+                            </div>
+                         
+                        </ion-card-content>
                           <ion-row>
                              
                               <ion-col class="makeCenter">

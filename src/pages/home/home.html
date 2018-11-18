@@ -115,7 +115,7 @@
           <ion-grid>
               <ion-row>
                   <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
-                    <div class="custom-titl">
+                    <div class="custom-titl" (click)="openUserProfile(contribution.UserID)">
                       <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
                       <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
                       <div class="mt12">
