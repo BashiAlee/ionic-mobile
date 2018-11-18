@@ -81,7 +81,6 @@ export class MyFeedsPage {
   }
 
   getLikesAndComments(id,value) {
-
     this.contributionService.getLikesAndComments(id)
     .subscribe(data => {
         if(!data.status) {
@@ -105,7 +104,6 @@ export class MyFeedsPage {
   }
 
   getFollowerList(id) {
-    // this.loader = true;
     this.loaders.feedLoader = true;
     this.userService.getFollower(id)
       .subscribe(
@@ -116,43 +114,36 @@ export class MyFeedsPage {
               if (followers.ParentStatus) {
                 this.viewProfileByID(followers.Userfollowerid);
               } else {
-                this.loaders.feedLoader = false;
+                // this.loaders.feedLoader = false;
               }
             });
           } else if(!data.status){
             this.loaders.feedLoader = false;
             return;
           }
-          // this.loading = false;
-
         },
         error => {});
   }
 
   viewProfileByID(id) {
-   
     this.userService.viewProfileById(id)
     .subscribe( data => {
       if(data.status) {
         this.getContributionByEmail(data.data.Email)
-        // this.loader = false;
       }
     })
   }
   getContributionByEmail(email) {
     var list = [];
-    // this.loaders.feedLoader = true;
     this.contributionService.getUserConstributionsbyEmail(email)
     .subscribe(
       data => {
         if(data.status) {
-          console.log("data", data.data)
-          console.log("list", list)
           data.data.forEach((value,index) => {
-            // console.log("inde", index)
             if(value.AdminStatus === 1) {
               this.getLikesAndComments(value._id,value);
               list.push(value)
+              this.loaders.feedLoader = false;
             }
             // else {
             //   list.splice(index, 1);
@@ -162,11 +153,8 @@ export class MyFeedsPage {
           this.userContributions = [];
           this.loaders.feedLoader = false;
           return;
-          // this.loading = false;
         }
-    
         this.userContributions.push(list);
-        console.log("DD", this.userContributions)
         this.loaders.feedLoader = false;
       }
     )

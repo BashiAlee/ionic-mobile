@@ -20,5 +20,11 @@ page-create-event {
             }
         }
     }
-    
+    .preview-btn{
+        .red-btn{
+            width: 40% !important;
+            border-radius: 50px;
+            background: $green;
+        }
+    }
 }

@@ -20,23 +20,18 @@ import { ParentProvider } from '../../providers/parent/parent';
   providers: [AuthenticationProvider, ParentProvider]
 })
 export class HeaderComponent {
-
-  text: string;
   user: any;
   query: any;
   showSearch: any = false;
 
   constructor( public popoverCtrl: PopoverController,
     public navCtrl: NavController,
-  public authService: AuthenticationProvider,
-  public parentService: ParentProvider
+    public authService: AuthenticationProvider,
+    public parentService: ParentProvider
   ) {
     this.user = this.authService.getCurrentUser();
-       
     var id = this.user._id;
     this.getMentorStatus(id)
-    console.log('Hello HeaderComponent Component');
-    this.text = 'Hello World';
   }
 
   messagePopover(myEvent) {

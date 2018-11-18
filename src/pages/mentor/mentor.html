@@ -2,10 +2,16 @@
 
 <ion-content padding>
     <h2 class="primary-heading mt15 ">My Mentors</h2>
-    <ion-grid>
-        <ion-row>
+    <div class="makeCenter" *ngIf="loader">
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <div class="makeCenter" *ngIf="followersList &&!followersList.length && !loader">
+      <p>Not Found</p>
+    </div>
 
-          <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngIf="followersList && followersList.length && !loader">
+    <ion-grid *ngIf="followersList && followersList.length && !loader">
+        <ion-row>
+          <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
             <ion-card class="mentor-card" *ngFor="let followers of followersList">
               <img [src]="followers.ProfilePicture"/>
               <ion-card-content>
@@ -28,20 +34,6 @@
               </ion-card-content>
             </ion-card>
           </ion-col>
-
-
-          <ion-col col-12 >
-              <div class="makeCenter" *ngIf="followersList && !followersList.length && !loader">
-                  <p>Not Found</p>
-                </div>
-          </ion-col >
-         
-          <ion-col col-12  *ngIf="followersList && !followersList.length && loader">
-              <div class="loader makeCenter">
-                  <ion-spinner name="bubbles"></ion-spinner>
-              </div>
-            </ion-col >
-          </ion-row>
-        </ion-grid>
-        
-  </ion-content>
+        </ion-row>
+    </ion-grid>
+</ion-content>
