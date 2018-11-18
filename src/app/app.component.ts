@@ -33,6 +33,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import {ChatPage} from '../pages/chat/chat';
 import { SplashPage } from '../pages/splash/splash';
 import { AboutUsPage } from '../pages/about-us/about-us';
+import { PreviewModalPage } from '../pages/preview-modal/preview-modal';
 
 @Component({
   templateUrl: 'app.html',
@@ -66,7 +67,7 @@ export class MyApp {
       // { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ApplicantFormPage },
       { title: 'Mentor', component: MentorPage },
-      // { title: 'About US', component: AboutUsPage },
+      { title: 'Preview', component: PreviewModalPage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },

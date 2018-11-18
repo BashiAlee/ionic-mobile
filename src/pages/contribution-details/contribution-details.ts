@@ -59,7 +59,6 @@ export class ContributionDetailsPage {
   moveForward(modalArray) {
     this.modalArray = modalArray;
     if (!this.first) {
-
       this.current++
     } else {
       this.first = false
@@ -70,15 +69,11 @@ export class ContributionDetailsPage {
     $(this.modalArray[this.current]).show();
 
     for (var i = 0; i < this.modalArray.length; i++) {
-
       if (this.current == i) {
-
       } else {
-
         $(this.modalArray[i]).hide();
       }
     }
-    // console.log("FFFF", this.modalArray, this.current,this.first)
   }
 
   moveBackward(modalArray) {
@@ -89,17 +84,12 @@ export class ContributionDetailsPage {
       }
     $(modalArray[this.current]).show();
 
-
     for (var i = 0; i < this.modalArray.length; i++) {
-
       if (this.current == i) {
-
       } else {
-
         $(this.modalArray[i]).hide();
       }
     }
-
   }
 
   getContributionByID(id) {
@@ -488,8 +478,6 @@ shareTwitter(e) {
  }
  shareLinkedIn(e) {
   var url = "https://cliiimb.com/spotlight-details/"+ this.id;
-  var title = "Cliimb";
-  var text = url;
   window.open('http://www.linkedin.com/shareArticle?mini=true&url='+url, 'sharer', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
  }
 

@@ -60,7 +60,7 @@ export class ChatPage {
               }
             });
           }
-          // this.loading = false;
+          this.loading.getFollower = false;
         },
         error => {});
   }
@@ -70,7 +70,6 @@ export class ChatPage {
       senderuserid: this.user._id
     })
     this.loading.sendMsg = true;
-    console.log(this.messageForm.value)
     this.msgService.sendUserMessages(this.messageForm.value)
     .subscribe(data => {
     if (data.status) {

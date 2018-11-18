@@ -28,7 +28,7 @@
                               <img *ngIf="contributionDetails.UserProfilePicture" [src]="contributionDetails.UserProfilePicture" alt="">
                               <img *ngIf="!contributionDetails.UserProfilePicture"src="../../assets/imgs/avatar.png">
                               <div class="mt12">
-                                  <h2>{{contributionDetails.UserFullName}}</h2>
+                                  <h4>{{contributionDetails.UserFullName}}</h4>
                                   <p><a href="#">{{contributionDetails.bio}}</a></p>
                               </div>
                             </div>
@@ -100,17 +100,6 @@
                         <a class="makeRed" [href]="urls.Websiteurl" target="_blank">Visit this link</a>
                       </div>
                     </div>
-                <!-- <ion-slides pager>
-                    <ion-slide>
-                        <img src="../../assets/imgs/avatar.png">
-                      <h1>title 1</h1>
-                    </ion-slide>
-                    <ion-slide>
-                        <img src="../../assets/imgs/avatar.png">
-                      <h1>title 2</h1>
-                    </ion-slide>
-        
-                  </ion-slides> -->
               </div>
 
               <div class="cont-footer">

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, LoadingController } from 'ionic-angular';
-import { PopoverController } from 'ionic-angular';
+import { PopoverController,ModalController } from 'ionic-angular';
 import { UserPopoverComponent } from '../../components/user-popover/user-popover';
 import { MessagePopoverComponent } from '../../components/message-popover/message-popover';
 import { NotificationPopoverComponent } from '../../components/notification-popover/notification-popover';
@@ -16,6 +16,7 @@ import { MyContributionPage } from '../../pages/my-contribution/my-contribution'
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
 /**
  * Generated class for the CreateContributionPage page.
  *
@@ -67,6 +68,7 @@ export class CreateContributionPage {
     public userService: UserProvider,
     public camera: Camera,
     private toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
     public contributionService: ContributionsProvider,
@@ -116,7 +118,27 @@ export class CreateContributionPage {
   next(){
     this.contribution_action='submit';
   }
+  openModal() {
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Please wait...'
+    // });
+    // loading.present();
+    if(this.contributionForm.value.images) {
+      const control = < FormArray > this.contributionForm.controls['images'];
+      this.imageStatus.forEach(status => {
+        const addrCtrl = this.formBuilder.group({
+          imagestatus: [status.img],
+          imagetitle: [status.title],
+          imagedescription: [status.description]
+        });
+        control.push(addrCtrl);
+     
+      });
+    }
 
+    let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: this.contributionForm.value});
+    modal.present();
+  }
   saveDraft(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -149,7 +171,6 @@ export class CreateContributionPage {
     this.contributionForm.patchValue({
       contributionstatus: "Draft" 
     });
-    console.log("****",this.contributionForm.value)
     this.contributionService.createContribution(this.contributionForm.value)
     .subscribe( data => {
       loading.dismiss();

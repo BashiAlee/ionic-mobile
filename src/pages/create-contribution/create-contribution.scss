@@ -9,6 +9,7 @@ page-create-contribution {
                 margin: 0px 10px  0px 0px;
             }
         }
+    
         .completed-check{
             .check-click{
                 width: 50px;
@@ -29,5 +30,12 @@ page-create-contribution {
             }
         }
     }    
+    .preview-btn{
+        .red-btn{
+            width: 40% !important;
+            border-radius: 50px;
+            background: $green;
+        }
+    }
 }
 

@@ -9,16 +9,16 @@
 
 <ion-content padding>
   <h2 class="primary-heading mt15 ">Followers</h2>
-  <div class="loader makeCenter" *ngIf="loader">
+  <div class="loader makeCenter" *ngIf="loading.getFollower">
       <ion-spinner name="bubbles"></ion-spinner>
   </div>
-  <div class="not-found makeCenter" *ngIf="!followersList.length && !loader">
+  <div class="not-found makeCenter" *ngIf="!followersList && !followersList.length && !loading.getFollower">
     <p>No Followers</p>
   </div>
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-          <ion-list *ngIf="followersList">
+          <ion-list *ngIf="followersList && followersList.length && !loading.getFollower">
             <ion-item  class="custom-input">
               <ion-label>Choose follower to chat</ion-label>
               <ion-select (cancel)="onCancel()" [(ngModel)]="followerId">

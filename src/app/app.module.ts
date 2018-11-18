@@ -56,6 +56,8 @@ import { EventsPage } from '../pages/events/events';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { LearnMoreMentorPage } from '../pages/learn-more-mentor/learn-more-mentor';
 import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
+import { PreviewModalPage } from '../pages/preview-modal/preview-modal';
+
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Crop } from '@ionic-native/crop';
@@ -99,7 +101,8 @@ import { Base64 } from '@ionic-native/base64';
     EventsPage,
     AboutUsPage,
     LearnMoreMentorPage,
-    HowToProtectPage
+    HowToProtectPage,
+    PreviewModalPage
   ],
   imports: [
     BrowserModule,
@@ -150,7 +153,8 @@ import { Base64 } from '@ionic-native/base64';
     EventsPage,
     AboutUsPage,
     LearnMoreMentorPage,
-    HowToProtectPage
+    HowToProtectPage,
+    PreviewModalPage
   ],
   providers: [
     StatusBar,

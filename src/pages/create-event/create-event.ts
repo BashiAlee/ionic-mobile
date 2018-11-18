@@ -1,6 +1,6 @@
 import { Component,ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, PopoverController, ToastController, LoadingController } from 'ionic-angular';
-import { Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ModalController,PopoverController, ToastController, LoadingController } from 'ionic-angular';
+import { Content, } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
@@ -11,6 +11,7 @@ import { MyEventsPage } from '../../pages/my-events/my-events';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
 
 /**
  * Generated class for the CreateEventPage page.
@@ -60,6 +61,7 @@ export class CreateEventPage {
     public preferences: PreferencesProvider,
     public camera: Camera,
     public loadingCtrl: LoadingController,
+    public modalCtrl: ModalController,
     private toastCtrl: ToastController,
     public contributionService: ContributionsProvider,
     public formBuilder: FormBuilder,
@@ -113,7 +115,25 @@ export class CreateEventPage {
   next(){
     this.contribution_action='submit';
   }
-
+  openModal() {
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Please wait...'
+    // });
+    // loading.present();
+    if(this.contributionForm.value.images) {
+      const control = < FormArray > this.contributionForm.controls['images'];
+      this.imageStatus.forEach(status => {
+        const addrCtrl = this.formBuilder.group({
+          imagestatus: [status.img],
+          imagetitle: [status.title],
+          imagedescription: [status.description]
+        });
+        control.push(addrCtrl);
+      });
+    }
+    let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: this.contributionForm.value});
+    modal.present();
+  }
   saveDraft(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'

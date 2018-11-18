@@ -462,6 +462,10 @@ a{
     }
     h4{
         font-weight: bold;
+        font-size: 1.5rem;
+    }
+    h2{
+        font-size: 2rem;
     }
 }
 ion-spinner * {
@@ -762,3 +766,4 @@ button:focus {
 #ion-diagnostics-toast {
     background: transparent !important;
 }
+

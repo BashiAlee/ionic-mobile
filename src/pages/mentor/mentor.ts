@@ -31,11 +31,9 @@ export class MentorPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MentorPage');
   }
 
   getFollowerList(id) {
-    this.followersList = [];
     this.loader = true;
     this.userService.getFollower(id)
       .subscribe(
@@ -47,20 +45,18 @@ export class MentorPage {
                 this.viewProfileByID(followers.Userfollowerid);
               } else {
                 this.loader = false;
+                this.followersList = [];
               }
             });
           } else {
             this.loader = false;
             this.followersList = [];
           }
-          // this.loading = false;
-
         },
         error => {});
   }
 
   viewProfileByID(id) {
-   
     this.userService.viewProfileById(id)
     .subscribe( data => {
       if(data.status) {
