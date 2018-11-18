@@ -148,4 +148,11 @@ export class ContributionsProvider {
   }));
   }
 
+  addView(data) {
+    return this.http.post(this.apiURL + 'addview',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
+
 }
