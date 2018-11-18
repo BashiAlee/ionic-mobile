@@ -49,6 +49,14 @@ export class ContributionDetailsPage {
     this.user = this.authService.getCurrentUser();
     // this.getFollowers(this.user._id);
 
+    var data = {
+      _id: this.id,
+      userid: this.user._id
+    }
+    this.contributionService.addView(data)
+    .subscribe( data => {
+
+    });
   }
 
   ionViewDidLoad() {
