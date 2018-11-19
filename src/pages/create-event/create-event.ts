@@ -116,10 +116,6 @@ export class CreateEventPage {
     this.contribution_action='submit';
   }
   openModal() {
-    // let loading = this.loadingCtrl.create({
-    //   content: 'Please wait...'
-    // });
-    // loading.present();
     if(this.contributionForm.value.images) {
       const control = < FormArray > this.contributionForm.controls['images'];
       this.imageStatus.forEach(status => {
@@ -401,35 +397,34 @@ export class CreateEventPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
-    this.loaders.audio = true;
-    var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
-    if (FileSize > 20) {
-        // this.messages.maxSize = true;
-       // $(file).val(''); //for clearing with Jquery
-    } else {
-      // this.messages.maxSize = false;
-      this.userService.uploadAudio(file)
-        .subscribe(
-          data => {
-            if(data.status){
-              this.contributionForm.patchValue({
-                audiopath: data.status
-              });
-              this.loaders.audio = false;
-              this.isUploaded.audio=true;
-            }else{
-              this.isUploaded.error=false;
-            }
-            
-          },
-          error => {
-            this.isUploaded.error=false;
+    this.isUploaded.audioError=false;
+    this.isUploaded.audio=false;
+    this.loaders.audio=true;
+    this.userService.uploadAudio(file)
+    .subscribe(
+      data => {
+        if(data.status){
+          this.contributionForm.patchValue({
+            audiopath: data.status
           });
-    }
+          this.loaders.audio=false;
+          this.isUploaded.audio=true;
+        }else{
+          this.isUploaded.audioError=true;
+          this.loaders.audio=false;
+      }
+      },
+      error => {
+        this.isUploaded.audioError=true;
+        this.loaders.audio=false;
+      }
+    );
   }
 
   uploadContributionImage(file) {
     this.loaders.img = true;
+    this.isUploaded.imgError=false
+
     var target = file.target || file.srcElement
 
     this.userService.uploadAudio(file)
@@ -445,10 +440,10 @@ export class CreateEventPage {
             this.loaders.img = false;
             reader.readAsDataURL(target.files[0]);
           }
-
         },
         error => {
-          // this.messages.uploadImageLoader = false;
+          this.isUploaded.imgError=true
+          this.loaders.img=false;
         });
 
   }

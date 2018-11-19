@@ -26,8 +26,6 @@ export class PreviewModalPage {
   ) {
     this.modalArray = [".text-modal"];
     this.contribution=navParams.get('contributionFormData')
-console.log("***********",this.contribution);
-
     if (this.contribution.audiopath) {
       this.modalArray.push(".modal-audio-view")
     }

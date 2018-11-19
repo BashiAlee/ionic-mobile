@@ -37,10 +37,9 @@ export class MyFeedsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyFeedsPage');
     this.user = this.authService.getCurrentUser();
-    this.getUserPreferences(this.user._id)
     this.getFollowerList(this.user._id);
+    this.getUserPreferences(this.user._id)
   }
 
   getUserPreferences(id) {
@@ -56,13 +55,12 @@ export class MyFeedsPage {
         }
       } else {
         this.suggestedContribution = [];
-        this.loaders.suggestionLoader = false;
+        // this.loaders.suggestionLoader = false;
       }
     })
   }
 
   getSuggestions(data) {
-    this.loaders.suggestionLoader = true;
     this.userService.getSuggestedPreferences(data)
     .subscribe(data => {
       if(data.status) {
@@ -70,8 +68,8 @@ export class MyFeedsPage {
           if(value.AdminStatus) {
             this.getLikesAndComments(value._id,value);
             this.suggestedContribution.push(value);
-            this.loaders.suggestionLoader = false;
           } 
+          this.loaders.suggestionLoader = false;
         });
       } else {
         this.suggestedContribution = [];
@@ -87,6 +85,7 @@ export class MyFeedsPage {
           value.social = { Likes: [], Comments: [] }
         } else if(data.status) {
           value.social = data.data;
+          this.loaders.suggestionLoader = false;
         }
         if(value.social.Likes && value.social.Likes.length) {
           value.social.Likes.forEach(id => {

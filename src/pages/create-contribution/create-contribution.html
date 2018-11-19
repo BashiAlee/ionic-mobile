@@ -130,7 +130,7 @@
                    </div>
                    <p>Your Audio was uploaded Successfully</p>
               </div>
-              <div class="completed-check" *ngIf="isUploaded.error">
+              <div class="completed-check" *ngIf="isUploaded.audioError">
                   <div class="times-click">
                       <span class="fa fa-times"></span>
                    </div>
@@ -146,7 +146,13 @@
               <hr> 
               <div class="loader" *ngIf="loaders.img">
                   <ion-spinner name="bubbles"></ion-spinner>
-              </div>   
+              </div>  
+              <div class="completed-check" *ngIf="isUploaded.imgError ">
+                <div class="times-click">
+                    <span class="fa fa-times"></span>
+                 </div>
+                 <p>Image file is too large</p>
+              </div> 
               <h3 class="">Add Images(Optional)</h3>
               <div  *ngFor="let pics of imageStatus; let i = index" class="img-upload">
                   <img [src]="pics.localImage" height="150px" />

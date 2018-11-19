@@ -43,10 +43,7 @@ export class MentorPage {
             this.followersIds.Follower.forEach(followers => {
               if (followers.ParentStatus) {
                 this.viewProfileByID(followers.Userfollowerid);
-              } else {
-                this.loader = false;
-                this.followersList = [];
-              }
+              } 
             });
           } else {
             this.loader = false;
@@ -67,9 +64,7 @@ export class MentorPage {
   }
 
   unFollowMentor(id) {
-
     var data = {
-
       userid: this.user._id,
       follower: [{
         followersid: id

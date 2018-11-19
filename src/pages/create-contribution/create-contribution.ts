@@ -424,57 +424,53 @@ export class CreateContributionPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
+    this.isUploaded.audioError=false;
+    this.isUploaded.audio=false;
     this.loaders.audio=true;
-    var FileSize = file.srcElement.files[0].size / 1024 / 1024; // in MB
-    if (FileSize > 5) {
-        // this.messages.maxSize = true;
-       // $(file).val(''); //for clearing with Jquery
-    } else {
-      // this.messages.maxSize = false;
-      // this.showUploader = true;
-      this.userService.uploadAudio(file)
-        .subscribe(
-          data => {
-            console.log(data)
-
-            if (data.status){
-              this.contributionForm.patchValue({
-                audiopath: data.status
-              });
-              this.loaders.audio=false;
-              this.isUploaded.audio=true;
-            }else{
-              this.isUploaded.error=true;
-            }
-          },
-          error => {
-            this.isUploaded.error=true;
+    this.userService.uploadAudio(file)
+    .subscribe(
+      data => {
+        if (data.status){
+          this.contributionForm.patchValue({
+            audiopath: data.status
           });
-    }
+          this.loaders.audio=false;
+          this.isUploaded.audio=true;
+        }else{
+          this.isUploaded.audioError=true;
+          this.loaders.audio=false;
+      }
+      },
+      error => {
+        this.isUploaded.audioError=true;
+        this.loaders.audio=false;
+      }
+    );
   }
 
   uploadContributionImage(file) {
     this.loaders.img=true;
+    this.isUploaded.imgError=false
     var target = file.target || file.srcElement
-
     this.userService.uploadAudio(file)
-      .subscribe(
-        data => {
-          if (target.files && target.files[0]) {
-            var reader = new FileReader();
-            reader.onload = (event: any) => {
-              // this.url = event.target.result;
-              this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
-              // this.url.push({title: '',description:'',img:event.target.result});
-            }
-            this.loaders.img=false;
-            reader.readAsDataURL(target.files[0]);
+    .subscribe(
+      data => {
+        if (target.files && target.files[0]) {
+          var reader = new FileReader();
+          reader.onload = (event: any) => {
+            // this.url = event.target.result;
+            this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
+            // this.url.push({title: '',description:'',img:event.target.result});
           }
-        },
-        error => {
-          // this.messages.uploadImageLoader = false;
-        });
-
+          this.loaders.img=false;
+          reader.readAsDataURL(target.files[0]);
+        }
+      },
+      error => {
+        this.isUploaded.imgError=true
+        this.loaders.img=false;
+      }
+    );
   }
 
   saveContribution() {
