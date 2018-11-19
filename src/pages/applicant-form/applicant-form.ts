@@ -21,6 +21,7 @@ import { LoadingController } from 'ionic-angular';
 export class ApplicantFormPage {
   mentor : FormGroup;
   mentorStatus: any;
+  types:any='';
   canFill: any;
   user: any;
   isReviewed: any;
@@ -54,6 +55,7 @@ export class ApplicantFormPage {
         workedfor: new FormControl(''),
         companyname: new FormControl(''),
         motivationTxt: new FormControl(''),
+        contributiontype: new FormControl(['']),
         donation: new FormControl(false, Validators.required),
         userage: new FormControl(parseInt(this.user.Age), Validators.required)
 
@@ -63,7 +65,6 @@ export class ApplicantFormPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ApplicantFormPage');
   }
 
   getAllContributions() {
@@ -95,19 +96,26 @@ export class ApplicantFormPage {
       content: 'Please wait...',
     });
     loader.present();
+    if(this.mentor.value.contributiontype) {
+      this.mentor.value.contributiontype.forEach(value => {
+        if(value) {
+          this.types+= value+',';
+        }
+      });
+    }
+    this.types = this.types.replace(/,\s*$/, "");
+    this.mentor.patchValue({
+      contributiontype : this.types
+    })
     this.contributionService.becomeAMentor(this.mentor.value)
     .subscribe(
       data => {
         if(data.status) {
-          // this.getMentorStatus(this.user._id)
-          // location.reload();
           loader.dismiss();
           this.showErrorAlert("Mentor form Successfully Submitted");
-
         } else if(!data.status) {
           loader.dismiss();
           this.showErrorAlert("Mentor form Already Filled");
-     
         }
       }
     )

@@ -38,7 +38,6 @@ export class UserProfilePage {
     ) {
       this.user = this.authService.getCurrentUser();
       this.id = this.navParams.get('id')
-      console.log("DDDD", this.id)
   }
 
   ionViewDidLoad() {
@@ -53,8 +52,9 @@ export class UserProfilePage {
     .subscribe( data => {
       if(data.status) {
         this.userData = data.data;
-        this.getFollowersCountById(this.user._id);
+        // this.getFollowersCountById(this.user._id);
         this.getUserContributionByEmail(this.user.Email);
+        this.getUserFollowersByID(this.user._id);
         this.getDueContributions(this.user._id)
         this.loading = false;
       } else if (!data.status) {
@@ -64,17 +64,30 @@ export class UserProfilePage {
     })
   }
 
-  getFollowersCountById(id) {
-    this.userService.getUserFollowerCountById(id)
+  // getFollowersCountById(id) {
+  //   this.userService.getUserFollowerCountById(id)
+  //   .subscribe( data=> {
+  //     if(data.status) {
+  //       this.totalFollowers = data.data.Follower;
+  //     }
+  //     else if(!data.status) {
+  //       this.totalFollowers = 0;
+  //     }
+  //   })
+  // }
+  
+  getUserFollowersByID(id) {
+    this.userService.getUserFollower(id)
     .subscribe( data=> {
-      if(data.status) {
-        this.totalFollowers = data.data.Follower;
+      if(data) {
+        this.totalFollowers=data
       }
-      else if(!data.status) {
+      else if(!data) {
         this.totalFollowers = 0;
       }
     })
   }
+  
   openDetails(id) {
     this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
@@ -83,6 +96,14 @@ export class UserProfilePage {
     .subscribe( data=> {
       if(data.status) {
         data.data.forEach(value => {
+          this.getProfileByID(value.UserID, value)
+          if(value.AdminStatus && value.ContributionStatus == "Publish") {
+           
+            this.getLikesAndComments(value._id,value);
+            this.contributionsList.push(value);
+          } 
+          this.overAllReach+=value.ViewCount;
+        });data.data.forEach(value => {
           this.getProfileByID(value.UserID, value)
           if(value.AdminStatus && value.ContributionStatus == "Publish") {
            

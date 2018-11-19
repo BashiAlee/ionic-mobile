@@ -23,15 +23,11 @@ export class UserProvider {
   }
 
   uploadCroppedImage(file,fileName) {
-    console.log("DDD----------   =====  ", file, fileName)
     let formData = new FormData();
     let headers = new HttpHeaders();
     headers.append('Content-Type','multipart/form-data');
     headers.append( 'Access-Control-Allow-Origin' , '*')
     formData.append('file',file,fileName);
-
-    console.log("DDD", file) 
-    console.log("DDDname ", fileName) 
     return this.http.post(this.staticURL,formData,  {
       headers: headers
     }) .pipe(map((response: any) => {
@@ -42,7 +38,6 @@ export class UserProvider {
   uploadImage(formData) {
     return this.http.post(this.staticURL,formData)
     .pipe(map((response: any) => {
-    console.log("DDDD", response)
      return response
   }));
   }
@@ -80,7 +75,6 @@ export class UserProvider {
 
   viewProfileById(data) {
     var user =  { _id : data }
-    console.log("FFF", user)
     return this.http.post(this.apiURL + 'viewprofilebyid', user)
     .pipe(map((response: any) => {
       return response;
@@ -108,6 +102,15 @@ export class UserProvider {
   getFollower(data) {
     var user =  { userid : data }
     return this.http.post(this.apiURL + 'getfollower', user)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+  
+  getUserFollower(data) {
+    var user =  { userid : data }
+    return this.http.post(this.apiURL + 'getuserfollower', user)
     .pipe(map((response: any) => {
       return response;
     }
