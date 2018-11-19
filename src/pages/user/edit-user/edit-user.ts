@@ -108,6 +108,7 @@ export class EditUserPage {
     
     const options: CameraOptions = {
       quality: 70,
+      correctOrientation: true,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE

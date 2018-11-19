@@ -331,4 +331,6 @@ getAllCommentsAndLikes(id, value) {
   goToProtectionPage() {
     this.navCtrl.setRoot(HowToProtectPage)
   }
+
+  
 }

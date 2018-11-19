@@ -4,7 +4,6 @@ import { PreviewModalPage } from './preview-modal';
 
 @NgModule({
   declarations: [
-    PreviewModalPage,
   ],
   imports: [
     IonicPageModule.forChild(PreviewModalPage),
