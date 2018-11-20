@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
+import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
 /**
  * Generated class for the MyFollowersPage page.
  *
@@ -33,6 +34,9 @@ export class MyFollowersPage {
   }
 
   ionViewDidLoad() {
+  }
+  openUserProfile(UserID) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: UserID})
   }
   getAllFollower(id) : Promise < any[] >{
    return new Promise((resolve, reject)=>{

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
+import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
 
 /**
  * Generated class for the MentorPage page.
@@ -32,6 +33,9 @@ export class MentorPage {
 
   ionViewDidLoad() {
   }
+  openUserProfile(UserID) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: UserID})
+  }
 
   getFollowerList(id) {
     this.loader = true;
@@ -58,6 +62,7 @@ export class MentorPage {
     .subscribe( data => {
       if(data.status) {
         this.followersList.push(data.data);
+        console.log(this.followersList)
         this.loader = false;
       }
     })

@@ -50,8 +50,6 @@ export class HomePage {
     if (this.user) {
       this.loading = true;
       this.getFollowerList(this.user._id);
-
-
     } else if (!this.user) {
       this.loading = true;
       this.getAllContributions();

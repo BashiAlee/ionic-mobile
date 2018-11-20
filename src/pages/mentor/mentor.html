@@ -13,7 +13,7 @@
         <ion-row>
           <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
             <ion-card class="mentor-card" *ngFor="let followers of followersList">
-              <img [src]="followers.ProfilePicture"/>
+              <img [src]="followers.ProfilePicture" (click)="openUserProfile(followers._id)"/>
               <ion-card-content>
                   <ion-row>
                     <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
