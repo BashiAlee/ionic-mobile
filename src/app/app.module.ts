@@ -50,13 +50,14 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { PreferencesProvider } from '../providers/preferences/preferences';
 import { SearchContributionPage } from '../pages/search-contribution/search-contribution';
 import { AlertModule,TooltipModule } from 'ngx-bootstrap';
-import {ChatPage} from '../pages/chat/chat';
+import { ChatPage } from '../pages/chat/chat';
 import { SplashPage } from '../pages/splash/splash';
 import { EventsPage } from '../pages/events/events';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { LearnMoreMentorPage } from '../pages/learn-more-mentor/learn-more-mentor';
 import { HowToProtectPage } from '../pages/how-to-protect/how-to-protect';
 import { PreviewModalPage } from '../pages/preview-modal/preview-modal';
+import { MyFollowersPage } from '../pages/my-followers/my-followers';
 
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
@@ -102,7 +103,8 @@ import { Base64 } from '@ionic-native/base64';
     AboutUsPage,
     LearnMoreMentorPage,
     HowToProtectPage,
-    PreviewModalPage
+    PreviewModalPage,
+    MyFollowersPage
   ],
   imports: [
     BrowserModule,
@@ -154,7 +156,8 @@ import { Base64 } from '@ionic-native/base64';
     AboutUsPage,
     LearnMoreMentorPage,
     HowToProtectPage,
-    PreviewModalPage
+    PreviewModalPage,
+    MyFollowersPage
   ],
   providers: [
     StatusBar,

@@ -10,135 +10,113 @@
     <div class="loader makeCenter" *ngIf="loading">
         <ion-spinner name="bubbles"></ion-spinner>
     </div>
-    <!-- <div class="top-content makeCenter pt15">
-        <div class="image profile-viewer">
-          <img src="../../../assets/imgs/app-logo.svg" alt="app-logo">
-        </div>
-        <div class="tagline">
-         <p> Edit/Complete your profile</p>
-        </div>
-
-      </div> -->
-      <div class="user-page" *ngIf="!loading && userData">
-          <ion-list>
-
-              <ion-item class="mt30">
-                <div class="user-info makeCenter">
-                  <div class="profile-chooser">
-                      <img *ngIf="!userData.ProfilePicture" src="../../assets/imgs/avatar.png" alt="" class="profileImage">
-                      <img *ngIf="userData.ProfilePicture" [src]="domSanitizer.bypassSecurityTrustUrl(userData.ProfilePicture)" alt="" class="profileImage">
-                  </div>
-                  <div class="user-description">
-                      <p class="username">{{userData.FullName}}</p>
-                      <p class="bio"> {{userData.Bio}}</p>
-                  </div>
-
-                  <div class="circles">
-                    <ion-grid>
-                      <ion-row>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                          <div class="circle purple-circle">
-                            <p>{{contributionCount}}</p>
-                            <h6>YOUR REMAINING CONTRIBUTIONS FOR THIS MONTH</h6>
-                          </div>
-                        </ion-col>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                            <div class="circle blue-circle">
-                            <p [innerHTML]='contributionsList && contributionsList.length ? contributionsList.length : "0"'></p>
-                            <h6>CONTRIBUTIONS</h6>
-                            </div>
-                        </ion-col>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                          <div class="circle yellow-circle" *ngIf="totalFollowers">
-                              <p>{{totalFollowers.length}}</p>
-                            <h6>FOLLOWERS</h6>
-                          </div>
-                          <div class="circle yellow-circle" *ngIf="!totalFollowers">
-                              <p>0</p>
-                            <h6>FOLLOWERS</h6>
-                          </div>
-                        </ion-col>
-                        <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
-                            <div class="circle red-circle">
-                                <p>{{overAllReach}}</p>
-                                <h6>OVER ALL REACH(ON ALL CONTRIBUTIONS)</h6>
-                            </div>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                  </div>                   
-                </div>
-                </ion-item>
-
-                <div padding class="makeCenter">
-                  <button ion-button (click)="goTo()" type="button" class="primary-blue-button">Create Your Contribution</button>
-                </div>
-
-                <div class="contributions-list">
-                    <h2 class="primary-heading mt15 ">My Contributions</h2>
-                    <div class="loader makeCenter" *ngIf="loading">
-                        <ion-spinner name="bubbles"></ion-spinner>
-                    </div>
-                    <div class="not-found makeCenter" *ngIf="contributionsList && !contributionsList.length && !loading">
-                      <p>Not Found</p>
-                    </div>
-                    <div class="contribution-data" *ngIf="contributionsList && contributionsList.length && !loading">
-                    <ion-card *ngFor="let contribution of contributionsList">
-                
-                        <ion-item>
-                          <ion-avatar item-start>
-                            <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
-                            <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
-                          </ion-avatar>
-                          <h2>{{contribution.UserFullName}}</h2>
-                          <p>{{contribution.bio}}</p>
-                        </ion-item>
-                        <!-- <ion-item class="action-icons"> 
-                          <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
-                          <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
-                          <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
-                
-                        </ion-item> -->
-                      
-                        <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage" (click)="openDetails(contribution._id)">
-                        <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
-                      
-                        <ion-card-content>
-                          <div class="custom-titl">
-                            <h4>{{contribution.Title}}</h4>
-                          </div>
-                          <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>                    
-                          <div class="red-text">
-                            <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
-                          </div>
-                        </ion-card-content>
-                     
-                        <ion-row>
-                           
-                            <ion-col class="makeCenter">
-                              <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
-                                  <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                                <div>{{contribution.Likes}} Likes</div>
-                              </button>
-                              <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
-                                  <ion-icon name="heart"></ion-icon>  
-                                <div>{{contribution.Likes}} Unlike</div>
-                              </button>
-                            </ion-col>
-                            <ion-col class="makeCenter">
-                                <button ion-button icon-start clear small>
-                                    <ion-icon name="text"></ion-icon>
-                                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">Comments</span></div>
-                                  </button>
-                            </ion-col>
-                          </ion-row>
-                      
-                      </ion-card>
-                    </div>
-                
-                  </div>
-        
-            </ion-list>
+    <div class="user-page" *ngIf="!loading && userData">
+      <div class="profile-chooser">
+          <img *ngIf="!userData.ProfilePicture" src="../../assets/imgs/avatar.png" alt="" class="profileImage">
+          <img *ngIf="userData.ProfilePicture" [src]="domSanitizer.bypassSecurityTrustUrl(userData.ProfilePicture)" alt="" class="profileImage">
+      </div>
+      <div class="user-description makeCenter">
+          <p class="username">{{userData.FullName}}</p>
+          <p class="bio"> {{userData.Bio}}</p>
       </div>
 
+      <div class="circles">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+              <div class="circle purple-circle">
+                <p>{{contributionCount}}</p>
+                <h6>YOUR REMAINING CONTRIBUTIONS FOR THIS MONTH</h6>
+              </div>
+            </ion-col>
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                <div class="circle blue-circle">
+                <p [innerHTML]='contributionsList && contributionsList.length ? contributionsList.length : "0"'></p>
+                <h6>CONTRIBUTIONS</h6>
+                </div>
+            </ion-col>
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+
+              <div class="circle yellow-circle" *ngIf="totalFollowers" (click)="openFollowers()">
+                  <p>{{totalFollowers.length}}</p>
+                <h6>FOLLOWERS</h6>
+              </div>
+              <div class="circle yellow-circle" *ngIf="!totalFollowers">
+                  <p>0</p>
+                <h6>FOLLOWERS</h6>
+              </div>
+            </ion-col>
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4>
+                <div class="circle red-circle">
+                    <p>{{overAllReach}}</p>
+                    <h6>OVER ALL REACH(ON ALL CONTRIBUTIONS)</h6>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>                   
+      <div padding class="makeCenter">
+        <button ion-button (click)="goTo()" type="button" class="primary-blue-button">Create Your Contribution</button>
+      </div>
+
+      <div class="contributions-list">
+        <h2 class="primary-heading mt15 ">My Contributions</h2>
+        <div class="loader makeCenter" *ngIf="loading">
+            <ion-spinner name="bubbles"></ion-spinner>
+        </div>
+        <div class="not-found makeCenter" *ngIf="contributionsList && !contributionsList.length && !loading">
+          <p>Not Found</p>
+        </div>
+        <div class="contribution-data" *ngIf="contributionsList && contributionsList.length && !loading">
+          <ion-card *ngFor="let contribution of contributionsList">
+            <ion-item>
+              <ion-avatar item-start>
+                <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
+                <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
+              </ion-avatar>
+              <h2>{{contribution.UserFullName}}</h2>
+              <p>{{contribution.bio}}</p>
+            </ion-item>
+            <!-- <ion-item class="action-icons"> 
+              <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
+              <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
+              <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
+    
+            </ion-item> -->
+          
+            <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage" (click)="openDetails(contribution._id)">
+            <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
+          
+            <ion-card-content>
+              <div class="custom-titl">
+                <h4>{{contribution.Title}}</h4>
+              </div>
+              <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>                    
+              <div class="red-text">
+                <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+              </div>
+            </ion-card-content>
+          
+            <ion-row>
+              <ion-col class="makeCenter">
+                <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
+                  <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                  <div>{{contribution.Likes}} Likes</div>
+                </button>
+                <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
+                  <ion-icon name="heart"></ion-icon>  
+                  <div>{{contribution.Likes}} Unlike</div>
+                </button>
+              </ion-col>
+              <ion-col class="makeCenter">
+                <button ion-button icon-start clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">Comments</span></div>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </div>
+      </div>
+    </div>
 </ion-content>
