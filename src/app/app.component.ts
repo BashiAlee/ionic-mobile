@@ -2,38 +2,24 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { SplashPage } from '../pages/splash/splash';
+ 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { EditUserPage } from '../pages/user/edit-user/edit-user';
 import { CreateContributionPage } from '../pages/create-contribution/create-contribution';
-import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { ViewerProfilePage } from '../pages/viewer-profile/viewer-profile';
 import { MyContributionPage } from '../pages/my-contribution/my-contribution';
-
-import { ContributionDetailsPage } from '../pages/contribution-details/contribution-details';
-
 import { MentorPage } from '../pages/mentor/mentor';
 import { ApplicantFormPage } from '../pages/applicant-form/applicant-form';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { CreateEventPage } from '../pages/create-event/create-event';
 import { ParentActivityLogPage } from '../pages/parent-activity-log/parent-activity-log';
 import { MyFeedsPage } from '../pages/my-feeds/my-feeds';
-
 import { ParentProvider } from '../providers/parent/parent';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 import { SearchEventsPage } from '../pages/search-events/search-events';
 import { ParentProfilePage } from '../pages/parent-profile/parent-profile';
 import { PreferencesPage } from '../pages/preferences/preferences';
-import { MessagePage } from '../pages/message/message';
-import { MessageListPage } from '../pages/message-list/message-list';
-import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
-import {ChatPage} from '../pages/chat/chat';
-import { SplashPage } from '../pages/splash/splash';
-import { AboutUsPage } from '../pages/about-us/about-us';
-import { PreviewModalPage } from '../pages/preview-modal/preview-modal';
 
 @Component({
   templateUrl: 'app.html',
@@ -59,15 +45,12 @@ export class MyApp {
     this.pages = [
       { title: 'My Contributions', component: MyContributionPage },
       { title: 'My Events', component: MyEventsPage },
-      // { title: 'Home', component: HomePage },
       { title: 'My Mentors', component: MentorPage },
       { title: 'My Feed', component: MyFeedsPage },
       { title: 'Create Contribution', component: CreateContributionPage },
       { title: 'Create an Event', component: CreateEventPage },
-      // { title: 'Events', component: HomePage },
       { title: 'Become a mentor', component: ApplicantFormPage },
       { title: 'Mentor', component: MentorPage },
-      { title: 'Preview', component: PreviewModalPage },
       { title: 'Parent Activity log', component: ParentActivityLogPage },
       { title: 'Parent Profile', component: ParentProfilePage },
       { title: 'Edit / Profile Settings', component: EditUserPage },
@@ -76,11 +59,7 @@ export class MyApp {
       { title: 'Logout', component: ListPage },
 
     ];
-
-
-
   }
-
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -91,11 +70,7 @@ export class MyApp {
       //       splash.present();
       // this.splashScreen.hide();
     });
-
-
   }
-
-
 
   openPage(page) {
     // Reset the content nav to have just this page

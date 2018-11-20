@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { CreateContributionPage } from '../../pages/create-contribution/create-contribution';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { MyFollowersPage } from '../../pages/my-followers/my-followers';
 
 /**
  * Generated class for the UserProfilePage page.
@@ -35,7 +36,7 @@ export class UserProfilePage {
      public domSanitizer: DomSanitizer,
      public authService: AuthenticationProvider,
      public contributionService: ContributionsProvider
-    ) {
+  ) {
       this.user = this.authService.getCurrentUser();
       this.id = this.navParams.get('id')
   }
@@ -45,6 +46,9 @@ export class UserProfilePage {
   }
   goTo() {
     this.navCtrl.setRoot(CreateContributionPage);
+  }
+  openFollowers(){
+    this.navCtrl.setRoot(MyFollowersPage)
   }
   viewProfileByID(id) {
     this.loading = true;
@@ -63,7 +67,7 @@ export class UserProfilePage {
       }
     })
   }
-
+ 
   // getFollowersCountById(id) {
   //   this.userService.getUserFollowerCountById(id)
   //   .subscribe( data=> {

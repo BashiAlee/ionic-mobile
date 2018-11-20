@@ -1,0 +1,47 @@
+<header></header>
+
+<ion-content padding>
+    <h2 class="primary-heading mt15 ">My Followers</h2>
+    <div class="makeCenter" *ngIf="loader">
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <div class="makeCenter" *ngIf="!followersList.length && !loader">
+      <p>Not Found</p>
+    </div>
+
+    <ion-grid *ngIf="followersList && followersList.length && !loader">
+        <ion-row>
+          <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3>
+            <ion-card class="mentor-card" *ngFor="let followers of followersList">
+              <img [src]="followers.ProfilePicture"/>
+              <ion-card-content>
+                  <ion-row>
+                    <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+                      <div class="title">
+                        <p>{{followers.FullName}}</p>     
+                      </div>
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                        <button class="follow-btn f-right" (click)="addMentor(followers.userid,user.Age,followers)" *ngIf="user &&!followers.hasFollowing && user._id != followers.userid">
+                            FOLLOW
+                          </button> 
+                        <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(followers.userid, followers)" *ngIf="user && followers.hasFollowing && user._id != followers.userid && followers.isAllowed">
+                          UNFOLLOW
+                        </button>
+                        <button class="follow-btn orange-icon f-right" *ngIf="user && followers.hasFollowing && user._id != followers.userid && !followers.isAllowed">
+                          PENDING
+                        </button> 
+                    </ion-col>
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                        <div class="card-content">
+                            <p class="primary-p1">Cliiimb's Contributor</p>
+                            <p>({{followers.Bio}})</p>
+                        </div>
+                    </ion-col>
+                  </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

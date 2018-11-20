@@ -20,7 +20,6 @@ export class UserPopoverComponent {
     public appCtrl: App
   ) {
     this.user = this.authService.getCurrentUser();
-    console.log(this.user)
   }
 
   close() {
