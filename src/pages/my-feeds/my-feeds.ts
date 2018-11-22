@@ -69,7 +69,6 @@ export class MyFeedsPage {
             this.getLikesAndComments(value._id,value);
             this.suggestedContribution.push(value);
           } 
-          this.loaders.suggestionLoader = false;
         });
       } else {
         this.suggestedContribution = [];
@@ -85,7 +84,6 @@ export class MyFeedsPage {
           value.social = { Likes: [], Comments: [] }
         } else if(data.status) {
           value.social = data.data;
-          this.loaders.suggestionLoader = false;
         }
         if(value.social.Likes && value.social.Likes.length) {
           value.social.Likes.forEach(id => {
@@ -142,16 +140,11 @@ export class MyFeedsPage {
             if(value.AdminStatus === 1) {
               this.getLikesAndComments(value._id,value);
               list.push(value)
-              // this.loaders.feedLoader = false;
             }
-            // else {
-            //   list.splice(index, 1);
-            // } 
           });
         } else {
-          this.userContributions = [];
           this.loaders.feedLoader = false;
-          return;
+          this.userContributions = [];
         }
         this.userContributions.push(list);
         this.loaders.feedLoader = false;
