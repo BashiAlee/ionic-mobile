@@ -19,8 +19,8 @@
                     <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                       <div class="title">
                         <p>{{followers.FullName}}</p>
-                        <button class="follow-btn" ion-button small color="secondary" icon-start>
-                          Following
+                        <button class="follow-btn" ion-button small color="secondary" icon-start (click)="unFollowMentor(followers._id)">
+                          Unfollow
                         </button>       
                       </div>
                     </ion-col>

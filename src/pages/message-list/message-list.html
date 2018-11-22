@@ -8,7 +8,7 @@
             <ion-icon class="chat" name="ios-chatbubbles"></ion-icon>New Chat
         </button> 
     </div>
-    <div *ngIf="userMessageNotication && userMessageNotication.length">
+    <div *ngIf="userMessageNotication && userMessageNotication.length && !loading">
         <ion-list no-lines *ngFor="let messages of userMessageNotication; let i = index" [ngClass]="(messages.User1ID == user._id && messages.User1ChatStatus) || (messages.User2ID == user._id && messages.User2ChatStatus)? 'unread': 'read'" (click)="openMessage(messages)" >
           <div class="b-bot">
               <ion-item >
@@ -19,7 +19,7 @@
                 <h2 *ngIf="user._id == messages.User1ID">{{messages.User2UserName}}</h2> 
                 <h2 *ngIf="user._id == messages.User2ID">{{messages.User1UserName}}</h2>
             
-                <p>has message for you.</p>
+                <p>{{messages.message}}</p>
                 <!-- <ion-note item-end class="time">3:43 pm | Nov 9</ion-note> -->
               </ion-item>
           </div>

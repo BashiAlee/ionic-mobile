@@ -68,6 +68,7 @@ export class MyFeedsPage {
           if(value.AdminStatus) {
             this.getLikesAndComments(value._id,value);
             this.suggestedContribution.push(value);
+            this.loaders.suggestionLoader = false;
           } 
         });
       } else {
@@ -137,17 +138,27 @@ export class MyFeedsPage {
       data => {
         if(data.status) {
           data.data.forEach((value,index) => {
-            if(value.AdminStatus === 1) {
+            if(value.AdminStatus && value.ContributionStatus == 'Publish') {
               this.getLikesAndComments(value._id,value);
-              list.push(value)
+              // list.push(value)
+             
+            } else {
+              data.data.splice(index,1);
             }
           });
         } else {
           this.loaders.feedLoader = false;
-          this.userContributions = [];
+          // this.userContributions = [];
         }
-        this.userContributions.push(list);
+
+        // console.log("DDD", data.data)
+          if(data.data) {
+            this.userContributions.push(data.data);
+          }
+          console.log("DDDDD", this.userContributions)
         this.loaders.feedLoader = false;
+
+        // console.log("DDDD", this.userContributions)
       }
     )
   }

@@ -63,6 +63,7 @@ import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { Base64 } from '@ionic-native/base64';
     HowToProtectPage,
     PreviewModalPage,
     MyFollowersPage
+    
   ],
   imports: [
     BrowserModule,
@@ -113,7 +115,8 @@ import { Base64 } from '@ionic-native/base64';
     ReactiveFormsModule,
     HttpClientModule,
     [FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()],
-    [AlertModule.forRoot(),TooltipModule.forRoot()]
+    [AlertModule.forRoot(),TooltipModule.forRoot()],
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

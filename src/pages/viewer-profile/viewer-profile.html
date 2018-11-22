@@ -53,7 +53,7 @@
                         </ion-row>
                       </ion-grid>
   
-                      <button class="primary-blue-button">Follow Contributor</button>
+                      <!-- <button class="primary-blue-button">Follow Contributor</button> -->
                   </div>
                   </ion-item>
   
@@ -62,7 +62,7 @@
                       <div class="loader makeCenter" *ngIf="loading">
                           <ion-spinner name="bubbles"></ion-spinner>
                       </div>
-                      <div class="not-found makeCenter" *ngIf="!contributionsList && !contributionsList.length && !loading">
+                      <div class="not-found makeCenter" *ngIf="contributionsList && !contributionsList.length && !loading">
                         <p>Not Found</p>
                       </div>
                       <div class="contribution-data" *ngIf="contributionsList && contributionsList.length && !loading">

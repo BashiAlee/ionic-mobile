@@ -17,7 +17,7 @@
                     <p class="b-bot"></p>
                   </ion-col>
                   <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
-                    <h2 class="lh16">{{contributions[0].UserFullName}} has {{contributions.length}} contributions</h2>
+                    <h2 class="lh16" *ngIf="contributions[0]">{{contributions[0].UserFullName}} has {{contributions.length}} contributions</h2>
                   </ion-col>
                   <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2>
                     <p class="b-bot"></p>
@@ -85,7 +85,7 @@
         <div class="loader makeCenter" *ngIf="loaders.suggestionLoader">
             <ion-spinner name="bubbles"></ion-spinner>
         </div>
-        <div class="not-found makeCenter" *ngIf="!suggestedContribution && !suggestedContribution.length && !loaders.suggestionLoader">
+        <div class="not-found makeCenter" *ngIf="suggestedContribution && !suggestedContribution.length && !loaders.suggestionLoader">
           <p>Not Found</p>
         </div>
         <div class="contribution-data" *ngIf="suggestedContribution && suggestedContribution.length && !loaders.suggestionLoader">

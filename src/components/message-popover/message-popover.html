@@ -1,5 +1,5 @@
 <ion-list>
-  <div *ngIf="userMessageNotication && userMessageNotication.length">
+  <div *ngIf="userMessageNotication && userMessageNotication.length && !loading">
       <ion-item (click)="viewAllMessages()" *ngFor="let notification of userMessageNotication; let i = index" [ngClass]="(notification.User1ID == user._id && notification.User1ChatStatus) || (notification.User2ID == user._id && notification.User2ChatStatus)? 'unread': 'read'" >
           <ion-avatar item-start>
               <img *ngIf="user._id == notification.User1ID" [src]="notification.User2ProfilePicture" alt="User Avatar" class="img-circle">
@@ -8,7 +8,7 @@
           <h2 *ngIf="user._id == notification.User1ID">{{notification.User2UserName}}</h2> 
           <h2 *ngIf="user._id == notification.User2ID">{{notification.User1UserName}}</h2>
       
-          <p>has message for you.</p>
+          <p>{{notification.message}}</p>
         </ion-item>
   </div>
   </ion-list>

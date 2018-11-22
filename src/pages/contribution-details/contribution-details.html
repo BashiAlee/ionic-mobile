@@ -64,8 +64,9 @@
               </div>
 
               <div style="display: none" class="modal-video-view">
+                  <!-- domSanitizer.bypassSecurityTrustResourceUrl( -->
                 <ion-item class="mt30" no-lines>
-                  <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="domSanitizer.bypassSecurityTrustResourceUrl(contributionDetails.Videos)"></iframe>
+                  <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="contributionDetails.Videos | safe" frameborder="0" allowfullscreen></iframe>
                   <!-- <iframe  style="width: 100%" class="embed-responsive-item" id="videoModal"></iframe> -->
                 </ion-item>
               </div>

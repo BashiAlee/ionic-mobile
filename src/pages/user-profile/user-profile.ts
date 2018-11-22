@@ -197,7 +197,10 @@ export class UserProfilePage {
       })
   }
   getDueContributions(id) {
-    this.userService.getDueContributions(id)
+    var data = {
+      userid: id
+    }
+    this.userService.getDueContributions(data)
     .subscribe( data=> {
       if(data.status) {
         this.contributionCount = data.data
