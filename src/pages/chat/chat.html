@@ -11,6 +11,7 @@
   <h2 class="primary-heading mt15 ">Followers</h2>
   <div class="loader makeCenter" *ngIf="loading.getFollower">
       <ion-spinner name="bubbles"></ion-spinner>
+      
   </div>
   <div class="not-found makeCenter" *ngIf="!followersList && !followersList.length && !loading.getFollower">
     <p>No Followers</p>

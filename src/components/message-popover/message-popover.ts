@@ -4,6 +4,7 @@ import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { MessageListPage } from '../../pages/message-list/message-list';
 import {ChatPage} from '../../pages/chat/chat';
+import {MessagePage} from '../../pages/message/message';
 
 /**
  * Generated class for the MessagePopoverComponent component.
@@ -40,6 +41,11 @@ export class MessagePopoverComponent {
   }
   newChat(){
     this.appCtrl.getRootNav().setRoot(ChatPage)
+    this.close()
+  }
+  openMessage(notification){
+    var data = {chatid: notification.ChatID,senderid: this.user._id, all: notification }
+    this.appCtrl.getRootNav().setRoot(MessagePage,{messageDetail: data})
     this.close()
   }
   viewAllMessages() {

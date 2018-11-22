@@ -38,7 +38,9 @@
 
         <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
           <div *ngFor="let message of messages; let i = index" class="right-msg">
+          <div>
             <p *ngIf="user._id == message.SenderUserId" class="txt">{{message.Message}}</p>
+          </div>
             <!-- <p class="time">wed | 14:00</p> -->
           </div>
         </ion-col>
@@ -53,7 +55,7 @@
           <div class="typing" [formGroup]="messageForm">
               <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1" formControlName="message"/>
           </div>
-          <label class="circle green-circle" (click)=sendMessage()>
+          <label class="circle green-circle" [class.disabledLabel]="messageForm.invalid" (click)=sendMessage()>
             <p>
               <ion-icon name="md-send"></ion-icon>
             </p>
