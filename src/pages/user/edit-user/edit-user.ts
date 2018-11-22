@@ -354,7 +354,7 @@ export class EditUserPage {
           toast.present();
 
           // this.navCtrl.setRoot(AboutMePage)
-          this.navCtrl.setRoot(PreferencesPage)
+          this.navCtrl.setRoot(AboutMePage)
          
         } else if(!data.status){
           let toast = this.toastCtrl.create({

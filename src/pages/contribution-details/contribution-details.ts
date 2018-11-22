@@ -299,7 +299,7 @@ getLikesAndComments(id,value) {
       } else {
         value.isLiked = false;
       }
-      if(value.social.Comments.length) {
+      if(value.social.Comments && value.social.Comments.length) {
         // console.log("heree",value.social.Comments )
         value.social.Comments.forEach(value => {
           this.viewProfileByID(value.CommentUserID, value)

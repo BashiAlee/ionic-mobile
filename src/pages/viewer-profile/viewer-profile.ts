@@ -4,6 +4,7 @@ import { UserProvider } from '../../providers/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 
 /**
  * Generated class for the ViewerProfilePage page.
@@ -69,6 +70,9 @@ export class ViewerProfilePage {
         this.totalFollowers = 0;
       }
     })
+  }
+  openDetails(id) {
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
 
   getUserContributionByEmail(email) {

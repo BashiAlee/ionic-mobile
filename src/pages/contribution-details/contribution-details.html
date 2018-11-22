@@ -149,7 +149,7 @@
               </ion-col>
             </div>
       </ion-row>
-            <h2  *ngIf="!contributionDetails.social && !contributionDetails.social.Comments">No Comments</h2>
+            <h2  *ngIf="contributionDetails.social && !contributionDetails.social.Comments">No Comments</h2>
             <h2 class="primary-heading mt15 "  *ngIf="contributionDetails.social && contributionDetails.social.Comments.length">comments</h2>
             <ion-list *ngIf="contributionDetails.social && contributionDetails.social.Comments.length">
                 <ion-item-sliding #item *ngFor="let comments of contributionDetails.social.Comments">

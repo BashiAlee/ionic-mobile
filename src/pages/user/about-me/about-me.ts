@@ -6,6 +6,7 @@ import { UserProvider } from '../../../providers/user/user';
 import { ToastController } from 'ionic-angular';
 import { UserProfilePage } from '../../user-profile/user-profile';
 import { HomePage } from '../../../pages/home/home';
+import { PreferencesPage } from '../../preferences/preferences';
 /**
  * Generated class for the AboutMePage page.
  *
@@ -69,8 +70,8 @@ export class AboutMePage {
             position: 'bottom'
           });
           toast.present();
-
-          this.navCtrl.setRoot(UserProfilePage,{id: this.user._id} )
+          this.navCtrl.setRoot(PreferencesPage)
+          // this.navCtrl.setRoot(UserProfilePage,{id: this.user._id} )
          
         } else if(!data.status){
           let toast = this.toastCtrl.create({
