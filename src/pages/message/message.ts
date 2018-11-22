@@ -38,7 +38,7 @@ export class MessagePage {
     this.allData = this.navParams.get('messageDetail').all
 
     this.messageForm = this.formBuilder.group({
-      message: [''],
+      message: ['',Validators.required],
       receiveruserid:[''],
       senderuserid:['']
     })

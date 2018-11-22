@@ -1,15 +1,15 @@
 <ion-list>
   <div *ngIf="userMessageNotication && userMessageNotication.length">
-      <ion-item (click)="viewAllMessages()" *ngFor="let notification of userMessageNotication; let i = index" [ngClass]="(notification.User1ID == user._id && notification.User1ChatStatus) || (notification.User2ID == user._id && notification.User2ChatStatus)? 'unread': 'read'" >
-          <ion-avatar item-start>
-              <img *ngIf="user._id == notification.User1ID" [src]="notification.User2ProfilePicture" alt="User Avatar" class="img-circle">
-              <img *ngIf="user._id == notification.User2ID" [src]="notification.User1ProfilePicture" alt="User Avatar" class="img-circle">
-          </ion-avatar>
-          <h2 *ngIf="user._id == notification.User1ID">{{notification.User2UserName}}</h2> 
-          <h2 *ngIf="user._id == notification.User2ID">{{notification.User1UserName}}</h2>
-      
-          <p>has message for you.</p>
-        </ion-item>
+      <ion-item (click)="openMessage(notification)" *ngFor="let notification of userMessageNotication; let i = index" [ngClass]="(notification.User1ID == user._id && notification.User1ChatStatus) || (notification.User2ID == user._id && notification.User2ChatStatus)? 'unread': 'read'" >
+        <ion-avatar item-start>
+            <img *ngIf="user._id == notification.User1ID" [src]="notification.User2ProfilePicture" alt="User Avatar" class="img-circle">
+            <img *ngIf="user._id == notification.User2ID" [src]="notification.User1ProfilePicture" alt="User Avatar" class="img-circle">
+        </ion-avatar>
+        <h2 *ngIf="user._id == notification.User1ID">{{notification.User2UserName}}</h2> 
+        <h2 *ngIf="user._id == notification.User2ID">{{notification.User1UserName}}</h2>
+    
+        <p>has message for you.</p>
+    </ion-item>
   </div>
   </ion-list>
   <div class="makeCenter">

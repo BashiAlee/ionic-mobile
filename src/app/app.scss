@@ -617,13 +617,13 @@ button:focus {
     .tooltip{
         width: 90px;
         top: 97px;
-        left: 7px !important;
     }
 }
 // for tooltip only
 
 // for message section
 .msg-section{
+    position: relative;
     overflow: scroll;
     height: auto;
     margin-top: 50px;
@@ -768,3 +768,9 @@ button:focus {
     background: transparent !important;
 }
 
+label.disabledLabel{
+    pointer-events: none;
+    p{
+        background: #ccc;
+    }
+}
