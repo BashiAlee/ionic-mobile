@@ -114,6 +114,7 @@ export class HomePage {
                 // this.modalArray = [".text-modal"];
 
                 this.contributionList.push(value)
+                
                 // this.isViewing = false;
                 
                 // console.log(this.contributionList)
@@ -131,7 +132,7 @@ export class HomePage {
             this.maincategory = this.categories[0].name;
             this.sortedContributions = (this.contributionList || []).concat();
 
-            // console.log("sort", this.sortedContributions)
+            console.log("sort", this.sortedContributions)
           } else {
             this.sortedContributions = [];
             this.contributionList = [];
