@@ -142,7 +142,7 @@ export class MyFeedsPage {
             if(value.AdminStatus === 1) {
               this.getLikesAndComments(value._id,value);
               list.push(value)
-              this.loaders.feedLoader = false;
+              // this.loaders.feedLoader = false;
             }
             // else {
             //   list.splice(index, 1);

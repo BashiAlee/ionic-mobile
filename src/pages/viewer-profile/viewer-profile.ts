@@ -51,9 +51,7 @@ export class ViewerProfilePage {
         this.userData = data.data;
         this.getFollowersCountById(this.userData._id);
         this.getUserContributionByEmail(this.userData.Email);
-
-        this.loading = false;
-      } else if (!data.status) {
+      } else {
         this.userData = null;
         this.loading = false;
       }
@@ -82,7 +80,6 @@ export class ViewerProfilePage {
         data.data.forEach(value => {
           this.getProfileByID(value.UserID, value)
           if(value.AdminStatus && value.ContributionStatus == "Publish") {
-           
             this.getLikesAndComments(value._id,value);
             this.contributionsList.push(value);
           } 
