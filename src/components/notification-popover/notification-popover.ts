@@ -60,10 +60,9 @@ export class NotificationPopoverComponent {
           localStorage.setItem('user', JSON.stringify(this.localData))
         }
         this.loading = false;
-       } else if(data.status && !data.data){
-        this.loading = false;
+       } else{
+         this.loading = false;
          this.notifications = null;
-        //  this.notifications = 'No';
        }
         
       }

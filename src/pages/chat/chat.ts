@@ -22,7 +22,7 @@ export class ChatPage {
   allData:any;
   public messages: any;
   user: any;
-  loading: any=[];
+  loading: any={};
   followerId:any;
   followersIds: any = [];
   followersList: any = [];
@@ -45,7 +45,6 @@ export class ChatPage {
     this.getFollowerList(this.user._id)
   }
   getFollowerList(id) {
-    this.followersList = [];
     this.loading.getFollower = true;
     this.userService.getFollower(id)
       .subscribe(
@@ -59,8 +58,10 @@ export class ChatPage {
                 this.loading.getFollower = false;
               }
             });
+          }else{
+            this.followersList = [];
+            this.loading.getFollower = false;
           }
-          this.loading.getFollower = false;
         },
         error => {});
   }
@@ -86,6 +87,7 @@ export class ChatPage {
     .subscribe( data => {
       if(data.status) {
         this.followersList.push(data.data);
+        this.loading.getFollower = false;
       }
     })
   }
