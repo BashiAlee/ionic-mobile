@@ -293,7 +293,7 @@
            <p>Image file is too large</p>
       </div> 
       <div class="cover-image makeCenter">
-        <img *ngIf="coverImage" [src]="coverImage" alt="">
+        <img *ngIf="coverImage" [src]="sanitizer.bypassSecurityTrustUrl(coverImage)" alt="">
         <img *ngIf="!coverImage" src="../../assets/imgs/avatar.png" alt="">
       </div>
 

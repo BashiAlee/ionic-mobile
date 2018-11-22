@@ -44,6 +44,7 @@ export class CreateEventPage {
     charCounterCount: true,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
     heightMin: 300,
+    placeholderText: 'Type your text here..',
     heightMax: 300,
     toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
@@ -342,7 +343,7 @@ export class CreateEventPage {
       this.crop.crop(result, {quality: 100})
       .then(newImage => {
         this.base64.encodeFile(newImage).then((base64File: string) => {
-          this.coverImage =  this.sanitizer.bypassSecurityTrustUrl(base64File)
+          this.coverImage =  base64File
           this.uploadCroppedImage(this.coverImage)
         }, (err) => {
           console.log(err);
@@ -369,7 +370,7 @@ export class CreateEventPage {
       this.crop.crop(result, {quality: 100})
       .then(newImage => {
         this.base64.encodeFile(newImage).then((base64File: string) => {
-          this.coverImage =  this.sanitizer.bypassSecurityTrustUrl(base64File)
+          this.coverImage =  base64File
           this.uploadCroppedImage(this.coverImage)
         }, (err) => {
           console.log(err);

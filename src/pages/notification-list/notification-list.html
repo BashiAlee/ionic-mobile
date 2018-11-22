@@ -5,7 +5,7 @@
     <h2 class="primary-heading mt15 ">Notifications</h2>
     <ion-list *ngIf="notifications">
       <div *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
-          <ion-item *ngFor="let comments of notifications.ContributionComments">
+          <ion-item *ngFor="let comments of notifications.ContributionComments" (click)="openDetails(comments.ContributionID)">
             <ion-avatar item-start>
                 <img [src]="comments.CommentUserProfilePicture">
               </ion-avatar>
@@ -13,8 +13,8 @@
               <p>commented on Your Contribution</p>
             </ion-item>
       </div>
-      <div *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length">
-        <ion-item *ngFor="let likes of notifications.ContributionLikes">
+      <div *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length" >
+        <ion-item *ngFor="let likes of notifications.ContributionLikes" (click)="openDetails(likes.ContributionID)">
           <ion-avatar item-start>
             <img [src]="likes.LikeUserProfilePicture">
           </ion-avatar>
@@ -77,12 +77,22 @@
     
     
     <div *ngIf="notifications.AdminAproveContribution && notifications.AdminAproveContribution.length">
-      <ion-item *ngFor="let admin of notifications.AdminAproveContribution">
+      <ion-item *ngFor="let admin of notifications.AdminAproveContribution" (click)="openDetails(admin.ContributionID)">
         <ion-avatar item-start>
           <img src="../../assets/imgs/admin_profile.jpg">
         </ion-avatar>
         <!-- <h2>{{comments.CommentUserName}}</h2> -->
         <p>Admin has accepted your {{admin.ContributionType}}</p>
+        </ion-item>
+    </div>
+
+    <div *ngIf="notifications.AdminRejectContribution && notifications.AdminRejectContribution.length">
+      <ion-item *ngFor="let admin of notifications.AdminRejectContribution" (click)="openDetails(admin.ContributionID)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/admin_profile.jpg">
+        </ion-avatar>
+        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+        <p>Admin has rejected your {{admin.ContributionType}}</p>
         </ion-item>
     </div>
     

@@ -60,7 +60,7 @@
                           <ion-col class="makeCenter">
                             <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
                                 <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                              <div>{{contribution.Likes}} Likes</div>
+                              <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
                             </button>
                             <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
                                 <ion-icon name="heart"></ion-icon>  
@@ -70,7 +70,7 @@
                           <ion-col class="makeCenter">
                               <button ion-button icon-start clear small>
                                   <ion-icon name="text"></ion-icon>
-                                  <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">Comments</span></div>
+                                  <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
                                 </button>
                           </ion-col>
                         </ion-row>
@@ -123,7 +123,7 @@
                 <ion-col class="makeCenter">
                   <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
                       <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                    <div>{{contribution.Likes}} Likes</div>
+                    <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
                   </button>
                   <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
                       <ion-icon name="heart"></ion-icon>  
@@ -133,7 +133,7 @@
                 <ion-col class="makeCenter">
                     <button ion-button icon-start clear small>
                         <ion-icon name="text"></ion-icon>
-                        <div *ngIf="contribution.social">{{contribution.social.Comments.length}} Comments</div>
+                        <div *ngIf="contribution.social">{{contribution.social.Comments.length}} <span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
                       </button>
                 </ion-col>
               </ion-row>

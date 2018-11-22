@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { App } from 'ionic-angular';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 /**
  * Generated class for the NotificationListPage page.
  *
@@ -23,6 +24,7 @@ export class NotificationListPage {
   notifications: any = [];
   loading: any;
   constructor(
+    public navCtrl: NavController, 
     public authService: AuthenticationProvider,
     public userService: UserProvider,
     public appCtrl: App
@@ -63,5 +65,8 @@ export class NotificationListPage {
         
       }
     );
+  }
+  openDetails(id) {
+    this.navCtrl.push(ContributionDetailsPage, {id: id})
   }
 }

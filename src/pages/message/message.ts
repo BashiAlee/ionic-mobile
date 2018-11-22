@@ -81,10 +81,17 @@ export class MessagePage {
       .subscribe(data => {
     if (data.status) {
           this.loading.sendMsg = false;
+          this
           this.getMessages(this.id)
+          this.messageForm.patchValue({
+            message: ''
+          })
         } else if (!data.status) {
           this.loading.sendMsg = false;
           this.messages = null;
+          this.messageForm.patchValue({
+            message: ''
+          })
         }
       })
   }

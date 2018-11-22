@@ -118,7 +118,7 @@
                     <ion-col class="makeCenter">
                         <button ion-button icon-start clear small *ngIf="!contributionDetails.isLiked" (click)="addLike(contributionDetails,contributionDetails._id)">
                           <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                          <div>{{contributionDetails.Likes}} Likes</div>
+                          <div>{{contributionDetails.Likes}} {{contributionDetails.Likes < 2?'Like':'Likes'}}</div>
                         </button>
                         <button ion-button icon-start clear small *ngIf="contributionDetails.isLiked" (click)="unLike(contributionDetails,contributionDetails._id)">
                           <ion-icon name="heart"></ion-icon>
@@ -128,7 +128,7 @@
                       <ion-col class="makeCenter">
                         <button ion-button icon-start clear small>
                           <ion-icon name="text"></ion-icon>
-                          <div *ngIf="contributionDetails.social">{{contributionDetails.social.Comments.length}}<span class="ml5">Comments</span></div>
+                          <div *ngIf="contributionDetails.social">{{contributionDetails.social.Comments.length}}<span class="ml5">{{contributionDetails.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
                         </button>
                       </ion-col>
                     </ion-row>
