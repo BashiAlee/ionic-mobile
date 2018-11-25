@@ -48,4 +48,12 @@ export class MessagesProvider {
 
   }));
   }
+
+
+  getStatusOfChat(data) {
+    return this.http.post(this.apiURL + 'getuserchatstatus',data)
+    .pipe(map((response: any) => {
+     return response;
+  }));
+  }
 }

@@ -7,6 +7,8 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { SearchContributionPage } from '../../pages/search-contribution/search-contribution';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ParentProvider } from '../../providers/parent/parent';
+import { MessagesProvider } from '../../providers/messages/messages';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -23,15 +25,21 @@ export class HeaderComponent {
   user: any;
   query: any;
   showSearch: any = false;
+  newMessage: any = false;
+  newNotification: any = false;
 
   constructor( public popoverCtrl: PopoverController,
     public navCtrl: NavController,
     public authService: AuthenticationProvider,
-    public parentService: ParentProvider
+    public parentService: ParentProvider,
+    public messageService: MessagesProvider,
+    public userService: UserProvider
   ) {
     this.user = this.authService.getCurrentUser();
     var id = this.user._id;
-    this.getMentorStatus(id)
+    this.getMentorStatus(id);
+    this.getMessageStatus(id);
+    this.getAllNotifications(id);
   }
 
   messagePopover(myEvent) {
@@ -73,6 +81,40 @@ export class HeaderComponent {
       if(data.status) {
         localStorage.setItem('mentorStatus',data.data.status);
       }
+    })
+  }
+
+  getMessageStatus(id) {
+    var data = {senderid: id}
+    this.messageService.getStatusOfChat(data)
+    .subscribe((data) => {
+      if(data.status) {
+        this.newMessage = true;
+      } else {
+        this.newMessage = false;
+      }
+    })
+  }
+
+  getAllNotifications(id) {
+    var data = {userid:id}
+    this.userService.getAllNotifications(data)
+    .subscribe((data) => {
+      if(data.status) {
+        this.newNotification = data.data[0].NewNotification
+      } else {
+        this.newNotification = false;
+      }
+    })
+    
+  }
+
+  readNotifications() {
+    this.newNotification = false;
+    var data = {userid : this.user._id};
+    this.userService.changeNotificationsStatus(data)
+    .subscribe((data) => {
+      
     })
   }
 

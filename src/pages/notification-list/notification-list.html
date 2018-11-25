@@ -26,7 +26,7 @@
     
     
     <div *ngIf="notifications.Followers && notifications.Followers.length">
-      <ion-item *ngFor="let follower of notifications.Followers">
+      <ion-item *ngFor="let follower of notifications.Followers" (click)="openUserProfile(follower.UserFollowerID)">
         <ion-avatar item-start>
           <img [src]="follower.UserFollowerProfilePicture">
         </ion-avatar>
@@ -35,7 +35,7 @@
         </ion-item>
     </div>
     <div *ngIf="notifications.MentorCreateContribution && notifications.MentorCreateContribution.length">
-      <ion-item *ngFor="let mentor of notifications.MentorCreateContribution">
+      <ion-item *ngFor="let mentor of notifications.MentorCreateContribution" (click)="openDetails(mentor.ContributionID)">
         <ion-avatar item-start>
           <img [src]="mentor.MentorProfilePicture">
         </ion-avatar>
@@ -44,7 +44,7 @@
         </ion-item>
     </div>
     <div *ngIf="notifications.ChildCreateContribution && notifications.ChildCreateContribution.length">
-      <ion-item *ngFor="let child of notifications.ChildCreateContribution">
+      <ion-item *ngFor="let child of notifications.ChildCreateContribution" (click)="openDetails(child.ContributionID)">
         <ion-avatar item-start>
           <img [src]="child.ChildProfilePicture">
         </ion-avatar>
@@ -55,7 +55,7 @@
     
     
     <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
-      <ion-item *ngFor="let child of notifications.MentorAprovel">
+      <ion-item *ngFor="let child of notifications.MentorAprovel" (click)="openUserProfile(child.MentorID)">
         <ion-avatar item-start>
           <img [src]="child.MentorProfilePicture">
         </ion-avatar>
@@ -66,7 +66,7 @@
     
     
     <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
-      <ion-item *ngFor="let child of notifications.MentorAprovel">
+      <ion-item *ngFor="let child of notifications.MentorAprovel" (click)="openUserProfile(child.MentorID)">
         <ion-avatar item-start>
           <img [src]="child.MentorProfilePicture">
         </ion-avatar>

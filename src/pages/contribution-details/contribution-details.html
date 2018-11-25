@@ -10,6 +10,11 @@
         <ion-spinner name="bubbles"></ion-spinner>
     </div>
 </ion-content>
+<ion-content padding *ngIf="!detailLoader && !contributionDetails">
+  <div class="loader makeCenter">
+     <p>Your Contribution/Event has been deleted/does't exist</p>
+  </div>
+</ion-content>
 <ion-content padding *ngIf="contributionDetails && !detailLoader">
   <div class="contribution-detail">
     <ion-grid>
@@ -51,6 +56,7 @@
                   <ion-item class="action-icons b-bot">
                     <ion-icon *ngIf="contributionDetails.AudioPath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio')" ></ion-icon>
                     <ion-icon *ngIf="contributionDetails.Videos" class="play-icon" ios="ios-play" md="md-play"  (click)="openFold('video')"></ion-icon>
+                    <ion-icon *ngIf="contributionDetails.Images && contributionDetails.Images[0]" class="img-icon" ios="ios-images" md="md-images" (click)="openFold('image')" ></ion-icon>
                     <!-- <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon> -->
                   </ion-item>
                 

@@ -181,4 +181,12 @@ export class UserProvider {
   ));
   }
 
+  changeNotificationsStatus(data) {
+    return this.http.post(this.apiURL + 'changenotificationstatus', data)
+    .pipe(map((response: any) => {
+      return response;
+    }
+  ));
+  }
+
 }

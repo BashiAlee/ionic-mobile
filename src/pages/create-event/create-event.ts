@@ -43,9 +43,10 @@ export class CreateEventPage {
   opts: Object = {
     charCounterCount: true,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
+    toolbarSticky: false,
     heightMin: 300,
     placeholderText: 'Type your text here..',
-    heightMax: 300,
+    // heightMax: 1000,
     toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsSM: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
@@ -218,7 +219,10 @@ export class CreateEventPage {
               description: imgs.ImageDescription
             })
         });
-        this.category(this.contributionForm.value.maincategory);
+        if(this.contributionForm.value.maincategory) {
+          this.category(this.contributionForm.value.maincategory);
+        }
+     
         this.loaders.detailLoader = false;
       }
       else if (!data.status) {

@@ -78,13 +78,16 @@ export class ViewerProfilePage {
     .subscribe( data=> {
       if(data.status) {
         data.data.forEach(value => {
-          this.getProfileByID(value.UserID, value)
+        
           if(value.AdminStatus && value.ContributionStatus == "Publish") {
+            this.getProfileByID(value.UserID, value)
             this.getLikesAndComments(value._id,value);
             this.contributionsList.push(value);
+          
           } 
 
         });
+        this.loading = false;
       } else {
         this.contributionsList = [];
         this.loading = false;

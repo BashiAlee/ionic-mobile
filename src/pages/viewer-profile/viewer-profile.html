@@ -27,8 +27,8 @@
                           <img *ngIf="userData.ProfilePicture" [src]="domSanitizer.bypassSecurityTrustUrl(userData.ProfilePicture)" alt="" class="profileImage">
                       </div>
                       <div class="user-description">
-                          <p class="username">{{userData.FullName}}</p>
-                          <p class="bio"> {{userData.Bio}}</p>
+                          <p class="username">{{userData.FullName}}({{userData.Bio}})</p>
+                          <p class="bio"> {{userData.AboutMe}}</p>
                       </div>
   
                     <ion-grid>

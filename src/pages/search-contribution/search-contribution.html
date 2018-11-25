@@ -33,6 +33,12 @@
           <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
 
         </ion-item> -->
+        <ion-item class="action-icons b-bot">
+          <ion-icon *ngIf="contribution.Images[0]" class="img-icon" ios="ios-images" md="md-images" (click)="openFold('image',contribution)" ></ion-icon>
+          <ion-icon *ngIf="contribution.AudioPath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio',contribution)" ></ion-icon>
+          <ion-icon *ngIf="contribution.Videos" class="play-icon" ios="ios-play" md="md-play"  (click)="openFold('video',contribution)"></ion-icon>
+          <!-- <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>  -->
+        </ion-item>
       
         <img *ngIf="contribution.Coverpage" [src]="contribution.Coverpage" (click)="openDetails(contribution._id)">
         <img *ngIf="!contribution.Coverpage" src="../../assets/imgs/avatar.png" (click)="openDetails(contribution._id)">
@@ -51,7 +57,7 @@
             <ion-col class="makeCenter">
               <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
                   <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                <div>{{contribution.Likes}} Likes</div>
+                <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
               </button>
               <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
                   <ion-icon name="heart"></ion-icon>  
@@ -61,7 +67,7 @@
             <ion-col class="makeCenter">
                 <button ion-button icon-start clear small>
                     <ion-icon name="text"></ion-icon>
-                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">Comments</span></div>
+                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
                   </button>
             </ion-col>
           </ion-row>

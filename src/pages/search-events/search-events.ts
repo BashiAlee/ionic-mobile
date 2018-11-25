@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import * as _ from 'lodash';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { FormGroup, FormControl } from '@angular/forms';
+import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
 
 
 
@@ -38,7 +39,8 @@ export class SearchEventsPage {
     public navParams: NavParams,
     public userService: UserProvider,
     public authService: AuthenticationProvider,
-    public contributionService: ContributionsProvider
+    public contributionService: ContributionsProvider,
+    public modalCtrl: ModalController
   ) {
     this.user = this.authService.getCurrentUser();
     this.getCatNames();
@@ -375,5 +377,10 @@ getAllCommentsAndLikes(id, value) {
       this.sortedEvents =  this.eventsList.filter(contribution => contribution.MainCategory == value);
       console.log("DDDD", this.sortedEvents)
     }
+  }
+
+  openFold(type,value) {
+    let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: value, type: type});
+    modal.present();
   }
 }

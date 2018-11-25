@@ -1,6 +1,6 @@
 <ion-list *ngIf="notifications">
-  <div (click)="viewAllNotifications()" *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
-      <ion-item *ngFor="let comments of notifications.ContributionComments">
+  <div  *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
+      <ion-item *ngFor="let comments of notifications.ContributionComments" (click)="openDetails(comments.ContributionID)">
         <ion-avatar item-start>
             <img [src]="comments.CommentUserProfilePicture">
           </ion-avatar>
@@ -8,8 +8,8 @@
           <p>commented on Your Contribution</p>
         </ion-item>
   </div>
-  <div (click)="viewAllNotifications()" *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length">
-    <ion-item *ngFor="let likes of notifications.ContributionLikes">
+  <div *ngIf="notifications.ContributionLikes && notifications.ContributionLikes.length">
+    <ion-item *ngFor="let likes of notifications.ContributionLikes" (click)="openDetails(likes.ContributionID)">
       <ion-avatar item-start>
         <img [src]="likes.LikeUserProfilePicture">
       </ion-avatar>
@@ -19,7 +19,7 @@
 </div>
 
 <div *ngIf="notifications.Followers && notifications.Followers.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let follower of notifications.Followers">
+  <ion-item  *ngFor="let follower of notifications.Followers" (click)="openUserProfile(follower.UserFollowerID)">
     <ion-avatar item-start>
       <img [src]="follower.UserFollowerProfilePicture">
     </ion-avatar>
@@ -28,7 +28,7 @@
     </ion-item>
 </div>
 <div *ngIf="notifications.MentorCreateContribution && notifications.MentorCreateContribution.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let mentor of notifications.MentorCreateContribution">
+  <ion-item  *ngFor="let mentor of notifications.MentorCreateContribution" (click)="openDetails(mentor.ContributionID)">
     <ion-avatar item-start>
       <img [src]="mentor.MentorProfilePicture">
     </ion-avatar>
@@ -37,7 +37,7 @@
     </ion-item>
 </div>
 <div *ngIf="notifications.ChildCreateContribution && notifications.ChildCreateContribution.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let child of notifications.ChildCreateContribution">
+  <ion-item  *ngFor="let child of notifications.ChildCreateContribution" (click)="openDetails(child.ContributionID)">
     <ion-avatar item-start>
       <img [src]="child.ChildProfilePicture">
     </ion-avatar>
@@ -47,7 +47,7 @@
 </div>
 
 <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let child of notifications.MentorAprovel">
+  <ion-item  *ngFor="let child of notifications.MentorAprovel" (click)="openUserProfile(child.MentorID)">
     <ion-avatar item-start>
       <img [src]="child.MentorProfilePicture">
     </ion-avatar>
@@ -57,7 +57,7 @@
 </div>
 
 <div *ngIf="notifications.MentorAprovel && notifications.MentorAprovel.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let child of notifications.MentorAprovel">
+  <ion-item  *ngFor="let child of notifications.MentorAprovel" (click)="openUserProfile(child.MentorID)">
     <ion-avatar item-start>
       <img [src]="child.MentorProfilePicture">
     </ion-avatar>
@@ -67,12 +67,21 @@
 </div>
 
 <div *ngIf="notifications.AdminAproveContribution && notifications.AdminAproveContribution.length">
-  <ion-item (click)="viewAllNotifications()" *ngFor="let admin of notifications.AdminAproveContribution">
+  <ion-item  *ngFor="let admin of notifications.AdminAproveContribution" (click)="openDetails(admin.ContributionID)">
     <ion-avatar item-start>
       <img src="../../assets/imgs/admin_profile.jpg">
     </ion-avatar>
     <!-- <h2>{{comments.CommentUserName}}</h2> -->
     <p>Admin has accepted your {{admin.ContributionType}}</p>
+    </ion-item>
+</div>
+<div *ngIf="notifications.AdminRejectContribution && notifications.AdminRejectContribution.length">
+  <ion-item  *ngFor="let admin of notifications.AdminRejectContribution" (click)="openDetails(admin.ContributionID)">
+    <ion-avatar item-start>
+      <img src="../../assets/imgs/admin_profile.jpg">
+    </ion-avatar>
+    <!-- <h2>{{comments.CommentUserName}}</h2> -->
+    <p>Admin has rejected your {{admin.ContributionType}}</p>
     </ion-item>
 </div>
 

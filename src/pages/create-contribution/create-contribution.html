@@ -74,7 +74,7 @@
                   <ion-list>
                       <ion-item  class="custom-input">
                         <ion-label>Click here to select</ion-label>
-                        <ion-select [disabled]="!contributionForm.value.maincategory" formControlName="subcategories" (cancel)="onCancel()" (ionChange)="subCategory(contributionForm.value.subcategories)">
+                        <ion-select [disabled]="!contributionForm.value.maincategory" formControlName="subcategories" (cancel)="onCancel()">
                           <ion-option *ngFor="let preferences of slectedCategory.SubCategories; let i = index" [value]="preferences.SubCategory">{{preferences.SubCategory}}</ion-option>
                         </ion-select>
                       </ion-item>

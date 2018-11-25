@@ -4,6 +4,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { UserProvider } from '../../providers/user/user';
 import { App } from 'ionic-angular';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { ViewerProfilePage } from '../viewer-profile/viewer-profile';
 /**
  * Generated class for the NotificationListPage page.
  *
@@ -68,5 +69,9 @@ export class NotificationListPage {
   }
   openDetails(id) {
     this.navCtrl.push(ContributionDetailsPage, {id: id})
+  }
+
+  openUserProfile(id) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: id})
   }
 }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { PopoverController } from 'ionic-angular';
 import { PopoverContributionComponent } from '../../components/popover-contribution/popover-contribution';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
 import { UserProvider } from '../../providers/user/user';
+import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
 
 /**
  * Generated class for the MyContributionPage page.
@@ -31,6 +32,7 @@ export class SearchContributionPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public contributionService: ContributionsProvider,
     public authService: AuthenticationProvider,
+    public modalCtrl: ModalController,
     public userService: UserProvider,
     public popoverCtrl: PopoverController) {
 
@@ -234,6 +236,11 @@ export class SearchContributionPage {
         }
     });
   })
+}
+
+openFold(type,value) {
+  let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: value, type: type});
+  modal.present();
 }
 
 

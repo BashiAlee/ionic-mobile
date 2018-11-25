@@ -59,10 +59,11 @@
         <label for="cname" class="makeBlock mt15 custom-label">I am</label>
         <ion-item class="custom-input">
           <ion-label></ion-label>
-          <ion-select  formControlName="workedfor">
+          <ion-select  formControlName="workedfor"  (ionChange)="checkCompany(mentor.controls['workedfor'].value)">
             <ion-option value="company">Working for a company</ion-option>
             <ion-option value="freelance">A Freelancer</ion-option>
             <ion-option value="self">Self Employed</ion-option>
+            <ion-option value="professional">Professional</ion-option>
           </ion-select>    
         </ion-item>
         
@@ -70,7 +71,7 @@
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
         <label for="cname" class="makeBlock mt15 custom-label">What is the name of Company you worked for?</label>
-        <input type="text" placeholder=" Company Name" class="mt30 mb20" class="custom-input1" formControlName="companyname"/>
+        <input type="text" placeholder=" Company Name" class="mt30 mb20" class="custom-input1" formControlName="companyname"  [readonly]="isDisabled"/>
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
@@ -94,8 +95,8 @@
       </ion-col>
 
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-        <ion-item>
-          <ion-textarea  formControlName="motivationTxt"  placeholder="Tell us about your motivation and why you want to give back?"></ion-textarea>
+        <ion-item class="noPadding">
+          <ion-textarea class="custom-input1" formControlName="motivationTxt"  placeholder="Tell us about your motivation and why you want to give back?"></ion-textarea>
         </ion-item>
       </ion-col>
 

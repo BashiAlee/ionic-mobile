@@ -33,7 +33,7 @@
                                 <img *ngIf="!contribution.userprofilepicture" src="../../assets/imgs/avatar.png">
                                 <img *ngIf="contribution.userprofilepicture" [src]="contribution.userprofilepicture">
                                 <div class="mt12">
-                                    <h2>{{contribution.username}}</h2>
+                                    <h2>{{contribution.username || contribution.userfullname}}</h2>
                                 </div>
                               </div>
                             </ion-col>
@@ -42,6 +42,7 @@
                                     <ion-item class="action-icons">
                                       <ion-icon *ngIf="contribution.audiopath" class="volume-icon" ios="ios-volume-up" md="md-volume-up" (click)="openFold('audio')" ></ion-icon>
                                       <ion-icon *ngIf="contribution.videos" class="play-icon" ios="ios-play" md="md-play" (click)="openFold('video')"></ion-icon>
+                                      <ion-icon *ngIf="contribution.images[0]" class="img-icon" ios="ios-images" md="md-images" (click)="openFold('image')"></ion-icon>
                                     </ion-item>
                                   </ion-list>
                               </ion-col>
@@ -56,7 +57,7 @@
     
                   <div style="display: none" class="modal-video-view">
                     <ion-item class="mt30" no-lines>
-                      <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="domSanitizer.bypassSecurityTrustResourceUrl(contribution.videos)"></iframe>
+                      <iframe style="width: 100%" class="embed-responsive-item" id="videoModal" [src]="contribution.videos | safe"></iframe>
                       <iframe  style="width: 100%" class="embed-responsive-item" id="videoModal"></iframe>
                     </ion-item>
                   </div>
@@ -76,10 +77,12 @@
                   <div style="display: none" class="modal-gallery-view">
                       <ion-slides pager>
                           <ion-slide *ngFor="let slide of contribution.images; let i = index">
-                              <img *ngIf="slide.imagestatus" [src]="slide.imagestatus">
-                              <img *ngIf="!slide.imagestatus" src="../../assets/imgs/avatar.png">
-                            <h4>{{slide.imagetitle}}</h4>
-                            <p>{{slide.imagedescription}}</p>
+                              <img *ngIf="slide.imagestatus || slide.Imagestatus;else noData" [src]="slide.imagestatus || slide.Imagestatus">
+                                <ng-template #noData>
+                                  <img src="../../assets/imgs/avatar.png">
+                                </ng-template>
+                            <h4>{{slide.imagetitle || slide.ImageTitle}}</h4>
+                            <p>{{slide.imagedescription || slide.ImageDescription}}</p>
                           </ion-slide>
                       </ion-slides>
                   </div>
@@ -87,8 +90,8 @@
                   <div style="display: none" class="modal-links-view">
                     <div class="item" *ngFor="let urls of contribution.website; let i = index">
                         <div class="thumbnail mythumbnail text-center itemThumbail">
-                          <h4>{{urls.websitetitle}} </h4>
-                          <a class="makeRed" [href]="urls.websiteurl" target="_blank">Visit this link</a>
+                          <h4>{{urls.websitetitle || urls.WebsiteTitle}} </h4>
+                          <a class="makeRed" [href]="urls.websiteurl || urls.Websiteurl" target="_blank">Visit this link</a>
                         </div>
                       </div>
                   </div>

@@ -10,7 +10,7 @@
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)"
         (search)="searchByKeyword($event)"
-        placeholder= "Search a Topic by Keywords"
+        placeholder= "Search by keyword"
         >
         </ion-searchbar>
         <span class="custom-search" *ngIf="!showSearch" (click)="showSearch = !showSearch"><i class="fas fa-search" ></i></span>
@@ -19,11 +19,15 @@
         <ion-buttons start="" *ngIf="!showSearch" >
           <div class="nav-content">
             <button ion-button="" class="disable-hover"  (click)="messagePopover($event)">
-              <ion-icon><i class="fas fa-envelope-open"></i></ion-icon>
+              <ion-icon><i class="fas fa-envelope-open"></i>
+                <div *ngIf="newMessage" class="newNotfic" (click)="getUserChat()"></div>
+              </ion-icon>
               <div class="button-effect"></div>
             </button>
             <button ion-button="" class="disable-hover" (click)="notificationPopover($event)">
-              <ion-icon><i class="fas fa-bell"></i></ion-icon>
+              <ion-icon><i class="fas fa-bell"></i>
+              <div *ngIf="newNotification" class="newNotfic" (click)="readNotifications()"></div>
+              </ion-icon>
               <div class="button-effect"></div>
             </button>
           </div>

@@ -46,25 +46,25 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <icon height="57" src="resources/ios/icon/48.png" width="57" />
-        <icon height="114" src="resources/ios/icon/144.png" width="114" />
-        <icon height="40" src="resources/ios/icon/48.png" width="40" />
-        <icon height="80" src="resources/ios/icon/144.png" width="80" />
-        <icon height="120" src="resources/ios/icon/144.png" width="120" />
-        <icon height="50" src="resources/ios/icon/48.png" width="50" />
-        <icon height="100" src="resources/ios/icon/144.png" width="100" />
-        <icon height="60" src="resources/ios/icon/48.png" width="60" />
-        <icon height="120" src="resources/ios/icon/144.png" width="120" />
-        <icon height="180" src="resources/ios/icon/144.png" width="180" />
-        <icon height="72" src="resources/ios/icon/144.png" width="72" />
-        <icon height="144" src="resources/ios/icon/144.png" width="144" />
-        <icon height="76" src="resources/ios/icon/72.png" width="76" />
-        <icon height="152" src="resources/ios/icon/144.png" width="152" />
-        <icon height="167" src="resources/ios/icon/144.png" width="167" />
-        <icon height="29" src="resources/ios/icon/48.png" width="29" />
-        <icon height="58" src="resources/ios/icon/48.png" width="58" />
-        <icon height="87" src="resources/ios/icon/72.png" width="87" />
-        <icon height="1024" src="resources/ios/icon/1080.png" width="1024" />
+        <icon height="57" src="resources/ios/icon/Icon-57@1x.png" width="57" />
+        <icon height="114" src="resources/ios/icon/Icon-57@2x.png" width="114" />
+        <icon height="40" src="resources/ios/icon/Icon-40@1x.png" width="40" />
+        <icon height="80" src="resources/ios/icon/Icon-40@2x.png" width="80" />
+        <icon height="120" src="resources/ios/icon/Icon-40@3x.png" width="120" />
+        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
+        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
+        <icon height="60" src="resources/ios/icon/Icon-60@1x.png" width="60" />
+        <icon height="120" src="resources/ios/icon/Icon-60@2x.png" width="120" />
+        <icon height="180" src="resources/ios/icon/Icon-60@3x.png" width="180" />
+        <icon height="72" src="resources/ios/icon/Icon-72@1x.png" width="72" />
+        <icon height="144" src="resources/ios/icon/Icon-72@2x.png" width="144" />
+        <icon height="76" src="resources/ios/icon/Icon-76@1x.png" width="76" />
+        <icon height="152" src="resources/ios/icon/Icon-76@1x.png" width="152" />
+        <icon height="167" src="resources/ios/icon/Icon-83@2x.png" width="167" />
+        <icon height="29" src="resources/ios/icon/Icon-Small@1x.png" width="29" />
+        <icon height="58" src="resources/ios/icon/Icon-Small@2x.png" width="58" />
+        <icon height="87" src="resources/ios/icon/Icon-Small@3x.png" width="87" />
+        <icon height="1024" src="resources/ios/icon/Icon-1024.png" width="1024" />
         <splash height="1136" src="resources/ios/splash/cliiimb-splash.gif" width="640" />
         <splash height="1334" src="resources/ios/splash/cliiimb-splash.gif" width="750" />
         <splash height="2208" src="resources/ios/splash/cliiimb-splash.gif" width="1242" />

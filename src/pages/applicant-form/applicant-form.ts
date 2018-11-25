@@ -25,6 +25,7 @@ export class ApplicantFormPage {
   canFill: any;
   user: any;
   isReviewed: any;
+  isDisabled: any;
   categoriesName: any = [];
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -128,5 +129,14 @@ export class ApplicantFormPage {
     });
     alert.present();
   }
+  checkCompany(type) {
+    if(type== 'freelance' || type=='self' || type =='professional'){
+      this.isDisabled = true;
+      this.mentor.get('companyname').setValue('');
+      
+    } else {
+      this.isDisabled = false;
+    }
+}
 
 }

@@ -39,4 +39,12 @@ page-applicant-form {
 			margin-bottom: 20px;
 		}
 	}
+
+	ion-item.noPadding {
+		padding: 0;
+		div.item-inner {
+			padding: 0;
+			border-bottom: 0 !important;
+		}
+	}
 }

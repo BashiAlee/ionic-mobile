@@ -3,6 +3,8 @@ import { App,ViewController} from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { NotificationListPage } from '../../pages/notification-list/notification-list';
+import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { ViewerProfilePage } from '../../pages/viewer-profile/viewer-profile';
 
 /**
  * Generated class for the NotificationPopoverComponent component.
@@ -67,6 +69,14 @@ export class NotificationPopoverComponent {
         
       }
     );
+  }
+
+  openDetails(id) {
+    this.appCtrl.getRootNav().push(ContributionDetailsPage, {id: id})
+  }
+
+  openUserProfile(id) {
+    this.appCtrl.getRootNav().setRoot(ViewerProfilePage, {userid: id})
   }
 
 }

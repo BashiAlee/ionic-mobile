@@ -175,6 +175,9 @@ export class ContributionDetailsPage {
           console.log("detaaaaaaaaa", this.contributionDetails)
        
       });
+     } else {
+       this.detailLoader = false;
+       this.contributionDetails = null;
      }
 
     });
@@ -451,6 +454,8 @@ openFold(type) {
     $('.modal-audio-view').hide();
     $('.modal-gallery-view').hide();
     $('.modal-links-view').hide();
+    var index = this.contributionDetails.ModalValue.findIndex(obj => obj === '.modal-video-view');
+    this.current = index;
   }
   if(type == 'audio') {
     $('.text-modal').hide();
@@ -458,6 +463,17 @@ openFold(type) {
     $('.modal-audio-view').show();
     $('.modal-gallery-view').hide();
     $('.modal-links-view').hide();
+    var index = this.contributionDetails.ModalValue.findIndex(obj => obj === '.modal-audio-view');
+    this.current = index;
+  }
+  if(type == 'image') {
+    $('.text-modal').hide();
+    $('.modal-video-view').hide();
+    $('.modal-audio-view').hide();
+    $('.modal-gallery-view').show();
+    $('.modal-links-view').hide();
+    var index = this.contributionDetails.ModalValue.findIndex(obj => obj === '.modal-gallery-view');
+    this.current = index;
   }
 }
 

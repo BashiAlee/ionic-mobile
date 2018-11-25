@@ -49,10 +49,11 @@ export class CreateContributionPage {
   contributionTags: any = '';
   opts: Object = {
     charCounterCount: true,
+    toolbarSticky: false,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
     placeholderText: 'Type your text here..',
     heightMin: 300,
-    heightMax: 300,
+    // heightMax: 1000,
     toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsSM: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
@@ -109,6 +110,7 @@ export class CreateContributionPage {
 
       ]),
     });
+    this.getPreferences()
   }
   previous(){
     this.contribution_action='content';
@@ -186,7 +188,7 @@ export class CreateContributionPage {
     });
   }
   ionViewDidLoad() {
-    this.getPreferences()
+
     this.getContributionByContributionId(this.contributionId)
   }
   getContributionByContributionId(contributionId){
@@ -227,7 +229,10 @@ export class CreateContributionPage {
               description: imgs.ImageDescription
             })
         });
-        this.category(this.contributionForm.value.maincategory);
+        if(this.contributionForm.value.maincategory) {
+          this.category(this.contributionForm.value.maincategory);
+        }
+     
         this.loaders.detailLoader = false;
       }
       else if (!data.status) {
@@ -294,9 +299,7 @@ export class CreateContributionPage {
    this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
   
   }
-  subCategory(subCategorydata){
-    console.log(subCategorydata)
-  }
+
 
   messagePopover(myEvent) {
     let popover = this.popoverCtrl.create(MessagePopoverComponent);

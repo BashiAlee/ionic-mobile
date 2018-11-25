@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
@@ -12,6 +12,7 @@ import { LearnMoreMentorPage } from '../learn-more-mentor/learn-more-mentor';
 
 import { AboutUsPage } from '../about-us/about-us';
 import { HowToProtectPage } from '../how-to-protect/how-to-protect';
+import { PreviewModalPage } from '../preview-modal/preview-modal';
 
 /**
  * Generated class for the HomePage page.
@@ -41,6 +42,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public userService: UserProvider,
+    public modalCtrl: ModalController,
     public authService: AuthenticationProvider,
     public contributionService: ContributionsProvider,
     public toastCtrl: ToastController
@@ -329,6 +331,11 @@ getAllCommentsAndLikes(id, value) {
 
   goToProtectionPage() {
     this.navCtrl.setRoot(HowToProtectPage)
+  }
+
+  openFold(type,value) {
+    let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: value, type: type});
+    modal.present();
   }
 
   
