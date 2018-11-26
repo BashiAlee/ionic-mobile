@@ -112,7 +112,7 @@ export class CreateEventPage {
     this.contribution_action='content';
   }
   goTo(){
-    this.contribution_action='cover-image';
+    this.contribution_action='media';
   }
   next(){
     this.contribution_action='submit';
@@ -298,8 +298,8 @@ export class CreateEventPage {
     var x=document.getElementById(elementId)
     if(x.style.display === 'none'){
       x.style.setProperty("display", "block", "important")
-      let y = document.getElementById(elementId).offsetTop;
-      this.content.scrollTo(0, y, 500);
+      let y = document.getElementById(elementId);
+      y.scrollIntoView(true);
     }else{
       x.style.setProperty("display", "none", "important")
 

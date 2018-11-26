@@ -368,10 +368,11 @@ div.toolbar-title {
 
 .primary-heading{
     font-family: 'AbrilFatface-Regular';
-    color: $heading;
-    font-size: 32px;
+    // color: $heading;
+    font-size: 30px;
     margin-bottom: 20px;
     text-align: center;
+    color: $primary-blue;
 }
 
 .action-icons {
@@ -781,4 +782,9 @@ label.disabledLabel{
 
     font-size: 13px !important;
     font-weight: bold !important;
+}
+
+.secondary-heading {
+    font-weight: bold;
+    color: $primary-blue;
 }

@@ -17,6 +17,7 @@ import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
+declare var $: any;
 /**
  * Generated class for the CreateContributionPage page.
  *
@@ -111,12 +112,64 @@ export class CreateContributionPage {
       ]),
     });
     this.getPreferences()
+    $(document).ready(function () {
+      
+      $(".fold-1").hide();
+      $(".fold-2").hide();
+      $(".fold-3").hide();
+      $(".fold-4").hide();
+      $(".fold-5").hide();
+
+      $(".add-text-area").click(function () {
+
+
+
+
+        $("#fold1").toggle(1000);
+        $('div').animate({
+            scrollTop: $("#fold-1").offset().top
+          },
+          'slow');
+      });
+      $(".add-embedvideo").click(function () {
+
+        $("#fold-2").show(1000);
+        $('div').animate({
+            scrollTop: $("#fold-2").offset().top
+          },
+          'slow');
+      });
+      $(".add-audio").click(function () {
+
+        $("#fold-3").show(1000);
+        $('div').animate({
+            scrollTop: $("#fold-3").offset().top
+          },
+          'slow');
+      });
+      $(".add-imagegallery").click(function () {
+
+        $("#fold-4").show(1000);
+        $('div').animate({
+            scrollTop: $("#fold-4").offset().top
+          },
+          'slow');
+      });
+      $(".add-link").click(function () {
+
+        $("#fold-5").show(1000);
+        $('div').animate({
+            scrollTop: $("#fold-5").offset().top
+          },
+          'slow');
+      });
+    });
   }
   previous(){
     this.contribution_action='content';
   }
   goTo(){
-    this.contribution_action='cover-image';
+    this.contribution_action='media';
   }
   next(){
     this.contribution_action='submit';
@@ -312,8 +365,10 @@ export class CreateContributionPage {
     var x=document.getElementById(elementId)
     if(x.style.display === 'none'){
       x.style.setProperty("display", "block", "important")
-      let y = document.getElementById(elementId).offsetTop;
-      this.content.scrollTo(0, y, 500);
+      let y = document.getElementById(elementId);
+    y.scrollIntoView(true);
+      // window.scrollTo(y, 4);
+      // this.content.scrollTo(0, y, 500);
     }else{
       x.style.setProperty("display", "none", "important")
 
