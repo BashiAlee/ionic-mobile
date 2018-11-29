@@ -43,20 +43,20 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'My Contributions', component: MyContributionPage },
-      { title: 'My Events', component: MyEventsPage },
-      { title: 'My Mentors', component: MentorPage },
-      { title: 'My Feed', component: MyFeedsPage },
       { title: 'Create Contribution', component: CreateContributionPage },
-      { title: 'Create an Event', component: CreateEventPage },
-      { title: 'Become a mentor', component: ApplicantFormPage },
-      { title: 'Mentor', component: MentorPage },
-      { title: 'Parent Activity log', component: ParentActivityLogPage },
-      { title: 'Parent Profile', component: ParentProfilePage },
-      { title: 'Edit / Profile Settings', component: EditUserPage },
+      { title: 'My Contributions', component: MyContributionPage },
+      { title: 'My Feed', component: MyFeedsPage },
+      { title: 'My Events', component: MyEventsPage },
       { title: 'Search Events', component: SearchEventsPage },
-      { title: 'preferences', component: PreferencesPage },
-      { title: 'Logout', component: ListPage },
+      { title: 'Create an Event', component: CreateEventPage },
+      { title: 'My Mentors', component: MentorPage },
+      { title: 'Become a mentor', component: ApplicantFormPage },
+      // { title: 'Parent Activity log', component: ParentActivityLogPage },
+      // { title: 'Parent Profile', component: ParentProfilePage },
+      // { title: 'Edit / Profile Settings', component: EditUserPage },
+
+      // { title: 'preferences', component: PreferencesPage },
+      { title: 'Logout', component: '' },
 
     ];
   }

@@ -38,6 +38,7 @@ export class MentorPage {
   }
 
   getFollowerList(id) {
+    this.followersList = [];
     this.loader = true;
     this.userService.getFollower(id)
       .subscribe(
@@ -47,12 +48,12 @@ export class MentorPage {
             this.followersIds.Follower.forEach(followers => {
               if (followers.ParentStatus) {
                 this.viewProfileByID(followers.Userfollowerid);
-              } 
+              }
             });
           } else {
-            this.loader = false;
             this.followersList = [];
           }
+          this.loader = false;
         },
         error => {});
   }
@@ -63,7 +64,7 @@ export class MentorPage {
       if(data.status) {
         this.followersList.push(data.data);
         console.log(this.followersList)
-        this.loader = false;
+        // this.loader = false;
       }
     })
   }

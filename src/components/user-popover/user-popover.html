@@ -1,5 +1,6 @@
 <ion-list class="list-items">
   <ion-item (click)="openUserProfile()">{{user.FullName}}</ion-item>
+  <ion-item *ngFor="let page of pages" (click)="openPage(page)" >{{page.title}}</ion-item>
   <!-- <button ion-item (click)="close()">Complete / Edit Profile</button>
   <button ion-item (click)="close()">Parent Activity Log</button>
   <button ion-item (click)="close()">My Preferencs</button>

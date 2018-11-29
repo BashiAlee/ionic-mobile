@@ -71,7 +71,7 @@ export class LoginPage {
             // return;
           }
 
-          if(user.UserType == 'user' && (!user.FullName || !user.Bio || !user.Age || !user.City || !user.ZipCode || !user.UserType)) {
+          if(user.UserType == 'user' && (!user.FullName || !user.Bio || !user.Age || !user.City || !user.ZipCode || !user.AboutMe)) {
             this.navCtrl.setRoot(EditUserPage)
             // return;
           }
@@ -99,7 +99,22 @@ export class LoginPage {
   ionViewCanEnter(){
 
     if(this.auth.isLoggedIn()) {
-      this.navCtrl.setRoot(EditUserPage)
+      var user = this.auth.getCurrentUser();
+      if(user.FullName && user.Bio && user.Age && user.City && user.ZipCode && user.UserType == 'user' && user.AboutMe) {
+        
+        this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+        // return;
+      }
+      if(user.UserType == 'admin'){
+        // this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+        this.navCtrl.setRoot(UserProfilePage,{id: user._id})
+        // return;
+      }
+
+      if(user.UserType == 'user' && (!user.FullName || !user.Bio || !user.Age || !user.City || !user.ZipCode || !user.UserType || !user.AboutMe)) {
+        this.navCtrl.setRoot(EditUserPage)
+        // return;
+      }
     }
    }
    ionViewDidEnter() {

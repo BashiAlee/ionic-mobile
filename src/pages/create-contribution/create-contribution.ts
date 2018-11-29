@@ -1,22 +1,70 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, LoadingController } from 'ionic-angular';
-import { PopoverController,ModalController } from 'ionic-angular';
-import { UserPopoverComponent } from '../../components/user-popover/user-popover';
-import { MessagePopoverComponent } from '../../components/message-popover/message-popover';
-import { NotificationPopoverComponent } from '../../components/notification-popover/notification-popover';
-import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angular/forms';
+import {
+  Component,
+  ViewChild
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ActionSheetController,
+  ToastController,
+  LoadingController
+} from 'ionic-angular';
+import {
+  PopoverController,
+  ModalController
+} from 'ionic-angular';
+import {
+  UserPopoverComponent
+} from '../../components/user-popover/user-popover';
+import {
+  MessagePopoverComponent
+} from '../../components/message-popover/message-popover';
+import {
+  NotificationPopoverComponent
+} from '../../components/notification-popover/notification-popover';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+  FormArray
+} from '@angular/forms';
 
-import { Content } from 'ionic-angular';
-import { Camera,CameraOptions } from '@ionic-native/camera';
-import { AuthenticationProvider } from '../../providers/authentication/authentication';
-import { UserProvider } from '../../providers/user/user';
-import { ContributionsProvider } from '../../providers/contributions/contributions';
-import { PreferencesProvider } from '../../providers/preferences/preferences';
-import { MyContributionPage } from '../../pages/my-contribution/my-contribution';
-import { Crop } from '@ionic-native/crop';
-import { Base64 } from '@ionic-native/base64';
-import { DomSanitizer } from '@angular/platform-browser';
-import { PreviewModalPage } from '../../pages/preview-modal/preview-modal';
+import {
+  Content
+} from 'ionic-angular';
+import {
+  Camera,
+  CameraOptions
+} from '@ionic-native/camera';
+import {
+  AuthenticationProvider
+} from '../../providers/authentication/authentication';
+import {
+  UserProvider
+} from '../../providers/user/user';
+import {
+  ContributionsProvider
+} from '../../providers/contributions/contributions';
+import {
+  PreferencesProvider
+} from '../../providers/preferences/preferences';
+import {
+  MyContributionPage
+} from '../../pages/my-contribution/my-contribution';
+import {
+  Crop
+} from '@ionic-native/crop';
+import {
+  Base64
+} from '@ionic-native/base64';
+import {
+  DomSanitizer
+} from '@angular/platform-browser';
+import {
+  PreviewModalPage
+} from '../../pages/preview-modal/preview-modal';
 declare var $: any;
 /**
  * Generated class for the CreateContributionPage page.
@@ -29,36 +77,37 @@ declare var $: any;
 @Component({
   selector: 'page-create-contribution',
   templateUrl: 'create-contribution.html',
-  providers: [Camera, AuthenticationProvider, UserProvider, ContributionsProvider,Base64]
+  providers: [Camera, AuthenticationProvider, UserProvider, ContributionsProvider, Base64]
 })
 
 
 export class CreateContributionPage {
   contribution_action: any;
   contributionForm: FormGroup;
-  contributionData:any=[];
+  contributionData: any = [];
   coverImage: any;
   loading: any;
-  loaders: any={};
+  loaders: any = {};
   user: any;
-  contributionId:any;
-  isUploaded:any={};
+  contributionId: any;
+  isUploaded: any = {};
   imageStatus: any = [];
   preferencesData: any;
-  slectedCategory:any=[];
+  slectedCategory: any = [];
   url: any = [];
   contributionTags: any = '';
+
   opts: Object = {
     charCounterCount: true,
     toolbarSticky: false,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
     placeholderText: 'Type your text here..',
-    heightMin: 300,
-    // heightMax: 1000,
-    toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
-    toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
-    toolbarButtonsSM: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
-    toolbarButtonsMD: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo']
+    heightMin: 100,
+    heightMax: 1000,
+    toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'insertLink', '|', 'clearFormatting'],
+    toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'insertLink', '|', 'clearFormatting'],
+    toolbarButtonsSM: ['bold', 'italic', 'fontFamily', 'fontSize', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'insertLink', '|', 'clearFormatting'],
+    toolbarButtonsMD: ['bold', 'italic', 'fontFamily', 'fontSize', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'insertLink', '|', 'clearFormatting']
   };
   @ViewChild(Content) content: Content;
 
@@ -79,8 +128,8 @@ export class CreateContributionPage {
     private crop: Crop,
     private base64: Base64,
     private sanitizer: DomSanitizer
-  ) { 
-    this.contribution_action  = 'content';
+  ) {
+    this.contribution_action = 'content';
     this.user = this.authService.getCurrentUser();
     this.contributionId = this.navParams.get('id')
 
@@ -111,75 +160,26 @@ export class CreateContributionPage {
 
       ]),
     });
+
+
+
     this.getPreferences()
-    $(document).ready(function () {
-      
-      $(".fold-1").hide();
-      $(".fold-2").hide();
-      $(".fold-3").hide();
-      $(".fold-4").hide();
-      $(".fold-5").hide();
-
-      $(".add-text-area").click(function () {
-
-
-
-
-        $("#fold1").toggle(1000);
-        $('div').animate({
-            scrollTop: $("#fold-1").offset().top
-          },
-          'slow');
-      });
-      $(".add-embedvideo").click(function () {
-
-        $("#fold-2").show(1000);
-        $('div').animate({
-            scrollTop: $("#fold-2").offset().top
-          },
-          'slow');
-      });
-      $(".add-audio").click(function () {
-
-        $("#fold-3").show(1000);
-        $('div').animate({
-            scrollTop: $("#fold-3").offset().top
-          },
-          'slow');
-      });
-      $(".add-imagegallery").click(function () {
-
-        $("#fold-4").show(1000);
-        $('div').animate({
-            scrollTop: $("#fold-4").offset().top
-          },
-          'slow');
-      });
-      $(".add-link").click(function () {
-
-        $("#fold-5").show(1000);
-        $('div').animate({
-            scrollTop: $("#fold-5").offset().top
-          },
-          'slow');
-      });
-    });
   }
-  previous(){
-    this.contribution_action='content';
+  previous() {
+    this.contribution_action = 'content';
   }
-  goTo(){
-    this.contribution_action='media';
+  goTo() {
+    this.contribution_action = 'media';
   }
-  next(){
-    this.contribution_action='submit';
+  next() {
+    this.contribution_action = 'submit';
   }
   openModal() {
     // let loading = this.loadingCtrl.create({
     //   content: 'Please wait...'
     // });
     // loading.present();
-    if(this.contributionForm.value.images) {
+    if (this.contributionForm.value.images) {
       const control = < FormArray > this.contributionForm.controls['images'];
       this.imageStatus.forEach(status => {
         const addrCtrl = this.formBuilder.group({
@@ -188,20 +188,22 @@ export class CreateContributionPage {
           imagedescription: [status.description]
         });
         control.push(addrCtrl);
-     
+
       });
     }
 
-    let modal = this.modalCtrl.create(PreviewModalPage,{contributionFormData: this.contributionForm.value});
+    let modal = this.modalCtrl.create(PreviewModalPage, {
+      contributionFormData: this.contributionForm.value
+    });
     modal.present();
   }
-  saveDraft(){
+  saveDraft() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     loading.present();
     var tagsList = this.contributionTags;
-    if (tagsList){
+    if (tagsList) {
       var tagsList = this.contributionTags.split(',');
       const control1 = < FormArray > this.contributionForm.controls['tags'];
       tagsList.forEach(value => {
@@ -212,7 +214,7 @@ export class CreateContributionPage {
       });
     }
     const control = < FormArray > this.contributionForm.controls['images'];
-    if (this.imageStatus){
+    if (this.imageStatus) {
       this.imageStatus.forEach(status => {
         const addrCtrl = this.formBuilder.group({
           imagestatus: [status.img],
@@ -220,82 +222,81 @@ export class CreateContributionPage {
           imagedescription: [status.description]
         });
         control.push(addrCtrl);
-     
+
       });
     }
-  
+
     this.contributionForm.patchValue({
-      contributionstatus: "Draft" 
+      contributionstatus: "Draft"
     });
     this.contributionService.createContribution(this.contributionForm.value)
-    .subscribe( data => {
-      loading.dismiss();
-      let toast = this.toastCtrl.create({
-        message: 'Contribution Created successfully',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
-      this.navCtrl.setRoot(MyContributionPage);
+      .subscribe(data => {
+        loading.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Contribution Created successfully',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.navCtrl.setRoot(MyContributionPage);
 
-    });
+      });
   }
   ionViewDidLoad() {
 
     this.getContributionByContributionId(this.contributionId)
   }
-  getContributionByContributionId(contributionId){
+  getContributionByContributionId(contributionId) {
     this.loaders.detailLoader = true;
     this.contributionService.searchContributionByContributionId(contributionId)
-    .subscribe( data => {
-      if (data.status) {
-        this.contributionForm.patchValue({
-          useremail: data.data.UserEmail,
-          title: data.data.Title,
-          username: data.data.UserFullName,
-          userid: data.data.UserID,
-          userprofilepicture: data.data.UserProfilePicture,
-          maincategory: data.data.MainCategory,
-          subcategories: data.data.SubCategories,
-          contributiontext: data.data.ContributionText,
-          videos: data.data.Videos,
-          contributionstatus: data.data.ContributionStatus,
-          audiopath: data.data.AudioPath,
-          adminstatus:data.data.AdminStatus,
-          website: data.data.Website,
-          coverpage: data.data.Coverpage,
-        });
-        this.coverImage = data.data.Coverpage;
-        var d = data.data.Tags;
-        d.forEach(tags => {
-          if(tags.Tag) {
-            this.contributionTags += tags.Tag+",";
-          }
-          
-        });
-        this.contributionTags = this.contributionTags.replace(/,\s*$/, "");
-        var e= data.data.Images;
-        e.forEach(imgs => {
+      .subscribe(data => {
+        if (data.status) {
+          this.contributionForm.patchValue({
+            useremail: data.data.UserEmail,
+            title: data.data.Title,
+            username: data.data.UserFullName,
+            userid: data.data.UserID,
+            userprofilepicture: data.data.UserProfilePicture,
+            maincategory: data.data.MainCategory,
+            subcategories: data.data.SubCategories,
+            contributiontext: data.data.ContributionText,
+            videos: data.data.Videos,
+            contributionstatus: data.data.ContributionStatus,
+            audiopath: data.data.AudioPath,
+            adminstatus: data.data.AdminStatus,
+            website: data.data.Website,
+            coverpage: data.data.Coverpage,
+          });
+          this.coverImage = data.data.Coverpage;
+          var d = data.data.Tags;
+          d.forEach(tags => {
+            if (tags.Tag) {
+              this.contributionTags += tags.Tag + ",";
+            }
+
+          });
+          this.contributionTags = this.contributionTags.replace(/,\s*$/, "");
+          var e = data.data.Images;
+          e.forEach(imgs => {
             this.imageStatus.push({
               localImage: imgs.Imagestatus,
-              title:  imgs.ImageTitle,
+              title: imgs.ImageTitle,
               description: imgs.ImageDescription
             })
-        });
-        if(this.contributionForm.value.maincategory) {
-          this.category(this.contributionForm.value.maincategory);
+          });
+          if (this.contributionForm.value.maincategory) {
+            this.category(this.contributionForm.value.maincategory);
+          }
+
+          this.loaders.detailLoader = false;
+        } else if (!data.status) {
+          // this.preferencesData = null;
+          this.loaders.detailLoader = false;
         }
-     
-        this.loaders.detailLoader = false;
-      }
-      else if (!data.status) {
-        // this.preferencesData = null;
-        this.loaders.detailLoader = false;
-      }
-    })
+      })
   }
-  updateCotribution(){
-    this.contributionForm.addControl('_id', new FormControl(this.contributionId,Validators.required));
+  updateCotribution() {
+    this.contributionForm.addControl('_id', new FormControl(this.contributionId, Validators.required));
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
@@ -317,40 +318,40 @@ export class CreateContributionPage {
         imagedescription: [status.description]
       });
       control.push(addrCtrl);
-   
+
     });
     this.contributionForm.patchValue({
-      contributionstatus: "Publish" 
+      contributionstatus: "Publish"
     });
     this.contributionService.editContribution(this.contributionForm.value)
-    .subscribe( data => {
-      console.log(data)
-      loading.dismiss();
-      let toast = this.toastCtrl.create({
-        message: 'Contribution Updated successfully',
-        duration: 3000,
-        position: 'bottom'
+      .subscribe(data => {
+        console.log(data)
+        loading.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Contribution Updated successfully',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.navCtrl.setRoot(MyContributionPage);
       });
-      toast.present();
-      this.navCtrl.setRoot(MyContributionPage);
-    });
   }
-  getPreferences(){
+  getPreferences() {
     this.loading = true;
     this.preferences.getAllPreferences()
-    .subscribe( data => {
-      if(data.status) {
-        this.preferencesData = data.data;
-        this.loading = false;
-      } else if (!data.status) {
-        this.preferencesData = null;
-        this.loading = false;
-      }
-    })
+      .subscribe(data => {
+        if (data.status) {
+          this.preferencesData = data.data;
+          this.loading = false;
+        } else if (!data.status) {
+          this.preferencesData = null;
+          this.loading = false;
+        }
+      })
   }
-  category(categorydata){
-   this.slectedCategory =  this.preferencesData.filter(cat => cat.Category == categorydata)[0]
-  
+  category(categorydata) {
+    this.slectedCategory = this.preferencesData.filter(cat => cat.Category == categorydata)[0]
+
   }
 
 
@@ -362,14 +363,67 @@ export class CreateContributionPage {
   }
 
   scroll(elementId) {
-    var x=document.getElementById(elementId)
-    if(x.style.display === 'none'){
+
+    if (elementId == 'fold-2') {
+      if (!this.contributionForm.value.audiopath) {
+
+        
+        $('#fold-3').hide();
+      }
+
+      if (this.imageStatus && !this.imageStatus.length) {
+   
+        $('#fold-4').hide();
+      }
+
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+   
+        $('#fold-5').hide();
+      }
+
+    }
+    if (elementId == 'fold-3') {
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+
+      if (this.imageStatus && !this.imageStatus.length) {
+        $('#fold-4').hide();
+      }
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+        $('#fold-5').hide();
+      }
+    }
+    if (elementId == 'fold-4') {
+      if (!this.contributionForm.value.audiopath) {
+        $('#fold-3').hide();
+      }
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+        $('#fold-5').hide();
+      }
+    }
+    if (elementId == 'fold-5') {
+      if (!this.contributionForm.value.audiopath) {
+        $('#fold-3').hide();
+      }
+      if (this.imageStatus && !this.imageStatus.length) {
+        $('#fold-4').hide();
+      }
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+    }
+    var x = document.getElementById(elementId)
+    if (x.style.display === 'none') {
       x.style.setProperty("display", "block", "important")
       let y = document.getElementById(elementId);
-    y.scrollIntoView(true);
+      y.scrollIntoView(true);
       // window.scrollTo(y, 4);
       // this.content.scrollTo(0, y, 500);
-    }else{
+    } else {
       x.style.setProperty("display", "none", "important")
 
     }
@@ -390,59 +444,61 @@ export class CreateContributionPage {
   openActionSheet() {
     const actionSheet = this.actionSheetCtrl.create({
       title: 'Choose',
-      buttons: [
-        {
-          text: 'Choose Image from Gallery',
-          handler: () => {
-            this.chooseFromGallery();
-          }
-        },{
-          text: 'Open Camera',
-          handler: () => {
-            this.openCamera();
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
+      buttons: [{
+        text: 'Choose Image from Gallery',
+        handler: () => {
+          this.chooseFromGallery();
         }
-      ]
+      }, {
+        text: 'Open Camera',
+        handler: () => {
+          this.openCamera();
+        }
+      }, {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
     });
     actionSheet.present();
   }
 
   chooseFromGallery() {
-    this.loading= true;
+    this.loading = true;
     let options = {
-      maximumImagesCount:1,//select number of image default is 15
+      allowEdit: true,
+      maximumImagesCount: 1, //select number of image default is 15
       destinationType: this.camera.DestinationType.FILE_URI,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
-      }
-      this.camera.getPicture(options).then((result) => {
-   
- 
+    }
+    
+    this.camera.getPicture(options).then((result) => {
+
+
       this.loading = false;
-      this.crop.crop(result, {quality: 100})
-      .then(newImage => {
-        this.base64.encodeFile(newImage).then((base64File: string) => {
-          this.coverImage =  base64File
-          this.uploadCroppedImage(this.coverImage)
-        }, (err) => {
-          console.log(err);
-        });
-        // console.log('new image path is: ' + newImage)
-       },
+      this.crop.crop(result, {
+          quality: 100
+        })
+        .then(newImage => {
+            this.base64.encodeFile(newImage).then((base64File: string) => {
+              this.coverImage = base64File
+              this.uploadCroppedImage(this.coverImage)
+            }, (err) => {
+              console.log(err);
+            });
+            // console.log('new image path is: ' + newImage)
+          },
           error => console.error('Error cropping image', error)
-       );
+        );
       // this.uploadCroppedImage(this.coverImage)
-    }, (err) => { });
+    }, (err) => {});
   }
 
   openCamera() {
-    this.loading= true;
+    this.loading = true;
     const options: CameraOptions = {
       quality: 100,
       correctOrientation: true,
@@ -452,20 +508,22 @@ export class CreateContributionPage {
     }
     this.camera.getPicture(options).then((result) => {
       this.loading = false;
-      this.crop.crop(result, {quality: 100})
-      .then(newImage => {
-        this.base64.encodeFile(newImage).then((base64File: string) => {
-          this.coverImage =  base64File
-          this.uploadCroppedImage(this.coverImage)
-        }, (err) => {
-          console.log(err);
-        });
-        // console.log('new image path is: ' + newImage)
-       },
+      this.crop.crop(result, {
+          quality: 100
+        })
+        .then(newImage => {
+            this.base64.encodeFile(newImage).then((base64File: string) => {
+              this.coverImage = base64File
+              this.uploadCroppedImage(this.coverImage)
+            }, (err) => {
+              console.log(err);
+            });
+            // console.log('new image path is: ' + newImage)
+          },
           error => console.error('Error cropping image', error)
-       );
+        );
       // this.uploadCroppedImage(this.coverImage)
-    }, (err) => { });
+    }, (err) => {});
     //   this.coverImage = 'data:image/jpeg;base64,' + imageData;
     //   this.loading = false;
     //   this.uploadCroppedImage(this.coverImage)
@@ -484,53 +542,58 @@ export class CreateContributionPage {
     control.push(addrCtrl);
   }
   uploadAudio(file) {
-    this.isUploaded.audioError=false;
-    this.isUploaded.audio=false;
-    this.loaders.audio=true;
+    this.isUploaded.audioError = false;
+    this.isUploaded.audio = false;
+    this.loaders.audio = true;
     this.userService.uploadAudio(file)
-    .subscribe(
-      data => {
-        if (data.status){
-          this.contributionForm.patchValue({
-            audiopath: data.status
-          });
-          this.loaders.audio=false;
-          this.isUploaded.audio=true;
-        }else{
-          this.isUploaded.audioError=true;
-          this.loaders.audio=false;
-      }
-      },
-      error => {
-        this.isUploaded.audioError=true;
-        this.loaders.audio=false;
-      }
-    );
+      .subscribe(
+        data => {
+          if (data.status) {
+            this.contributionForm.patchValue({
+              audiopath: data.status
+            });
+            this.loaders.audio = false;
+            this.isUploaded.audio = true;
+          } else {
+            this.isUploaded.audioError = true;
+            this.loaders.audio = false;
+          }
+        },
+        error => {
+          this.isUploaded.audioError = true;
+          this.loaders.audio = false;
+        }
+      );
   }
 
   uploadContributionImage(file) {
-    this.loaders.img=true;
-    this.isUploaded.imgError=false
+    this.loaders.img = true;
+    this.isUploaded.imgError = false
     var target = file.target || file.srcElement
     this.userService.uploadAudio(file)
-    .subscribe(
-      data => {
-        if (target.files && target.files[0]) {
-          var reader = new FileReader();
-          reader.onload = (event: any) => {
-            // this.url = event.target.result;
-            this.imageStatus.push({title: '',description:'', img:'https://s3.us-east-2.amazonaws.com/climbmentors/'+data.status, localImage: event.target.result})
-            // this.url.push({title: '',description:'',img:event.target.result});
+      .subscribe(
+        data => {
+          if (target.files && target.files[0]) {
+            var reader = new FileReader();
+            reader.onload = (event: any) => {
+              // this.url = event.target.result;
+              this.imageStatus.push({
+                title: '',
+                description: '',
+                img: 'https://s3.us-east-2.amazonaws.com/climbmentors/' + data.status,
+                localImage: event.target.result
+              })
+              // this.url.push({title: '',description:'',img:event.target.result});
+            }
+            this.loaders.img = false;
+            reader.readAsDataURL(target.files[0]);
           }
-          this.loaders.img=false;
-          reader.readAsDataURL(target.files[0]);
+        },
+        error => {
+          this.isUploaded.imgError = true
+          this.loaders.img = false;
         }
-      },
-      error => {
-        this.isUploaded.imgError=true
-        this.loaders.img=false;
-      }
-    );
+      );
   }
 
   saveContribution() {
@@ -555,23 +618,23 @@ export class CreateContributionPage {
         imagedescription: [status.description]
       });
       control.push(addrCtrl);
-   
-    });
-    this.contributionForm.patchValue({
-      contributionstatus: "Publish" 
-    });
-    this.contributionService.createContribution(this.contributionForm.value)
-    .subscribe( data => {
-      loading.dismiss();
-      let toast = this.toastCtrl.create({
-        message: 'Contribution Created successfully',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
-      this.navCtrl.setRoot(MyContributionPage);
 
     });
+    this.contributionForm.patchValue({
+      contributionstatus: "Publish"
+    });
+    this.contributionService.createContribution(this.contributionForm.value)
+      .subscribe(data => {
+        loading.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Contribution Created successfully',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.navCtrl.setRoot(MyContributionPage);
+
+      });
   }
 
   removeImage(index) {
@@ -587,14 +650,12 @@ export class CreateContributionPage {
     fd.append('file', blob, filename);
     this.userService.uploadImage(fd).subscribe(data => {
       if (data.status) {
-        this.contributionForm.patchValue(
-          {
-            coverpage: data.status
-          }
-        );
-      }else{
-        this.isUploaded.error=true;
-        this.coverImage= '';
+        this.contributionForm.patchValue({
+          coverpage: data.status
+        });
+      } else {
+        this.isUploaded.error = true;
+        this.coverImage = '';
       }
     })
   }
@@ -615,7 +676,9 @@ export class CreateContributionPage {
       byteArrays.push(new Uint8Array(byteNumbers));
     }
 
-    return new Blob(byteArrays, { type: info.mime });
+    return new Blob(byteArrays, {
+      type: info.mime
+    });
   }
 
   private getInfoFromBase64(base64: string) {

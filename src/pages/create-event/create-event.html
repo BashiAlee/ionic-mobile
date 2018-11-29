@@ -64,7 +64,7 @@
               </ion-row>
               <ion-row>
                   <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-                      <div [froalaEditor]="opts" formControlName="contributiontext" ></div>
+                      <div [froalaEditor]="opts" formControlName="contributiontext"  style="margin-right: -20px"></div>
                   </ion-col>
                 </ion-row>
                 <ion-row>
@@ -152,12 +152,12 @@
                     Previous
                   </button>  
                 </ion-col> -->
-                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                <!-- <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                   <button class="blue-btn" (click)="saveDraft()">
                     <ion-icon class="draft-icon" name="ios-download-outline"></ion-icon>Save Draft
                   </button>  
-                </ion-col>
-                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                </ion-col> -->
+                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-6>
                   <button class="yellow-btn" (click)="goTo()" [disabled]="(!contributionForm.controls['title'].value || !contributionForm.controls['contributiontext'].value) && (contributionForm.controls['title'].invalid || contributionForm.controls['contributiontext'].invalid)">
                     Continue
                   </button>  
@@ -173,7 +173,7 @@
       <div *ngSwitchCase="'media'">
   
                 <div class="makeCenter secondary-heading">
-                  <p class="bold">Use the tool bucket below to add media to your Contribution</p>
+                  <p class="bold mt15">Use the tool bucket below to add media to your Contribution</p>
                   <div class="tooltip_vector v1">
                       <img tooltip="You May use 1, 2 or all of the tools in your contribution spotlight. Add content folds, video, images etc. You can choose to continue or save draft to complete at a later date"
                       triggers="click" placement="bottom" alt="" src="../../assets/imgs/tooltip_vector.png">
@@ -262,10 +262,10 @@
                           <p>Video</p>
                         </a>
                     </div>
-                    <div class="tooltip_vector v2">
+                    <!-- <div class="tooltip_vector v2">
                         <img tooltip="You can embed video here"
                         triggers="click" placement="bottom" alt="" src="../../assets/imgs/tooltip_vector.png">
-                    </div>
+                    </div> -->
                   </ion-col>
                   <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                     <div class="tool-buckt add-audio" (click)="scroll('fold-3')">
@@ -274,10 +274,10 @@
                           <p>Audio</p>
                         </a>
                     </div>
-                    <div class="tooltip_vector v2">
+                    <!-- <div class="tooltip_vector v2">
                         <img tooltip="You can add audio here"
                         triggers="click" placement="bottom" alt="" src="../../assets/imgs/tooltip_vector.png">
-                    </div>
+                    </div> -->
                   </ion-col>
                 </ion-row>
                 <ion-row>
@@ -288,10 +288,10 @@
                           <p>Image Gallery</p>
                         </a>
                       </div>
-                      <div class="tooltip_vector v2">
+                      <!-- <div class="tooltip_vector v2">
                           <img tooltip="You can add image gallery here"
                           triggers="click" placement="bottom" alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                      </div> -->
                     </ion-col>
                     <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
                       <div class="tool-buckt add-link" (click)="scroll('fold-5')">
@@ -300,10 +300,10 @@
                             <p>Add Link</p>
                           </a>
                       </div>
-                      <div class="tooltip_vector v2">
+                      <!-- <div class="tooltip_vector v2">
                           <img tooltip="You can add links here"
                           triggers="click" placement="bottom" alt="" src="../../assets/imgs/tooltip_vector.png">
-                      </div>
+                      </div> -->
                     </ion-col>
                   </ion-row>
               </ion-grid>
@@ -311,9 +311,10 @@
     
         </ion-list>
         <div class="preview-btn btn-align">
-            <button class="red-btn" (click)="openModal()">
+            <!-- <button class="red-btn" (click)="openModal()">
               Preview
-            </button>   
+            </button>    -->
+            <p class="primary-para">Adding media to your event is optional, continue to next step if you do not have any media to add</p>
         </div>
         <div class="btn-group">
             <ion-grid>

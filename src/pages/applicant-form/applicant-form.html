@@ -1,5 +1,5 @@
 <header></header>
-<ion-content *ngIf="mentorStatus">
+<ion-content *ngIf="mentorStatus && !user.MentorStatus">
     <div class="makeCenter mt50 completed-check">
       <img src="../../assets/imgs/app-logo.svg" alt="" srcset="">
         <div class="check-click">
@@ -8,6 +8,16 @@
          <h4>Great! You have already Submitted the Form</h4>
          <p>Your form will be reviewed by your Parent and Admin.</p>
     </div>
+</ion-content>
+<ion-content *ngIf="user.MentorStatus">
+  <div class="makeCenter mt50 completed-check">
+    <img src="../../assets/imgs/app-logo.svg" alt="" srcset="">
+      <div class="check-click">
+          <span class="fa fa-check"></span>
+       </div>
+       <h4>Great! You have already Submitted the Form</h4>
+       <p>Now you can create Contribution/Event</p>
+  </div>
 </ion-content>
 <ion-content *ngIf="!canFill">
   <div class="makeCenter mt50 completed-check">

@@ -111,14 +111,14 @@ export class MyFeedsPage {
             this.followersIds.Follower.forEach(followers => {
               if (followers.ParentStatus) {
                 this.viewProfileByID(followers.Userfollowerid);
-              } else {
-                // this.loaders.feedLoader = false;
               }
             });
           } else if(!data.status){
             this.loaders.feedLoader = false;
             return;
           }
+
+          this.loaders.feedLoader = false;
         },
         error => {});
   }

@@ -44,9 +44,9 @@ export class CreateEventPage {
     charCounterCount: true,
     key: 'MC2C2D1B1lG4J4B16B7D3D6F4C2C3I3gC-21qwvilh1H3gjk==',
     toolbarSticky: false,
-    heightMin: 300,
+    heightMin: 100,
     placeholderText: 'Type your text here..',
-    // heightMax: 1000,
+    heightMax: 1000,
     toolbarButtons: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsXS: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
     toolbarButtonsSM: ['bold', 'italic', 'fontFamily', 'fontSize', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', '|', 'insertHR', 'selectAll','specialCharacters', 'clearFormatting', '|','html', '|', 'undo', 'redo'],
@@ -295,12 +295,62 @@ export class CreateEventPage {
   }
 
   scroll(elementId) {
-    var x=document.getElementById(elementId)
-    if(x.style.display === 'none'){
+    if (elementId == 'fold-2') {
+      if (!this.contributionForm.value.audiopath) {
+        $('#fold-3').hide();
+      }
+
+      if (this.imageStatus && !this.imageStatus.length) {
+        $('#fold-4').hide();
+      }
+
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+        $('#fold-5').hide();
+      }
+
+    }
+    if (elementId == 'fold-3') {
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+
+      if (this.imageStatus && !this.imageStatus.length) {
+        $('#fold-4').hide();
+      }
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+        $('#fold-5').hide();
+      }
+    }
+    if (elementId == 'fold-4') {
+      if (!this.contributionForm.value.audiopath) {
+        $('#fold-3').hide();
+      }
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+      if (!this.contributionForm.value.website[0].websiteurl || !this.contributionForm.value.website[0].websitetitle) {
+        $('#fold-5').hide();
+      }
+    }
+    if (elementId == 'fold-5') {
+      if (!this.contributionForm.value.audiopath) {
+        $('#fold-3').hide();
+      }
+      if (this.imageStatus && !this.imageStatus.length) {
+        $('#fold-4').hide();
+      }
+      if (!this.contributionForm.value.videos) {
+        $('#fold-2').hide();
+      }
+    }
+    var x = document.getElementById(elementId)
+    if (x.style.display === 'none') {
       x.style.setProperty("display", "block", "important")
       let y = document.getElementById(elementId);
       y.scrollIntoView(true);
-    }else{
+      // window.scrollTo(y, 4);
+      // this.content.scrollTo(0, y, 500);
+    } else {
       x.style.setProperty("display", "none", "important")
 
     }
@@ -335,6 +385,7 @@ export class CreateEventPage {
   chooseFromGallery() {
     this.loading= true;
     let options = {
+      allowEdit: true,
       maximumImagesCount:1,//select number of image default is 15
       destinationType: this.camera.DestinationType.FILE_URI,
       mediaType: this.camera.MediaType.PICTURE,

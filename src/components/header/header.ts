@@ -70,8 +70,10 @@ export class HeaderComponent {
     this.showSearch = false;
   }
 
-  searchByKeyword(e) {
-    this.navCtrl.setRoot(SearchContributionPage, {query: this.query})
+  searchByKeyword(code) {
+    if(code == 13) {
+      this.navCtrl.setRoot(SearchContributionPage, {query: this.query})
+    }
   }
 
 

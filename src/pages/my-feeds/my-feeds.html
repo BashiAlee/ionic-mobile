@@ -5,7 +5,7 @@
     <div class="loader makeCenter" *ngIf="loaders.feedLoader">
         <ion-spinner name="bubbles"></ion-spinner>
     </div>
-    <div class="loader makeCenter" *ngIf="!loaders.feedLoader && !userContributions && !userContributions.length">
+    <div class="loader makeCenter" *ngIf="!loaders.feedLoader && !userContributions.length">
         <p>No Feeds Found</p>
     </div>
     <div *ngIf="!loaders.feedLoader && userContributions && userContributions.length">
