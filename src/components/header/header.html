@@ -21,7 +21,7 @@
                         <i class="fas fa-search searchIc"></i>
                       </td>
                       <td>
-                          <ion-input [(ngModel)]="query" type="text" (keypress)="searchByKeyword($event.keyCode)" placeholder= "Search by keyword"></ion-input>
+                          <ion-input [(ngModel)]="query" type="text" (keypress)="searchByKeyword($event.keyCode)" (input)="showDiv=true" placeholder= "Search by keyword"></ion-input>
                       </td>
                   </tr>
               </table>
@@ -57,4 +57,27 @@
           </div>
         </ion-buttons>
     </ion-navbar>
+      <ion-grid ion-fixed no-padding class="overLay" *ngIf="showDiv" >
+
+        <ion-list *ngIf="keyWords.length">
+          <ion-item *ngFor="let keyword of keyWords | search: query" >
+          <p (click)="moveToSearch(keyword.name)">{{keyword.name}}</p>
+          </ion-item>
+        
+          <ion-item *ngIf="(keyWords | search: query).length === 0">
+              <div class="sidebar-img-text makeCenter mTop15 mBottom25">
+                  <p> No record found</p>
+                </div>
+             
+              </ion-item>
+
+              <span (click)="showDiv=false">  <ion-icon ios="ios-close" md="md-close"></ion-icon>
+              </span>
+        </ion-list>
+        <ion-list *ngIf="!keyWords.length">
+          <ion-item>
+            Not Found
+          </ion-item>
+        </ion-list>
+      </ion-grid>
   </ion-header>

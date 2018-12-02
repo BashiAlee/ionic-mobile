@@ -9,6 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ParentProvider } from '../../providers/parent/parent';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { UserProvider } from '../../providers/user/user';
+import { ContributionsProvider } from '../../providers/contributions/contributions';
+
+import * as _ from 'lodash';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -27,19 +30,53 @@ export class HeaderComponent {
   showSearch: any = false;
   newMessage: any = false;
   newNotification: any = false;
+  showDiv: any = false;
+  keyWords: any = [];
 
   constructor( public popoverCtrl: PopoverController,
     public navCtrl: NavController,
     public authService: AuthenticationProvider,
     public parentService: ParentProvider,
     public messageService: MessagesProvider,
-    public userService: UserProvider
+    public userService: UserProvider,
+    public contributionService: ContributionsProvider
   ) {
     this.user = this.authService.getCurrentUser();
     var id = this.user._id;
     this.getMentorStatus(id);
     this.getMessageStatus(id);
     this.getAllNotifications(id);
+    this.getAllKeywords();
+
+  }
+
+  getAllKeywords() {
+    this.contributionService.getAllContribution()
+    .subscribe(data => {
+      if(data.status) {
+        data.data.forEach(value => {
+          if(value.AdminStatus) {
+            if(value.MainCategory) {
+              this.keyWords.push({name: value.MainCategory})
+            }
+
+            if(value.SubCategories) {
+              this.keyWords.push({name: value.SubCategories})
+            }
+
+            if(value.Tags && value.Tags[0].Tag) {{
+              value.Tags.forEach(tag => {
+                this.keyWords.push({name: tag.Tag})
+              });
+            }} 
+          }
+        });
+        this.keyWords = _.uniqBy(this.keyWords, 'name');
+        console.log("ttt", this.keyWords)
+      } else {
+
+      }
+    })
   }
 
   messagePopover(myEvent) {
@@ -74,6 +111,13 @@ export class HeaderComponent {
     if(code == 13) {
       this.navCtrl.setRoot(SearchContributionPage, {query: this.query})
     }
+  }
+
+  moveToSearch(val) {
+    this.showDiv = false;
+    console.log("Cli",val)
+    this.query = val;
+    this.navCtrl.setRoot(SearchContributionPage, {query: val})
   }
 
 
@@ -119,5 +163,10 @@ export class HeaderComponent {
       
     })
   }
+
+  focusFunction() {
+    console.log("GGGGGG")
+  }
+
 
 }
