@@ -58,7 +58,7 @@ ion-list.sideMenu {
 .sideMenu-header {
     color: $primary-color;
     div.toolbar-content {
-      
+
         // display: flex;
         // justify-content: center;
         // align-items: center;
@@ -195,7 +195,7 @@ text-align: center;
 }
 .txt{
     display: inline-block;
-    padding: 10px; 
+    padding: 10px;
 }
 .time{
     font-size: 10px;
@@ -221,7 +221,7 @@ text-align: center;
             font-family: 'Brandon_med';
             font-size: 17px;
             margin: 0;
-        
+
         }
         &:after {
             content: "";
@@ -285,7 +285,7 @@ div.toolbar-title {
 .user-info{
     .user-description {
         p {
-           
+
             font-family: 'Brandon_med';
             font-size: 17px;
             margin: 0;
@@ -529,6 +529,9 @@ button:focus {
     text-align: center;
     width: 100%;
 }
+.fr-box {
+  margin-right: 0px !important;
+}
 .btn-group{
     width: 100%;
     .red-btn,.blue-btn,.yellow-btn{
@@ -656,7 +659,7 @@ button:focus {
             top: -10px;
         }
     }
-}   
+}
 .typ-sect{
     margin: auto;
     display: grid;
@@ -704,17 +707,17 @@ button:focus {
         top: 5px;
         right: 15px;
         padding: 4px 9px 2px 9px;
-        font-size:1.4em; 
+        font-size:1.4em;
         border-radius: 50%;
         color: red;
         background: #fff;
     }
 }
 .edit-icon{
-    margin-top:7px; 
+    margin-top:7px;
     background: red !important;
     border-radius: 50%;
-    padding: 7px 8px;    
+    padding: 7px 8px;
     float: right;
     margin-right: 10px;
     color: #fff;
@@ -732,7 +735,7 @@ button:focus {
 .inputfile + label {
     max-width: 80%;
     text-overflow: ellipsis;
-    white-space:nowrap; 
+    white-space:nowrap;
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
@@ -794,7 +797,7 @@ label.disabledLabel{
     color: $primary-blue;
 }
 
-.primary-para 
+.primary-para
 {
     color: $primary-blue;
     font-size: 13px;

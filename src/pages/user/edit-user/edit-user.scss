@@ -1,4 +1,9 @@
 page-edit-user {
+  .edit-profile {
+    .pt15{
+          margin-left: 0px !important;
+    }
+  }
     .top-content {
         .image {
             img {
@@ -13,15 +18,15 @@ page-edit-user {
                 font-family: 'Brandon_med';
                 font-size: 17px;
                 margin: 0;
-            
+
             }
             &:after {
                 content: "";
                 border-bottom: 1px solid $light-grey;
                 position: absolute;
- 
+
                 left: 0;
-    
+
                 right: 0;
                 width: 170px;
                 z-index: 999999;

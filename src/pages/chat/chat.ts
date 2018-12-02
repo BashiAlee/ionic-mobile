@@ -26,7 +26,7 @@ export class ChatPage {
   followerId:any;
   followersIds: any = [];
   followersList: any = [];
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public authService: AuthenticationProvider,
     public formBuilder: FormBuilder,
@@ -53,11 +53,12 @@ export class ChatPage {
           this.followersIds = data.data;
           this.followersIds.Follower.forEach(followersList => {
           if (followersList.ParentStatus) {
-                this.viewProfileByID(followersList.Userfollowerid);
-              } else {
-                this.loading.getFollower = false;
-              }
-            });
+              this.viewProfileByID(followersList.Userfollowerid);
+            } else {
+              this.followersList = [];
+              this.loading.getFollower = false;
+            }
+          });
           }else{
             this.followersList = [];
             this.loading.getFollower = false;
