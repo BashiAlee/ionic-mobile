@@ -12,6 +12,7 @@ import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 
 import * as _ from 'lodash';
+import { PreferencesProvider } from '../../providers/preferences/preferences';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -39,7 +40,8 @@ export class HeaderComponent {
     public parentService: ParentProvider,
     public messageService: MessagesProvider,
     public userService: UserProvider,
-    public contributionService: ContributionsProvider
+    public contributionService: ContributionsProvider,
+    public preferenceService: PreferencesProvider
   ) {
     this.user = this.authService.getCurrentUser();
     var id = this.user._id;
@@ -51,30 +53,21 @@ export class HeaderComponent {
   }
 
   getAllKeywords() {
-    this.contributionService.getAllContribution()
+    this.preferenceService.getAllPreferences()
     .subscribe(data => {
       if(data.status) {
         data.data.forEach(value => {
-          if(value.AdminStatus) {
-            if(value.MainCategory) {
-              this.keyWords.push({name: value.MainCategory})
-            }
-
-            if(value.SubCategories) {
-              this.keyWords.push({name: value.SubCategories})
-            }
-
-            if(value.Tags && value.Tags[0].Tag) {{
-              value.Tags.forEach(tag => {
-                this.keyWords.push({name: tag.Tag})
-              });
-            }} 
+          this.keyWords.push({name: value.Category})
+          if(value.SubCategories) {
+            value.SubCategories.forEach(subcat => {
+              this.keyWords.push({name: subcat.SubCategory})
+            });
           }
         });
         this.keyWords = _.uniqBy(this.keyWords, 'name');
         console.log("ttt", this.keyWords)
       } else {
-
+        this.keyWords = [];
       }
     })
   }

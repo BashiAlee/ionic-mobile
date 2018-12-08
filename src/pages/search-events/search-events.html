@@ -108,38 +108,40 @@
                           <h4>{{contribution.Title}}</h4>
                         </div>
                       </ion-col>
-                      <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                          <ion-icon name="ios-eye"></ion-icon> {{contribution.ViewCount}}<span class="ml5">Views</span> 
+                      <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 class="makeRight">
+                          <ion-icon name="ios-eye"></ion-icon> {{contribution.ViewCount}}<span class="ml5">{{contribution.ViewCount>1?'Views':'View'}}</span> 
                       </ion-col>
                   </ion-row>
                   </ion-grid>
     
                 <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
                 <div class="red-text">
-                  <a ion-button clear small (click)="openDetails(contribution._id)" class="left-align">View Detail</a>
+                  <a ion-button clear small no-padding click)="openDetails(contribution._id)" class="left-align">View Detail</a>
                 </div>
                 <!-- <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a> -->
     
               </ion-card-content>
-              <ion-row>
-    
-                <ion-col class="makeCenter">
-                  <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
-                    <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
-                    <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
-                  </button>
-                  <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
-                    <ion-icon name="heart"></ion-icon>
-                    <div>{{contribution.Likes}} Unlike</div>
-                  </button>
-                </ion-col>
-                <ion-col class="makeCenter">
-                  <button ion-button icon-start clear small>
-                    <ion-icon name="text"></ion-icon>
-                    <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
-                  </button>
-                </ion-col>
-              </ion-row>
+              <ion-card-content>
+                  <ion-row>
+        
+                    <ion-col class="makeLeft">
+                      <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
+                        <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                        <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
+                      </button>
+                      <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
+                        <ion-icon name="heart"></ion-icon>
+                        <div>{{contribution.Likes}} Unlike</div>
+                      </button>
+                    </ion-col>
+                    <ion-col class="makeRight">
+                      <button ion-button icon-start clear small (click)="openDetails(contribution._id)">
+                        <ion-icon name="text"></ion-icon>
+                        <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-content>
     
             </ion-card>
           </ion-col>

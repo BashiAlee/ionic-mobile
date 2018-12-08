@@ -1,5 +1,5 @@
 import { Component,ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ModalController,PopoverController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ModalController,PopoverController, ToastController, LoadingController, Keyboard } from 'ionic-angular';
 import { Content, } from 'ionic-angular';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
@@ -70,6 +70,7 @@ export class CreateEventPage {
     private crop: Crop,
     private base64: Base64,
     private sanitizer: DomSanitizer,
+    public keyboard: Keyboard,
     public popoverCtrl: PopoverController) { 
       this.eventId = this.navParams.get('id')
 
@@ -600,5 +601,12 @@ export class CreateEventPage {
       meta,
       rawBase64
     };
+  }
+  onScroll(e) {
+    this.closeKeyboard();
+  }
+
+  closeKeyboard() {
+    this.keyboard.close();
   }
 }

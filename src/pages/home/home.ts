@@ -203,8 +203,8 @@ getProfileById(id,value) {
   this.userService.viewProfileById(id)
     .subscribe(res => {
       if(res.status) {
-        if(res.data.bio) {
-          value.bio = res.data.bio;
+        if(res.data.Bio) {
+          value.bio = res.data.Bio;
         } else {
           value.bio = '-'
         }

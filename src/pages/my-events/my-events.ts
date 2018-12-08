@@ -144,6 +144,39 @@ export class MyEventsPage {
     })
     this.loading = false;
   }
+  addLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.addLike(data)
+      .subscribe(res => {
+        if(res.status) {
+          value.isLiked = true;
+            value.Likes = res.data;
+        }
+  
+      })
+  }
+  unLike(value,id) {
+    var data = {
+      contributionid: id,
+      likes: [{
+        likeuserid: this.user._id
+      }]
+    }
+  
+    this.contributionService.unLike(data)
+      .subscribe(res => {
+        if(res.status) {  
+            value.isLiked = false;
+            value.Likes = res.data;
+        }
+      })
+  }
 
 
 }

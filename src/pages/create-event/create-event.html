@@ -20,7 +20,8 @@
        <p>Sorry! You are not allowed to perform this action unless you are a Super Contributor and Mentor.</p>
   </div>
 </ion-content>
-<ion-content padding *ngIf="user.MentorStatus && !loaders.detailLoader">
+<ion-content padding (ionScroll)="onScroll($event)">
+    <ng-container  *ngIf="user.MentorStatus && !loaders.detailLoader">
   <h2 *ngIf="!eventId" class="primary-heading mt15 ">Create an Event</h2>
   <h2 *ngIf="eventId" class="primary-heading mt15 ">Edit Contribution</h2>
    <!-- Segment buttons with text -->
@@ -238,7 +239,7 @@
                 <div id="fold-5" class="makeCenter" style="display: none">
                   <fieldset formArrayName="website">
                     <hr>    
-                    <h3 class="">Create and add links for your Website, Social, Read More, Learn More, More Info, etc to share additional relevant information for your Contribution Spotlight (Optional)</h3>
+                    <h3 class="">Include other call to actions links to your contribution. (Optional)</h3>
                     <div *ngFor="let website of contributionForm.get('website').controls; let i=index" [formGroupName]="i">
                         <p class="makeBlock mt15">Title</p>
                         <input type="text" value="" placeholder="Add the Link Name here" class="mt30 mb20" class="custom-input1" formControlName="websitetitle"/>
@@ -400,4 +401,5 @@
   
     </div>
   </div>
+</ng-container>
 </ion-content>

@@ -8,7 +8,8 @@ import {
   NavParams,
   ActionSheetController,
   ToastController,
-  LoadingController
+  LoadingController,
+  Keyboard
 } from 'ionic-angular';
 import {
   PopoverController,
@@ -65,6 +66,7 @@ import {
 import {
   PreviewModalPage
 } from '../../pages/preview-modal/preview-modal';
+
 declare var $: any;
 /**
  * Generated class for the CreateContributionPage page.
@@ -82,6 +84,7 @@ declare var $: any;
 
 
 export class CreateContributionPage {
+
   contribution_action: any;
   contributionForm: FormGroup;
   contributionData: any = [];
@@ -127,7 +130,8 @@ export class CreateContributionPage {
     public popoverCtrl: PopoverController,
     private crop: Crop,
     private base64: Base64,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public keyboard: Keyboard
   ) {
     this.contribution_action = 'content';
     this.user = this.authService.getCurrentUser();
@@ -164,6 +168,15 @@ export class CreateContributionPage {
 
 
     this.getPreferences()
+    
+  }
+
+  onScroll(e) {
+    console.log("Called")
+    this.closeKeyboard();
+  }
+  closeKeyboard() {
+    this.keyboard.close();
   }
   previous() {
     this.contribution_action = 'content';
@@ -468,7 +481,7 @@ export class CreateContributionPage {
   chooseFromGallery() {
     this.loading = true;
     let options = {
-      allowEdit: true,
+      // allowEdit: true,
       maximumImagesCount: 1, //select number of image default is 15
       destinationType: this.camera.DestinationType.FILE_URI,
       mediaType: this.camera.MediaType.PICTURE,
@@ -694,4 +707,5 @@ export class CreateContributionPage {
       rawBase64
     };
   }
+
 }

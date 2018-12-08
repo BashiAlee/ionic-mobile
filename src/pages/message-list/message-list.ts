@@ -59,22 +59,22 @@ export class MessageListPage {
                 this.senderuserid =  this.user._id
         
             }
-            var data = {chatid: value.ChatID,senderid: this.senderuserid}
-            this.messageService.getUserMessages(data)
-            .subscribe((data) => {
-              if(data.status) {
-                var message = data.data.Messages;
-                // console.log("SS", message[message.length-1].Mess)
-                value.message = message[message.length-1].Message
-                this.loading = false;
+          
+            // var data = {chatid: value.ChatID,senderid: this.senderuserid}
+            // this.messageService.getUserMessages(data)
+            // .subscribe((data) => {
+            //   if(data.status) {
+            //     var message = data.data.Messages;
+            //     value.message = message[message.length-1].Message
+            //     this.loading = false;
 
-              } else {
-                value.message = ""
-                this.loading = false;
-              }
-            })
+            //   } else {
+            //     value.message = ""
+            //     this.loading = false;
+            //   }
+            // })
           });
-
+          this.loading = false;
           // console.log("sdfsdf",this.userMessageNotication)
        
         } else if(!data.status){

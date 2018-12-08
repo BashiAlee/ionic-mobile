@@ -18,7 +18,7 @@ export class CategoryFilterPipe implements PipeTransform {
     if(!terms) return items;
     terms = terms.toLowerCase();
     return items.filter( it => {
-      return it.name.toLowerCase().includes(terms)
+      return it.name.toLowerCase().startsWith(terms)
     });
   }
 }

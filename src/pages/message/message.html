@@ -30,20 +30,20 @@
     <div *ngIf="messages && messages.length" class="msg-section">
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
-          <div *ngFor="let message of messages; let i = index" class="left-msg">
+          <div *ngFor="let message of messages; let i = index" [ngClass]="message.SenderUserId == user._id?'right-msg': 'left-msg'" [class.lastMessageDiv]="i == messages.length-1">
             <p *ngIf="user._id != message.SenderUserId" class="txt">{{message.Message}}</p>
+            <p *ngIf="user._id == message.SenderUserId" class="txt">{{message.Message}}</p>
             <!-- <p class="time">wed | 14:00</p> -->
           </div>
         </ion-col>
 
-        <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
+        <!-- <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6>
           <div *ngFor="let message of messages; let i = index" class="right-msg">
           <div>
             <p *ngIf="user._id == message.SenderUserId" class="txt">{{message.Message}}</p>
           </div>
-            <!-- <p class="time">wed | 14:00</p> -->
           </div>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </div>
   </ion-grid>
@@ -53,7 +53,7 @@
   <ion-toolbar>
     <div class="typ-sect">
           <div class="typing" [formGroup]="messageForm">
-              <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1" formControlName="message"/>
+              <input type="text" class="mt30 mb20" placeholder="write here" class="custom-input1"   id="custom-inputtt"formControlName="message"/>
           </div>
           <label class="circle green-circle" [class.disabledLabel]="messageForm.invalid" (click)=sendMessage()>
             <p>

@@ -3,7 +3,183 @@
 
 <ion-content padding>
     <h2 class="primary-heading mt15 ">Notifications</h2>
-    <ion-list *ngIf="notifications">
+    <ng-container *ngIf="notifications">
+        <ion-list *ngFor="let notification of notifications">
+          <div *ngIf="notification.Type=='ContributionComment'" (click)="openDetails(notification.ContributionID)">
+            <ion-item>  
+              <ion-avatar item-start>
+            <img [src]="notification.CommentUserProfilePicture" alt="">
+            </ion-avatar>
+             <h5>{{notification.CommentUserName}}</h5> 
+              
+              <p class="">commented on Your Contribution</p>
+      
+              </ion-item>
+          </div>
+          <div *ngIf="notification.Type=='ContributionLike'" (click)="openDetails(notification.ContributionID)">
+            <ion-item>
+              <ion-avatar item-start>
+              <img [src]="notification.LikeUserProfilePicture" alt="">
+            </ion-avatar>
+              <h5>{{notification.LikeUserName}}</h5> 
+                
+                <p class="">liked Your Contribution</p>
+      
+            </ion-item>
+      
+        </div>
+      
+        <div *ngIf="notification.Type=='Followers'" (click)="openUserProfile(notification.UserFollowerID)">
+          <ion-item>
+          <ion-avatar item-start>
+            <img [src]="notification.UserFollowerProfilePicture" alt=""></ion-avatar>
+            <h5>{{notification.UserFollowerName}}</h5> 
+            
+            <p class="">Started following you</p>
+          </ion-item>
+        </div>
+      
+      <div *ngIf="notification.Type=='MentorCreateContribution'" (click)="openDetails(notification.ContributionID)">
+          <ion-item>
+          <ion-avatar item-start>
+          <img [src]="notification.MentorProfilePicture" alt=""></ion-avatar>
+          <h5>{{notification.MentorUserName}}</h5> 
+          
+          <p class="">has created a new contribution {{notification.ContributionTitle}}</p> 
+        </ion-item>
+      </div>
+      <div *ngIf="notification.Type=='ChildCreateContribution'" (click)="openDetails(notification.ContributionID)">
+          <ion-item>
+          <ion-avatar item-start>
+        <img [src]="notification.ChildProfilePicture" alt=""></ion-avatar>
+        
+        <h5>{{notification.ChildUserName}}</h5> 
+        
+        <p class="">Your child {{notification.ChildUserName}} has created a new contribution {{notification.ContributionTitle}}</p> 
+      </ion-item>
+      </div>
+      <div *ngIf="notification.Type=='MentorAprovel'" (click)="openUserProfile(notification.UserFollowerID)">
+        <ion-item>
+        <ion-avatar item-start>
+            <img [src]="notification.MentorProfilePicture" alt=""></ion-avatar>
+            
+            
+            
+            <p class="">Your parent has approved your request to follow {{notification.MentorUserName}}</p> 
+          </ion-item>  
+          </div>
+      
+      
+          <div *ngIf="notification.Type=='MentorMsgAprovel'" (click)="openUserProfile(notification.UserFollowerID)">
+            <ion-item>
+            <ion-avatar item-start>
+                <img [src]="notification.MentorProfilePicture" alt=""></ion-avatar>
+                
+                
+                
+                <p class="">Your parent has approved your request to message {{notification.MentorUserName}}</p> 
+        
+              </ion-item>
+              </div>
+              <div *ngIf="notification.Type=='AdminRejectContribution'" (click)="openDetails(notification.ContributionID)" >
+                <!-- <div *ngFor="let admin of notifications.AdminAproveContribution" class="row followerRow" [routerLink]="['/spotlight-details',admin.ContributionID]"> -->
+                  <ion-item>
+                  <ion-avatar item-start>
+                  <img src="../../assets/imgs/admin_profile.jpg" alt=""></ion-avatar>  
+                    
+                    
+                    
+                    <p class="">Admin has rejected your {{notification.ContributionType}}</p> 
+                    <!-- </div> -->
+                <!-- </div> -->
+      </ion-item>
+      
+                  </div>
+                  <div *ngIf="notification.Type=='AdminAproveContribution'" (click)="openDetails(notification.ContributionID)">
+                    <!-- <div *ngFor="let admin of notifications.AdminAproveContribution" class="row followerRow" [routerLink]="['/spotlight-details',admin.ContributionID]"> -->
+                      <ion-item>
+                      <ion-avatar item-start>
+                      <img src="../../assets/imgs/admin_profile.jpg" alt=""></ion-avatar>  
+                        
+                        
+                        
+                        <p class="">Admin has accepted your {{notification.ContributionType}}</p> 
+                        <!-- </div> -->
+                    <!-- </div> -->
+                  </ion-item>
+                      </div>
+      
+              <div *ngIf="notification.Type=='ChildSubmitMentorForm'"  >
+                  <!-- <div *ngFor="let child of notifications.ChildSubmitMentorForm" class="row followerRow" > -->
+                      <ion-item>
+                      <ion-avatar item-start>
+                    <img [src]="notification.ChildProfilePicture" alt=""></ion-avatar> 
+                      
+                      
+                      
+                      <p class="">Your child({{notification.ChildUserName}}) has submitted a mentor form</p> 
+                      <!-- </div> -->
+                  <!-- </div> -->
+                </ion-item>
+                    </div>
+      
+                <div *ngIf="notification.Type=='AdminMentorRequest' && notification.RequestAprove"  >
+                    <!-- <div  class="row followerRow" > -->
+                        <ion-item>
+                        <ion-avatar item-start>
+                          <img src="../../assets/imgs/avatar.png" alt=""></ion-avatar>
+                        
+                        
+                        
+                        <p class="">Admin has approved mentor Request</p> 
+                        <!-- </div> -->
+                    <!-- </div> -->
+                  </ion-item>
+                      </div>
+      
+                  <div *ngIf="notification.Type=='AdminMentorRequestReject' && notification.RequestAprove">
+                      <ion-item>
+                      <ion-avatar item-start>
+                          
+                            <img src="../../assets/imgs/avatar.png" alt=""></ion-avatar>
+                          
+                          
+                          
+                          <p class="">Admin has rejected your mentor request</p> 
+                          <!-- </div> -->
+                        </ion-item>
+                        </div>
+               
+      
+                    <div *ngIf="notification.Type=='ParentMentorRequest' && notification.RequestAprove">
+              
+                        <ion-item>
+                        <ion-avatar item-start>
+                              <img src="../../assets/imgs/avatar.png" alt=""></ion-avatar> 
+                            
+                            
+                            
+                            <p class="">Parent has accepted your mentor request</p> 
+                            <!-- </div> -->
+                          </ion-item>
+                          </div>
+               
+      
+                      <div *ngIf="notification.Type=='ParentMentorRequestReject' && notification.RequestAprove">
+                      
+                          <ion-item>
+                          <ion-avatar item-start>
+                                <img src="../../assets/imgs/avatar.png" alt=""></ion-avatar>   
+                              
+                              
+                              
+                              <p class="">Parent has rejected your mentor request</p> 
+                              <!-- </div> -->
+                            </ion-item>
+                            </div>
+      </ion-list>
+      </ng-container>
+    <!-- <ion-list *ngIf="notifications">
       <div *ngIf="notifications.ContributionComments && notifications.ContributionComments.length">
           <ion-item *ngFor="let comments of notifications.ContributionComments" (click)="openDetails(comments.ContributionID)">
             <ion-avatar item-start>
@@ -59,7 +235,7 @@
         <ion-avatar item-start>
           <img [src]="child.MentorProfilePicture">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Your parent has approved your request to follow {{child.MentorUserName}</p>
         </ion-item>
     </div>
@@ -70,7 +246,7 @@
         <ion-avatar item-start>
           <img [src]="child.MentorProfilePicture">
         </ion-avatar>
-       <!-- <h2>{{comments.CommentUserName}}</h2> -->
+
        <p>Your parent has approved your request to message {{child.MentorUserName}</p>
       </ion-item>
     </div>
@@ -81,7 +257,7 @@
         <ion-avatar item-start>
           <img src="../../assets/imgs/admin_profile.jpg">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Admin has accepted your {{admin.ContributionType}}</p>
         </ion-item>
     </div>
@@ -91,7 +267,7 @@
         <ion-avatar item-start>
           <img src="../../assets/imgs/admin_profile.jpg">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Admin has rejected your {{admin.ContributionType}}</p>
         </ion-item>
     </div>
@@ -102,7 +278,7 @@
         <ion-avatar item-start>
           <img [src]="child.ChildProfilePicture">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Your child({{child.ChildUserName}}) has submitted a mentor form</p>
         </ion-item>
     </div>
@@ -113,7 +289,7 @@
         <ion-avatar item-start>
           <img src="../../assets/imgs/avatar.png">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Admin has approved mentor Request</p>
         </ion-item>
     </div>
@@ -123,7 +299,7 @@
         <ion-avatar item-start>
           <img src="../../assets/imgs/avatar.png">
         </ion-avatar>
-        <!-- <h2>{{comments.CommentUserName}}</h2> -->
+  
         <p>Admin has rejected mentor Request</p>
         </ion-item>
     </div>
@@ -133,7 +309,7 @@
           <ion-avatar item-start>
             <img src="../../assets/imgs/avatar.png">
           </ion-avatar>
-          <!-- <h2>{{comments.CommentUserName}}</h2> -->
+    
           <p>Parent has accepted your mentor request</p>
           </ion-item>
       </div>
@@ -143,11 +319,11 @@
             <ion-avatar item-start>
               <img src="../../assets/imgs/avatar.png">
             </ion-avatar>
-            <!-- <h2>{{comments.CommentUserName}}</h2> -->
+      
             <p>Parent has rejected mentor Request</p>
             </ion-item>
         </div>
-      </ion-list>
+      </ion-list> -->
     
       <ion-list *ngIf="!notifications">
         <p>No Notfications</p>

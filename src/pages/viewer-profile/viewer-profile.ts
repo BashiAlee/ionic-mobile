@@ -169,4 +169,8 @@ export class ViewerProfilePage {
       })
   }
 
+  openUserProfile(id) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: id})
+  }
+
 }

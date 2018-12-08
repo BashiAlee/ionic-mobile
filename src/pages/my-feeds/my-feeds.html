@@ -17,7 +17,7 @@
                     <p class="b-bot"></p>
                   </ion-col>
                   <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
-                    <h2 class="lh16" *ngIf="contributions[0]">{{contributions[0].UserFullName}} has {{contributions.length}} contributions</h2>
+                    <h2 class="lh16" *ngIf="contributions[0]">{{contributions[0].UserFullName}} has {{contributions.length}} {{contributions.length>1? 'contributions':'contribution'}}</h2>
                   </ion-col>
                   <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2>
                     <p class="b-bot"></p>
@@ -28,7 +28,7 @@
               <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
                   <ion-card *ngFor="let contribution of contributions">
     
-                      <ion-item>
+                      <ion-item (click)="openUserProfile(contribution.UserID)">
                         <ion-avatar item-start>
                           <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
                           <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
@@ -52,28 +52,30 @@
                         </div>
                         <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
                         <div class="red-text">
-                          <a ion-button clear small (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
+                          <a ion-button clear small no-padding (click)="openDetails(contribution._id)" class="makeRed left-align">View Detail</a>
                         </div>
                     </ion-card-content>
-                      <ion-row>
-                         
-                          <ion-col class="makeCenter">
+                    <ion-card-content>
+                        <ion-row>
+              
+                          <ion-col class="makeLeft">
                             <button ion-button icon-start clear small *ngIf="!contribution.isLiked" (click)="addLike(contribution,contribution._id)">
-                                <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                              <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
                               <div>{{contribution.Likes}} {{contribution.Likes < 2?'Like':'Likes'}}</div>
                             </button>
                             <button ion-button icon-start clear small *ngIf="contribution.isLiked" (click)="unLike(contribution,contribution._id)">
-                                <ion-icon name="heart"></ion-icon>  
+                              <ion-icon name="heart"></ion-icon>
                               <div>{{contribution.Likes}} Unlike</div>
                             </button>
                           </ion-col>
-                          <ion-col class="makeCenter">
-                              <button ion-button icon-start clear small>
-                                  <ion-icon name="text"></ion-icon>
-                                  <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
-                                </button>
+                          <ion-col class="makeRight">
+                            <button ion-button icon-start clear small (click)="openDetails(contribution._id)">
+                              <ion-icon name="text"></ion-icon>
+                              <div *ngIf="contribution.social">{{contribution.social.Comments.length}}<span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
+                            </button>
                           </ion-col>
                         </ion-row>
+                      </ion-card-content>
                     </ion-card>
               </ion-col>
 
@@ -91,7 +93,7 @@
         <div class="contribution-data" *ngIf="suggestedContribution && suggestedContribution.length && !loaders.suggestionLoader">
         <ion-card *ngFor="let contribution of suggestedContribution">
     
-            <ion-item>
+            <ion-item (click)="openUserProfile(contribution.UserID)">
               <ion-avatar item-start>
                 <img *ngIf="!contribution.UserProfilePicture" src="../../assets/imgs/avatar.png">
                 <img *ngIf="contribution.UserProfilePicture" [src]="contribution.UserProfilePicture">
@@ -131,7 +133,7 @@
                   </button>
                 </ion-col>
                 <ion-col class="makeCenter">
-                    <button ion-button icon-start clear small>
+                    <button ion-button icon-start clear small (click)="openDetails(contribution._id)">
                         <ion-icon name="text"></ion-icon>
                         <div *ngIf="contribution.social">{{contribution.social.Comments.length}} <span class="ml5">{{contribution.social.Comments.length  < 2? 'Comment': 'Comments'}}</span></div>
                       </button>

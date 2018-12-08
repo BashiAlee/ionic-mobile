@@ -4,6 +4,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { UserProvider } from '../../providers/user/user';
 import { ContributionsProvider } from '../../providers/contributions/contributions';
 import { ContributionDetailsPage } from '../../pages/contribution-details/contribution-details';
+import { ViewerProfilePage } from '../../pages/viewer-profile/viewer-profile';
 
 /**
  * Generated class for the MyFeedsPage page.
@@ -86,6 +87,8 @@ export class MyFeedsPage {
         } else if(data.status) {
           value.social = data.data;
         }
+
+        console.log("VALLL", value)
         if(value.social.Likes && value.social.Likes.length) {
           value.social.Likes.forEach(id => {
             if(this.user._id === id.LikeUserID) {
@@ -136,13 +139,15 @@ export class MyFeedsPage {
     this.contributionService.getUserConstributionsbyEmail(email)
     .subscribe(
       data => {
+       
         if(data.status) {
           data.data.forEach((value,index) => {
             if(value.AdminStatus && value.ContributionStatus == 'Publish') {
               this.getLikesAndComments(value._id,value);
-              // list.push(value)
+              list.push(value)
              
             } else {
+              console.log("INDEX",index)
               data.data.splice(index,1);
             }
           });
@@ -151,11 +156,11 @@ export class MyFeedsPage {
           // this.userContributions = [];
         }
 
-        // console.log("DDD", data.data)
+        console.log("DDD", list)
           if(data.data) {
-            this.userContributions.push(data.data);
+            this.userContributions.push(list);
           }
-          console.log("DDDDD", this.userContributions)
+         
         this.loaders.feedLoader = false;
 
         // console.log("DDDD", this.userContributions)
@@ -199,6 +204,10 @@ export class MyFeedsPage {
 
   openDetails(id) {
     this.navCtrl.push(ContributionDetailsPage, {id: id})
+  }
+
+  openUserProfile(id) {
+    this.navCtrl.setRoot(ViewerProfilePage, {userid: id})
   }
 
   

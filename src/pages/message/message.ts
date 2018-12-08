@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { MessagesProvider } from '../../providers/messages/messages';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageListPage } from '../../pages/message-list/message-list';
+import {ElementRef, ViewChild} from '@angular/core';
 /**
  * Generated class for the MessagePage page.
  *
@@ -19,6 +20,7 @@ import { MessageListPage } from '../../pages/message-list/message-list';
 
 })
 export class MessagePage {
+  @ViewChild(Content) content: Content
   messageForm: FormGroup;
   id: any;
   allData:any;
@@ -69,6 +71,7 @@ export class MessagePage {
         if (data.status) {
           this.messages = data.data.Messages;
           this.loading.getMsg= false;
+          this.content.scrollToBottom(0)
         } else if (!data.status) {
           this.messages = null;
           this.loading.getMsg= false;
@@ -86,12 +89,16 @@ export class MessagePage {
           this.messageForm.patchValue({
             message: ''
           })
+          this.content.scrollToBottom(0)
+          document.getElementById("custom-inputtt").focus();
         } else if (!data.status) {
           this.loading.sendMsg = false;
           this.messages = null;
           this.messageForm.patchValue({
             message: ''
           })
+          this.content.scrollToBottom(0)
+          document.getElementById("custom-inputtt").focus();
         }
       })
   }
