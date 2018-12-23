@@ -160,8 +160,11 @@
             <ion-list *ngIf="contributionDetails.social && contributionDetails.social.Comments.length">
                 <ion-item-sliding #item *ngFor="let comments of contributionDetails.social.Comments">
                   <ion-item>
-                    <ion-avatar item-start>
+                    <ion-avatar item-start *ngIf="!comments.profilePicture">
                       <img src="../../assets/imgs/admin_profile.jpg">
+                    </ion-avatar>
+                    <ion-avatar item-start *ngIf="comments.profilePicture">
+                      <img [src]="comments.profilePicture">
                     </ion-avatar>
                     <h2>{{comments.name}}</h2>
                     <p>{{comments.Comment}}</p>

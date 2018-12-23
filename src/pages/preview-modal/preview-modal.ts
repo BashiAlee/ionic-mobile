@@ -35,10 +35,15 @@ export class PreviewModalPage {
     this.contribution  = _.mapKeys(this.contribution, function (v, k) { return k.toLowerCase(); });
 
   
-    console.log("DDD", this.type)
+
     if (this.contribution.audiopath) {
       this.modalArray.push(".modal-audio-view")
-    }
+      if(this.contribution.audiopath.includes('amazonaws')) {
+        this.contribution.audiopath = this.contribution.audiopath;
+      } else {
+        this.contribution.audiopath = 'https://s3.us-east-2.amazonaws.com/climbmentors/'+this.contribution.audiopath;
+      }
+     }
     if (this.contribution.videos) {
       this.modalArray.push(".modal-video-view")
       var videoClient = this.contribution.videos.search("you");
