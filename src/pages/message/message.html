@@ -19,7 +19,7 @@
               </ion-col>
               <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 offset-md-1>
                   <div icon-center class="title1">
-                    <h2>{{allData.User2UserName}}</h2>
+                    <h2>{{allData.User2ID == user._id? allData.User1UserName: allData.User2UserName}}</h2>
                   </div>
               </ion-col>
             </ion-row>

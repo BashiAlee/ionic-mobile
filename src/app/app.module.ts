@@ -64,6 +64,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { PipesModule } from '../pipes/pipes.module';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -167,6 +168,7 @@ import { PipesModule } from '../pipes/pipes.module';
     SplashScreen,
     Camera,
     Crop,
+    Keyboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthenticationProvider,
     UserProvider,

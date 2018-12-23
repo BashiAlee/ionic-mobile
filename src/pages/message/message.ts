@@ -5,6 +5,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageListPage } from '../../pages/message-list/message-list';
 import {ElementRef, ViewChild} from '@angular/core';
+import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the MessagePage page.
  *
@@ -33,7 +34,8 @@ export class MessagePage {
     public userService: MessagesProvider,
     public formBuilder: FormBuilder,
     public navCtrl: NavController, 
-    public authService: AuthenticationProvider
+    public authService: AuthenticationProvider,
+    private keyboard: Keyboard
   ) {
     this.user = this.authService.getCurrentUser();
     this.id = this.navParams.get('messageDetail')
@@ -79,25 +81,30 @@ export class MessagePage {
       })
   }
   sendMessage() {
+    document.getElementById("custom-inputtt").focus();
+    this.keyboard.show();
     this.loading.sendMsg = true;
     this.userService.sendUserMessages(this.messageForm.value)
       .subscribe(data => {
     if (data.status) {
           this.loading.sendMsg = false;
-          this
+          this.keyboard.show();
           this.getMessages(this.id)
           this.messageForm.patchValue({
             message: ''
           })
           this.content.scrollToBottom(0)
-          document.getElementById("custom-inputtt").focus();
+   
         } else if (!data.status) {
           this.loading.sendMsg = false;
           this.messages = null;
+        
           this.messageForm.patchValue({
             message: ''
           })
           this.content.scrollToBottom(0)
+          this.keyboard.show();
+        
           document.getElementById("custom-inputtt").focus();
         }
       })

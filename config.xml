@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.cliiimb.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cliiimb</name>
     <description>Cliiimb, is a movement based on our belief that a community’s future sustainability will emerge by leveraging the power of our collective efforts to develop, empower, support and guide our young people.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -30,18 +30,18 @@
         <icon density="xhdpi" src="resources/android/icon/144.png" />
         <icon density="xxhdpi" src="resources/android/icon/512.png" />
         <icon density="xxxhdpi" src="resources/android/icon/1080.png" />
-        <splash density="land-ldpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="land-mdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="land-hdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="land-xhdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="land-xxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="land-xxxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-ldpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-mdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-hdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-xhdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-xxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
-        <splash density="port-xxxhdpi" src="resources/android/splash/cliiimb-splash.gif" />
+        <splash density="land-ldpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="land-mdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="land-hdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="land-xhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="land-xxhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="land-xxxhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-ldpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-mdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-hdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-xhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-xxhdpi" src="resources/android/splash/cliiimb-splash.png" />
+        <splash density="port-xxxhdpi" src="resources/android/splash/cliiimb-splash.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -65,26 +65,25 @@
         <icon height="58" src="resources/ios/icon/Icon-Small@2x.png" width="58" />
         <icon height="87" src="resources/ios/icon/Icon-Small@3x.png" width="87" />
         <icon height="1024" src="resources/ios/icon/Icon-1024.png" width="1024" />
-        <splash height="1136" src="resources/ios/splash/cliiimb-splash.gif" width="640" />
-        <splash height="1334" src="resources/ios/splash/cliiimb-splash.gif" width="750" />
-        <splash height="2208" src="resources/ios/splash/cliiimb-splash.gif" width="1242" />
-        <splash height="1242" src="resources/ios/splash/cliiimb-splash.gif" width="2208" />
-        <splash height="1536" src="resources/ios/splash/cliiimb-splash.gif" width="2048" />
-        <splash height="2048" src="resources/ios/splash/cliiimb-splash.gif" width="2732" />
-        <splash height="768" src="resources/ios/splash/cliiimb-splash.gif" width="1024" />
-        <splash height="2048" src="resources/ios/splash/cliiimb-splash.gif" width="1536" />
-        <splash height="2732" src="resources/ios/splash/cliiimb-splash.gif" width="2048" />
-        <splash height="1024" src="resources/ios/splash/cliiimb-splash.gif" width="768" />
-        <splash height="960" src="resources/ios/splash/cliiimb-splash.gif" width="640" />
-        <splash height="480" src="resources/ios/splash/cliiimb-splash.gif" width="320" />
-        <splash height="2732" src="resources/ios/splash/cliiimb-splash.gif" width="2732" />
+        <splash height="1136" src="resources/ios/splash/cliiimb-splash.png" width="640" />
+        <splash height="1334" src="resources/ios/splash/cliiimb-splash.png" width="750" />
+        <splash height="2208" src="resources/ios/splash/cliiimb-splash.png" width="1242" />
+        <splash height="1242" src="resources/ios/splash/cliiimb-splash.png" width="2208" />
+        <splash height="1536" src="resources/ios/splash/cliiimb-splash.png" width="2048" />
+        <splash height="2048" src="resources/ios/splash/cliiimb-splash.png" width="2732" />
+        <splash height="768" src="resources/ios/splash/cliiimb-splash.png" width="1024" />
+        <splash height="2048" src="resources/ios/splash/cliiimb-splash.png" width="1536" />
+        <splash height="2732" src="resources/ios/splash/cliiimb-splash.png" width="2048" />
+        <splash height="1024" src="resources/ios/splash/cliiimb-splash.png" width="768" />
+        <splash height="960" src="resources/ios/splash/cliiimb-splash.png" width="640" />
+        <splash height="480" src="resources/ios/splash/cliiimb-splash.png" width="320" />
+        <splash height="2732" src="resources/ios/splash/cliiimb-splash.png" width="2732" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-filechooser" spec="^1.0.1" />
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
@@ -95,6 +94,7 @@
     <plugin name="cordova-plugin-chooser" spec="~1.2.4" />
     <plugin name="cordova-plugin-crop" spec="^0.4.0" />
     <plugin name="com-badrit-base64" spec="^0.2.0" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
     <engine name="android" spec="~7.1.1" />
     <engine name="ios" spec="4.5.5" />
 </widget>

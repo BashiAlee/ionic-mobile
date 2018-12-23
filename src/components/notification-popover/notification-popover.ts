@@ -121,10 +121,12 @@ export class NotificationPopoverComponent {
   }
 
   openDetails(id) {
+    this.close()
     this.appCtrl.getRootNav().push(ContributionDetailsPage, {id: id})
   }
 
   openUserProfile(id) {
+    this.close()
     this.appCtrl.getRootNav().setRoot(ViewerProfilePage, {userid: id})
   }
 
