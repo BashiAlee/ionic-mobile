@@ -7,12 +7,12 @@
 <header></header>
 <ion-content padding>
   <div class="home-content makeCenter">
-    
+
     <ion-grid>
       <ion-row>
         <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
           <h1>BE<p id="typed"></p></h1>
-          
+
           <p>
             <span class="blue-boldline"></span>
             <span class="yellow-boldline"></span>
@@ -64,7 +64,7 @@
               <button class="yellow-btn">
                 REGISTER NOW
               </button>
-            </span>         
+            </span>
             <span>
                 <button class="blue-btn" (click)="goToLearnMentorPage()">
                   LEARN MORE
@@ -125,13 +125,13 @@
                   <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
                       <button class="follow-btn f-right" (click)="addMentor(contribution.UserID,user.Age,contribution)" *ngIf="user &&!contribution.hasFollowing && user._id != contribution.UserID  && contribution.userType!='admin'">
                           FOLLOW
-                        </button> 
+                        </button>
                       <button class="follow-btn blue-icon f-right" (click)="unFollowMentor(contribution.UserID, contribution)" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && contribution.isAllowed">
                         UNFOLLOW
                       </button>
                       <button class="follow-btn orange-icon f-right" *ngIf="user && contribution.hasFollowing && user._id != contribution.UserID && !contribution.isAllowed">
                         PENDING
-                      </button> 
+                      </button>
                   </ion-col>
                    <ion-item class="action-icons b-bot">
                     <ion-icon *ngIf="contribution.Images[0]" class="img-icon" ios="ios-images" md="md-images" (click)="openFold('image',contribution)" ></ion-icon>
@@ -143,8 +143,8 @@
 
 
           </ion-grid>
-           
-          <!-- <ion-item class="action-icons"> 
+
+          <!-- <ion-item class="action-icons">
             <ion-icon class="volume-icon" ios="ios-volume-up" md="md-volume-up"></ion-icon>
             <ion-icon class="play-icon" ios="ios-play" md="md-play"></ion-icon>
             <ion-icon (click)="presentPopover()" class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
@@ -162,12 +162,12 @@
                         </div>
                       </ion-col>
                       <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 class="makeRight">
-                          <ion-icon name="ios-eye"></ion-icon> {{contribution.ViewCount}}<span class="ml5">{{contribution.ViewCount>1?'Views':'View'}}</span> 
+                          <ion-icon name="ios-eye"></ion-icon> {{contribution.ViewCount}}<span class="ml5">{{contribution.ViewCount>1?'Views':'View'}}</span>
                       </ion-col>
                   </ion-row>
               </ion-grid>
-               
-              
+
+
 
             <p class="contribution-detail-content" [innerHTML]="contribution.ContributionText"></p>
             <div class="red-text">

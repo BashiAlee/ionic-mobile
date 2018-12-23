@@ -461,10 +461,10 @@ a{
 }
 .custom-titl{
     display: flex;
-    img{
+    img {
         border-radius: 50%;
         overflow: hidden;
-        width: 40px;
+        max-width: 40px !important;
         height: 40px;
         margin: 5px 5px 0px 10px;
         display: block;
